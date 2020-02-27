@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		851E491C2405BEAB0067D7A5 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851E491B2405BEAB0067D7A5 /* FloatingTextField.swift */; };
+		851E7B972407D32A005E1928 /* PatientAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851E7B962407D32A005E1928 /* PatientAppointmentsViewController.swift */; };
+		851E7B9A2407DEBE005E1928 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851E7B992407DEBE005E1928 /* UIColor+Additions.swift */; };
+		85225DAE2406F38C009583EC /* MissingInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85225DAD2406F38C009583EC /* MissingInfoTableViewCell.swift */; };
+		85225DB02406F439009583EC /* NextAppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85225DAF2406F439009583EC /* NextAppointmentTableViewCell.swift */; };
+		85225DB22406F4A8009583EC /* MessageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85225DB12406F4A8009583EC /* MessageCellTableViewCell.swift */; };
+		856EFDB62407FF8000BA63F2 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EFDB52407FF8000BA63F2 /* UIViewController+Additions.swift */; };
+		856EFDB82408003E00BA63F2 /* PatientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EFDB72408003E00BA63F2 /* PatientProfileViewController.swift */; };
+		856EFDBA240801E500BA63F2 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EFDB9240801E500BA63F2 /* UIView+Additions.swift */; };
+		85A3B60123FEC339005DF4F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A3B60023FEC339005DF4F4 /* AppDelegate.swift */; };
+		85A3B60323FEC339005DF4F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A3B60223FEC339005DF4F4 /* SceneDelegate.swift */; };
+		85A3B60523FEC339005DF4F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A3B60423FEC339005DF4F4 /* LoginViewController.swift */; };
+		85A3B60823FEC339005DF4F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85A3B60623FEC339005DF4F4 /* Main.storyboard */; };
+		85A3B60A23FEC33C005DF4F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85A3B60923FEC33C005DF4F4 /* Assets.xcassets */; };
+		85A3B60D23FEC33C005DF4F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85A3B60B23FEC33C005DF4F4 /* LaunchScreen.storyboard */; };
+		85CF6AD523FEE52500F10DBF /* PatientHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF6AD423FEE52500F10DBF /* PatientHomeViewController.swift */; };
+		85CF6AD823FEE55400F10DBF /* Patient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85CF6AD723FEE55400F10DBF /* Patient.storyboard */; };
+		85CF6ADB23FEE60800F10DBF /* BaseScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF6ADA23FEE60800F10DBF /* BaseScrollViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		851E491B2405BEAB0067D7A5 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
+		851E7B962407D32A005E1928 /* PatientAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentsViewController.swift; sourceTree = "<group>"; };
+		851E7B992407DEBE005E1928 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		85225DAD2406F38C009583EC /* MissingInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingInfoTableViewCell.swift; sourceTree = "<group>"; };
+		85225DAF2406F439009583EC /* NextAppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextAppointmentTableViewCell.swift; sourceTree = "<group>"; };
+		85225DB12406F4A8009583EC /* MessageCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellTableViewCell.swift; sourceTree = "<group>"; };
+		856EFDB52407FF8000BA63F2 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
+		856EFDB72408003E00BA63F2 /* PatientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientProfileViewController.swift; sourceTree = "<group>"; };
+		856EFDB9240801E500BA63F2 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		85A3B5FD23FEC339005DF4F4 /* Coagusearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coagusearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		85A3B60023FEC339005DF4F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		85A3B60223FEC339005DF4F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		85A3B60423FEC339005DF4F4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		85A3B60723FEC339005DF4F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		85A3B60923FEC33C005DF4F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		85A3B60C23FEC33C005DF4F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		85A3B60E23FEC33C005DF4F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85CF6AD423FEE52500F10DBF /* PatientHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHomeViewController.swift; sourceTree = "<group>"; };
+		85CF6AD723FEE55400F10DBF /* Patient.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Patient.storyboard; sourceTree = "<group>"; };
+		85CF6ADA23FEE60800F10DBF /* BaseScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScrollViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		85A3B5FA23FEC339005DF4F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		851E491A2405BE8B0067D7A5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				851E7B992407DEBE005E1928 /* UIColor+Additions.swift */,
+				856EFDB52407FF8000BA63F2 /* UIViewController+Additions.swift */,
+				856EFDB9240801E500BA63F2 /* UIView+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		851E7B982407DE8B005E1928 /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+				851E491B2405BEAB0067D7A5 /* FloatingTextField.swift */,
+				851E491A2405BE8B0067D7A5 /* Extensions */,
+			);
+			path = Reusables;
+			sourceTree = "<group>";
+		};
+		85225DAC2406F372009583EC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				85225DAD2406F38C009583EC /* MissingInfoTableViewCell.swift */,
+				85225DAF2406F439009583EC /* NextAppointmentTableViewCell.swift */,
+				85225DB12406F4A8009583EC /* MessageCellTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		85A3B5F423FEC339005DF4F4 = {
+			isa = PBXGroup;
+			children = (
+				85A3B5FF23FEC339005DF4F4 /* Coagusearch */,
+				85A3B5FE23FEC339005DF4F4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		85A3B5FE23FEC339005DF4F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				85A3B5FD23FEC339005DF4F4 /* Coagusearch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		85A3B5FF23FEC339005DF4F4 /* Coagusearch */ = {
+			isa = PBXGroup;
+			children = (
+				851E7B982407DE8B005E1928 /* Reusables */,
+				85CF6AD923FEE5F800F10DBF /* Base */,
+				85CF6AD623FEE52900F10DBF /* Patient */,
+				85CF6AD223FEE50200F10DBF /* LoginScreen */,
+				85A3B60023FEC339005DF4F4 /* AppDelegate.swift */,
+				85A3B60223FEC339005DF4F4 /* SceneDelegate.swift */,
+				85A3B60623FEC339005DF4F4 /* Main.storyboard */,
+				85A3B60923FEC33C005DF4F4 /* Assets.xcassets */,
+				85A3B60B23FEC33C005DF4F4 /* LaunchScreen.storyboard */,
+				85A3B60E23FEC33C005DF4F4 /* Info.plist */,
+			);
+			path = Coagusearch;
+			sourceTree = "<group>";
+		};
+		85CF6AD223FEE50200F10DBF /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				85A3B60423FEC339005DF4F4 /* LoginViewController.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		85CF6AD323FEE50E00F10DBF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				85CF6AD423FEE52500F10DBF /* PatientHomeViewController.swift */,
+				851E7B962407D32A005E1928 /* PatientAppointmentsViewController.swift */,
+				856EFDB72408003E00BA63F2 /* PatientProfileViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		85CF6AD623FEE52900F10DBF /* Patient */ = {
+			isa = PBXGroup;
+			children = (
+				85225DAC2406F372009583EC /* Cells */,
+				85CF6AD323FEE50E00F10DBF /* ViewControllers */,
+				85CF6AD723FEE55400F10DBF /* Patient.storyboard */,
+			);
+			path = Patient;
+			sourceTree = "<group>";
+		};
+		85CF6AD923FEE5F800F10DBF /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				85CF6ADA23FEE60800F10DBF /* BaseScrollViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		85A3B5FC23FEC339005DF4F4 /* Coagusearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85A3B61123FEC33C005DF4F4 /* Build configuration list for PBXNativeTarget "Coagusearch" */;
+			buildPhases = (
+				85A3B5F923FEC339005DF4F4 /* Sources */,
+				85A3B5FA23FEC339005DF4F4 /* Frameworks */,
+				85A3B5FB23FEC339005DF4F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Coagusearch;
+			productName = Coagusearch;
+			productReference = 85A3B5FD23FEC339005DF4F4 /* Coagusearch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		85A3B5F523FEC339005DF4F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = coagusearch;
+				TargetAttributes = {
+					85A3B5FC23FEC339005DF4F4 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 85A3B5F823FEC339005DF4F4 /* Build configuration list for PBXProject "Coagusearch" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 85A3B5F423FEC339005DF4F4;
+			productRefGroup = 85A3B5FE23FEC339005DF4F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				85A3B5FC23FEC339005DF4F4 /* Coagusearch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		85A3B5FB23FEC339005DF4F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85A3B60D23FEC33C005DF4F4 /* LaunchScreen.storyboard in Resources */,
+				85A3B60A23FEC33C005DF4F4 /* Assets.xcassets in Resources */,
+				85CF6AD823FEE55400F10DBF /* Patient.storyboard in Resources */,
+				85A3B60823FEC339005DF4F4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		85A3B5F923FEC339005DF4F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85225DAE2406F38C009583EC /* MissingInfoTableViewCell.swift in Sources */,
+				85A3B60523FEC339005DF4F4 /* LoginViewController.swift in Sources */,
+				851E491C2405BEAB0067D7A5 /* FloatingTextField.swift in Sources */,
+				85A3B60123FEC339005DF4F4 /* AppDelegate.swift in Sources */,
+				851E7B972407D32A005E1928 /* PatientAppointmentsViewController.swift in Sources */,
+				851E7B9A2407DEBE005E1928 /* UIColor+Additions.swift in Sources */,
+				85225DB22406F4A8009583EC /* MessageCellTableViewCell.swift in Sources */,
+				85CF6ADB23FEE60800F10DBF /* BaseScrollViewController.swift in Sources */,
+				856EFDB62407FF8000BA63F2 /* UIViewController+Additions.swift in Sources */,
+				85A3B60323FEC339005DF4F4 /* SceneDelegate.swift in Sources */,
+				856EFDB82408003E00BA63F2 /* PatientProfileViewController.swift in Sources */,
+				85225DB02406F439009583EC /* NextAppointmentTableViewCell.swift in Sources */,
+				856EFDBA240801E500BA63F2 /* UIView+Additions.swift in Sources */,
+				85CF6AD523FEE52500F10DBF /* PatientHomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		85A3B60623FEC339005DF4F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85A3B60723FEC339005DF4F4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		85A3B60B23FEC33C005DF4F4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85A3B60C23FEC33C005DF4F4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		85A3B60F23FEC33C005DF4F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		85A3B61023FEC33C005DF4F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		85A3B61223FEC33C005DF4F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Coagusearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coagusearch.Coagusearch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		85A3B61323FEC33C005DF4F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Coagusearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coagusearch.Coagusearch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		85A3B5F823FEC339005DF4F4 /* Build configuration list for PBXProject "Coagusearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85A3B60F23FEC33C005DF4F4 /* Debug */,
+				85A3B61023FEC33C005DF4F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85A3B61123FEC33C005DF4F4 /* Build configuration list for PBXNativeTarget "Coagusearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85A3B61223FEC33C005DF4F4 /* Debug */,
+				85A3B61323FEC33C005DF4F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 85A3B5F523FEC339005DF4F4 /* Project object */;
+}

@@ -1,1 +1,1 @@
-coagusearch-iOS
+coagusearch
