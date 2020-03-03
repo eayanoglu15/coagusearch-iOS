@@ -16,6 +16,7 @@ class PatientHomeViewController: UIViewController {
         super.viewDidLoad()
         homeTableView.dataSource = self
         homeTableView.delegate = self
+        homeTableView.tableFooterView = UIView()
         title = "Welcome"
         stylize()
     }
@@ -35,26 +36,32 @@ class PatientHomeViewController: UIViewController {
 
 extension PatientHomeViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
         cell.backgroundView?.backgroundColor = UIColor.clear
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 16
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as! UITableViewHeaderFooterView).backgroundView = UIView()
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "missingInfoCell", for: indexPath) as! MissingInfoTableViewCell
-            /*
-            cell.messageLabel.text = "You haven't post a trip yet... \nPost your next trip :)"
-            cell.button.setTitle("New Trip", for: .normal)
-            cell.button.addTarget(self, action: #selector(newFeedButtonTapped), for: .touchUpInside)
-             */
-            
             return cell
-        } else if indexPath.row == 1 {
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "nextAppointmentCell", for: indexPath) as! NextAppointmentTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear

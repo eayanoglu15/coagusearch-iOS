@@ -33,9 +33,12 @@ class NextAppointmentTableViewCell: UITableViewCell {
     @IBOutlet weak var timeIcon: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var cancelButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

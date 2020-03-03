@@ -9,13 +9,13 @@
 import UIKit
 
 class MessageCellTableViewCell: UITableViewCell {
-    @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

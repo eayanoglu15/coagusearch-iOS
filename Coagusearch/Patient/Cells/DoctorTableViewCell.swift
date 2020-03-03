@@ -1,20 +1,15 @@
 //
-//  MissingInfoTableViewCell.swift
+//  DoctorTableViewCell.swift
 //  Coagusearch
 //
-//  Created by Ege Melis Ayanoğlu on 26.02.2020.
+//  Created by Ege Melis Ayanoğlu on 1.03.2020.
 //  Copyright © 2020 coagusearch. All rights reserved.
 //
 
 import UIKit
 
-// missingInfoCell
-class MissingInfoTableViewCell: UITableViewCell {
-    @IBOutlet weak var view: UIView!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var icon: UIImageView!
-    @IBOutlet weak var labelView: UIView!
-    @IBOutlet weak var label: UILabel!
+class DoctorTableViewCell: UITableViewCell {
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

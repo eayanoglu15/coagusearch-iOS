@@ -43,16 +43,6 @@
                                                 <color key="textColor" red="0.72549019607843135" green="0.77647058823529413" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeY-Kh-MBr">
-                                                <rect key="frame" x="30" y="515" width="354" height="30"/>
-                                                <color key="backgroundColor" red="0.23921568627450979" green="0.54509803921568623" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="LOGIN">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="Y2j-8E-Evg" kind="presentation" modalPresentationStyle="overFullScreen" id="7OT-vi-qDQ"/>
-                                                </connections>
-                                            </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Identity Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnL-X4-6wS">
                                                 <rect key="frame" x="30" y="318" width="354" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -61,6 +51,24 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BloodDrop" translatesAutoresizingMaskIntoConstraints="NO" id="B17-Fm-0pM">
                                                 <rect key="frame" x="157.5" y="92" width="99" height="128"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOT-Ne-7eK">
+                                                <rect key="frame" x="30" y="515" width="354" height="40"/>
+                                                <color key="backgroundColor" red="0.23921568630000001" green="0.5450980392" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Mgd-o0-E9R"/>
+                                                </constraints>
+                                                <state key="normal" title="LOGIN">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="Y2j-8E-Evg" kind="presentation" modalPresentationStyle="fullScreen" id="qz4-dH-fX4"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="B17-Fm-0pM" secondAttribute="trailing" constant="30" id="4BM-lW-R8M"/>
@@ -71,20 +79,20 @@
                                             <constraint firstItem="jZ9-tI-agm" firstAttribute="top" secondItem="hnL-X4-6wS" secondAttribute="bottom" constant="40" id="9wq-xO-pML"/>
                                             <constraint firstItem="B17-Fm-0pM" firstAttribute="centerX" secondItem="RAB-uy-5M3" secondAttribute="centerX" id="Br1-1M-3Al"/>
                                             <constraint firstItem="zwS-F0-GQT" firstAttribute="trailing" secondItem="jZ9-tI-agm" secondAttribute="trailing" id="Dgp-kB-so1"/>
+                                            <constraint firstAttribute="trailing" secondItem="vOT-Ne-7eK" secondAttribute="trailing" constant="30" id="IMC-6W-Vb6"/>
                                             <constraint firstAttribute="trailing" secondItem="hnL-X4-6wS" secondAttribute="trailing" constant="30" id="KEU-ho-ACZ"/>
+                                            <constraint firstItem="vOT-Ne-7eK" firstAttribute="top" secondItem="UZe-y2-cwf" secondAttribute="bottom" constant="40" id="OD1-wZ-O2p"/>
                                             <constraint firstItem="jZ9-tI-agm" firstAttribute="leading" secondItem="RAB-uy-5M3" secondAttribute="leading" constant="30" id="Pe0-Pi-4FW"/>
                                             <constraint firstAttribute="trailing" secondItem="jZ9-tI-agm" secondAttribute="trailing" constant="30" id="TUV-W9-y9b"/>
                                             <constraint firstItem="jZ9-tI-agm" firstAttribute="centerY" secondItem="RAB-uy-5M3" secondAttribute="centerY" constant="-22" id="UaF-4e-qYz"/>
                                             <constraint firstItem="jZ9-tI-agm" firstAttribute="centerX" secondItem="RAB-uy-5M3" secondAttribute="centerX" id="VB3-OV-IZW"/>
                                             <constraint firstItem="B17-Fm-0pM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RAB-uy-5M3" secondAttribute="leading" constant="30" id="YTM-Lo-2ZG"/>
+                                            <constraint firstItem="vOT-Ne-7eK" firstAttribute="leading" secondItem="RAB-uy-5M3" secondAttribute="leading" constant="30" id="ZBs-Pm-wHg"/>
                                             <constraint firstItem="UZe-y2-cwf" firstAttribute="leading" secondItem="RAB-uy-5M3" secondAttribute="leading" constant="30" id="Zfp-4H-VTl"/>
                                             <constraint firstItem="zwS-F0-GQT" firstAttribute="top" secondItem="jZ9-tI-agm" secondAttribute="bottom" constant="20" id="akF-Oq-0jS"/>
-                                            <constraint firstItem="DeY-Kh-MBr" firstAttribute="top" secondItem="UZe-y2-cwf" secondAttribute="bottom" constant="40" id="atI-us-7Ex"/>
                                             <constraint firstAttribute="trailing" secondItem="zwS-F0-GQT" secondAttribute="trailing" constant="30" id="ilM-uj-uGk"/>
                                             <constraint firstItem="UZe-y2-cwf" firstAttribute="top" secondItem="jZ9-tI-agm" secondAttribute="bottom" constant="18" id="jhj-7S-ggt"/>
                                             <constraint firstItem="hnL-X4-6wS" firstAttribute="top" secondItem="B17-Fm-0pM" secondAttribute="bottom" constant="98" id="mFq-VM-6UI"/>
-                                            <constraint firstAttribute="trailing" secondItem="DeY-Kh-MBr" secondAttribute="trailing" constant="30" id="mve-ca-hpX"/>
-                                            <constraint firstItem="DeY-Kh-MBr" firstAttribute="leading" secondItem="RAB-uy-5M3" secondAttribute="leading" constant="30" id="n3t-tB-mpG"/>
                                             <constraint firstItem="hnL-X4-6wS" firstAttribute="leading" secondItem="RAB-uy-5M3" secondAttribute="leading" constant="30" id="vju-rg-n82"/>
                                         </constraints>
                                     </view>

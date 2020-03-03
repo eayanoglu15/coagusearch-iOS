@@ -1,14 +1,14 @@
 //
-//  PatientHomeViewController.swift
-//  coagusearch-iOS
+//  PatientMedicineViewController.swift
+//  Coagusearch
 //
-//  Created by Ege Melis Ayanoğlu on 20.02.2020.
+//  Created by Ege Melis Ayanoğlu on 1.03.2020.
 //  Copyright © 2020 coagusearch. All rights reserved.
 //
 
 import UIKit
 
-class PatientHomeViewController: UIViewController {
+class PatientMedicineViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,3 +28,4 @@ class PatientHomeViewController: UIViewController {
     */
 
 }
+
