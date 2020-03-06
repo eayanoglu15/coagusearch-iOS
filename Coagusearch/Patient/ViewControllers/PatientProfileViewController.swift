@@ -16,6 +16,7 @@ class PatientProfileViewController: UIViewController {
         stylize()
         title = "Profile"
         // Do any additional setup after loading the view.
+        medicineTableView.tableFooterView = UIView()
         medicineTableView.delegate = self
         medicineTableView.dataSource = self
     }

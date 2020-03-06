@@ -16,6 +16,7 @@ class PatientAppointmentsViewController: UIViewController {
         stylize()
         title = "My Appointments"
         // Do any additional setup after loading the view.
+        appointmentTableView.tableFooterView = UIView()
         appointmentTableView.dataSource = self
         appointmentTableView.delegate = self
     }
