@@ -24,7 +24,7 @@ class BaseScrollViewController: UIViewController {
     }
     
     func hideKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self , action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
@@ -39,7 +39,7 @@ class BaseScrollViewController: UIViewController {
         if notification.name == UIResponder.keyboardWillHideNotification {
             scrollView.contentInset = UIEdgeInsets.zero
         } else {
-            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height + 10, right: 0)
         }
         scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
