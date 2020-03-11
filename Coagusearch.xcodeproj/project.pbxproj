@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,10 @@
 		856EFDB82408003E00BA63F2 /* PatientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EFDB72408003E00BA63F2 /* PatientProfileViewController.swift */; };
 		856EFDBA240801E500BA63F2 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EFDB9240801E500BA63F2 /* UIView+Additions.swift */; };
 		8576CA67240BE34E00094248 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576CA66240BE34E00094248 /* TextFieldViewController.swift */; };
+		858621A52416D3EF0000FDEB /* NetworkBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858621A42416D3EF0000FDEB /* NetworkBase.swift */; };
+		858621A82416D9F40000FDEB /* CoagusearchServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858621A72416D9F40000FDEB /* CoagusearchServiceFactory.swift */; };
+		858621AA2416DA120000FDEB /* CoagusearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858621A92416DA120000FDEB /* CoagusearchService.swift */; };
+		858621AF2416DE1D0000FDEB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858621AE2416DE1D0000FDEB /* Router.swift */; };
 		85A3B60123FEC339005DF4F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A3B60023FEC339005DF4F4 /* AppDelegate.swift */; };
 		85A3B60323FEC339005DF4F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A3B60223FEC339005DF4F4 /* SceneDelegate.swift */; };
 		85A3B60523FEC339005DF4F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A3B60423FEC339005DF4F4 /* LoginViewController.swift */; };
@@ -38,9 +42,15 @@
 		85E5618C240B2540007D95AC /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E5618B240B2540007D95AC /* SelectionTableViewCell.swift */; };
 		85E5618E240B2604007D95AC /* AppointmentSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E5618D240B2604007D95AC /* AppointmentSelectionViewController.swift */; };
 		85FA0323240C19BA00A02635 /* DoctorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA0322240C19BA00A02635 /* DoctorTableViewCell.swift */; };
+		85FF23F22417B1BB00E63097 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FF23F12417B1BB00E63097 /* User.swift */; };
+		85FF23F42417BCD700E63097 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FF23F32417BCD700E63097 /* Manager.swift */; };
+		85FF23FD2417D12700E63097 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FF23FC2417D12700E63097 /* Constants.swift */; };
+		8FFCBF00EFF81900C82FD7BE /* Pods_Coagusearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69C373AE012BA26460EF0BE /* Pods_Coagusearch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39E2B5A449C17530C1C6996C /* Pods-Coagusearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coagusearch.release.xcconfig"; path = "Target Support Files/Pods-Coagusearch/Pods-Coagusearch.release.xcconfig"; sourceTree = "<group>"; };
+		504E3995972530B0ABA52913 /* Pods-Coagusearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coagusearch.debug.xcconfig"; path = "Target Support Files/Pods-Coagusearch/Pods-Coagusearch.debug.xcconfig"; sourceTree = "<group>"; };
 		851E7B962407D32A005E1928 /* PatientAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentsViewController.swift; sourceTree = "<group>"; };
 		851E7B992407DEBE005E1928 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		8521702424102FA500739FAB /* BasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
@@ -53,6 +63,10 @@
 		856EFDB72408003E00BA63F2 /* PatientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientProfileViewController.swift; sourceTree = "<group>"; };
 		856EFDB9240801E500BA63F2 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		8576CA66240BE34E00094248 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
+		858621A42416D3EF0000FDEB /* NetworkBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBase.swift; sourceTree = "<group>"; };
+		858621A72416D9F40000FDEB /* CoagusearchServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoagusearchServiceFactory.swift; sourceTree = "<group>"; };
+		858621A92416DA120000FDEB /* CoagusearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoagusearchService.swift; sourceTree = "<group>"; };
+		858621AE2416DE1D0000FDEB /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		85A3B5FD23FEC339005DF4F4 /* Coagusearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coagusearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85A3B60023FEC339005DF4F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85A3B60223FEC339005DF4F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +88,10 @@
 		85E5618B240B2540007D95AC /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
 		85E5618D240B2604007D95AC /* AppointmentSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentSelectionViewController.swift; sourceTree = "<group>"; };
 		85FA0322240C19BA00A02635 /* DoctorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorTableViewCell.swift; sourceTree = "<group>"; };
+		85FF23F12417B1BB00E63097 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		85FF23F32417BCD700E63097 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		85FF23FC2417D12700E63097 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F69C373AE012BA26460EF0BE /* Pods_Coagusearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coagusearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,12 +99,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FFCBF00EFF81900C82FD7BE /* Pods_Coagusearch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D6A5F00D10528E0E411B1D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				504E3995972530B0ABA52913 /* Pods-Coagusearch.debug.xcconfig */,
+				39E2B5A449C17530C1C6996C /* Pods-Coagusearch.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		851E491A2405BE8B0067D7A5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				851E491A2405BE8B0067D7A5 /* Extensions */,
+				85FF23FC2417D12700E63097 /* Constants.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -124,11 +153,33 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		858621A32416D3A10000FDEB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				858621A72416D9F40000FDEB /* CoagusearchServiceFactory.swift */,
+				858621A92416DA120000FDEB /* CoagusearchService.swift */,
+				858621AE2416DE1D0000FDEB /* Router.swift */,
+				858621A42416D3EF0000FDEB /* NetworkBase.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		858621AB2416DB0E0000FDEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				85FF23F02417B1A800E63097 /* User */,
+				85FF23F32417BCD700E63097 /* Manager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		85A3B5F423FEC339005DF4F4 = {
 			isa = PBXGroup;
 			children = (
 				85A3B5FF23FEC339005DF4F4 /* Coagusearch */,
 				85A3B5FE23FEC339005DF4F4 /* Products */,
+				1D6A5F00D10528E0E411B1D7 /* Pods */,
+				BAB4ADE9C98DDBCC8DFA49D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +194,8 @@
 		85A3B5FF23FEC339005DF4F4 /* Coagusearch */ = {
 			isa = PBXGroup;
 			children = (
+				858621AB2416DB0E0000FDEB /* Model */,
+				858621A32416D3A10000FDEB /* Networking */,
 				851E7B982407DE8B005E1928 /* Reusables */,
 				85CF6AD923FEE5F800F10DBF /* Base */,
 				85CF6AD623FEE52900F10DBF /* Patient */,
@@ -206,6 +259,22 @@
 			path = "Data Sources";
 			sourceTree = "<group>";
 		};
+		85FF23F02417B1A800E63097 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				85FF23F12417B1BB00E63097 /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		BAB4ADE9C98DDBCC8DFA49D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F69C373AE012BA26460EF0BE /* Pods_Coagusearch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -213,9 +282,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85A3B61123FEC33C005DF4F4 /* Build configuration list for PBXNativeTarget "Coagusearch" */;
 			buildPhases = (
+				4D60C21E815DFB0D4C332EA3 /* [CP] Check Pods Manifest.lock */,
 				85A3B5F923FEC339005DF4F4 /* Sources */,
 				85A3B5FA23FEC339005DF4F4 /* Frameworks */,
 				85A3B5FB23FEC339005DF4F4 /* Resources */,
+				8EBF1BAE2B73E05B2DBA2B6C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -273,6 +344,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4D60C21E815DFB0D4C332EA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Coagusearch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EBF1BAE2B73E05B2DBA2B6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coagusearch/Pods-Coagusearch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coagusearch/Pods-Coagusearch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Coagusearch/Pods-Coagusearch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		85A3B5F923FEC339005DF4F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -282,6 +395,7 @@
 				85E5618A240B1623007D95AC /* PatientMedicineViewController.swift in Sources */,
 				85CC294224116CC9005CAE75 /* SearchMedicineTableViewCell.swift in Sources */,
 				85E5618C240B2540007D95AC /* SelectionTableViewCell.swift in Sources */,
+				85FF23F22417B1BB00E63097 /* User.swift in Sources */,
 				85225DAE2406F38C009583EC /* MissingInfoTableViewCell.swift in Sources */,
 				856A712B240974F700AD728D /* PastAppointmentTableViewCell.swift in Sources */,
 				85A3B60523FEC339005DF4F4 /* LoginViewController.swift in Sources */,
@@ -291,9 +405,12 @@
 				85A3B60123FEC339005DF4F4 /* AppDelegate.swift in Sources */,
 				851E7B972407D32A005E1928 /* PatientAppointmentsViewController.swift in Sources */,
 				85B933AB240E8B05001E1B14 /* DateTableViewCell.swift in Sources */,
+				858621A52416D3EF0000FDEB /* NetworkBase.swift in Sources */,
+				858621AF2416DE1D0000FDEB /* Router.swift in Sources */,
 				851E7B9A2407DEBE005E1928 /* UIColor+Additions.swift in Sources */,
 				85414BBE240A86D600E9DF7F /* MedicineTableViewCell.swift in Sources */,
 				85FA0323240C19BA00A02635 /* DoctorTableViewCell.swift in Sources */,
+				85FF23F42417BCD700E63097 /* Manager.swift in Sources */,
 				85225DB22406F4A8009583EC /* MessageCellTableViewCell.swift in Sources */,
 				85CF6ADB23FEE60800F10DBF /* BaseScrollViewController.swift in Sources */,
 				856EFDB62407FF8000BA63F2 /* UIViewController+Additions.swift in Sources */,
@@ -304,6 +421,9 @@
 				856EFDBA240801E500BA63F2 /* UIView+Additions.swift in Sources */,
 				85C8ECA4241440980036EB05 /* UITextField+Additions.swift in Sources */,
 				85DA2DA3241285AF00E2BE4F /* BasicWithButtonTableViewCell.swift in Sources */,
+				858621AA2416DA120000FDEB /* CoagusearchService.swift in Sources */,
+				858621A82416D9F40000FDEB /* CoagusearchServiceFactory.swift in Sources */,
+				85FF23FD2417D12700E63097 /* Constants.swift in Sources */,
 				85CF6AD523FEE52500F10DBF /* PatientHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +566,7 @@
 		};
 		85A3B61223FEC33C005DF4F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 504E3995972530B0ABA52913 /* Pods-Coagusearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +585,7 @@
 		};
 		85A3B61323FEC33C005DF4F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39E2B5A449C17530C1C6996C /* Pods-Coagusearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

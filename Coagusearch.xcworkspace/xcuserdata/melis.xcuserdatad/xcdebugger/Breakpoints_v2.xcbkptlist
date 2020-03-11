@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "85F0999B-77B8-4E6A-BCC6-1C5C338ACB80"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EF68D9BD-46B0-4416-85A1-F8C23B0959C2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coagusearch/Networking/Auth/AuthService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "makeSessionRequest(endpoint:endpointParameter:method:parameters:encoding:headers:responseType:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EF68D9BD-46B0-4416-85A1-F8C23B0959C2 - d35de4295045082d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Coagusearch.AuthService.makeSessionRequest(endpoint: Coagusearch.Endpoint, endpointParameter: Swift.Optional&lt;Swift.String&gt;, method: Alamofire.HTTPMethod, parameters: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, encoding: Alamofire.ParameterEncoding, headers: Alamofire.HTTPHeaders, responseType: Coagusearch.ResponseType, completion: (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Coagusearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melis/Desktop/coagusearch-iOS/Coagusearch/Networking/Auth/AuthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "2088">
+               </Location>
+               <Location
+                  uuid = "EF68D9BD-46B0-4416-85A1-F8C23B0959C2 - 8379c303b96bfe64"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in Coagusearch.AuthService.makeSessionRequest(endpoint: Coagusearch.Endpoint, endpointParameter: Swift.Optional&lt;Swift.String&gt;, method: Alamofire.HTTPMethod, parameters: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, encoding: Alamofire.ParameterEncoding, headers: Alamofire.HTTPHeaders, responseType: Coagusearch.ResponseType, completion: (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Coagusearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melis/Desktop/coagusearch-iOS/Coagusearch/Networking/Auth/AuthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "526">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9754F6B7-B1D2-4DE0-8958-CC2543871177"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coagusearch/Networking/Auth/AuthService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "makeSessionRequest(endpoint:endpointParameter:method:parameters:encoding:headers:responseType:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

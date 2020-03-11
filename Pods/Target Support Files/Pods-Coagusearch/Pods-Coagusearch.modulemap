@@ -1,0 +1,6 @@
+framework module Pods_Coagusearch {
+  umbrella header "Pods-Coagusearch-umbrella.h"
+
+  export *
+  module * { export * }
+}

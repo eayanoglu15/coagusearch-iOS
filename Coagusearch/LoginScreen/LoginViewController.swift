@@ -23,6 +23,8 @@ class LoginViewController: BaseScrollViewController {
     @IBOutlet weak var userLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var passwordLabelTopConstraint: NSLayoutConstraint!
     
+    var coagusearchService: CoagusearchService?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         stylize()
@@ -32,12 +34,23 @@ class LoginViewController: BaseScrollViewController {
         passwordTextField.delegate = self
         passwordLabel.textColor = .lightBlueGrey
         passwordTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
+        coagusearchService = CoagusearchServiceFactory.createService()
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        
+        coagusearchService?.loginUser(id: "13243546234", password: "321651", completion: { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if let user = user {
+                    Manager.sharedInstance.currentUser = user
+                } else {
+                    let error = NSError(domain: "Unexpected", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Encountered an unexpected error", comment: "")])
+                    print(error)
+                }
+            }
+        })
     }
-    
 }
 
 extension LoginViewController: UITextFieldDelegate {
@@ -63,13 +76,13 @@ extension LoginViewController: UITextFieldDelegate {
     
     private func performAnimation(textField: UITextField, transform: CGAffineTransform) {
         if textField == userTextField {
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                 self.userLabel.transform = transform
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }
         if textField == passwordTextField {
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                 self.passwordLabel.transform = transform
                 self.view.layoutIfNeeded()
             }, completion: nil)
@@ -105,5 +118,6 @@ extension LoginViewController: UITextFieldDelegate {
         unfloatTitle(textField: textField)
         performAnimation(textField: textField, transform: CGAffineTransform(scaleX: 1, y: 1))
     }
+
 }
 
