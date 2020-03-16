@@ -13,7 +13,7 @@ protocol AddMedicineDataSourceDelegate {
 }
 
 class AddMedicineDataSource {
-    var suggestionArray = ["a", "ab", "bc", "cd", "d", "e", "ef", "g", "h", "hh", "l", "m", "k", "klm", "z", "y"]
+    var suggestionArray: [String] = []
     
     var selectionArray = [false, false, false]
     
@@ -75,4 +75,7 @@ class AddMedicineDataSource {
         searchActive = (searchText != "")
     }
     
+    func getMedicineList() {
+        
+    }
 }

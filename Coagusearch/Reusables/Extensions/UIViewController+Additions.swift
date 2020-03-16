@@ -18,5 +18,28 @@ extension UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func hideKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self , action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func showLoadingVC() {
+        if let loadingVC = UIStoryboard(name: STORYBOARD_NAME_MAIN, bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_LOADING) as? LoadingViewController {
+            Manager.sharedInstance.loadingVC = loadingVC
+            let window = UIApplication.shared.keyWindow!
+            window.addSubview(loadingVC.view);
+        }
+    }
+    
+    func hideLoadingVC() {
+        if let loadingVC = Manager.sharedInstance.loadingVC {
+            loadingVC.view.removeFromSuperview()
+            Manager.sharedInstance.loadingVC = nil
+        }
+    }
 }

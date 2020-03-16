@@ -33,6 +33,11 @@ class AppointmentSelectionViewController: UIViewController {
      }
      */
     
+    @IBAction func requestAppointmentButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
 }
 
 extension AppointmentSelectionViewController: SelectionCellDelegate {

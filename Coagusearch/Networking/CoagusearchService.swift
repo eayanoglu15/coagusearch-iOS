@@ -249,4 +249,31 @@ class CoagusearchService: NetworkBase {
             }
         }
     }
+    
+    func getAllMedicine(completion: @escaping DrugsReturnFunction) {
+        let route = Router.getAllMedicine
+        let endpoint = route.endpoint
+        let parameters = route.parameters
+        let method = route.method
+        let headers = route.header
+        
+        self.makeSessionRequest(endpoint: endpoint, endpointParameter: nil, method: method, parameters: nil, encoding: JSONEncoding.default, headers: headers, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                var drugs = try JSONDecoder().decode(Drugs.self, from: jsonData)
+                completion(drugs, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize user.", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
 }

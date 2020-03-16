@@ -25,17 +25,35 @@ class AddMedicineViewController: UIViewController {
     @IBOutlet weak var medicineTableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     
+    var coagusearchService: CoagusearchService?
+    
     var dataSource = AddMedicineDataSource()
+    
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Add Medicine"
+        self.hideKeyboard()
         dataSource.delegate = self
         medicineTableView.tableFooterView = UIView()
         medicineTableView.dataSource = self
         medicineTableView.delegate = self
         stylize()
+        coagusearchService = CoagusearchServiceFactory.createService()
+        self.refreshControl.tintColor = UIColor.twilightBlue
+        self.medicineTableView.refreshControl = self.refreshControl
+        self.refreshControl.addTarget(self, action: #selector(getMedicationData(_ :)), for: .valueChanged)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getMedicationData()
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -48,6 +66,73 @@ class AddMedicineViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+     @objc private func getMedicationData(_ sender: Any) {
+        coagusearchService?.getAllMedicine(completion: { (drugs, error) in
+            if let error = error {
+                self.refreshControl.endRefreshing()
+                
+                if error.code == UNAUTHORIZED_ERROR_CODE {
+                    Manager.sharedInstance.userDidLogout()
+                    //self.showLoginVC()
+                } else {
+                    print(error)
+                    //self.errorLabel.text = error.localizedDescription
+                    //self.errorLabel.isHidden = false
+                }
+            } else {
+                if let drugs = drugs {
+                    self.setDataArrays(drugData: drugs)
+                }
+                DispatchQueue.main.async {
+                    self.medicineTableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        })
+    }
+    
+    func getMedicationData() {
+        //self.showLoadingVC()
+        
+        coagusearchService?.getAllMedicine(completion: { (drugs, error) in
+            if let error = error {
+                self.refreshControl.endRefreshing()
+                
+                if error.code == UNAUTHORIZED_ERROR_CODE {
+                    Manager.sharedInstance.userDidLogout()
+                    //self.showLoginVC()
+                } else {
+                    print(error)
+                    //self.errorLabel.text = error.localizedDescription
+                    //self.errorLabel.isHidden = false
+                }
+            } else {
+                if let drugs = drugs {
+                    self.setDataArrays(drugData: drugs)
+                }
+                DispatchQueue.main.async {
+                    self.medicineTableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        })
+    }
+    
+    func setDataArrays (drugData: Drugs) {
+        let drugs = drugData.drugs
+        var suggestions = [String]()
+        for drug in drugs {
+            suggestions.append(drug.content)
+        }
+        let frequency = drugData.frequencies
+        var frequencies = [String]()
+        for freq in frequency {
+            frequencies.append(freq.title)
+        }
+        dataSource.suggestionArray = suggestions
+        dataSource.frequencyArray = frequencies
+    }
     
 }
 

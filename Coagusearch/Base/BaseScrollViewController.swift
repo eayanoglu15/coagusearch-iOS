@@ -23,15 +23,6 @@ class BaseScrollViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func hideKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self , action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     @objc func handleKeyboard(notification: Notification) {
         let userInfo = notification.userInfo!
         let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue

@@ -8,13 +8,20 @@
 
 import Foundation
 
-enum Parameter: String {
-    case id = "identity_number"
-    case password = "password"
-}
+// MARK: Animation File
+let LOADING_VIEW_JSON_FILE_NAME = "blood-wave-tube"//"loader"
 
-enum Endpoint: String {
-    case Login = "/auth/sign-in"
-    case GetUser = "/users/me"
-    case RefreshToken = "/auth/refresh"
-}
+// MARK: Storyboards
+let STORYBOARD_NAME_MAIN =                  "Main"
+
+// MARK: Storyboard Identifiers
+let STORYBOARD_ID_LOADING = "LoadingVC"
+
+// MARK: Segue Identifiers
+
+
+// MARK: Cell Identifiers
+
+
+// MARK: Cell Heights
+let CELL_HEIGHT_TEXT_INPUT = 50

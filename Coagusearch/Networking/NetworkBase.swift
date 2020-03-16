@@ -21,6 +21,7 @@ enum ResponseType: Int {
 typealias UserReturnFunction = (User?, NSError?) -> Void
 typealias TokenReturnFunction = (String?, NSError?) -> Void
 typealias ResponseReturnFunction = (Any?, NSError?) -> Void
+typealias DrugsReturnFunction = (Drugs?, NSError?) -> Void
 
 class NetworkBase {
     

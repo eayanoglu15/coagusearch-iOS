@@ -28,16 +28,22 @@ class LoginViewController: BaseScrollViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         stylize()
+        coagusearchService = CoagusearchServiceFactory.createService()        
+        
         userTextField.delegate = self
         userLabel.textColor = .lightBlueGrey
         userTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
+        
         passwordTextField.delegate = self
         passwordLabel.textColor = .lightBlueGrey
         passwordTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
-        coagusearchService = CoagusearchServiceFactory.createService()
+        
+        userTextField.keyboardType = .numberPad
+        passwordTextField.keyboardType = .numberPad
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        showLoadingVC()
         coagusearchService?.loginUser(id: "13243546234", password: "321651", completion: { (user, error) in
             if let error = error {
                 print(error.localizedDescription)

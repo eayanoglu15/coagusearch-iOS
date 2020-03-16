@@ -11,6 +11,13 @@ import UIKit
 
 extension UIView {
     
+    func addGradientBackground(topColor: UIColor, bottomColor: UIColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     enum Constants {
         static let cornerRadius: CGFloat = 6
         static let shadowOpacity: Float = 0.5

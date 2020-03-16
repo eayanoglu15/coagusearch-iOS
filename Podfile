@@ -8,5 +8,6 @@ target 'Coagusearch' do
   # Pods for Coagusearch
 
 pod 'Alamofire'
+pod 'lottie-ios'
 
 end

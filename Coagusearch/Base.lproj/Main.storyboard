@@ -171,6 +171,38 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="sf2-00-FKm">
+            <objects>
+                <viewController storyboardIdentifier="LoadingVC" id="v5l-W7-XfK" customClass="LoadingViewController" customModule="Coagusearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0mm-Os-338">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIa-Uw-nuc" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="107" y="353" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="41f-J6-Uzi"/>
+                                    <constraint firstAttribute="width" constant="200" id="bJB-mu-jpC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CIa-Uw-nuc" firstAttribute="centerX" secondItem="OAr-vc-6Hh" secondAttribute="centerX" id="CAb-L8-CWH"/>
+                            <constraint firstItem="CIa-Uw-nuc" firstAttribute="centerY" secondItem="OAr-vc-6Hh" secondAttribute="centerY" id="QI0-wH-xUg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OAr-vc-6Hh"/>
+                    </view>
+                    <connections>
+                        <outlet property="animationView" destination="CIa-Uw-nuc" id="LkV-tQ-s1h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O0c-0k-6Ee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="808"/>
+        </scene>
         <!--Patient-->
         <scene sceneID="ueo-y2-8aU">
             <objects>

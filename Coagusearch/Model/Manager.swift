@@ -12,6 +12,8 @@ import UIKit
 class Manager {
     static let sharedInstance = Manager()
     
+    var loadingVC: LoadingViewController?
+    
     // MARK: Properties
     var currentUser: User? {
         didSet {

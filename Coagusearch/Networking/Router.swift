@@ -12,6 +12,7 @@ import Alamofire
 enum Router: URLRequestConvertible {
     case login(id: String, password: String)
     case getUser
+    case getAllMedicine
     
     var baseURL: URL {
         return URL(string: "http://localhost:8080")!
@@ -22,9 +23,9 @@ enum Router: URLRequestConvertible {
         switch self {
         case .login:
             return .post
-        case .getUser:
+        case .getUser, .getAllMedicine:
             return .get
-        }
+    }
     }
     
     // MARK: - Path
@@ -34,6 +35,20 @@ enum Router: URLRequestConvertible {
             return Endpoint.Login.rawValue
         case .getUser:
             return Endpoint.GetUser.rawValue
+        case .getAllMedicine:
+            return Endpoint.GetAllMedicine.rawValue
+        }
+    }
+    
+    // MARK: - Path
+    var endpoint: Endpoint {
+        switch self {
+        case .login:
+            return Endpoint.Login
+        case .getUser:
+            return Endpoint.GetUser
+        case .getAllMedicine:
+            return Endpoint.GetAllMedicine
         }
     }
     
@@ -42,14 +57,14 @@ enum Router: URLRequestConvertible {
         switch self {
         case .login(let id, let password):
             return [Parameter.id.rawValue: id, Parameter.password.rawValue: password]
-        case .getUser:
+        case .getUser, .getAllMedicine:
             return nil
         }
     }
     
     var header: HTTPHeaders {
         switch self {
-        case .login, .getUser:
+        case .login, .getUser, .getAllMedicine:
             return NetworkBase.getDefaultHeaders()
         }
     }
