@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Remember me"; ObjectID = "NYY-sI-LsD"; */
+"NYY-sI-LsD.text" = "Remember me";
+
+/* Class = "UILabel"; text = "ID"; ObjectID = "WVy-r1-2Ni"; */
+"WVy-r1-2Ni.text" = "ID";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "aZV-wU-mAJ"; */
+"aZV-wU-mAJ.text" = "Password";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "vOT-Ne-7eK"; */
+"vOT-Ne-7eK.normalTitle" = "LOGIN";
+
+/* Class = "UIButton"; normalTitle = "Forget Password?"; ObjectID = "zwS-F0-GQT"; */
+"zwS-F0-GQT.normalTitle" = "Forget Password?";

@@ -15,7 +15,7 @@ class LoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        stylize()
+        //stylize()
         initializeLoadingView()
         // Do any additional setup after loading the view.
     }

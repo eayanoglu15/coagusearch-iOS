@@ -44,11 +44,11 @@ class SearchMedicineTableViewCell: UITableViewCell {
         if !selected {
             searchBar.isHidden = true
             tableView.isHidden = true
-            arrowImageView.image = UIImage(named: "downArrow")
+            arrowImageView.image = UIImage(named: IconNames.downArrow)
         } else {
             searchBar.isHidden = false
             tableView.isHidden = false
-            arrowImageView.image = UIImage(named: "upArrow")
+            arrowImageView.image = UIImage(named: IconNames.upArrow)
         }
     }
 }

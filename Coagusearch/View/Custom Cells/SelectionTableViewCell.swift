@@ -8,7 +8,8 @@
 
 import UIKit
 
-enum CellType {
+enum SelectionCellType {
+    case AppointmentDay
     case TimeSlot
     case Medicine
     case Frequency
@@ -16,7 +17,7 @@ enum CellType {
 }
 
 protocol SelectionCellDelegate: AnyObject {
-    func reloadTable()
+    func setSelection(type: SelectionCellType, cellSectionNumber: Int, index: Int, value: String)
 }
 
 class SelectionTableViewCell: UITableViewCell {
@@ -28,30 +29,45 @@ class SelectionTableViewCell: UITableViewCell {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var arrowImageView: UIImageView!
     
+    var cellType = SelectionCellType.AppointmentDay
+    
     var pickerData = [String]()
     
     var pickerIsHidden = false
     
-    func setup(type: CellType, listData: [String]) {
+    var selectedRow = 0
+    
+    var cellSectionNumber = 0
+    
+    func setup(type: SelectionCellType, listData: [String]?, cellSectionNumber: Int) {
+        self.cellType = type
+        self.cellSectionNumber = cellSectionNumber
         switch type {
         case .TimeSlot:
-            icon.image = UIImage(named: "TimeBlue")
-            titleLabel.text = "Time Slot"
+            icon.image = UIImage(named: IconNames.timeBlue)
+            titleLabel.text = "Time Slot".localized
         case .Medicine:
-            icon.image = UIImage(named: "MedicineBlue")
-            titleLabel.text = "Medicine"
+            icon.image = UIImage(named: IconNames.medicineBlue)
+            titleLabel.text = "Medicine".localized
         case .Frequency:
-            icon.image = UIImage(named: "FrequencyBlue")
-            titleLabel.text = "Frequency"
+            icon.image = UIImage(named: IconNames.frequencyBlue)
+            titleLabel.text = "Frequency".localized
         case .Dosage:
-            icon.image = UIImage(named: "BlueDosage")
-            titleLabel.text = "Dosages"
+            icon.image = UIImage(named: IconNames.dosageBlue)
+            titleLabel.text = "Dosages".localized
+        case .AppointmentDay:
+            icon.image = UIImage(named: IconNames.dateBlue)
+            titleLabel.text = "Appointment Date".localized
         }
-        if !listData.isEmpty {
-            selectionLabel.text = listData.first
+        if let list = listData {
+            if !list.isEmpty {
+                selectionLabel.text = list.first
+            } else {
+                selectionLabel.text = ""
+            }
+            pickerData = list
         }
-        pickerData = listData
-        arrowImageView.image = UIImage(named: "downArrow")
+        arrowImageView.image = UIImage(named: IconNames.downArrow)
         selectionStyle = .none
     }
     
@@ -66,20 +82,38 @@ class SelectionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
+    
+    func setPickerData(data: [String]) {
+        pickerData = data
+        if !data.isEmpty {
+            selectionLabel.text = data.first
+        } else {
+            selectionLabel.text = ""
+        }
+        pickerView.reloadAllComponents()
+    }
 
     func changeArrow(selected: Bool) {
         if !selected {
             pickerView.isHidden = true
-            arrowImageView.image = UIImage(named: "downArrow")
+            arrowImageView.image = UIImage(named: IconNames.downArrow)
         } else {
             pickerView.isHidden = false
-            arrowImageView.image = UIImage(named: "upArrow")
+            arrowImageView.image = UIImage(named: IconNames.upArrow)
         }
     }
 }
 
 extension SelectionTableViewCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedRow = row
+        if cellType == .AppointmentDay {
+            delegate.self?.setSelection(type: .AppointmentDay, cellSectionNumber: cellSectionNumber, index: row, value: pickerData[row])
+        }
+        if cellType == .TimeSlot {
+            delegate.self?.setSelection(type: .TimeSlot, cellSectionNumber: cellSectionNumber, index: row, value: pickerData[row])
+        }
+        
         selectionLabel.text = pickerData[row]
     }
 }

@@ -8,6 +8,18 @@
 
 import UIKit
 
+extension LoginViewController: LoginDataSourceDelegate {
+    func showErrorMessage(title: String, message: String) {
+        showAlertMessage(title: title, message: message)
+    }
+    func hideLoading() {
+        hideLoadingVC()
+    }
+    func routeToHome() {
+        performSegue(withIdentifier: SEGUE_SHOW_PATIENT_HOME, sender: nil)
+    }
+}
+
 class LoginViewController: BaseScrollViewController {
     
     @IBOutlet weak var userTextField: UITextField!
@@ -23,12 +35,13 @@ class LoginViewController: BaseScrollViewController {
     @IBOutlet weak var userLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var passwordLabelTopConstraint: NSLayoutConstraint!
     
-    var coagusearchService: CoagusearchService?
+    var loginDataSource = LoginDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stylize()
-        coagusearchService = CoagusearchServiceFactory.createService()        
+        loginDataSource.coagusearchService = CoagusearchServiceFactory.createService()
+        loginDataSource.delegate = self
         
         userTextField.delegate = self
         userLabel.textColor = .lightBlueGrey
@@ -40,22 +53,36 @@ class LoginViewController: BaseScrollViewController {
         
         userTextField.keyboardType = .numberPad
         passwordTextField.keyboardType = .numberPad
-    }
+        
+        rememberMeSwitch.isOn = false
+        rememberMeSwitch.tintColor = .dodgerBlue
+        rememberMeSwitch.layer.cornerRadius = rememberMeSwitch.frame.height / 2
+        rememberMeSwitch.backgroundColor = .dodgerBlue
+    }    
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        showLoadingVC()
-        coagusearchService?.loginUser(id: "13243546234", password: "321651", completion: { (user, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                if let user = user {
-                    Manager.sharedInstance.currentUser = user
-                } else {
-                    let error = NSError(domain: "Unexpected", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Encountered an unexpected error", comment: "")])
-                    print(error)
-                }
-            }
-        })
+        if self.isAllRequiredFieldsFilled() {
+            loginUser()
+        } else {
+            showAlertMessage(title: "Missing Information".localized, message: "Please fill your id and password".localized)
+        }
+    }
+    
+    func loginUser() {
+        guard let id = self.userTextField.text, !id.isEmpty,
+            let password = self.passwordTextField.text, !password.isEmpty else {
+                return
+        }
+        self.showLoadingVC()
+        loginDataSource.loginUser(id: id, password: password, rememberUser: rememberMeSwitch.isOn)
+    }
+    
+    private func isAllRequiredFieldsFilled() -> Bool {
+        guard let id = self.userTextField.text, !id.isEmpty,
+            let password = self.passwordTextField.text, !password.isEmpty else {
+                return false
+        }
+        return true
     }
 }
 

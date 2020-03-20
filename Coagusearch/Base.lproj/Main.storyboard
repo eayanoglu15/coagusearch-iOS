@@ -15,7 +15,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Coagusearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Coagusearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,7 +39,7 @@
                                                     <color key="titleColor" red="1" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UZe-y2-cwf">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UZe-y2-cwf">
                                                 <rect key="frame" x="30" y="471" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.66666666666666663" green="0.83921568627450982" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </switch>
@@ -88,7 +88,6 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DMu-SR-uS0"/>
-                                                    <segue destination="Y2j-8E-Evg" kind="presentation" modalPresentationStyle="fullScreen" id="qz4-dH-fX4"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZV-wU-mAJ">
@@ -165,6 +164,7 @@
                         <outlet property="userLabel" destination="WVy-r1-2Ni" id="JPy-k4-uTQ"/>
                         <outlet property="userLabelTopConstraint" destination="oKR-m3-A9Z" id="jLw-28-Szs"/>
                         <outlet property="userTextField" destination="hnL-X4-6wS" id="WTo-4u-FYf"/>
+                        <segue destination="Y2j-8E-Evg" kind="presentation" identifier="showPatientHomeVC" modalPresentationStyle="fullScreen" id="ngj-cb-RDZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -179,6 +179,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b75-KI-Jji">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fw1-x0-4nE">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIa-Uw-nuc" customClass="AnimationView" customModule="Lottie">
                                 <rect key="frame" x="107" y="353" width="200" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,10 +196,14 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CIa-Uw-nuc" firstAttribute="centerX" secondItem="OAr-vc-6Hh" secondAttribute="centerX" id="CAb-L8-CWH"/>
+                            <constraint firstAttribute="bottom" secondItem="b75-KI-Jji" secondAttribute="bottom" id="E2n-Ox-bHE"/>
+                            <constraint firstItem="b75-KI-Jji" firstAttribute="trailing" secondItem="OAr-vc-6Hh" secondAttribute="trailing" id="PRV-pt-fdm"/>
                             <constraint firstItem="CIa-Uw-nuc" firstAttribute="centerY" secondItem="OAr-vc-6Hh" secondAttribute="centerY" id="QI0-wH-xUg"/>
+                            <constraint firstItem="b75-KI-Jji" firstAttribute="top" secondItem="0mm-Os-338" secondAttribute="top" id="TqR-p5-Hjd"/>
+                            <constraint firstItem="b75-KI-Jji" firstAttribute="leading" secondItem="OAr-vc-6Hh" secondAttribute="leading" id="ptL-g9-ml6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OAr-vc-6Hh"/>
                     </view>
@@ -201,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0c-0k-6Ee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="808"/>
+            <point key="canvasLocation" x="1073.913043478261" y="807.58928571428567"/>
         </scene>
         <!--Patient-->
         <scene sceneID="ueo-y2-8aU">

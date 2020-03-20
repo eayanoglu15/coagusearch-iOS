@@ -14,6 +14,8 @@ class Manager {
     
     var loadingVC: LoadingViewController?
     
+    var rememberUser: Bool = false
+    
     // MARK: Properties
     var currentUser: User? {
         didSet {
@@ -38,6 +40,7 @@ class Manager {
         Manager.sharedInstance.currentUser?.accessToken = nil
         Manager.sharedInstance.currentUser?.refreshToken = nil
         Manager.sharedInstance.currentUser = nil
+        UserDefaults.standard.setValue(false, forKey: "RememberUser")
     }
     
     func getCurrentuser() -> User? {

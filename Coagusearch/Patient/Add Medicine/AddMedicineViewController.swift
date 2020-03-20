@@ -33,7 +33,7 @@ class AddMedicineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Add Medicine"
+        title = "Add Medicine".localized
         self.hideKeyboard()
         dataSource.delegate = self
         medicineTableView.tableFooterView = UIView()
@@ -156,11 +156,11 @@ extension AddMedicineViewController: UITableViewDataSource {
                 return cell
             } else if indexPath.section == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath) as! SelectionTableViewCell
-                cell.setup(type: .Frequency, listData: dataSource.getFrequencyArray())
+                cell.setup(type: .Frequency, listData: dataSource.getFrequencyArray(), cellSectionNumber: 1)
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath) as! SelectionTableViewCell
-                cell.setup(type: .Dosage, listData: dataSource.getDosageArray())
+                cell.setup(type: .Dosage, listData: dataSource.getDosageArray(), cellSectionNumber: 2)
                 return cell
             }
         } else {

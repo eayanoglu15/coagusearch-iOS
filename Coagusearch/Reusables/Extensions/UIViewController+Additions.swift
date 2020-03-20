@@ -42,4 +42,24 @@ extension UIViewController {
             Manager.sharedInstance.loadingVC = nil
         }
     }
+    
+    func showAlertMessage(title: String, message: String){
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Okey".localized, style: .cancel) {
+          (action) in
+          // implement action if exists
+        }
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showLoginVC() {
+        let loginVC = UIStoryboard(name: STORYBOARD_NAME_MAIN, bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_LOGIN)
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC, animated: true) {
+            self.navigationController?.popToRootViewController(animated: false)
+        }
+    }
 }

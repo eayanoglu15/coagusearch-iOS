@@ -1,0 +1,198 @@
+
+/* Class = "UISegmentedControl"; 0yc-pE-dra.segmentTitles[0] = "A"; ObjectID = "0yc-pE-dra"; */
+"0yc-pE-dra.segmentTitles[0]" = "A";
+
+/* Class = "UISegmentedControl"; 0yc-pE-dra.segmentTitles[1] = "B"; ObjectID = "0yc-pE-dra"; */
+"0yc-pE-dra.segmentTitles[1]" = "B";
+
+/* Class = "UISegmentedControl"; 0yc-pE-dra.segmentTitles[2] = "AB"; ObjectID = "0yc-pE-dra"; */
+"0yc-pE-dra.segmentTitles[2]" = "AB";
+
+/* Class = "UISegmentedControl"; 0yc-pE-dra.segmentTitles[3] = "O"; ObjectID = "0yc-pE-dra"; */
+"0yc-pE-dra.segmentTitles[3]" = "O";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "1hG-pV-11P"; */
+"1hG-pV-11P.text" = "Ad";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "2Xc-aL-gz9"; */
+"2Xc-aL-gz9.text" = "Label";
+
+/* Class = "UILabel"; text = "Confirmed"; ObjectID = "2jV-8c-yTi"; */
+"2jV-8c-yTi.text" = "Onaylandı";
+
+/* Class = "UILabel"; text = "Please enter your missing information to enable decision system to help your doctor "; ObjectID = "3YL-FP-Gl7"; */
+"3YL-FP-Gl7.text" = "Lütfen karar verme sisteminin doktorunuza yardım edebilmesi için eksik bilgilerinizi girin";
+
+/* Class = "UILabel"; text = "60 kg"; ObjectID = "4AQ-XA-ojo"; */
+"4AQ-XA-ojo.text" = "60 kg";
+
+/* Class = "UILabel"; text = "Surname"; ObjectID = "4fH-JL-gSY"; */
+"4fH-JL-gSY.text" = "Soyad";
+
+/* Class = "UILabel"; text = "22"; ObjectID = "5gC-eA-PNO"; */
+"5gC-eA-PNO.text" = "22";
+
+/* Class = "UILabel"; text = "B Rh+"; ObjectID = "60T-vf-HS3"; */
+"60T-vf-HS3.text" = "B Rh+";
+
+/* Class = "UILabel"; text = "Confirmed"; ObjectID = "7TI-qs-I8P"; */
+"7TI-qs-I8P.text" = "Onaylandı";
+
+/* Class = "UILabel"; text = "160 cm"; ObjectID = "8gF-bW-2hf"; */
+"8gF-bW-2hf.text" = "160 cm";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8tG-p3-eZ5"; */
+"8tG-p3-eZ5.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Abc-65-VeA"; */
+"Abc-65-VeA.text" = "Label";
+
+/* Class = "UILabel"; text = "1:30 PM - 2:00 PM"; ObjectID = "BtI-9m-Ysw"; */
+"BtI-9m-Ysw.text" = "1:30 PM - 2:00 PM";
+
+/* Class = "UILabel"; text = "1:30 PM - 2:00 PM"; ObjectID = "Bzc-sL-yAk"; */
+"Bzc-sL-yAk.text" = "1:30 PM - 2:00 PM";
+
+/* Class = "UILabel"; text = "Arthur Clayton"; ObjectID = "CFd-hY-CXn"; */
+"CFd-hY-CXn.text" = "Arthur Clayton";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "D9F-BG-B7K"; */
+"D9F-BG-B7K.title" = "Ana Sayfa";
+
+/* Class = "UINavigationItem"; title = "Welcome"; ObjectID = "Dfh-oi-Tph"; */
+"Dfh-oi-Tph.title" = "Hoş Geldiniz";
+
+/* Class = "UILabel"; text = "Next Appointment"; ObjectID = "DwL-9L-Xs3"; */
+"DwL-9L-Xs3.text" = "Gelecek Randevu";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "F9Q-oL-d1k"; */
+"F9Q-oL-d1k.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Fx2-yX-PWP"; */
+"Fx2-yX-PWP.text" = "Label";
+
+/* Class = "UILabel"; text = "Arthur Clayton"; ObjectID = "Gh0-je-fJu"; */
+"Gh0-je-fJu.text" = "Arthur Clayton";
+
+/* Class = "UILabel"; text = "Age:"; ObjectID = "KD6-C9-lky"; */
+"KD6-C9-lky.text" = "Yaş:";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "L2h-zw-Abs"; */
+"L2h-zw-Abs.normalTitle" = "Ekle";
+
+/* Class = "UILabel"; text = "2 March 2020"; ObjectID = "MVj-aG-WgB"; */
+"MVj-aG-WgB.text" = "2 Mart 2020";
+
+/* Class = "UILabel"; text = "Height (cm)"; ObjectID = "NSI-x4-dhs"; */
+"NSI-x4-dhs.text" = "Boy (cm)";
+
+/* Class = "UILabel"; text = "Blood Type:"; ObjectID = "Nsw-ft-pgK"; */
+"Nsw-ft-pgK.text" = "Kan Grubu:";
+
+/* Class = "UILabel"; text = "Arthur Clayton"; ObjectID = "O4x-iB-l77"; */
+"O4x-iB-l77.text" = "Arthur Clayton";
+
+/* Class = "UILabel"; text = "RhD"; ObjectID = "Q1Z-KE-BVN"; */
+"Q1Z-KE-BVN.text" = "RhD";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "RlP-5o-U4Y"; */
+"RlP-5o-U4Y.normalTitle" = "KAYDET";
+
+/* Class = "UILabel"; text = "Appointment Time Slot"; ObjectID = "SkC-oQ-rfp"; */
+"SkC-oQ-rfp.text" = "Randevu Zaman Aralığı";
+
+/* Class = "UILabel"; text = "Data Sended"; ObjectID = "T4d-eW-Tco"; */
+"T4d-eW-Tco.text" = "Veri Gönderildi";
+
+/* Class = "UITabBarItem"; title = "Appointments"; ObjectID = "Uez-y0-atg"; */
+"Uez-y0-atg.title" = "Randevular";
+
+/* Class = "UILabel"; text = "18 February 2020"; ObjectID = "Uqs-7H-eBI"; */
+"Uqs-7H-eBI.text" = "18 Şubat 2020";
+
+/* Class = "UILabel"; text = "Appointment Time Slot"; ObjectID = "Var-wk-OHm"; */
+"Var-wk-OHm.text" = "Randevu Zaman Aralığı";
+
+/* Class = "UILabel"; text = "Ege Melis Ayanoğlu"; ObjectID = "Wx9-oh-riQ"; */
+"Wx9-oh-riQ.text" = "Ege Melis Ayanoğlu";
+
+/* Class = "UILabel"; text = "Gender"; ObjectID = "XCM-IH-U8r"; */
+"XCM-IH-U8r.text" = "Cinsiyet";
+
+/* Class = "UILabel"; text = "Weight:"; ObjectID = "Xg4-HP-J2C"; */
+"Xg4-HP-J2C.text" = "Kilo:";
+
+/* Class = "UILabel"; text = "Add Medication"; ObjectID = "Y2k-qW-45Z"; */
+"Y2k-qW-45Z.text" = "İlaç Ekle";
+
+/* Class = "UILabel"; text = "2 March 2020"; ObjectID = "Z2N-8t-OCr"; */
+"Z2N-8t-OCr.text" = "2 Mart 2020";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "aXt-s9-2RI"; */
+"aXt-s9-2RI.title" = "Profil";
+
+/* Class = "UILabel"; text = "2 Dosages"; ObjectID = "akT-Bk-H4R"; */
+"akT-Bk-H4R.text" = "2 Doz";
+
+/* Class = "UIButton"; normalTitle = "REQUEST APPOINTMENT"; ObjectID = "bsN-Qg-YoH"; */
+"bsN-Qg-YoH.normalTitle" = "RANDEVU AL";
+
+/* Class = "UILabel"; text = "Twice a day"; ObjectID = "dsI-0B-PjF"; */
+"dsI-0B-PjF.text" = "Günde iki kere";
+
+/* Class = "UILabel"; text = "Appranax"; ObjectID = "e3y-FD-Q0a"; */
+"e3y-FD-Q0a.text" = "Appranax";
+
+/* Class = "UISegmentedControl"; g7P-MW-khT.segmentTitles[0] = "Positive"; ObjectID = "g7P-MW-khT"; */
+"g7P-MW-khT.segmentTitles[0]" = "Pozitif";
+
+/* Class = "UISegmentedControl"; g7P-MW-khT.segmentTitles[1] = "Negative"; ObjectID = "g7P-MW-khT"; */
+"g7P-MW-khT.segmentTitles[1]" = "Negatif";
+
+/* Class = "UILabel"; text = "Your Doctor"; ObjectID = "gNr-gX-UPe"; */
+"gNr-gX-UPe.text" = "Doktorunuz";
+
+/* Class = "UIButton"; normalTitle = "ADD MEDICINE"; ObjectID = "gaz-vj-zgL"; */
+"gaz-vj-zgL.normalTitle" = "İLAÇ EKLE";
+
+/* Class = "UILabel"; text = "Height:"; ObjectID = "i5s-ad-cCw"; */
+"i5s-ad-cCw.text" = "Boy:";
+
+/* Class = "UIButton"; normalTitle = "REQUEST APPOINTMENT"; ObjectID = "jxS-PH-SaU"; */
+"jxS-PH-SaU.normalTitle" = "RANDEVU AL";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "k9J-rP-XcE"; */
+"k9J-rP-XcE.normalTitle" = "KAYDET";
+
+/* Class = "UILabel"; text = "1:30 PM - 2:00 PM"; ObjectID = "lXD-s8-r7W"; */
+"lXD-s8-r7W.text" = "1:30 PM - 2:00 PM";
+
+/* Class = "UILabel"; text = "Weight (kg)"; ObjectID = "mwg-HY-h2L"; */
+"mwg-HY-h2L.text" = "Kilo (kg)";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "o6G-Uf-4CF"; */
+"o6G-Uf-4CF.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "oNO-cf-MwO"; */
+"oNO-cf-MwO.normalTitle" = "İptal Et";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "q82-Bo-rPm"; */
+"q82-Bo-rPm.normalTitle" = "Düzenle";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "tbA-T4-ZFx"; */
+"tbA-T4-ZFx.text" = "Label";
+
+/* Class = "UILabel"; text = "Appointment Date"; ObjectID = "tp2-Hr-cti"; */
+"tp2-Hr-cti.text" = "Randevu Tarihi";
+
+/* Class = "UILabel"; text = "Blood Type"; ObjectID = "ueE-5e-Lkk"; */
+"ueE-5e-Lkk.text" = "Kan Grubu";
+
+/* Class = "UILabel"; text = "Next Appointment"; ObjectID = "ukL-ff-yWv"; */
+"ukL-ff-yWv.text" = "Gelecek Randevu";
+
+/* Class = "UILabel"; text = "Birth Date"; ObjectID = "wKl-3c-gzg"; */
+"wKl-3c-gzg.text" = "Doğum Tarihi";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "yoM-nA-YpX"; */
+"yoM-nA-YpX.normalTitle" = "İptal Et";

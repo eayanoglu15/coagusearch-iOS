@@ -9,18 +9,30 @@
 import UIKit
 
 class PatientProfileViewController: UIViewController {
+    
     @IBOutlet weak var medicineTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stylize()
-        title = "Profile"
+        title = "Profile".localized
         // Do any additional setup after loading the view.
         medicineTableView.tableFooterView = UIView()
         medicineTableView.delegate = self
         medicineTableView.dataSource = self
+        
+        let quitButton: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        quitButton.setImage(UIImage(named: IconNames.quitButton), for: UIControl.State.normal)
+        quitButton.addTarget(self, action: #selector(quitButtonPressed), for: UIControl.Event.touchUpInside)
+        let quitBarButton = UIBarButtonItem(customView: quitButton)
+        self.navigationItem.rightBarButtonItem = quitBarButton
     }
     
+    @objc
+    private func quitButtonPressed() {
+        Manager.sharedInstance.userDidLogout()
+        showLoginVC()
+    }
 
     /*
     // MARK: - Navigation

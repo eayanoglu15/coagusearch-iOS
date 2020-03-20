@@ -10,9 +10,6 @@ import UIKit
 
 class PatientInfoViewController: BaseScrollViewController {
     
-    let fontLight = UIFont(name: "HelveticaNeue-Light", size: 14.0)!
-    let fontRegular = UIFont(name: "HelveticaNeue", size: 16.0)!
-    
     @IBOutlet weak var infoView: UIView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -28,8 +25,8 @@ class PatientInfoViewController: BaseScrollViewController {
     @IBOutlet weak var birthDateLabelTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var genderTextField: UITextField!
-    @IBOutlet weak var genderLabelTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var genderFemaleButton: UIButton!
+    @IBOutlet weak var genderMaleButton: UIButton!
     
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var heightTextField: UITextField!
@@ -40,10 +37,34 @@ class PatientInfoViewController: BaseScrollViewController {
     @IBOutlet weak var weightLabelTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var bloodTypeLabel: UILabel!
-    @IBOutlet weak var bloodTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var typeAButton: UIButton!
+    @IBOutlet weak var typeBButton: UIButton!
+    @IBOutlet weak var typeABButton: UIButton!
+    @IBOutlet weak var typeOButton: UIButton!
     
     @IBOutlet weak var rhTypeLabel: UILabel!
-    @IBOutlet weak var rhTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var typePositiveButton: UIButton!
+    @IBOutlet weak var typeNegativeButton: UIButton!
+    
+    private var genderTypeSelection = [false, false]
+    private var bloodTypeSelection = [false, false, false, false]
+    private var rhTypeSelection = [false, false]
+    
+    private var buttonArray: [UIButton] = []
+    
+    func stylizeButtonUnselected(button: UIButton) {
+        button.borderWidth = 1
+        button.borderColor = .lightBlueGrey
+        button.cornerRadius = 8
+        button.tintColor = .coolBlue
+        button.backgroundColor = .clear
+    }
+    
+    func stylizeButtonSelected(button: UIButton) {
+        button.borderWidth = 0
+        button.tintColor = .white
+        button.backgroundColor = .coolBlue
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +82,9 @@ class PatientInfoViewController: BaseScrollViewController {
         birthDateLabel.textColor = .dodgerBlue
         birthDateTextField.delegate = self
         birthDateTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
+        birthDateTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
         
         genderLabel.textColor = .dodgerBlue
-        genderTextField.delegate = self
-        genderTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
         
         heightLabel.textColor = .dodgerBlue
         heightTextField.delegate = self
@@ -75,10 +95,45 @@ class PatientInfoViewController: BaseScrollViewController {
         weightTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
         
         bloodTypeLabel.textColor = .dodgerBlue
-        bloodTypeSegmentedControl.selectedSegmentTintColor = .dodgerBlue
         
         rhTypeLabel.textColor = .dodgerBlue
-        rhTypeSegmentedControl.selectedSegmentTintColor = .dodgerBlue
+        
+        buttonArray.append(typeAButton)
+        buttonArray.append(typeBButton)
+        buttonArray.append(typeABButton)
+        buttonArray.append(typeOButton)
+        
+        for i in 0...(bloodTypeSelection.count - 1) {
+            if bloodTypeSelection[i] {
+                stylizeButtonSelected(button: buttonArray[i])
+            } else {
+                stylizeButtonUnselected(button: buttonArray[i])
+            }
+        }
+        
+        if rhTypeSelection[0] {
+            stylizeButtonSelected(button: typePositiveButton)
+        } else {
+            stylizeButtonUnselected(button: typePositiveButton)
+        }
+        
+        if rhTypeSelection[1] {
+            stylizeButtonSelected(button: typeNegativeButton)
+        } else {
+            stylizeButtonUnselected(button: typeNegativeButton)
+        }
+        
+        if genderTypeSelection[0] {
+            stylizeButtonSelected(button: genderFemaleButton)
+        } else {
+            stylizeButtonUnselected(button: genderFemaleButton)
+        }
+        
+        if genderTypeSelection[1] {
+            stylizeButtonSelected(button: genderMaleButton)
+        } else {
+            stylizeButtonUnselected(button: genderMaleButton)
+        }
     }
     
     
@@ -91,6 +146,103 @@ class PatientInfoViewController: BaseScrollViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    @objc func tapDone() {
+        if let datePicker = self.birthDateTextField.inputView as? UIDatePicker {
+            let dateformatter = DateFormatter()
+            dateformatter.dateStyle = .medium
+            self.birthDateTextField.text = dateformatter.string(from: datePicker.date)
+        }
+        self.birthDateTextField.resignFirstResponder() 
+    }
+    
+    func checkAndSetButton(button: UIButton, ind: Int) {
+        if bloodTypeSelection[ind] {
+            stylizeButtonUnselected(button: button)
+            bloodTypeSelection[ind] = false
+        } else {
+            for i in 0...(bloodTypeSelection.count-1) {
+                if bloodTypeSelection[i] {
+                    bloodTypeSelection[i] = false
+                    stylizeButtonUnselected(button: buttonArray[i])
+                }
+            }
+            stylizeButtonSelected(button: button)
+            bloodTypeSelection[ind] = true
+        }
+    }
+    
+    @IBAction func typeATapped(_ sender: Any) {
+        checkAndSetButton(button: typeAButton, ind: 0)
+    }
+    
+    @IBAction func typeBTapped(_ sender: Any) {
+        checkAndSetButton(button: typeBButton, ind: 1)
+    }
+    
+    @IBAction func typeABTapped(_ sender: Any) {
+        checkAndSetButton(button: typeABButton, ind: 2)
+    }
+    
+    @IBAction func typeOTapped(_ sender: Any) {
+        checkAndSetButton(button: typeOButton, ind: 3)
+    }
+    
+    @IBAction func typePositiveTapped(_ sender: Any) {
+        if rhTypeSelection[0] {
+            rhTypeSelection[0] = false
+            stylizeButtonUnselected(button: typePositiveButton)
+        } else {
+            if rhTypeSelection[1] {
+                rhTypeSelection[1] = false
+                stylizeButtonUnselected(button: typeNegativeButton)
+            }
+            rhTypeSelection[0] = true
+            stylizeButtonSelected(button: typePositiveButton)
+        }
+    }
+    
+    @IBAction func typeNegativeTapped(_ sender: Any) {
+        if rhTypeSelection[1] {
+            rhTypeSelection[1] = false
+            stylizeButtonUnselected(button: typeNegativeButton)
+        } else {
+            if rhTypeSelection[0] {
+                rhTypeSelection[0] = false
+                stylizeButtonUnselected(button: typePositiveButton)
+            }
+            rhTypeSelection[1] = true
+            stylizeButtonSelected(button: typeNegativeButton)
+        }
+    }
+    
+    @IBAction func genderFemaleButtonTapped(_ sender: Any) {
+        if genderTypeSelection[0] {
+            genderTypeSelection[0] = false
+            stylizeButtonUnselected(button: genderFemaleButton)
+        } else {
+            if genderTypeSelection[1] {
+                genderTypeSelection[1] = false
+                stylizeButtonUnselected(button: genderMaleButton)
+            }
+            genderTypeSelection[0] = true
+            stylizeButtonSelected(button: genderFemaleButton)
+        }
+    }
+    
+    @IBAction func genderMaleButtonTapped(_ sender: Any) {
+        if genderTypeSelection[1] {
+            genderTypeSelection[1] = false
+            stylizeButtonUnselected(button: genderMaleButton)
+        } else {
+            if genderTypeSelection[0] {
+                genderTypeSelection[0] = false
+                stylizeButtonUnselected(button: genderFemaleButton)
+            }
+            genderTypeSelection[1] = true
+            stylizeButtonSelected(button: genderMaleButton)
+        }
+    }
     
 }
 
@@ -118,12 +270,6 @@ extension PatientInfoViewController: UITextFieldDelegate {
             birthDateLabelTopConstraint.constant = -30
             birthDateLabel.textColor = .dodgerBlue
             birthDateTextField.bottomBorderColor = UIColor.dodgerBlue.withAlphaComponent(0.5)
-        }
-        if textField == genderTextField {
-            genderLabel.font = fontRegular
-            genderLabelTopConstraint.constant = -30
-            genderLabel.textColor = .dodgerBlue
-            genderTextField.bottomBorderColor = UIColor.dodgerBlue.withAlphaComponent(0.5)
         }
         if textField == heightTextField {
             heightLabel.font = fontRegular
@@ -158,12 +304,6 @@ extension PatientInfoViewController: UITextFieldDelegate {
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }
-        if textField == genderTextField {
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                self.genderLabel.transform = transform
-                self.view.layoutIfNeeded()
-            }, completion: nil)
-        }
         if textField == heightTextField {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                 self.heightLabel.transform = transform
@@ -183,6 +323,7 @@ extension PatientInfoViewController: UITextFieldDelegate {
             configureEndEditing(textField: textField)
         } else {
             textField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
+            // TODO: make label text font light for all texk fields
         }
     }
     
@@ -204,12 +345,6 @@ extension PatientInfoViewController: UITextFieldDelegate {
             birthDateLabelTopConstraint.constant = 0
             birthDateLabel.font = fontLight
             birthDateTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
-        }
-        if textField == genderTextField {
-            genderTextField.placeholder = nil
-            genderLabelTopConstraint.constant = 0
-            genderLabel.font = fontLight
-            genderTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
         }
         if textField == heightTextField {
             heightTextField.placeholder = nil

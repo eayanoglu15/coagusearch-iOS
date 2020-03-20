@@ -14,7 +14,7 @@ class PatientAppointmentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         stylize()
-        title = "My Appointments"
+        title = "My Appointments".localized
         // Do any additional setup after loading the view.
         appointmentTableView.tableFooterView = UIView()
         appointmentTableView.dataSource = self
@@ -46,7 +46,6 @@ extension PatientAppointmentsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "nextAppointmentCell", for: indexPath) as! NextAppointmentTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "pastAppointmentCell", for: indexPath) as! PastAppointmentTableViewCell

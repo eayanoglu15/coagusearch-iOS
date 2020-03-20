@@ -18,6 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        self.initialize()
+        
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,6 +52,86 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    private func initialize() {
+        let rememberUser = UserDefaults.standard.bool(forKey: "RememberUser")
+        if rememberUser {
+            if let currentUser = Manager.sharedInstance.getCurrentuser() {
+                Manager.sharedInstance.currentUser = currentUser
+                self.fetchUser()
+                routeUserToHomePage(hasLogedIn: true)
+            } else {
+                Manager.sharedInstance.userDidLogout()
+                routeUserToHomePage(hasLogedIn: false)
+            }
+        } else {
+            Manager.sharedInstance.userDidLogout()
+            routeUserToHomePage(hasLogedIn: false)
+        }
+    }
+    
+    private func routeUserToHomePage(hasLogedIn: Bool) {
+        /*
+        let userDefaults = UserDefaults.standard
+        let userLoggedIn = userDefaults.bool(forKey: "userType")
+        */
+        var rootVC : UIViewController?
+        var rootTBC : UITabBarController?
+        
+        if hasLogedIn {
+            // user is patient
+            rootTBC = UIStoryboard(name: STORYBOARD_NAME_PATIENT, bundle: nil).instantiateViewController(withIdentifier: "PatientVC") as! PatientTabBarController
+            if let rootTabBarController = rootTBC {
+                let homeVC = rootTabBarController.viewControllers?.first as! PatientHomeViewController
+                homeVC.loadViewIfNeeded()
+                self.window?.rootViewController = rootTabBarController
+                self.window?.makeKeyAndVisible()
+            }
+        } else {
+            rootVC = UIStoryboard(name: STORYBOARD_NAME_MAIN, bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_LOGIN) as! LoginViewController
+            if let rootViewController = rootVC {
+                rootViewController.loadViewIfNeeded()
+                self.window?.rootViewController = rootViewController
+                self.window?.makeKeyAndVisible()
+            }
+        }
+        
+    }
+    
+    private func fetchUser() {
+        let coagusearchService = CoagusearchServiceFactory.createService()
+        
+        coagusearchService.getUser { (user, error) in
+            if let error = error {
+                if error.code == UNAUTHORIZED_ERROR_CODE {
+                    Manager.sharedInstance.userDidLogout()
+                    //self.showMainVC(questions: [])
+                } else {
+                    /*
+                    if let splashVC = UIApplication.shared.keyWindow?.rootViewController as? SplashVC {
+                        splashVC.showCustomAlertVC(NSLocalizedString("Error", comment: ""),
+                                               message: error.localizedDescription,
+                                               identifier: "ConfigError",
+                                               objects: [],
+                                               delegate: self,
+                                               customPopoverDelegate: splashVC,
+                                               type: .Single,
+                                               buttonTitles: [NSLocalizedString("Try Again", comment: "")],
+                                               popoverDelegate: splashVC)
+                    }
+                    */
+                }
+            } else {
+                if let user = user {
+                    Manager.sharedInstance.currentUser = user
+                    //according to user type, show home screen
+                    
+                } else {
+                    Manager.sharedInstance.userDidLogout()
+                    //show login
+                }
+            }
+        }
+    }
+    
 }
 

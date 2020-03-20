@@ -30,10 +30,10 @@ class DateTableViewCell: UITableViewCell {
     func changeArrow(selected: Bool) {
         if !selected {
             datePicker.isHidden = true
-            arrowImageView.image = UIImage(named: "downArrow")
+            arrowImageView.image = UIImage(named: IconNames.downArrow)
         } else {
             datePicker.isHidden = false
-            arrowImageView.image = UIImage(named: "upArrow")
+            arrowImageView.image = UIImage(named: IconNames.upArrow)
         }
     }
  

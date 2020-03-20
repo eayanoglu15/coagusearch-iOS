@@ -17,8 +17,11 @@ class PatientHomeViewController: UIViewController {
         homeTableView.dataSource = self
         homeTableView.delegate = self
         homeTableView.tableFooterView = UIView()
-        title = "Welcome"
         stylize()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
 

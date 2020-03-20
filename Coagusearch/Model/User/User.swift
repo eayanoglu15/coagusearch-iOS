@@ -23,12 +23,12 @@ struct User: Codable {
     
     var accessToken: String? {
         didSet {
-            UserDefaults.standard.setValue(self.accessToken, forKey: "ACCESS_TOKEN")
+            UserDefaults.standard.setValue(self.accessToken, forKey: "BE_ACCESS_TOKEN")
         }
     }
     var refreshToken: String? {
         didSet {
-            UserDefaults.standard.setValue(self.refreshToken, forKey: "REFRESH_TOKEN")
+            UserDefaults.standard.setValue(self.refreshToken, forKey: "BE_REFRESH_TOKEN")
         }
     }
     
@@ -48,11 +48,11 @@ struct User: Codable {
     }
 
     func getAccessToken() -> String? {
-        return UserDefaults.standard.value(forKey: "ACCESS_TOKEN") as? String
+        return UserDefaults.standard.value(forKey: "BE_ACCESS_TOKEN") as? String
     }
     
     func getRefreshToken() -> String? {
-        return UserDefaults.standard.value(forKey: "REFRESH_TOKEN") as? String
+        return UserDefaults.standard.value(forKey: "BE_REFRESH_TOKEN") as? String
     }
     
 }
