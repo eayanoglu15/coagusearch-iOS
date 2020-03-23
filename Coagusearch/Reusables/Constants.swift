@@ -27,6 +27,7 @@ let STORYBOARD_ID_PATIENT_TAB_BAR = "PatientVC"
 // MARK: Segue Identifiers
 let SEGUE_SHOW_PATIENT_HOME = "showPatientHomeVC"
 let SEGUE_SHOW_PATIENT_MEDICINE_UPDATE = "showPatientMedicineUpdateVC"
+let SEGUE_SHOW_PATIENT_INFO = "showPatientInfoVC"
 
 // MARK: Cell Identifiers
 let CELL_IDENTIFIER_SELECTION_CELL = "SelectionTableViewCell"
@@ -34,6 +35,9 @@ let CELL_IDENTIFIER_DOCTOR_CELL = "DoctorTableViewCell"
 let CELL_IDENTIFIER_LABEL_CELL = "LabelTableViewCell"
 let CELL_IDENTIFIER_MEDICINE_CELL = "MedicineTableViewCell"
 let CELL_IDENTIFIER_SEARCH_MEDICINE_CELL = "SearchMedicineTableViewCell"
+let CELL_IDENTIFIER_NEXT_APPOINTMENT_CELL = "NextAppointmentTableViewCell"
+let CELL_IDENTIFIER_PAST_APPOINTMENT_CELL = "PastAppointmentTableViewCell"
+let CELL_IDENTIFIER_MISSING_INFO_CELL = "MissingInfoTableViewCell"
 
 // MARK: Cell Heights
 let CELL_HEIGHT_SMALL = CGFloat(45)

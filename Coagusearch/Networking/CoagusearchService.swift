@@ -466,4 +466,79 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
             }
         }
     }
+    
+    func getPatientUserAppointments(completion: @escaping PatientAppointmentsReturnFunction) {
+        let route = Router.getPatientAppointments
+        let endpoint = route.endpoint
+        let parameters = route.parameters
+        let method = route.method
+        let headers = route.header
+        
+        self.makeSessionRequest(endpoint: endpoint, endpointParameter: nil, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let appointments = try JSONDecoder().decode(PatientAppointments.self, from: jsonData)
+                completion(appointments, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize appointment", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func deletePatientNextAppointment(appointmentId: Int, completion: @escaping SuccessReturnFunction) {
+        let route = Router.deleteUserAppointment(appointmentId: appointmentId)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(false, error)
+                } else {
+                    completion(false, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            guard let success = response["success"] as? Bool,
+                let message = response["message"] as? String else {
+                    let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize success state", comment: "")])
+                    completion(false, error)
+                    return
+            }
+            
+            if success {
+                completion(true, nil)
+            } else {
+                completion(false, NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey: message]))
+            }
+        }
+    }
+    
+    func getPatientMainScreenInfo(completion: @escaping PatientMainInfoReturnFunction) {
+        let route = Router.getPatientMainScreenInfo
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode(PatientMainInfo.self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize appointment", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
 }

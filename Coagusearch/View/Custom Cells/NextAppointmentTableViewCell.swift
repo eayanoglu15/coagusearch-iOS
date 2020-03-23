@@ -8,28 +8,21 @@
 
 import UIKit
 
+protocol NextAppointmentTableViewCellDelegate: AnyObject {
+    func cancelAppointment()
+}
+
 class NextAppointmentTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var outsideStackView: UIStackView!
-    
-    @IBOutlet weak var sideColorView: UIView!
-    @IBOutlet weak var colorView: UIView!
-    
-    @IBOutlet weak var appointmentStackView: UIStackView!
-    
-    @IBOutlet weak var titleStackView: UIStackView!
+    weak var delegate: NextAppointmentTableViewCellDelegate?
+   
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
     
-    @IBOutlet weak var doctorStackView: UIStackView!
     @IBOutlet weak var doctorIcon: UIImageView!
     @IBOutlet weak var doctorLabel: UILabel!
     
-    @IBOutlet weak var dateStackView: UIStackView!
     @IBOutlet weak var dateIcon: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBOutlet weak var timeStackView: UIStackView!
     @IBOutlet weak var timeIcon: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -46,4 +39,9 @@ class NextAppointmentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        delegate?.cancelAppointment()
+    }
+    
 }

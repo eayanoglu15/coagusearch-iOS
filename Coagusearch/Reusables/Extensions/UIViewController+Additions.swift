@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    
+     
     func stylize() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds

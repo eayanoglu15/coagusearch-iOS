@@ -51,16 +51,13 @@ class AddMedicineDataSource {
             let freqIndex = selectedFrequencyIndex, let dosage = selectedDosage else {
                 return nil
         }
-        print("mode: ", mode)
         let freq = data.frequencies[freqIndex]
-        print("freq: ", freq)
         switch mode {
         case .Key:
             guard let keyIndex = selectedMedicineIndex else {
                 return nil
             }
             let key = data.drugs[keyIndex].key
-            print("selectedMEdKey: ", key)
             return UserDrug(key: key, frequency: freq, dosage: dosage)
         case .Custom:
             if !searchedText.isEmpty {

@@ -25,13 +25,15 @@ enum Parameter: String {
     case rhType = "rhType"
     case gender = "gender"
     case medicineId = "medicineId"
+    case appointmentId = "appointmentId"
 }
 
 enum Endpoint: String {
     // MARK: Appointment Controller
     case GetAvailableAppointments = "/appointment/getAvailableTimes"
-    // getByUSer
     case PostAppointment = "/appointment/save"
+    case DeleteUserAppointment = "/appointment/delete"
+    case GetUserAppointments = "/appointment/getByUser"
     
     // MARK: Auth Controller
     case RefreshToken = "/auth/refresh"
@@ -44,7 +46,7 @@ enum Endpoint: String {
     case SaveMedicine = "/drug/saveRegularMedicine"
     
     // MARK: User Controller
-    // get main
+    case GetPatientMainScreenInfo = "/users/getPatientMainScreen"
     case GetUser = "/users/me"
     case SaveUserInfo = "/users/saveBodyInfo"
 }

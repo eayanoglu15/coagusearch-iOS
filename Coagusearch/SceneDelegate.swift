@@ -79,13 +79,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if hasLogedIn {
             // user is patient
-            rootTBC = UIStoryboard(name: STORYBOARD_NAME_PATIENT, bundle: nil).instantiateViewController(withIdentifier: "PatientVC") as! PatientTabBarController
-            if let rootTabBarController = rootTBC {
-                let homeVC = rootTabBarController.viewControllers?.first as! PatientHomeViewController
-                homeVC.loadViewIfNeeded()
-                self.window?.rootViewController = rootTabBarController
-                self.window?.makeKeyAndVisible()
-            }
+            let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_PATIENT, bundle: nil).instantiateInitialViewController() as! PatientTabBarController
+            let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
+            let homeVC = navigationVC.viewControllers.first as! PatientHomeViewController
+            homeVC.loadViewIfNeeded()
+            self.window?.rootViewController = tabBarVC
         } else {
             rootVC = UIStoryboard(name: STORYBOARD_NAME_MAIN, bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_LOGIN) as! LoginViewController
             if let rootViewController = rootVC {

@@ -74,10 +74,10 @@ class PatientMedicineUpdateDataSource {
                     curMedicine.frequency = freq
                 }
             }
-                if let dosage = selectedDosage  {
-                    if dosage != curMedicine.dosage {
-                        curMedicine.dosage = dosage
-                    }
+            if let dosage = selectedDosage  {
+                if dosage != curMedicine.dosage {
+                    curMedicine.dosage = dosage
+                }
             }
             self.medicine = curMedicine
         }
@@ -112,6 +112,32 @@ class PatientMedicineUpdateDataSource {
                 }
             })
         }
+    }
+    // TODO: fix
+    func getMedicineFrequencyIndex() -> Int {
+        
+        if let medicine = medicine {
+            if !frequencyArray.isEmpty {
+                for i in 0...(frequencyArray.count-1) {
+                    if frequencyArray[i] == medicine.frequency.title {
+                        return i
+                    }
+                }
+            }
+        }
+ 
+        return 1
+    }
+    
+    func getMedicineDosageIndex() -> Int {
+        if let medicine = medicine {
+            for i in 0...(dosageArray.count-1) {
+                if dosageArray[i] == "\(medicine.dosage)" {
+                    return i
+                }
+            }
+        }
+        return 1
     }
     
     func isSelected(index: Int) -> Bool {

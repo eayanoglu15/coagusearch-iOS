@@ -111,9 +111,6 @@ class AppointmentSelectionDataSource {
                 let minute = Int(timeSlotArray[1]) else {
                     return
             }
-            print("------")
-            print(day, "/", month, "/", year)
-            print(hour, ":", minute)
             postUserAppointment(day: day, month: month, year: year, hour: hour, minute: minute)
         }
     }

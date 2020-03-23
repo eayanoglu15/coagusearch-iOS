@@ -57,7 +57,6 @@ class AddMedicineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
-        print("hey")
         stylize()
         
         title = "Add Medicine".localized
@@ -90,7 +89,6 @@ class AddMedicineViewController: UIViewController {
     private func setupTableView() {
         let selectionCellNib = UINib(nibName: CELL_IDENTIFIER_SELECTION_CELL, bundle: nil)
         medicineTableView.register(selectionCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_SELECTION_CELL)
-        
     }
     
     /*
@@ -342,16 +340,9 @@ extension AddMedicineViewController: UITableViewDelegate {
 extension AddMedicineViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         dataSource.getSearchResults(searchText: searchText)
-        //medicineTableView.reloadData() // Aslında içerideki
-        
         let indexPath = IndexPath(row: 0, section: 0)
         let cell = medicineTableView.cellForRow(at: indexPath) as! SearchMedicineTableViewCell
         cell.tableView.reloadData()
-        /*
-        let table = view.viewWithTag(4) as! UITableView
-        table.reloadData()
- */
- 
     }
     
 }

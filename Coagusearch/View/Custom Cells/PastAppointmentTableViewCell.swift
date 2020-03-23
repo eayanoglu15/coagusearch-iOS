@@ -9,7 +9,11 @@
 import UIKit
 
 class PastAppointmentTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var doctorLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

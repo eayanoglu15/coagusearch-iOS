@@ -154,7 +154,7 @@ extension PatientMedicineUpdateViewController: UITableViewDataSource {
                 } else {
                     cell.selectionLabel.text = ""
                 }
-                
+                cell.pickerView.selectRow(dataSource.getMedicineFrequencyIndex(), inComponent: 0, animated: false)
                 return cell
                 
             } else {
@@ -172,6 +172,7 @@ extension PatientMedicineUpdateViewController: UITableViewDataSource {
                 } else {
                     cell.selectionLabel.text = ""
                 }
+                cell.pickerView.selectRow(dataSource.getMedicineDosageIndex(), inComponent: 0, animated: false)
                 return cell
             }
             

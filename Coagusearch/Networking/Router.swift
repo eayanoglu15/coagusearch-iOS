@@ -19,6 +19,9 @@ enum Router: URLRequestConvertible {
     case saveMedicine
     case getUserMedicine
     case deleteMedicine(medicineId: Int)
+    case getPatientAppointments
+    case deleteUserAppointment(appointmentId: Int)
+    case getPatientMainScreenInfo
     
     var baseURL: URL {
         return URL(string: "http://localhost:8080")!
@@ -27,9 +30,9 @@ enum Router: URLRequestConvertible {
     // MARK: - HTTPMethod
     var method: HTTPMethod {
         switch self {
-        case .login, .postAppointment, .saveUserInfo, .saveMedicine, .deleteMedicine:
+        case .login, .postAppointment, .saveUserInfo, .saveMedicine, .deleteMedicine, .deleteUserAppointment:
             return .post
-        case .getUser, .getAllMedicine, .getAvailableAppointments, .getUserMedicine:
+        case .getUser, .getAllMedicine, .getAvailableAppointments, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo:
             return .get
         }
     }
@@ -55,6 +58,12 @@ enum Router: URLRequestConvertible {
             return Endpoint.GetUserMedicine.rawValue
         case .deleteMedicine:
             return Endpoint.DeleteMedicine.rawValue
+        case .getPatientAppointments:
+            return Endpoint.GetUserAppointments.rawValue
+        case .deleteUserAppointment:
+            return Endpoint.DeleteUserAppointment.rawValue
+        case .getPatientMainScreenInfo:
+            return Endpoint.GetPatientMainScreenInfo.rawValue
         }
     }
     
@@ -79,6 +88,12 @@ enum Router: URLRequestConvertible {
             return Endpoint.GetUserMedicine
         case .deleteMedicine:
             return Endpoint.DeleteMedicine
+        case .getPatientAppointments:
+            return Endpoint.GetUserAppointments
+        case .deleteUserAppointment:
+            return Endpoint.DeleteUserAppointment
+        case .getPatientMainScreenInfo:
+            return Endpoint.GetPatientMainScreenInfo
         }
     }
     
@@ -87,7 +102,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .login(let id, let password):
             return [Parameter.id.rawValue: id, Parameter.password.rawValue: password]
-        case .getUser, .getAllMedicine, .getAvailableAppointments, .saveMedicine, .getUserMedicine:
+        case .getUser, .getAllMedicine, .getAvailableAppointments, .saveMedicine, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo:
             return nil
         case .postAppointment(let day, let month, let year, let hour, let minute):
             return [Parameter.day.rawValue: day, Parameter.month.rawValue: month,
@@ -95,21 +110,23 @@ enum Router: URLRequestConvertible {
                     Parameter.minute.rawValue: minute]
         case .saveUserInfo(let name, let surname, let dateOfBirth, let height, let weight, let bloodType, let rhType, let gender):
             return [Parameter.name.rawValue: name, Parameter.surname.rawValue: surname,
-            Parameter.dateOfBirth.rawValue: dateOfBirth, Parameter.height.rawValue: height,
-            Parameter.weight.rawValue: weight, Parameter.bloodType.rawValue: bloodType,
-            Parameter.rhType.rawValue: rhType, Parameter.gender.rawValue: gender]
+                    Parameter.dateOfBirth.rawValue: dateOfBirth, Parameter.height.rawValue: height,
+                    Parameter.weight.rawValue: weight, Parameter.bloodType.rawValue: bloodType,
+                    Parameter.rhType.rawValue: rhType, Parameter.gender.rawValue: gender]
         case .deleteMedicine(let medicineId):
             return [Parameter.medicineId.rawValue: medicineId]
+        case .deleteUserAppointment(let appointmentId):
+            return [Parameter.appointmentId.rawValue: appointmentId]
         }
     }
     
     var header: HTTPHeaders {
         return NetworkBase.getDefaultHeaders()
         /*
-        switch self {
-        case .login, .getUser, .getAllMedicine, .getAvailableAppointmentsByUser:
-            return NetworkBase.getDefaultHeaders()
-        }
+         switch self {
+         case .login, .getUser, .getAllMedicine, .getAvailableAppointmentsByUser:
+         return NetworkBase.getDefaultHeaders()
+         }
          */
     }
     
