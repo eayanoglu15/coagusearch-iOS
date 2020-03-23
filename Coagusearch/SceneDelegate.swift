@@ -97,6 +97,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
+    private func showLoginVC() {
+        let loginVC = UIStoryboard(name: STORYBOARD_NAME_MAIN, bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_LOGIN)
+        loginVC.modalPresentationStyle = .fullScreen
+        self.window?.rootViewController = loginVC
+        self.window?.makeKeyAndVisible()
+    }
+    
     private func fetchUser() {
         let coagusearchService = CoagusearchServiceFactory.createService()
         
@@ -104,7 +111,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let error = error {
                 if error.code == UNAUTHORIZED_ERROR_CODE {
                     Manager.sharedInstance.userDidLogout()
-                    //self.showMainVC(questions: [])
+                    self.showLoginVC()
                 } else {
                     /*
                     if let splashVC = UIApplication.shared.keyWindow?.rootViewController as? SplashVC {
@@ -127,7 +134,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     
                 } else {
                     Manager.sharedInstance.userDidLogout()
-                    //show login
+                    self.showLoginVC()
                 }
             }
         }

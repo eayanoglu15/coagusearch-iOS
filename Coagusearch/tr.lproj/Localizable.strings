@@ -5,3 +5,82 @@
   Created by Ege Melis Ayanoğlu on 17.03.2020.
   Copyright © 2020 coagusearch. All rights reserved.
 */
+
+// MARK: A
+"Appointment Date" = "Randevu Tarihi";
+"Add Medicine" = "İlaç Ekle";
+"Account Information" = "Hesap Bilgisi";
+
+// MARK: B
+
+// MARK: C
+"Cancel" = "İptal Et";
+"Could not serialize success state" = "İsteğin cevabı okunamadı";
+"Could not serialize appointment" = "Randevu cevabı okunamadı";
+"Could not serialize user" = "Kullanıcı cevabı okunamadı";
+"Could not serialize medicines" = "İlaç cevabı okunamadı";
+"Could not find token" = "Token bulunamadı";
+
+// MARK: D
+"Dosages" = "Doz";
+" dosages" = " doz";
+" dosage" = " doz";
+"Do you want to edit your medicine or delete it?" = "İlacını düzenlemek mi yoksa silmek mi istersin?";
+"Delete" = "Sil";
+
+// MARK: E
+"Edit" = "Düzenle";
+"Error" = "Hata";
+"Encountered an unexpected error" = "Beklenmeyen bir hata oluştu";
+
+// MARK: F
+"Frequency" = "Sıklık";
+
+// MARK: G
+
+// MARK: H
+
+// MARK: I
+
+// MARK: J
+
+// MARK: K
+
+// MARK: L
+
+// MARK: M
+"Missing Information" = "Eksik Bilgi";
+"Medicine" = "İlaç";
+"My Appointments" = "Randevularım";
+
+// MARK: N
+"Not specified" = "Belirtilmedi";
+
+// MARK: O
+"Okey" = "Tamam";
+
+// MARK: P
+"Profile" = "Profil";
+"Please fill your id and password" = "Lütfen T.C. Kimlik Numaranızı ve şifrenizi girin";
+
+// MARK: Q
+
+// MARK: R
+"Request Appointment" = "Randevu Al";
+
+// MARK: S
+
+// MARK: T
+"Time Slot" = "Zaman Aralığı";
+
+// MARK: U
+"Update Medicine" = "İlacını Güncelle";
+"Update Your Medicine" = "İlacını Güncelle";
+
+// MARK: V
+
+// MARK: W
+
+// MARK: Y
+
+// MARK: Z

@@ -17,9 +17,9 @@ struct User: Codable {
     var dateOfBirth: String?
     var height: Double?
     var weight: Double?
-    var bloodType: String?
-    var rhType: String?
-    var gender: Gender
+    var bloodType: BloodType?
+    var rhType: RhType?
+    var gender: Gender?
     
     var accessToken: String? {
         didSet {
@@ -33,7 +33,7 @@ struct User: Codable {
     }
     
     init(identityNumber: String, type: String, userId: Int, name: String, surname: String, dateOfBirth: String?,
-         height: Double?, weight: Double?, bloodType: String?, rhType: String?, gender: Gender) {
+         height: Double?, weight: Double?, bloodType: BloodType?, rhType: RhType?, gender: Gender?) {
         self.identityNumber = identityNumber
         self.type = type
         self.userId = userId
@@ -60,4 +60,16 @@ struct User: Codable {
 enum Gender: String, Codable {
     case Male = "Male"
     case Female = "Female"
+}
+
+enum BloodType: String, Codable {
+    case A = "A"
+    case B = "B"
+    case AB = "AB"
+    case O = "O"
+}
+
+enum RhType: String, Codable {
+    case Positive = "Positive"
+    case Negative = "Negatif"
 }

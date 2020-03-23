@@ -74,8 +74,8 @@
 /* Class = "UILabel"; text = "Arthur Clayton"; ObjectID = "Gh0-je-fJu"; */
 "Gh0-je-fJu.text" = "Arthur Clayton";
 
-/* Class = "UILabel"; text = "Age:"; ObjectID = "KD6-C9-lky"; */
-"KD6-C9-lky.text" = "Yaş:";
+/* Class = "UILabel"; text = "Birthdate:"; ObjectID = "KD6-C9-lky"; */
+"KD6-C9-lky.text" = "Doğum Tarihi:";
 
 /* Class = "UIButton"; normalTitle = "Add"; ObjectID = "L2h-zw-Abs"; */
 "L2h-zw-Abs.normalTitle" = "Ekle";

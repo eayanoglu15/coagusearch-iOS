@@ -18,7 +18,7 @@ class LoginDataSource {
     var delegate: LoginDataSourceDelegate?
     var coagusearchService: CoagusearchService?
     
-    // id: "13243546234", password: "321651"
+    // id: "13243546234", password: "913147"
     func loginUser(id: String, password: String, rememberUser: Bool) {
         coagusearchService?.loginUser(id: id, password: password, completion: { (user, error) in
             if let error = error {

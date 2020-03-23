@@ -9,26 +9,98 @@
 import Foundation
 
 protocol AddMedicineDataSourceDelegate {
-   
+    func endRefreshing()
+    func refreshTableView()
+    func showLoginVC()
+    func showAlertMessage(title: String, message: String)
+    func showLoadingVC()
+    func hideLoadingVC()
+    func routeToProfile()
 }
 
 class AddMedicineDataSource {
     var suggestionArray: [String] = []
     
-    var selectionArray = [false, false, false]
+    private var selectionArray = [false, false, false]
     
-    var searchedText: String = ""
+    var searchedText: String = "" // selectedCustomText
     
     var searchActive: Bool = false
     var searched: [String] = []
     
     var delegate: AddMedicineDataSourceDelegate?
+    var coagusearchService: CoagusearchService?
+    var medicine: UserDrug?
     
-    //var frequencyArray: [String] = []
-    var frequencyArray = ["Once a day", "Twice a day", "Three times a day"]
+    var selectedMode: DrugMode?
     
-    //var dosageArray: [String] = []
-    var dosageArray = ["0.5", "1", "1.5", "2"]
+    var selectedMedicineIndex: Int?
+    
+    var selectedFrequencyIndex: Int?
+    
+    var selectedDosage: Double?
+    
+    var frequencyArray: [String] = []
+    
+    var drugData: Drugs?
+    
+    var dosageArray = ["0.5", "1", "1.5", "2", "2.5", "3"]
+    
+    func getSelectedMedicine() -> UserDrug? {
+        guard let data = drugData, let mode = selectedMode,
+            let freqIndex = selectedFrequencyIndex, let dosage = selectedDosage else {
+                return nil
+        }
+        print("mode: ", mode)
+        let freq = data.frequencies[freqIndex]
+        print("freq: ", freq)
+        switch mode {
+        case .Key:
+            guard let keyIndex = selectedMedicineIndex else {
+                return nil
+            }
+            let key = data.drugs[keyIndex].key
+            print("selectedMEdKey: ", key)
+            return UserDrug(key: key, frequency: freq, dosage: dosage)
+        case .Custom:
+            if !searchedText.isEmpty {
+                let drug = UserDrug(custom: searchedText, frequency: freq, dosage: dosage)
+                return drug
+            }
+        }
+        return nil
+    }
+    
+    func postMedicine() {
+        guard let medicine = getSelectedMedicine() else {
+            return
+        }
+        self.delegate?.showLoadingVC()
+        coagusearchService?.postRegularMedication(medication: medicine, completion: { (drugs, error) in
+            self.delegate?.hideLoadingVC()
+            if let error = error {
+                if error.code == UNAUTHORIZED_ERROR_CODE {
+                    Manager.sharedInstance.userDidLogout()
+                    self.delegate?.showLoginVC()
+                } else {
+                    DispatchQueue.main.async {
+                        self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                    }
+                }
+            } else {
+                if let drugs = drugs {
+                    DispatchQueue.main.async {
+                        self.delegate?.routeToProfile()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
+                        
+                    }
+                }
+            }
+        })
+    }
     
     func isSelected(index: Int) -> Bool {
         return selectionArray[index]
@@ -36,6 +108,10 @@ class AddMedicineDataSource {
     
     func invertSelection(index: Int) {
         selectionArray[index] = !selectionArray[index]
+    }
+    
+    func setSelection(index: Int, isSelected: Bool) {
+        selectionArray[index] = isSelected
     }
     
     func getSuggestion(index: Int) -> String {
@@ -76,6 +152,46 @@ class AddMedicineDataSource {
     }
     
     func getMedicineList() {
-        
+        //self.delegate?.showLoadingVC()
+        //print("refreshing")
+        coagusearchService?.getAllMedicine(completion: { (drugs, error) in
+            //self.delegate?.hideLoadingVC()
+            if let error = error {
+                self.delegate?.endRefreshing()
+                if error.code == UNAUTHORIZED_ERROR_CODE {
+                    Manager.sharedInstance.userDidLogout()
+                    self.delegate?.showLoginVC()
+                } else {
+                    DispatchQueue.main.async {
+                        self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                    }
+                }
+            } else {
+                if let drugs = drugs {
+                    self.setDataArrays(drugData: drugs)
+                }
+                DispatchQueue.main.async {
+                    self.delegate?.refreshTableView()
+                }
+            }
+        })
     }
+    
+    func setDataArrays (drugData: Drugs) {
+        let drugs = drugData.drugs
+        var suggestions = [String]()
+        for drug in drugs {
+            suggestions.append(drug.content)
+        }
+        let frequency = drugData.frequencies
+        var frequencies = [String]()
+        for freq in frequency {
+            frequencies.append(freq.title)
+        }
+        suggestionArray = suggestions
+        frequencyArray = frequencies
+        self.drugData = drugData
+    }
+    
+    
 }

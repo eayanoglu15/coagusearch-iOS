@@ -16,15 +16,37 @@ enum Parameter: String {
     case year = "year"
     case hour = "hour"
     case minute = "minute"
+    case name = "name"
+    case surname = "surname"
+    case dateOfBirth = "dateOfBirth"
+    case height = "height"
+    case weight = "weight"
+    case bloodType = "bloodType"
+    case rhType = "rhType"
+    case gender = "gender"
+    case medicineId = "medicineId"
 }
 
 enum Endpoint: String {
-    case Login = "/auth/sign-in"
-    case GetUser = "/users/me"
-    case RefreshToken = "/auth/refresh"
-    case GetAllMedicine = "/drug/all"
-    case GetAvailableAppointmentsByUser = "/appointment/getByUser"
+    // MARK: Appointment Controller
+    case GetAvailableAppointments = "/appointment/getAvailableTimes"
+    // getByUSer
     case PostAppointment = "/appointment/save"
+    
+    // MARK: Auth Controller
+    case RefreshToken = "/auth/refresh"
+    case Login = "/auth/sign-in"
+    
+    // MARK: Drug Controller
+    case GetAllMedicine = "/drug/all"
+    case DeleteMedicine = "/drug/deleteRegularMedication"
+    case GetUserMedicine = "/drug/getByUser"
+    case SaveMedicine = "/drug/saveRegularMedicine"
+    
+    // MARK: User Controller
+    // get main
+    case GetUser = "/users/me"
+    case SaveUserInfo = "/users/saveBodyInfo"
 }
 
 enum IconNames {

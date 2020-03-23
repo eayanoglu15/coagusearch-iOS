@@ -8,7 +8,27 @@
 
 import UIKit
 
+extension PatientInfoViewController: PatientInfoDataSourceDelegate {
+    func routeToProfile() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func reloadTableView() {
+        //appointmentSelectionTableView.reloadData()
+    }
+    
+    func showErrorMessage(title: String, message: String) {
+        showAlertMessage(title: title, message: message)
+    }
+    
+    func hideLoading() {
+        hideLoadingVC()
+    }
+}
+
 class PatientInfoViewController: BaseScrollViewController {
+    
+    var dataSource = PatientInfoDataSource()
     
     @IBOutlet weak var infoView: UIView!
     
@@ -68,8 +88,10 @@ class PatientInfoViewController: BaseScrollViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataSource.delegate = self
+        dataSource.coagusearchService = CoagusearchServiceFactory.createService()
         stylize()
-        title = "Account Information"
+        title = "Account Information".localized
         // Do any additional setup after loading the view.
         nameTextField.delegate = self
         nameLabel.textColor = .dodgerBlue
@@ -102,6 +124,8 @@ class PatientInfoViewController: BaseScrollViewController {
         buttonArray.append(typeBButton)
         buttonArray.append(typeABButton)
         buttonArray.append(typeOButton)
+        
+        setFields()
         
         for i in 0...(bloodTypeSelection.count - 1) {
             if bloodTypeSelection[i] {
@@ -136,6 +160,54 @@ class PatientInfoViewController: BaseScrollViewController {
         }
     }
     
+    func setFields() {
+        if let user = Manager.sharedInstance.currentUser {
+            nameTextField.text = user.name
+            floatTitle(textField: nameTextField)
+            surnameTextField.text = user.surname
+            floatTitle(textField: surnameTextField)
+            if let birthDate = user.dateOfBirth {
+                if birthDate != "null" {
+                    birthDateTextField.text = birthDate
+                    floatTitle(textField: birthDateTextField)
+                }
+            }
+            if user.gender == Gender.Female {
+                genderTypeSelection = [true, false]
+            } else {
+                genderTypeSelection = [false, true]
+            }
+            if let height = user.height {
+                heightTextField.text = "\(height)"
+                floatTitle(textField: heightTextField)
+            }
+            if let weight = user.weight {
+                weightTextField.text = "\(weight)"
+                floatTitle(textField: weightTextField)
+            }
+            if let bloodType = user.bloodType {
+                switch bloodType {
+                case .A:
+                    bloodTypeSelection[0] = true
+                case .B:
+                    bloodTypeSelection[1] = true
+                case .AB:
+                    bloodTypeSelection[2] = true
+                case .O:
+                    bloodTypeSelection[3] = true
+                }
+            }
+            if let rhType = user.rhType {
+                switch rhType {
+                case .Positive:
+                    rhTypeSelection[0] = true
+                case .Negative:
+                    rhTypeSelection[1] = true
+                }
+            }
+            
+        }
+    }
     
     /*
      // MARK: - Navigation
@@ -147,10 +219,75 @@ class PatientInfoViewController: BaseScrollViewController {
      }
      */
     
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        var name = ""
+        if let n = nameTextField.text {
+            name = n
+        }
+        
+        var surname = ""
+        if let s = surnameTextField.text {
+            surname = s
+        }
+        
+        var birthDate = ""
+        if let b = birthDateTextField.text {
+            birthDate = b
+        }
+        
+        var height = 0.0
+        if let h = heightTextField.text, let hD = Double(h) {
+            height = hD
+        }
+        
+        var weight = 0.0
+        if let w = weightTextField.text, let wD = Double(w) {
+            weight = wD
+        }
+        
+        
+        var bloodType = checkBloodType()
+        var rhType = ""
+        
+        if rhTypeSelection[0] {
+            rhType = RhType.Positive.rawValue
+        } else if rhTypeSelection[1] {
+            rhType = RhType.Negative.rawValue
+        }
+        
+        var gender = ""
+        
+        if genderTypeSelection[0] {
+            gender = Gender.Female.rawValue
+        } else if genderTypeSelection[1] {
+            gender = Gender.Male.rawValue
+        }
+        
+        dataSource.postUserInfo(name: name, surname: surname, dateOfBirth: birthDate, height: height, weight: weight, bloodType: bloodType, rhType: rhType, gender: gender)
+    }
+    
+    func checkBloodType() -> String {
+        for i in 0...(bloodTypeSelection.count-1) {
+            if bloodTypeSelection[i] {
+                if i == 0 {
+                    return BloodType.A.rawValue
+                } else if i == 1 {
+                    return BloodType.B.rawValue
+                } else if i == 2 {
+                    return BloodType.AB.rawValue
+                } else if i == 3 {
+                    return BloodType.O.rawValue
+                }
+            }
+        }
+        return ""
+    }
+    
     @objc func tapDone() {
         if let datePicker = self.birthDateTextField.inputView as? UIDatePicker {
             let dateformatter = DateFormatter()
-            dateformatter.dateStyle = .medium
+            dateformatter.dateStyle = .short
             self.birthDateTextField.text = dateformatter.string(from: datePicker.date)
         }
         self.birthDateTextField.resignFirstResponder() 
@@ -247,6 +384,7 @@ class PatientInfoViewController: BaseScrollViewController {
 }
 
 extension PatientInfoViewController: UITextFieldDelegate {
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         floatTitle(textField: textField)
         performAnimation(textField: textField, transform: CGAffineTransform(scaleX: 1, y: 1))

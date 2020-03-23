@@ -13,6 +13,7 @@ protocol AppointmentSelectionDataSourceDelegate {
     func hideLoading()
     func reloadTableView()
     func routeToAppointments()
+    func showLoginVC()
 }
 
 class AppointmentSelectionDataSource {
@@ -20,6 +21,8 @@ class AppointmentSelectionDataSource {
     var coagusearchService: CoagusearchService?
     
     var appointmentCalendar: [(String, [String])] = []
+    
+    var doctorName: String?
     
     var hasNextAppointment = false
     var selectedDateIndex = 0
@@ -31,8 +34,13 @@ class AppointmentSelectionDataSource {
         coagusearchService?.getAvailableAppointments(completion: { (appointmentCalendar, error) in
             self.delegate?.hideLoading()
             if let error = error {
-                DispatchQueue.main.async {
-                     self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                if error.code == UNAUTHORIZED_ERROR_CODE {
+                    Manager.sharedInstance.userDidLogout()
+                    self.delegate?.showLoginVC()
+                } else {
+                    DispatchQueue.main.async {
+                        self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                    }
                 }
             } else {
                 if let appointmentCalendar = appointmentCalendar {
@@ -42,7 +50,7 @@ class AppointmentSelectionDataSource {
                     }
                 } else {
                     DispatchQueue.main.async {
-                         self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
+                        self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
                     }
                 }
             }
@@ -50,6 +58,7 @@ class AppointmentSelectionDataSource {
     }
     
     func setAppointmentCalendar(calendar: AppointmentCalendar) {
+        self.doctorName = "\(calendar.doctorName) \(calendar.doctorSurname)"
         for dayInfo in calendar.week {
             var day = ""
             day = "\(dayInfo.day)/\(dayInfo.month)/\(dayInfo.year)"
@@ -86,19 +95,19 @@ class AppointmentSelectionDataSource {
     
     func getTimeSlots(index: Int) -> [String] {
         if appointmentCalendar.isEmpty {
-             return []
+            return []
         }
         return appointmentCalendar[index].1
     }
     
     func getUserAppointment() {
         if selectedDate != "" && selectedTimeSlot != "" {
-           let dateArray = selectedDate.components(separatedBy: "/")
-           let timeSlotArray = selectedTimeSlot.components(separatedBy: ":")
+            let dateArray = selectedDate.components(separatedBy: "/")
+            let timeSlotArray = selectedTimeSlot.components(separatedBy: ":")
             guard let day = Int(dateArray[0]),
-            let month = Int(dateArray[1]),
-            let year = Int(dateArray[2]),
-            let hour = Int(timeSlotArray[0]),
+                let month = Int(dateArray[1]),
+                let year = Int(dateArray[2]),
+                let hour = Int(timeSlotArray[0]),
                 let minute = Int(timeSlotArray[1]) else {
                     return
             }
@@ -113,7 +122,14 @@ class AppointmentSelectionDataSource {
     func postUserAppointment(day: Int, month: Int, year: Int, hour: Int, minute: Int) {
         coagusearchService?.postAppointment(day: day, month: month, year: year, hour: hour, minute: minute, completion: { (success, error) in
             if let error = error {
-                self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                if error.code == UNAUTHORIZED_ERROR_CODE {
+                    Manager.sharedInstance.userDidLogout()
+                    self.delegate?.showLoginVC()
+                } else {
+                    DispatchQueue.main.async {
+                        self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                    }
+                }
             } else {
                 if success {
                     DispatchQueue.main.async {

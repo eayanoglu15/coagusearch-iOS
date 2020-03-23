@@ -1,37 +1,33 @@
 //
-//  AddMedicineViewController.swift
+//  PatientMedicineUpdateViewController.swift
 //  Coagusearch
 //
-//  Created by Ege Melis Ayanoğlu on 3.03.2020.
+//  Created by Ege Melis Ayanoğlu on 23.03.2020.
 //  Copyright © 2020 coagusearch. All rights reserved.
 //
 
 import UIKit
 
-extension AddMedicineViewController: AddMedicineDataSourceDelegate {
+extension PatientMedicineUpdateViewController: PatientMedicineUpdateDataSourceDelegate {
     func routeToProfile() {
         navigationController?.popViewController(animated: true)
     }
     
-    func endRefreshing() {
-        self.refreshControl.endRefreshing()
-    }
-    
-    func refreshTableView() {
+    func reloadTableView() {
         self.medicineTableView.reloadData()
-        self.refreshControl.endRefreshing()
     }
-    
 }
 
-extension AddMedicineViewController: BasicWithButtonCellDelegate {
+extension PatientMedicineUpdateViewController: BasicWithButtonCellDelegate {
     func addCustomMedicine() {
         let searchCellIndexPath = IndexPath(row: 0, section: 0)
         let searchCell = medicineTableView.cellForRow(at: searchCellIndexPath) as! SearchMedicineTableViewCell
         searchCell.medicineLabel.text = dataSource.searchedText
-        
+    
         dataSource.selectedMode = .Custom
-        
+        if let med = dataSource.medicine {
+            print("Medicine ", med)
+        }
         // Close current cell
         dataSource.invertSelection(index: MEDICINE_SECTION)
         let indexPath = IndexPath(row: 0, section: MEDICINE_SECTION)
@@ -42,26 +38,21 @@ extension AddMedicineViewController: BasicWithButtonCellDelegate {
     }
 }
 
-class AddMedicineViewController: UIViewController {
+class PatientMedicineUpdateViewController: UIViewController {
     let MEDICINE_SECTION = 0
     let FREQUENCY_SECTION = 1
     let DOSAGE_SECTION = 2
     
     @IBOutlet weak var medicineTableView: UITableView!
-    @IBOutlet weak var saveButton: UIButton!
     
-    var dataSource = AddMedicineDataSource()
-    
-    private let refreshControl = UIRefreshControl()
+    var dataSource = PatientMedicineUpdateDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
-        print("hey")
         stylize()
         
-        title = "Add Medicine".localized
-        
+        title = "Update Medicine".localized
         dataSource.coagusearchService = CoagusearchServiceFactory.createService()
         dataSource.delegate = self
         
@@ -70,11 +61,6 @@ class AddMedicineViewController: UIViewController {
         medicineTableView.delegate = self
         setupTableView()
         
-        // TableView Refresh
-        self.refreshControl.tintColor = UIColor.twilightBlue
-        self.medicineTableView.refreshControl = self.refreshControl
-        self.refreshControl.addTarget(self, action: #selector(getMedicationData(_ :)), for: .valueChanged)
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,34 +68,31 @@ class AddMedicineViewController: UIViewController {
         dataSource.getMedicineList()
     }
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
-        //navigationController?.popViewController(animated: true)
-        dataSource.postMedicine()
-    }
-    
     private func setupTableView() {
         let selectionCellNib = UINib(nibName: CELL_IDENTIFIER_SELECTION_CELL, bundle: nil)
         medicineTableView.register(selectionCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_SELECTION_CELL)
-        
     }
-    
+
     /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-     @objc private func getMedicationData(_ sender: Any) {
-        dataSource.getMedicineList()
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+    @IBAction func removeButtonTapped(_ sender: Any) {
+        dataSource.deleteUserMedicine()
     }
     
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        dataSource.postMedicine()
+    }
 }
 
-extension AddMedicineViewController: SelectionCellDelegate {
+extension PatientMedicineUpdateViewController: SelectionCellDelegate {
     func setSelection(type: SelectionCellType, cellSectionNumber: Int, index: Int, value: String) {
         if type == SelectionCellType.Frequency {
             dataSource.selectedFrequencyIndex = index
@@ -130,7 +113,7 @@ extension AddMedicineViewController: SelectionCellDelegate {
     }
 }
 
-extension AddMedicineViewController: UITableViewDataSource {
+extension PatientMedicineUpdateViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if tableView == medicineTableView {
@@ -178,7 +161,17 @@ extension AddMedicineViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_SELECTION_CELL, for: indexPath) as! SelectionTableViewCell
                 cell.setup(type: .Dosage, listData: dataSource.getDosageArray(), cellSectionNumber: DOSAGE_SECTION)
                 cell.delegate = self
-                cell.selectionLabel.text = ""
+                if let med = dataSource.medicine {
+                    var dosages = "\(med.dosage)"
+                    if med.dosage > 1 {
+                        dosages = dosages + " dosages".localized
+                    } else {
+                        dosages = dosages + " dosage".localized
+                    }
+                    cell.selectionLabel.text = dosages
+                } else {
+                    cell.selectionLabel.text = ""
+                }
                 return cell
             }
             
@@ -242,7 +235,7 @@ extension AddMedicineViewController: UITableViewDataSource {
     }
 }
 
-extension AddMedicineViewController: UITableViewDelegate {
+extension PatientMedicineUpdateViewController: UITableViewDelegate {
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -339,7 +332,7 @@ extension AddMedicineViewController: UITableViewDelegate {
     
 }
 
-extension AddMedicineViewController: UISearchBarDelegate {
+extension PatientMedicineUpdateViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         dataSource.getSearchResults(searchText: searchText)
         //medicineTableView.reloadData() // Aslında içerideki

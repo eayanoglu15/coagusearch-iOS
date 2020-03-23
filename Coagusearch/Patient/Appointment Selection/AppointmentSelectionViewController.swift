@@ -27,6 +27,10 @@ extension AppointmentSelectionViewController: AppointmentSelectionDataSourceDele
 }
 
 class AppointmentSelectionViewController: UIViewController {
+    let DOCTOR_SECTION = 0
+    let DATE_SECTION = 1
+    let TIME_SLOT_SECTION = 2
+    
     @IBOutlet weak var appointmentSelectionTableView: UITableView!
     @IBOutlet weak var requestAppointmentButton: UIButton!
     
@@ -38,7 +42,7 @@ class AppointmentSelectionViewController: UIViewController {
         super.viewDidLoad()
         dataSource.delegate = self
         dataSource.coagusearchService = CoagusearchServiceFactory.createService()
-        title = "Request Appointment"
+        title = "Request Appointment".localized
         appointmentSelectionTableView.tableFooterView = UIView()
         appointmentSelectionTableView.dataSource = self
         appointmentSelectionTableView.delegate = self
@@ -69,9 +73,9 @@ class AppointmentSelectionViewController: UIViewController {
     
     private func setupTableView() {
         let doctorCellNib = UINib(nibName: CELL_IDENTIFIER_DOCTOR_CELL, bundle: nil)
-        let selectionCellNin = UINib(nibName: CELL_IDENTIFIER_SELECTION_CELL, bundle: nil)
+        let selectionCellNib = UINib(nibName: CELL_IDENTIFIER_SELECTION_CELL, bundle: nil)
         appointmentSelectionTableView.register(doctorCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_DOCTOR_CELL)
-        appointmentSelectionTableView.register(selectionCellNin, forCellReuseIdentifier: CELL_IDENTIFIER_SELECTION_CELL)
+        appointmentSelectionTableView.register(selectionCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_SELECTION_CELL)
     }
 }
 
@@ -107,10 +111,6 @@ extension AppointmentSelectionViewController: SelectionCellDelegate {
     }
 }
 
-let DOCTOR_SECTION = 0
-let DATE_SECTION = 1
-let TIME_SLOT_SECTION = 2
-
 extension AppointmentSelectionViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -121,7 +121,9 @@ extension AppointmentSelectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == DOCTOR_SECTION {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_DOCTOR_CELL, for: indexPath) as! DoctorTableViewCell
-            cell.nameLabel.text = "Arthur Clayton"
+            if let doctorName = dataSource.doctorName {
+                cell.nameLabel.text = doctorName
+            }
             return cell
         } else if indexPath.section == DATE_SECTION {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_SELECTION_CELL, for: indexPath) as! SelectionTableViewCell

@@ -13,8 +13,12 @@ enum Router: URLRequestConvertible {
     case login(id: String, password: String)
     case getUser
     case getAllMedicine
-    case getAvailableAppointmentsByUser
+    case getAvailableAppointments
     case postAppointment(day: Int, month: Int, year: Int, hour: Int, minute: Int)
+    case saveUserInfo(name: String, surname: String, dateOfBirth: String, height: Double, weight: Double, bloodType: String, rhType: String, gender: String)
+    case saveMedicine
+    case getUserMedicine
+    case deleteMedicine(medicineId: Int)
     
     var baseURL: URL {
         return URL(string: "http://localhost:8080")!
@@ -23,9 +27,9 @@ enum Router: URLRequestConvertible {
     // MARK: - HTTPMethod
     var method: HTTPMethod {
         switch self {
-        case .login, .postAppointment:
+        case .login, .postAppointment, .saveUserInfo, .saveMedicine, .deleteMedicine:
             return .post
-        case .getUser, .getAllMedicine, .getAvailableAppointmentsByUser:
+        case .getUser, .getAllMedicine, .getAvailableAppointments, .getUserMedicine:
             return .get
         }
     }
@@ -39,10 +43,18 @@ enum Router: URLRequestConvertible {
             return Endpoint.GetUser.rawValue
         case .getAllMedicine:
             return Endpoint.GetAllMedicine.rawValue
-        case .getAvailableAppointmentsByUser:
-            return Endpoint.GetAvailableAppointmentsByUser.rawValue
+        case .getAvailableAppointments:
+            return Endpoint.GetAvailableAppointments.rawValue
         case .postAppointment:
             return Endpoint.PostAppointment.rawValue
+        case .saveUserInfo:
+            return Endpoint.SaveUserInfo.rawValue
+        case .saveMedicine:
+            return Endpoint.SaveMedicine.rawValue
+        case .getUserMedicine:
+            return Endpoint.GetUserMedicine.rawValue
+        case .deleteMedicine:
+            return Endpoint.DeleteMedicine.rawValue
         }
     }
     
@@ -55,10 +67,18 @@ enum Router: URLRequestConvertible {
             return Endpoint.GetUser
         case .getAllMedicine:
             return Endpoint.GetAllMedicine
-        case .getAvailableAppointmentsByUser:
-            return Endpoint.GetAvailableAppointmentsByUser
+        case .getAvailableAppointments:
+            return Endpoint.GetAvailableAppointments
         case .postAppointment:
             return Endpoint.PostAppointment
+        case .saveUserInfo:
+            return Endpoint.SaveUserInfo
+        case .saveMedicine:
+            return Endpoint.SaveMedicine
+        case .getUserMedicine:
+            return Endpoint.GetUserMedicine
+        case .deleteMedicine:
+            return Endpoint.DeleteMedicine
         }
     }
     
@@ -67,12 +87,19 @@ enum Router: URLRequestConvertible {
         switch self {
         case .login(let id, let password):
             return [Parameter.id.rawValue: id, Parameter.password.rawValue: password]
-        case .getUser, .getAllMedicine, .getAvailableAppointmentsByUser:
+        case .getUser, .getAllMedicine, .getAvailableAppointments, .saveMedicine, .getUserMedicine:
             return nil
         case .postAppointment(let day, let month, let year, let hour, let minute):
             return [Parameter.day.rawValue: day, Parameter.month.rawValue: month,
                     Parameter.year.rawValue: year, Parameter.hour.rawValue: hour,
                     Parameter.minute.rawValue: minute]
+        case .saveUserInfo(let name, let surname, let dateOfBirth, let height, let weight, let bloodType, let rhType, let gender):
+            return [Parameter.name.rawValue: name, Parameter.surname.rawValue: surname,
+            Parameter.dateOfBirth.rawValue: dateOfBirth, Parameter.height.rawValue: height,
+            Parameter.weight.rawValue: weight, Parameter.bloodType.rawValue: bloodType,
+            Parameter.rhType.rawValue: rhType, Parameter.gender.rawValue: gender]
+        case .deleteMedicine(let medicineId):
+            return [Parameter.medicineId.rawValue: medicineId]
         }
     }
     

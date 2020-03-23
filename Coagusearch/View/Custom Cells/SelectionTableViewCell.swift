@@ -112,9 +112,30 @@ extension SelectionTableViewCell: UIPickerViewDelegate {
         }
         if cellType == .TimeSlot {
             delegate.self?.setSelection(type: .TimeSlot, cellSectionNumber: cellSectionNumber, index: row, value: pickerData[row])
+        } else {
+            delegate.self?.setSelection(type: cellType, cellSectionNumber: cellSectionNumber, index: row, value: pickerData[row])
         }
         
-        selectionLabel.text = pickerData[row]
+        if cellType == .Dosage {
+            if let dosageDouble = Double(pickerData[row]) {
+                var dosage: String
+                if floor(dosageDouble) == dosageDouble {
+                    dosage = "\(Int(dosageDouble))"
+                } else {
+                    dosage = "\(dosageDouble)"
+                }
+                if dosageDouble > 1 {
+                    dosage = dosage + " dosages".localized
+                } else {
+                    dosage = dosage + " dosage".localized
+                }
+                selectionLabel.text = dosage
+            } else {
+                selectionLabel.text = pickerData[row]
+            }
+        } else {
+            selectionLabel.text = pickerData[row]
+        }
     }
 }
 

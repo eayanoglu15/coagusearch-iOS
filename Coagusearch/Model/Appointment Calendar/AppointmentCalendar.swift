@@ -9,5 +9,7 @@
 import Foundation
 
 struct AppointmentCalendar : Codable {
+    var doctorName: String
+    var doctorSurname: String
     var week: [DayInfo]
 }
