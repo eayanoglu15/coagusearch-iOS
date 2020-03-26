@@ -19,6 +19,9 @@
 		85180B04241FA09A00C8E8F2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85180B03241FA09A00C8E8F2 /* Enums.swift */; };
 		85180B0A241FBC8200C8E8F2 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 85180B09241FBC8200C8E8F2 /* loader.json */; };
 		85180B0C241FC13C00C8E8F2 /* PatientInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85180B0B241FC13C00C8E8F2 /* PatientInfoViewController.swift */; };
+		8519BF9C242D13EE00B0ACFA /* SelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519BF9E242D13EE00B0ACFA /* SelectionTableViewCell.xib */; };
+		8519BFA1242D15EE00B0ACFA /* DoctorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519BFA3242D15EE00B0ACFA /* DoctorTableViewCell.xib */; };
+		8519BFA6242D16E600B0ACFA /* NextAppointmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519BFA8242D16E600B0ACFA /* NextAppointmentTableViewCell.xib */; };
 		851E7B972407D32A005E1928 /* PatientAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851E7B962407D32A005E1928 /* PatientAppointmentsViewController.swift */; };
 		851E7B9A2407DEBE005E1928 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851E7B992407DEBE005E1928 /* UIColor+Additions.swift */; };
 		8521702524102FA500739FAB /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8521702424102FA500739FAB /* BasicTableViewCell.swift */; };
@@ -32,8 +35,6 @@
 		8538699C2423EBE9005C5BFC /* AppointmentCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8538699B2423EBE9005C5BFC /* AppointmentCalendar.swift */; };
 		8538699E2423EC44005C5BFC /* DayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8538699D2423EC44005C5BFC /* DayInfo.swift */; };
 		853869A02423EC88005C5BFC /* TimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8538699F2423EC88005C5BFC /* TimeSlot.swift */; };
-		853869A62423FD07005C5BFC /* SelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853869A52423FD07005C5BFC /* SelectionTableViewCell.xib */; };
-		853869A82423FF1A005C5BFC /* DoctorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853869A72423FF1A005C5BFC /* DoctorTableViewCell.xib */; };
 		85414BBE240A86D600E9DF7F /* MedicineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85414BBD240A86D600E9DF7F /* MedicineTableViewCell.swift */; };
 		854639F62429636000FF2BC2 /* PatientMainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854639F52429636000FF2BC2 /* PatientMainInfo.swift */; };
 		854639F82429640800FF2BC2 /* PatientHomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854639F72429640800FF2BC2 /* PatientHomeDataSource.swift */; };
@@ -51,7 +52,6 @@
 		858621AF2416DE1D0000FDEB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858621AE2416DE1D0000FDEB /* Router.swift */; };
 		8593A71224294E0A00C03F18 /* PatientAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593A71124294E0A00C03F18 /* PatientAppointments.swift */; };
 		8593A71424294E4400C03F18 /* PatientAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593A71324294E4400C03F18 /* PatientAppointment.swift */; };
-		8593A71624294FD700C03F18 /* NextAppointmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8593A71524294FD700C03F18 /* NextAppointmentTableViewCell.xib */; };
 		8593A7182429504400C03F18 /* PastAppointmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8593A7172429504400C03F18 /* PastAppointmentTableViewCell.xib */; };
 		8593A71B2429522B00C03F18 /* PatientAppointmentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593A71A2429522B00C03F18 /* PatientAppointmentsDataSource.swift */; };
 		85A3B60123FEC339005DF4F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A3B60023FEC339005DF4F4 /* AppDelegate.swift */; };
@@ -96,6 +96,12 @@
 		85180B03241FA09A00C8E8F2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		85180B09241FBC8200C8E8F2 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		85180B0B241FC13C00C8E8F2 /* PatientInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoViewController.swift; sourceTree = "<group>"; };
+		8519BF9D242D13EE00B0ACFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SelectionTableViewCell.xib; sourceTree = "<group>"; };
+		8519BFA0242D13F200B0ACFA /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SelectionTableViewCell.strings; sourceTree = "<group>"; };
+		8519BFA2242D15EE00B0ACFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DoctorTableViewCell.xib; sourceTree = "<group>"; };
+		8519BFA5242D15F300B0ACFA /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DoctorTableViewCell.strings; sourceTree = "<group>"; };
+		8519BFA7242D16E600B0ACFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NextAppointmentTableViewCell.xib; sourceTree = "<group>"; };
+		8519BFAA242D16EA00B0ACFA /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/NextAppointmentTableViewCell.strings; sourceTree = "<group>"; };
 		851E7B962407D32A005E1928 /* PatientAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentsViewController.swift; sourceTree = "<group>"; };
 		851E7B992407DEBE005E1928 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		8521702424102FA500739FAB /* BasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
@@ -109,8 +115,6 @@
 		8538699B2423EBE9005C5BFC /* AppointmentCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCalendar.swift; sourceTree = "<group>"; };
 		8538699D2423EC44005C5BFC /* DayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayInfo.swift; sourceTree = "<group>"; };
 		8538699F2423EC88005C5BFC /* TimeSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlot.swift; sourceTree = "<group>"; };
-		853869A52423FD07005C5BFC /* SelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionTableViewCell.xib; sourceTree = "<group>"; };
-		853869A72423FF1A005C5BFC /* DoctorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorTableViewCell.xib; sourceTree = "<group>"; };
 		85414BBD240A86D600E9DF7F /* MedicineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineTableViewCell.swift; sourceTree = "<group>"; };
 		854639F52429636000FF2BC2 /* PatientMainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientMainInfo.swift; sourceTree = "<group>"; };
 		854639F72429640800FF2BC2 /* PatientHomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHomeDataSource.swift; sourceTree = "<group>"; };
@@ -132,7 +136,6 @@
 		858621AE2416DE1D0000FDEB /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8593A71124294E0A00C03F18 /* PatientAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointments.swift; sourceTree = "<group>"; };
 		8593A71324294E4400C03F18 /* PatientAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointment.swift; sourceTree = "<group>"; };
-		8593A71524294FD700C03F18 /* NextAppointmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NextAppointmentTableViewCell.xib; sourceTree = "<group>"; };
 		8593A7172429504400C03F18 /* PastAppointmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastAppointmentTableViewCell.xib; sourceTree = "<group>"; };
 		8593A71A2429522B00C03F18 /* PatientAppointmentsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentsDataSource.swift; sourceTree = "<group>"; };
 		85A3B5FD23FEC339005DF4F4 /* Coagusearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coagusearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,15 +291,15 @@
 			isa = PBXGroup;
 			children = (
 				85E5618B240B2540007D95AC /* SelectionTableViewCell.swift */,
-				853869A52423FD07005C5BFC /* SelectionTableViewCell.xib */,
+				8519BF9E242D13EE00B0ACFA /* SelectionTableViewCell.xib */,
 				85FA0322240C19BA00A02635 /* DoctorTableViewCell.swift */,
-				853869A72423FF1A005C5BFC /* DoctorTableViewCell.xib */,
+				8519BFA3242D15EE00B0ACFA /* DoctorTableViewCell.xib */,
 				8507D27324268EA90040EF79 /* LabelTableViewCell.swift */,
 				8507D27424268EA90040EF79 /* LabelTableViewCell.xib */,
 				85414BBD240A86D600E9DF7F /* MedicineTableViewCell.swift */,
 				85018FB52428E306001C6373 /* MedicineTableViewCell.xib */,
 				85225DAF2406F439009583EC /* NextAppointmentTableViewCell.swift */,
-				8593A71524294FD700C03F18 /* NextAppointmentTableViewCell.xib */,
+				8519BFA8242D16E600B0ACFA /* NextAppointmentTableViewCell.xib */,
 				856A712A240974F700AD728D /* PastAppointmentTableViewCell.swift */,
 				8593A7172429504400C03F18 /* PastAppointmentTableViewCell.xib */,
 			);
@@ -528,15 +531,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				85A3B60D23FEC33C005DF4F4 /* LaunchScreen.storyboard in Resources */,
-				853869A82423FF1A005C5BFC /* DoctorTableViewCell.xib in Resources */,
+				8519BFA1242D15EE00B0ACFA /* DoctorTableViewCell.xib in Resources */,
 				85018FB62428E306001C6373 /* MedicineTableViewCell.xib in Resources */,
 				85A3B60A23FEC33C005DF4F4 /* Assets.xcassets in Resources */,
 				858337F12421150400843054 /* Patient.storyboard in Resources */,
 				858338002421227C00843054 /* Localizable.strings in Resources */,
-				853869A62423FD07005C5BFC /* SelectionTableViewCell.xib in Resources */,
+				8519BF9C242D13EE00B0ACFA /* SelectionTableViewCell.xib in Resources */,
 				8593A7182429504400C03F18 /* PastAppointmentTableViewCell.xib in Resources */,
 				8507D27624268EA90040EF79 /* LabelTableViewCell.xib in Resources */,
-				8593A71624294FD700C03F18 /* NextAppointmentTableViewCell.xib in Resources */,
+				8519BFA6242D16E600B0ACFA /* NextAppointmentTableViewCell.xib in Resources */,
 				85791CC5241FFF620061E68E /* blood-wave-tube.json in Resources */,
 				85A3B60823FEC339005DF4F4 /* Main.storyboard in Resources */,
 				85180B0A241FBC8200C8E8F2 /* loader.json in Resources */,
@@ -656,6 +659,33 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8519BF9E242D13EE00B0ACFA /* SelectionTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8519BF9D242D13EE00B0ACFA /* Base */,
+				8519BFA0242D13F200B0ACFA /* tr */,
+			);
+			name = SelectionTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		8519BFA3242D15EE00B0ACFA /* DoctorTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8519BFA2242D15EE00B0ACFA /* Base */,
+				8519BFA5242D15F300B0ACFA /* tr */,
+			);
+			name = DoctorTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		8519BFA8242D16E600B0ACFA /* NextAppointmentTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8519BFA7242D16E600B0ACFA /* Base */,
+				8519BFAA242D16EA00B0ACFA /* tr */,
+			);
+			name = NextAppointmentTableViewCell.xib;
+			sourceTree = "<group>";
+		};
 		858337F32421150400843054 /* Patient.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

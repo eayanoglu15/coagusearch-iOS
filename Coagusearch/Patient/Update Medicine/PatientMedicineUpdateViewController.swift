@@ -25,9 +25,6 @@ extension PatientMedicineUpdateViewController: BasicWithButtonCellDelegate {
         searchCell.medicineLabel.text = dataSource.searchedText
     
         dataSource.selectedMode = .Custom
-        if let med = dataSource.medicine {
-            print("Medicine ", med)
-        }
         // Close current cell
         dataSource.invertSelection(index: MEDICINE_SECTION)
         let indexPath = IndexPath(row: 0, section: MEDICINE_SECTION)
@@ -151,10 +148,13 @@ extension PatientMedicineUpdateViewController: UITableViewDataSource {
                 cell.delegate = self
                 if let med = dataSource.medicine {
                     cell.selectionLabel.text = med.frequency.title
+                    let i = dataSource.getMedicineFrequencyIndex()
+                    cell.pickerView.selectRow(2, inComponent: 0, animated: false)
                 } else {
                     cell.selectionLabel.text = ""
                 }
-                cell.pickerView.selectRow(dataSource.getMedicineFrequencyIndex(), inComponent: 0, animated: false)
+                
+                //cell.pickerView.selectRow(i, inComponent: 0, animated: false)
                 return cell
                 
             } else {
@@ -336,16 +336,8 @@ extension PatientMedicineUpdateViewController: UITableViewDelegate {
 extension PatientMedicineUpdateViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         dataSource.getSearchResults(searchText: searchText)
-        //medicineTableView.reloadData() // Aslında içerideki
-        
         let indexPath = IndexPath(row: 0, section: 0)
         let cell = medicineTableView.cellForRow(at: indexPath) as! SearchMedicineTableViewCell
         cell.tableView.reloadData()
-        /*
-        let table = view.viewWithTag(4) as! UITableView
-        table.reloadData()
- */
- 
     }
-    
 }

@@ -14,7 +14,9 @@ struct User: Codable {
     var userId: Int
     var name: String
     var surname: String
-    var dateOfBirth: String?
+    var birthDay: Int?
+    var birthMonth: Int?
+    var birthYear: Int?
     var height: Double?
     var weight: Double?
     var bloodType: BloodType?
@@ -32,14 +34,16 @@ struct User: Codable {
         }
     }
     
-    init(identityNumber: String, type: String, userId: Int, name: String, surname: String, dateOfBirth: String?,
+    init(identityNumber: String, type: String, userId: Int, name: String, surname: String, birthDay: Int?, birthMonth: Int?, birthYear: Int?,
          height: Double?, weight: Double?, bloodType: BloodType?, rhType: RhType?, gender: Gender?) {
         self.identityNumber = identityNumber
         self.type = type
         self.userId = userId
         self.name = name
         self.surname = surname
-        self.dateOfBirth = dateOfBirth
+        self.birthDay = birthDay
+        self.birthMonth = birthMonth
+        self.birthYear = birthYear
         self.height = height
         self.weight = weight
         self.bloodType = bloodType

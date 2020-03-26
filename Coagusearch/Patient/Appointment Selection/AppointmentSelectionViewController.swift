@@ -17,10 +17,6 @@ extension AppointmentSelectionViewController: AppointmentSelectionDataSourceDele
         appointmentSelectionTableView.reloadData()
     }
     
-    func showErrorMessage(title: String, message: String) {
-        showAlertMessage(title: title, message: message)
-    }
-    
     func hideLoading() {
         hideLoadingVC()
     }

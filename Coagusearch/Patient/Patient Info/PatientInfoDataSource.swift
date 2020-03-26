@@ -9,9 +9,8 @@
 import Foundation
 
 protocol PatientInfoDataSourceDelegate {
-    func showErrorMessage(title: String, message: String)
+    func showAlertMessage(title: String, message: String)
     func hideLoading()
-    func reloadTableView()
     func routeToProfile()
     func showLoginVC()
 }
@@ -21,15 +20,15 @@ class PatientInfoDataSource {
     var delegate: PatientInfoDataSourceDelegate?
     var coagusearchService: CoagusearchService?
     
-    func postUserInfo(name: String, surname: String, dateOfBirth: String, height: Double, weight: Double, bloodType: String, rhType: String, gender: String) {
-        coagusearchService?.postUserInfo(name: name, surname: surname, dateOfBirth: dateOfBirth, height: height, weight: weight, bloodType: bloodType, rhType: rhType, gender: gender, completion: { (success, error) in
+    func postUserInfo(name: String, surname: String, birthDay: Int?, birthMonth: Int?, birthYear: Int?, height: Double?, weight: Double?, bloodType: String?, rhType: String?, gender: String?) {
+        coagusearchService?.postUserInfo(name: name, surname: surname, birthDay: birthDay, birthMonth: birthMonth, birthYear: birthYear, height: height, weight: weight, bloodType: bloodType, rhType: rhType, gender: gender, completion: { (success, error) in
             if let error = error {
                 if error.code == UNAUTHORIZED_ERROR_CODE {
                     Manager.sharedInstance.userDidLogout()
                     self.delegate?.showLoginVC()
                 } else {
                     DispatchQueue.main.async {
-                        self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                        self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
                     }
                 }
             } else {
@@ -37,7 +36,9 @@ class PatientInfoDataSource {
                     DispatchQueue.main.async {
                         Manager.sharedInstance.currentUser?.name = name
                         Manager.sharedInstance.currentUser?.surname = surname
-                        Manager.sharedInstance.currentUser?.dateOfBirth = dateOfBirth
+                        Manager.sharedInstance.currentUser?.birthDay = birthDay
+                        Manager.sharedInstance.currentUser?.birthMonth = birthMonth
+                        Manager.sharedInstance.currentUser?.birthYear = birthYear
                         Manager.sharedInstance.currentUser?.height = height
                         Manager.sharedInstance.currentUser?.weight = weight
                         
@@ -72,7 +73,7 @@ class PatientInfoDataSource {
                         self.delegate?.routeToProfile()
                     }
                 } else {
-                    self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
+                    self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
                 }
             }
             

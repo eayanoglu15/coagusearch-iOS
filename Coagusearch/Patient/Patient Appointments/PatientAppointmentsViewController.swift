@@ -16,12 +16,21 @@ extension PatientAppointmentsViewController: NextAppointmentTableViewCellDelegat
 
 extension PatientAppointmentsViewController:  PatientAppointmentsDataSourceDelegate {
     func reloadTableView() {
+        if dataSource.hasNextAppointment() {
+            requestAppointmentButton.isHidden = true
+            tableViewBottomConstraint.constant = 0
+        } else {
+            requestAppointmentButton.isHidden = false
+            tableViewBottomConstraint.constant = 72
+        }
         appointmentTableView.reloadData()
     }
 }
 
 class PatientAppointmentsViewController: UIViewController {
     @IBOutlet weak var appointmentTableView: UITableView!
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var requestAppointmentButton: UIButton!
     
     var dataSource = PatientAppointmentsDataSource()
     

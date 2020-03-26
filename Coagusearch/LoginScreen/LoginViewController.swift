@@ -9,9 +9,6 @@
 import UIKit
 
 extension LoginViewController: LoginDataSourceDelegate {
-    func showErrorMessage(title: String, message: String) {
-        showAlertMessage(title: title, message: message)
-    }
     func hideLoading() {
         hideLoadingVC()
     }
@@ -20,7 +17,7 @@ extension LoginViewController: LoginDataSourceDelegate {
     }
 }
 
-class LoginViewController: BaseScrollViewController {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var userLabel: UILabel!
@@ -39,6 +36,9 @@ class LoginViewController: BaseScrollViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        hideKeyboard()
         stylize()
         loginDataSource.coagusearchService = CoagusearchServiceFactory.createService()
         loginDataSource.delegate = self
@@ -58,7 +58,26 @@ class LoginViewController: BaseScrollViewController {
         rememberMeSwitch.tintColor = .dodgerBlue
         rememberMeSwitch.layer.cornerRadius = rememberMeSwitch.frame.height / 2
         rememberMeSwitch.backgroundColor = .dodgerBlue
-    }    
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         if self.isAllRequiredFieldsFilled() {

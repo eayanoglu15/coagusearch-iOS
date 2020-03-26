@@ -13,14 +13,6 @@ extension PatientInfoViewController: PatientInfoDataSourceDelegate {
         navigationController?.popViewController(animated: true)
     }
     
-    func reloadTableView() {
-        //appointmentSelectionTableView.reloadData()
-    }
-    
-    func showErrorMessage(title: String, message: String) {
-        showAlertMessage(title: title, message: message)
-    }
-    
     func hideLoading() {
         hideLoadingVC()
     }
@@ -166,16 +158,17 @@ class PatientInfoViewController: BaseScrollViewController {
             floatTitle(textField: nameTextField)
             surnameTextField.text = user.surname
             floatTitle(textField: surnameTextField)
-            if let birthDate = user.dateOfBirth {
-                if birthDate != "null" {
-                    birthDateTextField.text = birthDate
-                    floatTitle(textField: birthDateTextField)
-                }
+            if let day = user.birthDay, let month = user.birthMonth, let year = user.birthYear {
+                birthDateTextField.text = "\(day).\(month).\(year)"
+                floatTitle(textField: birthDateTextField)
             }
-            if user.gender == Gender.Female {
-                genderTypeSelection = [true, false]
-            } else {
-                genderTypeSelection = [false, true]
+            if let gender = user.gender {
+                switch gender {
+                case .Female:
+                    genderTypeSelection[0] = true
+                case .Male:
+                    genderTypeSelection[1] = true
+                }
             }
             if let height = user.height {
                 heightTextField.text = "\(height)"
@@ -221,34 +214,40 @@ class PatientInfoViewController: BaseScrollViewController {
     
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        var name = ""
-        if let n = nameTextField.text {
-            name = n
+        guard let name = nameTextField.text, !name.isEmpty, let surname = surnameTextField.text, !surname.isEmpty else {
+            showAlertMessage(title: "Missing Information", message: "Please enter your name and surname.")
+            return
         }
-        
-        var surname = ""
-        if let s = surnameTextField.text {
-            surname = s
+        var birthDay: Int?
+        var birthMonth: Int?
+        var birthYear: Int?
+        if let birthText = birthDateTextField.text {
+            let array = birthText.components(separatedBy: ".")
+            if array.count == 3 {
+                if let day = Int(array[0]) {
+                    birthDay = day
+                }
+                if let month = Int(array[1]) {
+                    birthMonth = month
+                }
+                if let year = Int(array[2]) {
+                    birthYear = year
+                }
+            }
         }
-        
-        var birthDate = ""
-        if let b = birthDateTextField.text {
-            birthDate = b
-        }
-        
-        var height = 0.0
+        var height: Double?
         if let h = heightTextField.text, let hD = Double(h) {
             height = hD
         }
         
-        var weight = 0.0
+        var weight: Double?
         if let w = weightTextField.text, let wD = Double(w) {
             weight = wD
         }
         
         
-        var bloodType = checkBloodType()
-        var rhType = ""
+        let bloodType = checkBloodType()
+        var rhType: String?
         
         if rhTypeSelection[0] {
             rhType = RhType.Positive.rawValue
@@ -256,7 +255,17 @@ class PatientInfoViewController: BaseScrollViewController {
             rhType = RhType.Negative.rawValue
         }
         
-        var gender = ""
+        if bloodType == nil && rhType != nil {
+            showAlertMessage(title: "Missing Blood Type".localized, message: "Please enter your blood type as well.".localized)
+            return
+        }
+        
+        if bloodType != nil && rhType == nil {
+            showAlertMessage(title: "Missing Rh Type".localized, message: "Please enter your rh type as well.".localized)
+            return
+        }
+        
+        var gender: String?
         
         if genderTypeSelection[0] {
             gender = Gender.Female.rawValue
@@ -264,10 +273,10 @@ class PatientInfoViewController: BaseScrollViewController {
             gender = Gender.Male.rawValue
         }
         
-        dataSource.postUserInfo(name: name, surname: surname, dateOfBirth: birthDate, height: height, weight: weight, bloodType: bloodType, rhType: rhType, gender: gender)
+        dataSource.postUserInfo(name: name, surname: surname, birthDay: birthDay, birthMonth: birthMonth, birthYear: birthYear, height: height, weight: weight, bloodType: bloodType, rhType: rhType, gender: gender)
     }
     
-    func checkBloodType() -> String {
+    func checkBloodType() -> String? {
         for i in 0...(bloodTypeSelection.count-1) {
             if bloodTypeSelection[i] {
                 if i == 0 {
@@ -281,7 +290,7 @@ class PatientInfoViewController: BaseScrollViewController {
                 }
             }
         }
-        return ""
+        return nil
     }
     
     @objc func tapDone() {

@@ -70,6 +70,7 @@ class AddMedicineDataSource {
     
     func postMedicine() {
         guard let medicine = getSelectedMedicine() else {
+            delegate?.showAlertMessage(title: "Missing Information".localized, message: "Please fill all the fields that are related to your medicine".localized)
             return
         }
         self.delegate?.showLoadingVC()
@@ -149,10 +150,9 @@ class AddMedicineDataSource {
     }
     
     func getMedicineList() {
-        //self.delegate?.showLoadingVC()
-        //print("refreshing")
+        self.delegate?.showLoadingVC()
         coagusearchService?.getAllMedicine(completion: { (drugs, error) in
-            //self.delegate?.hideLoadingVC()
+        self.delegate?.hideLoadingVC()
             if let error = error {
                 self.delegate?.endRefreshing()
                 if error.code == UNAUTHORIZED_ERROR_CODE {

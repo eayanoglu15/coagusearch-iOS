@@ -192,7 +192,7 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                         return
                     }
                     print("accessToken: ", accessToken)
-                    var tempUser = User(identityNumber: "", type: "", userId: -1, name: "", surname: "", dateOfBirth: nil, height: nil, weight: nil, bloodType: nil, rhType: nil, gender: .Female)
+                    var tempUser = User(identityNumber: "", type: "", userId: -1, name: "", surname: "", birthDay: nil, birthMonth: nil, birthYear: nil, height: nil, weight: nil, bloodType: nil, rhType: nil, gender: nil)
                     tempUser.accessToken = accessToken
                     tempUser.refreshToken = refreshToken
                     Manager.sharedInstance.currentUser = tempUser
@@ -223,12 +223,8 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
     
     func getUser(completion: @escaping UserReturnFunction) {
         let route = Router.getUser
-        let endpointStr = route.path
-        let parameters = route.parameters
-        let method = route.method
-        let headers = route.header
         
-        self.makeSessionRequest(endpoint: Endpoint.GetUser, endpointParameter: nil, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers, responseType: .Dictionary) { (response, error) in
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
             guard let response = response as? NSDictionary else {
                 if let error = error {
                     completion(nil, error)
@@ -239,9 +235,11 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
             }
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
-                var user = try JSONDecoder().decode(User.self, from: jsonData)
+                let user = try JSONDecoder().decode(User.self, from: jsonData)
+                /*
                 user.accessToken = response["accessToken"] as? String
                 user.refreshToken = response["refreshToken"] as? String
+                */
                 completion(user, nil)
             } catch {
                 let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize user.", comment: "")])
@@ -335,14 +333,40 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
         }
     }
     
-    func postUserInfo(name: String, surname: String, dateOfBirth: String, height: Double, weight: Double, bloodType: String, rhType: String, gender: String, completion: @escaping SuccessReturnFunction) {
-        let route = Router.saveUserInfo(name: name, surname: surname, dateOfBirth: dateOfBirth, height: height, weight: weight, bloodType: bloodType, rhType: rhType, gender: gender)
-        let endpoint = route.endpoint
-        let method = route.method
-        let parameters = route.parameters
-        let headers = route.header
+    func postUserInfo(name: String, surname: String, birthDay: Int?, birthMonth: Int?, birthYear: Int?, height: Double?, weight: Double?, bloodType: String?, rhType: String?, gender: String?, completion: @escaping SuccessReturnFunction) {
+        let route = Router.saveUserInfo(name: name, surname: surname)
         
-        self.makeSessionRequest(endpoint: endpoint, endpointParameter: nil, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers, responseType: .Dictionary) { (response, error) in
+        var parameters = [String: Any]()
+        parameters = [Parameter.name.rawValue: name, Parameter.surname.rawValue: surname]
+        
+        if let birthDay = birthDay {
+            parameters[Parameter.birthDay.rawValue] = birthDay
+        }
+        if let birthMonth = birthMonth {
+            parameters[Parameter.birthMonth.rawValue] = birthMonth
+        }
+        if let birthYear = birthYear {
+            parameters[Parameter.birthYear.rawValue] = birthYear
+        }
+        
+        if let height = height {
+            parameters[Parameter.height.rawValue] = height
+        }
+        if let weight = weight {
+            parameters[Parameter.weight.rawValue] = weight
+        }
+        
+        if let bloodType = bloodType {
+            parameters[Parameter.bloodType.rawValue] = bloodType
+        }
+        if let rhType = rhType {
+            parameters[Parameter.rhType.rawValue] = rhType
+        }
+        if let gender = gender {
+            parameters[Parameter.gender.rawValue] = gender
+        }
+        
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
             guard let response = response as? NSDictionary else {
                 if let error = error {
                     completion(false, error)
@@ -416,8 +440,6 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
         let method = route.method
         let parameters = route.parameters
         let headers = route.header
-        
-        print("get user med")
         
         self.makeSessionRequest(endpoint: endpoint, endpointParameter: nil, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers, responseType: .Dictionary) { (response, error) in
             guard let response = response as? NSDictionary else {

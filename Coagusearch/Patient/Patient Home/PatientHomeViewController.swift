@@ -130,7 +130,6 @@ extension PatientHomeViewController: UITableViewDataSource {
             }
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCellTableViewCell
-        
         return cell
     }
 }

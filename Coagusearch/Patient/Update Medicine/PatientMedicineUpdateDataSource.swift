@@ -113,19 +113,17 @@ class PatientMedicineUpdateDataSource {
             })
         }
     }
-    // TODO: fix
+    
     func getMedicineFrequencyIndex() -> Int {
-        
         if let medicine = medicine {
             if !frequencyArray.isEmpty {
                 for i in 0...(frequencyArray.count-1) {
                     if frequencyArray[i] == medicine.frequency.title {
-                        return i
+                        return i+1
                     }
                 }
             }
         }
- 
         return 1
     }
     

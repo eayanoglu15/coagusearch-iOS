@@ -9,14 +9,6 @@
 import Foundation
 
 protocol PatientProfileDataSourceDelegate {
-    /*
-     func endRefreshing()
-     func refreshTableView()
-     
-     
-     
-     func routeToProfile()
-     */
     func showLoadingVC()
     func hideLoadingVC()
     func showLoginVC()
@@ -29,16 +21,7 @@ class PatientProfileDataSource {
     var coagusearchService: CoagusearchService?
     
     var userDrugs: [UserDrug]?
-    
     var selectedMedicine: UserDrug?
-    /*
-     var id: Int?
-     var mode: DrugMode
-     var key: String?
-     var custom: String?
-     var frequency: Frequency
-     var dosage: Double
-     */
     
     func setSelectedMedicine(medicineId: Int) {
         if let userDrugs = userDrugs {

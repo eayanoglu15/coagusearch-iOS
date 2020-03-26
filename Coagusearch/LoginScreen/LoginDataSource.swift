@@ -9,7 +9,7 @@
 import Foundation
 
 protocol LoginDataSourceDelegate {
-    func showErrorMessage(title: String, message: String)
+    func showAlertMessage(title: String, message: String)
     func hideLoading()
     func routeToHome()
 }
@@ -24,7 +24,7 @@ class LoginDataSource {
             if let error = error {
                 DispatchQueue.main.async {
                      self.delegate?.hideLoading()
-                     self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                     self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
                 }
             } else {
                 if let user = user {
@@ -39,7 +39,7 @@ class LoginDataSource {
                 } else {
                     DispatchQueue.main.async {
                          self.delegate?.hideLoading()
-                         self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
+                         self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
                     }
                 }
             }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AppointmentSelectionDataSourceDelegate {
-    func showErrorMessage(title: String, message: String)
+    func showAlertMessage(title: String, message: String)
     func hideLoading()
     func reloadTableView()
     func routeToAppointments()
@@ -39,7 +39,7 @@ class AppointmentSelectionDataSource {
                     self.delegate?.showLoginVC()
                 } else {
                     DispatchQueue.main.async {
-                        self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                        self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
                     }
                 }
             } else {
@@ -50,7 +50,7 @@ class AppointmentSelectionDataSource {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
+                        self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
                     }
                 }
             }
@@ -124,7 +124,7 @@ class AppointmentSelectionDataSource {
                     self.delegate?.showLoginVC()
                 } else {
                     DispatchQueue.main.async {
-                        self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
+                        self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: error.localizedDescription)
                     }
                 }
             } else {
@@ -133,7 +133,7 @@ class AppointmentSelectionDataSource {
                         self.delegate?.routeToAppointments()
                     }
                 } else {
-                    self.delegate?.showErrorMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
+                    self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
                 }
             }
             

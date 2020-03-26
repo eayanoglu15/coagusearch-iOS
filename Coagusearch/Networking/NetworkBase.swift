@@ -35,7 +35,7 @@ protocol CoaguSearchService {
     func loginUser(id: String, password: String, completion: @escaping UserReturnFunction)
     // MARK: USER
     func getUser(completion: @escaping UserReturnFunction)
-    func postUserInfo(name: String, surname: String, dateOfBirth: String, height: Double, weight: Double, bloodType: String, rhType: String, gender: String, completion: @escaping SuccessReturnFunction)
+    func postUserInfo(name: String, surname: String, birthDay: Int?, birthMonth: Int?, birthYear: Int?, height: Double?, weight: Double?, bloodType: String?, rhType: String?, gender: String?, completion: @escaping SuccessReturnFunction)
     // MARK: APPOINTMENT
     func getAvailableAppointments(completion: @escaping AppointmentCalendarReturnFunction)
     func postAppointment(day: Int, month: Int, year: Int, hour: Int, minute: Int, completion: @escaping SuccessReturnFunction)

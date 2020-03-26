@@ -41,7 +41,7 @@ let CELL_IDENTIFIER_MISSING_INFO_CELL = "MissingInfoTableViewCell"
 
 // MARK: Cell Heights
 let CELL_HEIGHT_SMALL = CGFloat(45)
-let CELL_HEIGHT = CGFloat(65)
+let CELL_HEIGHT = CGFloat(70)
 let CELL_HEIGHT_EXPANDED = CGFloat(200)
 
 //
@@ -53,5 +53,5 @@ let UNEXPECTED_ERROR_MESSAGE = "Encountered an unexpected error"
 
 // MARK: Fonts
 let fontLight = UIFont(name: "HelveticaNeue-Light", size: 14.0)!
-let fontRegular = UIFont(name: "HelveticaNeue", size: 16.0)!
+let fontRegular = UIFont(name: "HelveticaNeue-Light", size: 16.0)!
 

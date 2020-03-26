@@ -52,6 +52,8 @@
 "Missing Information" = "Eksik Bilgi";
 "Medicine" = "İlaç";
 "My Appointments" = "Randevularım";
+"Missing Blood Type" = "Kan Grubu Eksik";
+"Missing Rh Type" = "Rh Değeri Eksik";
 
 // MARK: N
 "Not specified" = "Belirtilmedi";
@@ -62,7 +64,10 @@
 // MARK: P
 "Profile" = "Profil";
 "Please fill your id and password" = "Lütfen T.C. Kimlik Numaranızı ve şifrenizi girin";
-
+"Please fill all the fields that are related to your medicine" = "Lütfen ilacınız ile ilgili tüm bölümleri doldurun.";
+"Please enter your name and surname." = "Lütfen adınızı ve soyadınızı giriniz.";
+"Please enter your blood type as well." = "Lütfen kan grubunuzu da giriniz.";
+"Please enter your rh type as well." = "Lütfen rh değerinizi de giriniz";
 // MARK: Q
 
 // MARK: R

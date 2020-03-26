@@ -19,21 +19,6 @@ extension PatientProfileViewController: PatientProfileDataSourceDelegate {
     func reloadTableView() {
         medicineTableView.reloadData()
     }
-    
-    /*
-     func routeToProfile() {
-     navigationController?.popViewController(animated: true)
-     }
-     
-     func endRefreshing() {
-     self.refreshControl.endRefreshing()
-     }
-     
-     func refreshTableView() {
-     self.medicineTableView.reloadData()
-     self.refreshControl.endRefreshing()
-     }
-     */
 }
 
 class PatientProfileViewController: UIViewController {
@@ -43,7 +28,6 @@ class PatientProfileViewController: UIViewController {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var bloodTypeLabel: UILabel!
-    
     @IBOutlet weak var medicineTableView: UITableView!
     
     var dataSource = PatientProfileDataSource()
@@ -72,8 +56,8 @@ class PatientProfileViewController: UIViewController {
         dataSource.getUserMedicineList()
         if let user = Manager.sharedInstance.currentUser {
             nameLabel.text = "\(user.name) \(user.surname)"
-            if let dob = user.dateOfBirth, dob != "null" {
-                birthdateLabel.text = dob
+            if let day = user.birthDay, let month = user.birthMonth, let year = user.birthYear {
+                birthdateLabel.text = "\(day).\(month).\(year)"
             } else {
                 birthdateLabel.text = "Not specified".localized
             }
@@ -160,6 +144,9 @@ extension PatientProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        }
         return HEIGHT_FOR_HEADER
     }
     
@@ -172,6 +159,7 @@ extension PatientProfileViewController: UITableViewDataSource {
 
 extension PatientProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        dataSource.setSelectedMedicine(medicineId: indexPath.section)
+        performSegue(withIdentifier: SEGUE_SHOW_PATIENT_MEDICINE_UPDATE, sender: nil)
     }
 }

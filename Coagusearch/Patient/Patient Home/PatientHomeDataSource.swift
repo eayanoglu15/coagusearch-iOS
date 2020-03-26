@@ -54,6 +54,10 @@ class PatientHomeDataSource {
                     return 2
                 }
                 return 1
+            } else {
+               if hasNextAppointment() {
+                    return 1
+                }
             }
             return 0
         }
@@ -62,7 +66,6 @@ class PatientHomeDataSource {
     
     func hasMissingInfo() -> Bool {
         if let data = mainInfo {
-            print("data.patientMissingInfo: ", data.patientMissingInfo)
             return data.patientMissingInfo
         }
         return false

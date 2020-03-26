@@ -15,7 +15,7 @@ enum Router: URLRequestConvertible {
     case getAllMedicine
     case getAvailableAppointments
     case postAppointment(day: Int, month: Int, year: Int, hour: Int, minute: Int)
-    case saveUserInfo(name: String, surname: String, dateOfBirth: String, height: Double, weight: Double, bloodType: String, rhType: String, gender: String)
+    case saveUserInfo(name: String, surname: String)
     case saveMedicine
     case getUserMedicine
     case deleteMedicine(medicineId: Int)
@@ -108,11 +108,8 @@ enum Router: URLRequestConvertible {
             return [Parameter.day.rawValue: day, Parameter.month.rawValue: month,
                     Parameter.year.rawValue: year, Parameter.hour.rawValue: hour,
                     Parameter.minute.rawValue: minute]
-        case .saveUserInfo(let name, let surname, let dateOfBirth, let height, let weight, let bloodType, let rhType, let gender):
-            return [Parameter.name.rawValue: name, Parameter.surname.rawValue: surname,
-                    Parameter.dateOfBirth.rawValue: dateOfBirth, Parameter.height.rawValue: height,
-                    Parameter.weight.rawValue: weight, Parameter.bloodType.rawValue: bloodType,
-                    Parameter.rhType.rawValue: rhType, Parameter.gender.rawValue: gender]
+        case .saveUserInfo(let name, let surname):
+            return [Parameter.name.rawValue: name, Parameter.surname.rawValue: surname]
         case .deleteMedicine(let medicineId):
             return [Parameter.medicineId.rawValue: medicineId]
         case .deleteUserAppointment(let appointmentId):

@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "2 March 2020"; ObjectID = "7pZ-K8-bip"; */
+"7pZ-K8-bip.text" = "2 March 2020";
+
+/* Class = "UILabel"; text = "1:30 PM - 2:00 PM"; ObjectID = "G9b-zy-wDp"; */
+"G9b-zy-wDp.text" = "1:30 PM - 2:00 PM";
+
+/* Class = "UILabel"; text = "Next Appointment"; ObjectID = "WyG-sZ-yoI"; */
+"WyG-sZ-yoI.text" = "Gelecek Randevu";
+
+/* Class = "UILabel"; text = "Arthur Clayton"; ObjectID = "YrH-Md-xcY"; */
+"YrH-Md-xcY.text" = "Arthur Clayton";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "rYb-tR-Z2m"; */
+"rYb-tR-Z2m.normalTitle" = "İptal Et";

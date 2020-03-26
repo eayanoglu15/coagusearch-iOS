@@ -18,7 +18,6 @@ class MedicineTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
     @IBOutlet weak var dosageLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
     
     var medicineIndex: Int?
     
@@ -32,12 +31,5 @@ class MedicineTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-
-    @IBAction func editButtonTapped(_ sender: Any) {
-        if let id = medicineIndex {
-            delegate?.updateMedicine(medicineIndex: id)
-        }
-        
     }
 }
