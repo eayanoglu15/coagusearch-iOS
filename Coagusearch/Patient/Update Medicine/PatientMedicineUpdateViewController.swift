@@ -148,8 +148,7 @@ extension PatientMedicineUpdateViewController: UITableViewDataSource {
                 cell.delegate = self
                 if let med = dataSource.medicine {
                     cell.selectionLabel.text = med.frequency.title
-                    let i = dataSource.getMedicineFrequencyIndex()
-                    cell.pickerView.selectRow(2, inComponent: 0, animated: false)
+                    cell.pickerView.selectRow(dataSource.getMedicineFrequencyIndex(), inComponent: 0, animated: false)
                 } else {
                     cell.selectionLabel.text = ""
                 }

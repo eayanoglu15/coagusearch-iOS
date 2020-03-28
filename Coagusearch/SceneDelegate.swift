@@ -12,7 +12,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -20,8 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         self.initialize()
-        
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -70,20 +67,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func routeUserToHomePage(hasLogedIn: Bool) {
-        /*
-        let userDefaults = UserDefaults.standard
-        let userLoggedIn = userDefaults.bool(forKey: "userType")
-        */
         var rootVC : UIViewController?
-        var rootTBC : UITabBarController?
-        
         if hasLogedIn {
-            // user is patient
-            let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_PATIENT, bundle: nil).instantiateInitialViewController() as! PatientTabBarController
-            let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
-            let homeVC = navigationVC.viewControllers.first as! PatientHomeViewController
-            homeVC.loadViewIfNeeded()
-            self.window?.rootViewController = tabBarVC
+            if let currentUser = Manager.sharedInstance.getCurrentuser() {
+                switch currentUser.type {
+                case .Patient:
+                    let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_PATIENT, bundle: nil).instantiateInitialViewController() as! PatientTabBarController
+                    let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
+                    let homeVC = navigationVC.viewControllers.first as! PatientHomeViewController
+                    homeVC.loadViewIfNeeded()
+                    self.window?.rootViewController = tabBarVC
+                case .Doctor:
+                    let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_DOCTOR, bundle: nil).instantiateInitialViewController() as! DoctorTabBarController
+                    let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
+                    let homeVC = navigationVC.viewControllers.first as! DoctorHomeViewController
+                    homeVC.loadViewIfNeeded()
+                    self.window?.rootViewController = tabBarVC
+                case .Medical:
+                    // TODO: Change for medicial team
+                    let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_PATIENT, bundle: nil).instantiateInitialViewController() as! PatientTabBarController
+                    let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
+                    let homeVC = navigationVC.viewControllers.first as! PatientHomeViewController
+                    homeVC.loadViewIfNeeded()
+                    self.window?.rootViewController = tabBarVC
+                }
+            }
         } else {
             rootVC = UIStoryboard(name: STORYBOARD_NAME_MAIN, bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_LOGIN) as! LoginViewController
             if let rootViewController = rootVC {

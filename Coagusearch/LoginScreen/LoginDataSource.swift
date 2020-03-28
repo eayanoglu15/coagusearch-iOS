@@ -11,7 +11,7 @@ import Foundation
 protocol LoginDataSourceDelegate {
     func showAlertMessage(title: String, message: String)
     func hideLoading()
-    func routeToHome()
+    func routeToHome(userType: UserType)
 }
 
 class LoginDataSource {
@@ -34,7 +34,7 @@ class LoginDataSource {
                     }
                     DispatchQueue.main.async {
                          self.delegate?.hideLoading()
-                         self.delegate?.routeToHome()
+                        self.delegate?.routeToHome(userType: user.type)
                     }
                 } else {
                     DispatchQueue.main.async {

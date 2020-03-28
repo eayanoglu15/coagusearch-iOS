@@ -192,7 +192,7 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                         return
                     }
                     print("accessToken: ", accessToken)
-                    var tempUser = User(identityNumber: "", type: "", userId: -1, name: "", surname: "", birthDay: nil, birthMonth: nil, birthYear: nil, height: nil, weight: nil, bloodType: nil, rhType: nil, gender: nil)
+                    var tempUser = User(identityNumber: "", type: UserType.Patient, userId: -1, name: "", surname: "", birthDay: nil, birthMonth: nil, birthYear: nil, height: nil, weight: nil, bloodType: nil, rhType: nil, gender: nil)
                     tempUser.accessToken = accessToken
                     tempUser.refreshToken = refreshToken
                     Manager.sharedInstance.currentUser = tempUser

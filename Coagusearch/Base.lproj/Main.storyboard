@@ -140,6 +140,7 @@
                         <outlet property="userLabelTopConstraint" destination="O4K-Mq-z6S" id="Bca-P7-aEw"/>
                         <outlet property="userTextField" destination="x89-P0-anw" id="7Pq-e2-EbG"/>
                         <segue destination="Y2j-8E-Evg" kind="presentation" identifier="showPatientHomeVC" modalPresentationStyle="fullScreen" id="ngj-cb-RDZ"/>
+                        <segue destination="do1-bW-SHx" kind="presentation" identifier="showDoctorHomeVC" modalPresentationStyle="fullScreen" id="ejW-po-PrZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -200,6 +201,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rxq-jK-Yj7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1846" y="138"/>
+        </scene>
+        <!--Doctor-->
+        <scene sceneID="rcM-CA-aDz">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DoctorVC" storyboardName="Doctor" id="do1-bW-SHx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lJ-1g-X17" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="204"/>
         </scene>
     </scenes>
     <resources>

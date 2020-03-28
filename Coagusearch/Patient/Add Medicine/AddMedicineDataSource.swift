@@ -86,7 +86,7 @@ class AddMedicineDataSource {
                     }
                 }
             } else {
-                if let drugs = drugs {
+                if drugs != nil {
                     DispatchQueue.main.async {
                         self.delegate?.routeToProfile()
                     }

@@ -12,8 +12,16 @@ extension LoginViewController: LoginDataSourceDelegate {
     func hideLoading() {
         hideLoadingVC()
     }
-    func routeToHome() {
-        performSegue(withIdentifier: SEGUE_SHOW_PATIENT_HOME, sender: nil)
+    func routeToHome(userType: UserType) {
+        switch userType {
+        case .Patient:
+            performSegue(withIdentifier: SEGUE_SHOW_PATIENT_HOME, sender: nil)
+        case .Doctor:
+            performSegue(withIdentifier: SEGUE_SHOW_DOCTOR_HOME, sender: nil)
+        case .Medical:
+            // TODO: Change for medical
+            performSegue(withIdentifier: SEGUE_SHOW_PATIENT_HOME, sender: nil)
+        }
     }
 }
 
