@@ -12,6 +12,8 @@
 "Account Information" = "Hesap Bilgisi";
 
 // MARK: B
+"Blood Order" = "Kan Siparişi";
+"Blood Order for Patient" = "Hasta için Kan Siparişi";
 
 // MARK: C
 "Cancel" = "İptal Et";
@@ -49,14 +51,17 @@
 // MARK: L
 
 // MARK: M
+"µTem Data Analysis" = "µTem Veri Analizi";
 "Missing Information" = "Eksik Bilgi";
 "Medicine" = "İlaç";
 "My Appointments" = "Randevularım";
 "Missing Blood Type" = "Kan Grubu Eksik";
 "Missing Rh Type" = "Rh Değeri Eksik";
+"My Patients" = "Hastalarım";
 
 // MARK: N
 "Not specified" = "Belirtilmedi";
+"Notifications" = "Bildirimler";
 
 // MARK: O
 "Okey" = "Tamam";
@@ -68,6 +73,10 @@
 "Please enter your name and surname." = "Lütfen adınızı ve soyadınızı giriniz.";
 "Please enter your blood type as well." = "Lütfen kan grubunuzu da giriniz.";
 "Please enter your rh type as well." = "Lütfen rh değerinizi de giriniz";
+"Past Appointments" = "Eski Randevular";
+"Past µTem Data Analyses" = "Geçmiş µTem Veri Analizleri";
+"Past µTem Data Analysis" = "Geçmiş µTem Veri Analizi";
+
 // MARK: Q
 
 // MARK: R
@@ -82,6 +91,8 @@
 // MARK: U
 "Update Medicine" = "İlacını Güncelle";
 "Update Your Medicine" = "İlacını Güncelle";
+" Unit" = " Birim";
+" Units" = " Birim";
 
 // MARK: V
 

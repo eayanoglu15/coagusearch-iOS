@@ -1,20 +1,20 @@
 //
-//  DoctorNotificationsViewController.swift
+//  DoctorPastDataAnalysesViewController.swift
 //  Coagusearch
 //
-//  Created by Ege Melis Ayanoğlu on 26.03.2020.
+//  Created by Ege Melis Ayanoğlu on 6.04.2020.
 //  Copyright © 2020 coagusearch. All rights reserved.
 //
 
 import UIKit
 
-class DoctorNotificationsViewController: UIViewController {
+class DoctorPastDataAnalysesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stylize()
-        title = "Notifications".localized
+        title = "Past µTem Data Analyses".localized
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -34,7 +34,7 @@ class DoctorNotificationsViewController: UIViewController {
 
 }
 
-extension DoctorNotificationsViewController: UITableViewDataSource {
+extension DoctorPastDataAnalysesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
@@ -42,29 +42,16 @@ extension DoctorNotificationsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_EMERGENCY_CELL, for: indexPath) as! EmergencyTableViewCell
+        
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PAST_DATA_CELL, for: indexPath) as! PastDataTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-            
+        
             return cell
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COMPLETED_ANALYSIS_CELL, for: indexPath) as! CompletedAnalysisTableViewCell
-            cell.backgroundColor = UIColor.clear
-            cell.backgroundView?.backgroundColor = UIColor.clear
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_MEDICAL_NOTIFICATION_CELL, for: indexPath) as! MedicalNotificationTableViewCell
-            cell.backgroundColor = UIColor.clear
-            cell.backgroundView?.backgroundColor = UIColor.clear
-            
-            return cell
-        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 10
     }
     
     // There is just one row in every section
@@ -79,6 +66,7 @@ extension DoctorNotificationsViewController: UITableViewDataSource {
         return HEIGHT_FOR_HEADER
     }
     
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         //(view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemPink
         (view as! UITableViewHeaderFooterView).backgroundView = UIView()
@@ -86,7 +74,7 @@ extension DoctorNotificationsViewController: UITableViewDataSource {
     }
 }
 
-extension DoctorNotificationsViewController: UITableViewDelegate {
+extension DoctorPastDataAnalysesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }

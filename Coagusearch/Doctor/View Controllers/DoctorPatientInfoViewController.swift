@@ -1,20 +1,21 @@
 //
-//  DoctorNotificationsViewController.swift
+//  DoctorPatientInfoViewController.swift
 //  Coagusearch
 //
-//  Created by Ege Melis Ayanoğlu on 26.03.2020.
+//  Created by Ege Melis Ayanoğlu on 29.03.2020.
 //  Copyright © 2020 coagusearch. All rights reserved.
 //
 
 import UIKit
 
-class DoctorNotificationsViewController: UIViewController {
+class DoctorPatientInfoViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stylize()
-        title = "Notifications".localized
+        // TODO: get patient name from data source
+        title = "#Patient Name".localized
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -34,7 +35,7 @@ class DoctorNotificationsViewController: UIViewController {
 
 }
 
-extension DoctorNotificationsViewController: UITableViewDataSource {
+extension DoctorPatientInfoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
@@ -43,19 +44,37 @@ extension DoctorNotificationsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_EMERGENCY_CELL, for: indexPath) as! EmergencyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_INFO_CELL, for: indexPath) as! PatientInfoTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
             
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COMPLETED_ANALYSIS_CELL, for: indexPath) as! CompletedAnalysisTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_NEXT_APPOINTMENT_CELL, for: indexPath) as! PatientNextAppointmentTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            
+            return cell
+        } else if indexPath.section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_CALL_PATIENT_FOR_NEW_APPOINTMENT_CELL, for: indexPath) as! CallForAppointmentTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            
+            return cell
+        } else if indexPath.section == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_LAST_ANALYSIS_CELL, for: indexPath) as! LastAnalysisTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            
+            return cell
+        } else if indexPath.section == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PAST_APPOINTMENTS_CELL, for: indexPath) as! PastAppointmentsTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_MEDICAL_NOTIFICATION_CELL, for: indexPath) as! MedicalNotificationTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_BLOOD_ORDER_FOR_PATIENT_CELL, for: indexPath) as! BloodOrderForPatientTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
             
@@ -64,7 +83,7 @@ extension DoctorNotificationsViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 6
     }
     
     // There is just one row in every section
@@ -86,8 +105,9 @@ extension DoctorNotificationsViewController: UITableViewDataSource {
     }
 }
 
-extension DoctorNotificationsViewController: UITableViewDelegate {
+extension DoctorPatientInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
 }
+

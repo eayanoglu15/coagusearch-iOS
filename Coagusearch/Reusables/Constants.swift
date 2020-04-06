@@ -42,6 +42,21 @@ let CELL_IDENTIFIER_NEXT_APPOINTMENT_CELL = "NextAppointmentTableViewCell"
 let CELL_IDENTIFIER_PAST_APPOINTMENT_CELL = "PastAppointmentTableViewCell"
 let CELL_IDENTIFIER_MISSING_INFO_CELL = "MissingInfoTableViewCell"
 let CELL_IDENTIFIER_TODAYS_APPOINTMENT_CELL = "TodaysAppointmentTableViewCell"
+let CELL_IDENTIFIER_EMERGENCY_CELL = "EmergencyTableViewCell"
+let CELL_IDENTIFIER_COMPLETED_ANALYSIS_CELL = "CompletedAnalysisTableViewCell"
+let CELL_IDENTIFIER_MEDICAL_NOTIFICATION_CELL = "MedicalNotificationTableViewCell"
+let CELL_IDENTIFIER_PATIENT_CELL = "PatientTableViewCell"
+let CELL_IDENTIFIER_BLOOD_ORDER_CELL = "BloodOrderTableViewCell"
+let CELL_IDENTIFIER_PATIENT_INFO_CELL = "PatientInfoTableViewCell"
+let CELL_IDENTIFIER_PATIENT_NEXT_APPOINTMENT_CELL = "PatientNextAppointmentTableViewCell"
+let CELL_IDENTIFIER_CALL_PATIENT_FOR_NEW_APPOINTMENT_CELL = "CallForAppointmentTableViewCell"
+let CELL_IDENTIFIER_LAST_ANALYSIS_CELL = "LastAnalysisTableViewCell"
+let CELL_IDENTIFIER_PAST_APPOINTMENTS_CELL = "PastAppointmentsTableViewCell"
+let CELL_IDENTIFIER_BLOOD_ORDER_FOR_PATIENT_CELL = "BloodOrderForPatientTableViewCell"
+let CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL = "PatientSpecificPastBloodOrderTableViewCell"
+let CELL_IDENTIFIER_PATIENT_PAST_APPOINTMENT_CELL = "PatientPastAppointmentTableViewCell"
+let CELL_IDENTIFIER_DATA_CELL = "DataTableViewCell"
+let CELL_IDENTIFIER_PAST_DATA_CELL = "PastDataTableViewCell"
 
 // MARK: Collection View Cell Identifiers
 let CELL_IDENTIFIER_EMERGENCY_PATIENT_CELL = "EmergencyPatientCollectionViewCell"
@@ -53,6 +68,7 @@ let CELL_HEIGHT_EXPANDED = CGFloat(200)
 
 //
 let HEIGHT_FOR_HEADER = CGFloat(16)
+let HEIGHT_FOR_DATA_CELL = CGFloat(102)
 
 //
 let ERROR_MESSAGE = "Error"

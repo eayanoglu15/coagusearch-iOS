@@ -28,7 +28,7 @@ class DoctorHomeViewController: UIViewController {
         
         appointmentsTableView.dataSource = self
         appointmentsTableView.delegate = self
-        
+        appointmentsTableView.tableFooterView = UIView()
         dataSource.delegate = self
         // Do any additional setup after loading the view.
     }
