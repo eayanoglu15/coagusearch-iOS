@@ -11,6 +11,72 @@ import Alamofire
 
 
 class CoagusearchService: NetworkBase, CoaguSearchService {
+    func getDoctorPatientInfo(patientId: Int, completion: @escaping DoctorPatientDetailInfoReturnFunction) {
+         let route = Router.getPatientDetail(patientId: patientId)
+               self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+                   guard let response = response as? NSDictionary else {
+                       if let error = error {
+                           completion(nil, error)
+                       } else {
+                           completion(nil, UNEXPECTED_ERROR)
+                       }
+                       return
+                   }
+                   do {
+                       let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                       let info = try JSONDecoder().decode(DoctorPatientDetailInfo.self, from: jsonData)
+                       completion(info, nil)
+                   } catch {
+                       let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize.", comment: "")])
+                       completion(nil, error)
+                   }
+               }
+    }
+    
+    func getDoctorPatients(completion: @escaping DoctorPatientsReturnFunction) {
+        let route = Router.getDoctorPatients
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Array) { (response, error) in
+            guard let response = response as? NSArray else {
+                if let error = error {
+                    completion([], error)
+                } else {
+                    completion([], UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode([User].self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize", comment: "")])
+                completion([], error)
+            }
+        }
+    }
+    
+    func getDoctorMainScreenInfo(completion: @escaping DoctorMainInfoReturnFunction) {
+        let route = Router.getDoctorMainScreenInfo
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode(DoctorMainInfo.self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
+    
     
     func makeSessionRequest(endpoint: Endpoint, endpointParameter: String?, method: HTTPMethod, parameters: [String: Any]?, encoding: ParameterEncoding, headers: HTTPHeaders, responseType: ResponseType, completion: @escaping ResponseReturnFunction) {
         var endpointStr = endpoint.rawValue
@@ -18,7 +84,7 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
             endpointStr += "/\(endpointParameter)"
         }
         let url = baseURL + endpointStr
-        
+         
         guard let user = Manager.sharedInstance.currentUser,
             let accessToken = user.accessToken,
             let refreshToken = user.refreshToken else {

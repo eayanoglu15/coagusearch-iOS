@@ -9,10 +9,13 @@
 import UIKit
 
 class PatientNextAppointmentTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

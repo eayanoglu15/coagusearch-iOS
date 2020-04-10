@@ -67,6 +67,33 @@ class DataTableViewCell: UITableViewCell {
             optimalLeadingConstraint.constant = CGFloat(viewRatio * (optMin - min))
             optimalWidthConstraint.constant = CGFloat(viewRatio * (optMax - optMin))
             
+            if val >= optMin && val <= optMax {
+                // Normal values
+                alertImageView.image = UIImage(named: IMAGE_NAME_NORMAL)
+                titleLabel.textColor = .azulThree
+                indicatorView.backgroundColor = .dodgerBlue
+            } else {
+                // Warning
+                indicatorView.backgroundColor = .orangeyRed
+                if val < optMin {
+                    alertImageView.image = UIImage(named: IMAGE_NAME_LOW)
+                    titleLabel.textColor = .salmon
+                    if val < min {
+                        // TODO: Exception, lower than boundary
+                    } else {
+                        
+                    }
+                } else if val > optMax {
+                    alertImageView.image = UIImage(named: IMAGE_NAME_HIGH)
+                    titleLabel.textColor = .salmon
+                    if val > max {
+                        // TODO: Exception, higher than boundary
+                    } else {
+                        
+                    }
+                }
+            }
+            
             optimalView.layoutIfNeeded()
             indicatorView.layoutIfNeeded()
         }
@@ -86,6 +113,7 @@ class DataTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

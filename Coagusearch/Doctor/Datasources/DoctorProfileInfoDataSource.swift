@@ -1,23 +1,23 @@
 //
-//  PatientInfoDataSource.swift
+//  DoctorProfileInfoDataSource.swift
 //  Coagusearch
 //
-//  Created by Ege Melis Ayanoğlu on 21.03.2020.
+//  Created by Ege Melis Ayanoğlu on 9.04.2020.
 //  Copyright © 2020 coagusearch. All rights reserved.
 //
 
 import Foundation
 
-protocol PatientInfoDataSourceDelegate {
+protocol DoctorProfileInfoDataSourceDelegate {
     func showAlertMessage(title: String, message: String)
     func hideLoading()
     func routeToProfile()
     func showLoginVC()
 }
 
-class PatientInfoDataSource {
+class DoctorProfileInfoDataSource {
   
-    var delegate: PatientInfoDataSourceDelegate?
+    var delegate: DoctorProfileInfoDataSourceDelegate?
     var coagusearchService: CoagusearchService?
     
     func postUserInfo(name: String, surname: String, birthDay: Int?, birthMonth: Int?, birthYear: Int?, height: Double?, weight: Double?, bloodType: String?, rhType: String?, gender: String?) {

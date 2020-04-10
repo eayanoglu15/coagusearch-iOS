@@ -28,6 +28,10 @@ typealias RegularMedicationsReturnFunction = (UserDrugs?, NSError?) -> Void
 typealias PatientAppointmentsReturnFunction = (PatientAppointments?, NSError?) -> Void
 typealias PatientMainInfoReturnFunction = (PatientMainInfo?, NSError?) -> Void
 
+typealias DoctorMainInfoReturnFunction = (DoctorMainInfo?, NSError?) -> Void
+typealias DoctorPatientsReturnFunction = ([User], NSError?) -> Void
+typealias DoctorPatientDetailInfoReturnFunction = (DoctorPatientDetailInfo?, NSError?) -> Void
+
 protocol CoaguSearchService {
     // MARK: Patient
     // MARK: AUTH
@@ -47,6 +51,11 @@ protocol CoaguSearchService {
     func getPatientUserAppointments(completion: @escaping PatientAppointmentsReturnFunction)
     func deletePatientNextAppointment(appointmentId: Int, completion: @escaping SuccessReturnFunction)
     func getPatientMainScreenInfo(completion: @escaping PatientMainInfoReturnFunction)
+    
+    // MARK: Doctor
+    func getDoctorMainScreenInfo(completion: @escaping DoctorMainInfoReturnFunction)
+    func getDoctorPatients(completion: @escaping DoctorPatientsReturnFunction)
+    func getDoctorPatientInfo(patientId: Int, completion: @escaping DoctorPatientDetailInfoReturnFunction)
 }
 
 class NetworkBase {

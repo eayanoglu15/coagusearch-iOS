@@ -100,7 +100,6 @@ class LoginViewController: UIViewController {
             let password = self.passwordTextField.text, !password.isEmpty else {
                 return
         }
-        self.showLoadingVC()
         loginDataSource.loginUser(id: id, password: password, rememberUser: rememberMeSwitch.isOn)
     }
     

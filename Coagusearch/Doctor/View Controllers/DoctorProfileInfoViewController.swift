@@ -1,14 +1,13 @@
 //
-//  PatientInfoViewController.swift
-//  Coagusearch
+//  DoctorProfileInfoViewController.swift
+//  
 //
-//  Created by Ege Melis Ayanoğlu on 16.03.2020.
-//  Copyright © 2020 coagusearch. All rights reserved.
+//  Created by Ege Melis Ayanoğlu on 9.04.2020.
 //
 
 import UIKit
 
-extension PatientInfoViewController: PatientInfoDataSourceDelegate {
+extension DoctorProfileInfoViewController: DoctorProfileInfoDataSourceDelegate {
     func routeToProfile() {
         navigationController?.popViewController(animated: true)
     }
@@ -18,9 +17,8 @@ extension PatientInfoViewController: PatientInfoDataSourceDelegate {
     }
 }
 
-class PatientInfoViewController: BaseScrollViewController {
-    
-    var dataSource = PatientInfoDataSource()
+class DoctorProfileInfoViewController: BaseScrollViewController {
+    var dataSource = DoctorProfileInfoDataSource()
     
     @IBOutlet weak var infoView: UIView!
     
@@ -201,7 +199,6 @@ class PatientInfoViewController: BaseScrollViewController {
             
         }
     }
-    
     /*
      // MARK: - Navigation
      
@@ -211,7 +208,6 @@ class PatientInfoViewController: BaseScrollViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let name = nameTextField.text, !name.isEmpty, let surname = surnameTextField.text, !surname.isEmpty else {
@@ -299,7 +295,7 @@ class PatientInfoViewController: BaseScrollViewController {
             dateformatter.dateStyle = .short
             self.birthDateTextField.text = dateformatter.string(from: datePicker.date)
         }
-        self.birthDateTextField.resignFirstResponder() 
+        self.birthDateTextField.resignFirstResponder()
     }
     
     func checkAndSetButton(button: UIButton, ind: Int) {
@@ -392,7 +388,7 @@ class PatientInfoViewController: BaseScrollViewController {
     
 }
 
-extension PatientInfoViewController: UITextFieldDelegate {
+extension DoctorProfileInfoViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         floatTitle(textField: textField)

@@ -8,10 +8,19 @@
 
 import UIKit
 
+extension DoctorPatientsViewController: DoctorPatientsDataSourceDelegate {
+    func reloadTable() {
+        tableView.reloadData()
+    }
+}
+
 class DoctorPatientsViewController: UIViewController {
- 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
+    var dataSource = DoctorPatientsDataSource()
+    
+    var selectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +31,30 @@ class DoctorPatientsViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         searchBar.delegate = self
+        
+        dataSource.coagusearchService = CoagusearchServiceFactory.createService()
+        dataSource.delegate = self
     }
     
-
-    /*
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        dataSource.getPatients()
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == SEGUE_SHOW_DOCTOR_PATIENT_INFO {
+            if let selectedIndex = selectedIndex {
+                let destinationVc = segue.destination as! DoctorPatientInfoViewController
+                destinationVc.dataSource.patientId = selectedIndex
+            }
+        }
     }
-    */
-
 }
 
 extension DoctorPatientsViewController: UITableViewDataSource {
@@ -49,12 +69,17 @@ extension DoctorPatientsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_CELL, for: indexPath) as! PatientTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-            
-            return cell
+        
+        if let patient = dataSource.getPatient(index: indexPath.section) {
+            if let name = patient.name, let surname = patient.surname {
+                cell.patientNameLabel.text = "\(name) \(surname)"
+            }
+        }
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 15
+        return dataSource.getPatientCount()
     }
     
     // There is just one row in every section
@@ -78,13 +103,17 @@ extension DoctorPatientsViewController: UITableViewDataSource {
 
 extension DoctorPatientsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let patientId = dataSource.getPatientId(index: indexPath.section) {
+            selectedIndex = patientId
+            performSegue(withIdentifier: SEGUE_SHOW_DOCTOR_PATIENT_INFO, sender: nil)
+        }
     }
 }
 
 
 extension DoctorPatientsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        dataSource.getSearchResults(searchText: searchText)
+        tableView.reloadData()
     }
 }

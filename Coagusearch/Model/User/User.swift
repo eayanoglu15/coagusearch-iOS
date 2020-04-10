@@ -12,8 +12,8 @@ struct User: Codable {
     var identityNumber: String
     var type: UserType
     var userId: Int
-    var name: String
-    var surname: String
+    var name: String?
+    var surname: String?
     var birthDay: Int?
     var birthMonth: Int?
     var birthYear: Int?
@@ -34,7 +34,7 @@ struct User: Codable {
         }
     }
     
-    init(identityNumber: String, type: UserType, userId: Int, name: String, surname: String, birthDay: Int?, birthMonth: Int?, birthYear: Int?,
+    init(identityNumber: String, type: UserType, userId: Int, name: String?, surname: String?, birthDay: Int?, birthMonth: Int?, birthYear: Int?,
          height: Double?, weight: Double?, bloodType: BloodType?, rhType: RhType?, gender: Gender?) {
         self.identityNumber = identityNumber
         self.type = type
@@ -75,7 +75,7 @@ enum BloodType: String, Codable {
 
 enum RhType: String, Codable {
     case Positive = "Positive"
-    case Negative = "Negatif"
+    case Negative = "Negative"
 }
 
 enum UserType: String, Codable {

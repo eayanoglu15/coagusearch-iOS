@@ -68,9 +68,9 @@ class DoctorActionBloodOrderViewController: UIViewController {
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         let value = stepper.value
         if value <= 1 {
-            unitLabel.text = "\(stepper.value)" + " Unit".localized
+            unitLabel.text = "\(Int(stepper.value))" + " Unit".localized
         } else {
-            unitLabel.text = "\(stepper.value)" + " Units".localized
+            unitLabel.text = "\(Int(stepper.value))" + " Units".localized
         }
     }
     

@@ -36,6 +36,16 @@
 		8538699E2423EC44005C5BFC /* DayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8538699D2423EC44005C5BFC /* DayInfo.swift */; };
 		853869A02423EC88005C5BFC /* TimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8538699F2423EC88005C5BFC /* TimeSlot.swift */; };
 		85414BBE240A86D600E9DF7F /* MedicineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85414BBD240A86D600E9DF7F /* MedicineTableViewCell.swift */; };
+		8541F811243F4BD1009D5CC4 /* DoctorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F810243F4BD1009D5CC4 /* DoctorProfileViewController.swift */; };
+		8541F813243F4BE6009D5CC4 /* DoctorProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F812243F4BE6009D5CC4 /* DoctorProfileInfoViewController.swift */; };
+		8541F816243F4DF0009D5CC4 /* DoctorProfileInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F815243F4DF0009D5CC4 /* DoctorProfileInfoDataSource.swift */; };
+		8541F818243F613D009D5CC4 /* DoctorMainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F817243F613D009D5CC4 /* DoctorMainInfo.swift */; };
+		8541F81B243F61F8009D5CC4 /* EmergencyPatientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F81A243F61F8009D5CC4 /* EmergencyPatientInfo.swift */; };
+		8541F81D243F626B009D5CC4 /* TimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F81C243F626B009D5CC4 /* TimeInfo.swift */; };
+		8541F81F243F7314009D5CC4 /* DoctorTodayAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F81E243F7314009D5CC4 /* DoctorTodayAppointment.swift */; };
+		8541F823243F7DFB009D5CC4 /* DoctorPatientsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F822243F7DFB009D5CC4 /* DoctorPatientsDataSource.swift */; };
+		8541F826243F8EC7009D5CC4 /* DoctorPatientInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F825243F8EC7009D5CC4 /* DoctorPatientInfoDataSource.swift */; };
+		8541F829243F9908009D5CC4 /* DoctorPatientDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541F828243F9908009D5CC4 /* DoctorPatientDetailInfo.swift */; };
 		854639F62429636000FF2BC2 /* PatientMainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854639F52429636000FF2BC2 /* PatientMainInfo.swift */; };
 		854639F82429640800FF2BC2 /* PatientHomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854639F72429640800FF2BC2 /* PatientHomeDataSource.swift */; };
 		856A712B240974F700AD728D /* PastAppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856A712A240974F700AD728D /* PastAppointmentTableViewCell.swift */; };
@@ -147,6 +157,16 @@
 		8538699D2423EC44005C5BFC /* DayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayInfo.swift; sourceTree = "<group>"; };
 		8538699F2423EC88005C5BFC /* TimeSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlot.swift; sourceTree = "<group>"; };
 		85414BBD240A86D600E9DF7F /* MedicineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineTableViewCell.swift; sourceTree = "<group>"; };
+		8541F810243F4BD1009D5CC4 /* DoctorProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfileViewController.swift; sourceTree = "<group>"; };
+		8541F812243F4BE6009D5CC4 /* DoctorProfileInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoctorProfileInfoViewController.swift; path = "/Users/melis/Desktop/coagusearch-iOS/Coagusearch/Doctor/View Controllers/DoctorProfileInfoViewController.swift"; sourceTree = "<absolute>"; };
+		8541F815243F4DF0009D5CC4 /* DoctorProfileInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfileInfoDataSource.swift; sourceTree = "<group>"; };
+		8541F817243F613D009D5CC4 /* DoctorMainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorMainInfo.swift; sourceTree = "<group>"; };
+		8541F81A243F61F8009D5CC4 /* EmergencyPatientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPatientInfo.swift; sourceTree = "<group>"; };
+		8541F81C243F626B009D5CC4 /* TimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInfo.swift; sourceTree = "<group>"; };
+		8541F81E243F7314009D5CC4 /* DoctorTodayAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorTodayAppointment.swift; sourceTree = "<group>"; };
+		8541F822243F7DFB009D5CC4 /* DoctorPatientsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorPatientsDataSource.swift; sourceTree = "<group>"; };
+		8541F825243F8EC7009D5CC4 /* DoctorPatientInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorPatientInfoDataSource.swift; sourceTree = "<group>"; };
+		8541F828243F9908009D5CC4 /* DoctorPatientDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorPatientDetailInfo.swift; sourceTree = "<group>"; };
 		854639F52429636000FF2BC2 /* PatientMainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientMainInfo.swift; sourceTree = "<group>"; };
 		854639F72429640800FF2BC2 /* PatientHomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHomeDataSource.swift; sourceTree = "<group>"; };
 		856A712A240974F700AD728D /* PastAppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastAppointmentTableViewCell.swift; sourceTree = "<group>"; };
@@ -368,6 +388,60 @@
 			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		8541F814243F4DDA009D5CC4 /* Datasources */ = {
+			isa = PBXGroup;
+			children = (
+				8541F815243F4DF0009D5CC4 /* DoctorProfileInfoDataSource.swift */,
+			);
+			path = Datasources;
+			sourceTree = "<group>";
+		};
+		8541F819243F61E0009D5CC4 /* Doctor Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8541F817243F613D009D5CC4 /* DoctorMainInfo.swift */,
+				8541F81A243F61F8009D5CC4 /* EmergencyPatientInfo.swift */,
+				8541F81C243F626B009D5CC4 /* TimeInfo.swift */,
+				8541F81E243F7314009D5CC4 /* DoctorTodayAppointment.swift */,
+			);
+			path = "Doctor Main Screen";
+			sourceTree = "<group>";
+		};
+		8541F820243F740B009D5CC4 /* Doctor Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				858E1CC7242D3BC00000D28E /* DoctorHomeViewController.swift */,
+				85B7B4B8242E81EB00562646 /* DoctorHomeDataSource.swift */,
+			);
+			path = "Doctor Main Screen";
+			sourceTree = "<group>";
+		};
+		8541F821243F7DCE009D5CC4 /* Doctor Patients Screen */ = {
+			isa = PBXGroup;
+			children = (
+				858E1CCB242D3BF20000D28E /* DoctorPatientsViewController.swift */,
+				8541F822243F7DFB009D5CC4 /* DoctorPatientsDataSource.swift */,
+			);
+			path = "Doctor Patients Screen";
+			sourceTree = "<group>";
+		};
+		8541F824243F8E97009D5CC4 /* Doctor Patient Detail Screen */ = {
+			isa = PBXGroup;
+			children = (
+				856FC204243113E900B071EC /* DoctorPatientInfoViewController.swift */,
+				8541F825243F8EC7009D5CC4 /* DoctorPatientInfoDataSource.swift */,
+			);
+			path = "Doctor Patient Detail Screen";
+			sourceTree = "<group>";
+		};
+		8541F827243F98E7009D5CC4 /* Doctor Paint Detail Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8541F828243F9908009D5CC4 /* DoctorPatientDetailInfo.swift */,
+			);
+			path = "Doctor Paint Detail Screen";
+			sourceTree = "<group>";
+		};
 		858621A32416D3A10000FDEB /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +456,8 @@
 		858621AB2416DB0E0000FDEB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8541F827243F98E7009D5CC4 /* Doctor Paint Detail Screen */,
+				8541F819243F61E0009D5CC4 /* Doctor Main Screen */,
 				854639F52429636000FF2BC2 /* PatientMainInfo.swift */,
 				8593A71024294DF800C03F18 /* Patient Appointments */,
 				8538699A2423E963005C5BFC /* Appointment Calendar */,
@@ -395,7 +471,10 @@
 		858E1CC1242D38560000D28E /* Doctor */ = {
 			isa = PBXGroup;
 			children = (
-				85B7B4B7242E81D900562646 /* Data Sources */,
+				8541F824243F8E97009D5CC4 /* Doctor Patient Detail Screen */,
+				8541F821243F7DCE009D5CC4 /* Doctor Patients Screen */,
+				8541F820243F740B009D5CC4 /* Doctor Main Screen */,
+				8541F814243F4DDA009D5CC4 /* Datasources */,
 				858E1CCF242D3CD60000D28E /* Custom Cells */,
 				858E1CC6242D3B3B0000D28E /* View Controllers */,
 				858E1CC2242D38670000D28E /* Doctor.storyboard */,
@@ -407,17 +486,16 @@
 		858E1CC6242D3B3B0000D28E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				858E1CC7242D3BC00000D28E /* DoctorHomeViewController.swift */,
+				8541F812243F4BE6009D5CC4 /* DoctorProfileInfoViewController.swift */,
 				858E1CC9242D3BD90000D28E /* DoctorNotificationsViewController.swift */,
-				858E1CCB242D3BF20000D28E /* DoctorPatientsViewController.swift */,
 				858E1CCD242D3C030000D28E /* DoctorBloodOrderViewController.swift */,
-				856FC204243113E900B071EC /* DoctorPatientInfoViewController.swift */,
 				856FC21224311F9600B071EC /* DoctorBloodOrderForPatientViewController.swift */,
 				8584A769243252DB0084C7F2 /* DoctorPatientPastAppointmentsViewController.swift */,
 				85A50A6F24327F1A00A9784F /* DoctorLastDataAnalysisViewController.swift */,
 				857C88B8243B826900DD7158 /* DoctorPastDataAnalysesViewController.swift */,
 				857C88BE243B875800DD7158 /* DoctorPastDataAnalysisViewController.swift */,
 				857C88C0243B8B1900DD7158 /* DoctorActionBloodOrderViewController.swift */,
+				8541F810243F4BD1009D5CC4 /* DoctorProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -531,14 +609,6 @@
 				857C88BA243B844A00DD7158 /* PastDataTableViewCell.swift */,
 			);
 			path = TableViewCells;
-			sourceTree = "<group>";
-		};
-		85B7B4B7242E81D900562646 /* Data Sources */ = {
-			isa = PBXGroup;
-			children = (
-				85B7B4B8242E81EB00562646 /* DoctorHomeDataSource.swift */,
-			);
-			path = "Data Sources";
 			sourceTree = "<group>";
 		};
 		85CF6AD223FEE50200F10DBF /* LoginScreen */ = {
@@ -738,6 +808,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8576CA67240BE34E00094248 /* TextFieldViewController.swift in Sources */,
+				8541F813243F4BE6009D5CC4 /* DoctorProfileInfoViewController.swift in Sources */,
+				8541F81F243F7314009D5CC4 /* DoctorTodayAppointment.swift in Sources */,
 				85CC294224116CC9005CAE75 /* SearchMedicineTableViewCell.swift in Sources */,
 				856FC20F24311C3A00B071EC /* PastAppointmentsTableViewCell.swift in Sources */,
 				8538699C2423EBE9005C5BFC /* AppointmentCalendar.swift in Sources */,
@@ -747,10 +819,12 @@
 				85E5618C240B2540007D95AC /* SelectionTableViewCell.swift in Sources */,
 				85FF23F22417B1BB00E63097 /* User.swift in Sources */,
 				857C88BB243B844A00DD7158 /* PastDataTableViewCell.swift in Sources */,
+				8541F818243F613D009D5CC4 /* DoctorMainInfo.swift in Sources */,
 				85225DAE2406F38C009583EC /* MissingInfoTableViewCell.swift in Sources */,
 				856A712B240974F700AD728D /* PastAppointmentTableViewCell.swift in Sources */,
 				854639F62429636000FF2BC2 /* PatientMainInfo.swift in Sources */,
 				85180B04241FA09A00C8E8F2 /* Enums.swift in Sources */,
+				8541F816243F4DF0009D5CC4 /* DoctorProfileInfoDataSource.swift in Sources */,
 				856FC2152431210300B071EC /* PatientSpecificPastBloodOrderTableViewCell.swift in Sources */,
 				858E1CCE242D3C030000D28E /* DoctorBloodOrderViewController.swift in Sources */,
 				8593A71424294E4400C03F18 /* PatientAppointment.swift in Sources */,
@@ -761,6 +835,7 @@
 				8507D26F2426830E0040EF79 /* UserDrug.swift in Sources */,
 				85DA2D9F2412459000E2BE4F /* AddMedicineDataSource.swift in Sources */,
 				8538698624238775005C5BFC /* LoginDataSource.swift in Sources */,
+				8541F811243F4BD1009D5CC4 /* DoctorProfileViewController.swift in Sources */,
 				85B933AD240EA5D5001E1B14 /* AddMedicineViewController.swift in Sources */,
 				8521702524102FA500739FAB /* BasicTableViewCell.swift in Sources */,
 				856FC205243113E900B071EC /* DoctorPatientInfoViewController.swift in Sources */,
@@ -770,6 +845,7 @@
 				85B7B4B4242E59DF00562646 /* TodaysAppointmentTableViewCell.swift in Sources */,
 				85B36BF7241A597400280232 /* Frequency.swift in Sources */,
 				858E1CC8242D3BC00000D28E /* DoctorHomeViewController.swift in Sources */,
+				8541F826243F8EC7009D5CC4 /* DoctorPatientInfoDataSource.swift in Sources */,
 				85B7B4B9242E81EB00562646 /* DoctorHomeDataSource.swift in Sources */,
 				8593A71224294E0A00C03F18 /* PatientAppointments.swift in Sources */,
 				85A3B60123FEC339005DF4F4 /* AppDelegate.swift in Sources */,
@@ -780,10 +856,13 @@
 				856FC2032431057A00B071EC /* BloodOrderTableViewCell.swift in Sources */,
 				858817BA242FD70700F2CD4C /* MedicalNotificationTableViewCell.swift in Sources */,
 				85B933AB240E8B05001E1B14 /* DateTableViewCell.swift in Sources */,
+				8541F829243F9908009D5CC4 /* DoctorPatientDetailInfo.swift in Sources */,
 				85A50A7024327F1A00A9784F /* DoctorLastDataAnalysisViewController.swift in Sources */,
 				858621A52416D3EF0000FDEB /* NetworkBase.swift in Sources */,
 				85180B0C241FC13C00C8E8F2 /* PatientInfoViewController.swift in Sources */,
+				8541F81D243F626B009D5CC4 /* TimeInfo.swift in Sources */,
 				856FC20924311BD900B071EC /* PatientNextAppointmentTableViewCell.swift in Sources */,
+				8541F81B243F61F8009D5CC4 /* EmergencyPatientInfo.swift in Sources */,
 				8593A71B2429522B00C03F18 /* PatientAppointmentsDataSource.swift in Sources */,
 				858621AF2416DE1D0000FDEB /* Router.swift in Sources */,
 				853869A02423EC88005C5BFC /* TimeSlot.swift in Sources */,
@@ -817,6 +896,7 @@
 				858817B6242FD67E00F2CD4C /* EmergencyTableViewCell.swift in Sources */,
 				85C8ECA4241440980036EB05 /* UITextField+Additions.swift in Sources */,
 				85B36BF2241A58CA00280232 /* Drugs.swift in Sources */,
+				8541F823243F7DFB009D5CC4 /* DoctorPatientsDataSource.swift in Sources */,
 				8507D27524268EA90040EF79 /* LabelTableViewCell.swift in Sources */,
 				85DA2DA3241285AF00E2BE4F /* BasicWithButtonTableViewCell.swift in Sources */,
 				85018FBD24292314001C6373 /* PatientMedicineUpdateDataSource.swift in Sources */,

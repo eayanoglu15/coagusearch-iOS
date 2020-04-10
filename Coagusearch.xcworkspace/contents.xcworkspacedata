@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/melis/Desktop/coagusearch-iOS/Coagusearch/Doctor/View Controllers/DoctorProfileInfoViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:Coagusearch.xcodeproj">
    </FileRef>
    <FileRef

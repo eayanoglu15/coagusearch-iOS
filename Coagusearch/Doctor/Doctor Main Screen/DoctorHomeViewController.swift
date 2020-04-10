@@ -9,7 +9,11 @@
 import UIKit
 
 extension DoctorHomeViewController: DoctorHomeDataSourceDelegate {
-    
+    func reloadTables() {
+        appointmentsTableView.reloadData()
+        emergencyCollectionView.reloadData()
+        emergencyPatientCountLabel.text = "\(dataSource.getEmergencyPatientCount())"
+    }
 }
 
 class DoctorHomeViewController: UIViewController {
@@ -29,10 +33,15 @@ class DoctorHomeViewController: UIViewController {
         appointmentsTableView.dataSource = self
         appointmentsTableView.delegate = self
         appointmentsTableView.tableFooterView = UIView()
-        dataSource.delegate = self
         // Do any additional setup after loading the view.
+        dataSource.coagusearchService = CoagusearchServiceFactory.createService()
+        dataSource.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        dataSource.getMainScreenInfo()
+    }
 
     /*
     // MARK: - Navigation
@@ -61,8 +70,20 @@ extension DoctorHomeViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER_EMERGENCY_PATIENT_CELL, for: indexPath) as! EmergencyPatientCollectionViewCell
         let patient = dataSource.getEmergencyPatient(index: indexPath.row)
-        cell.patientNameLabel.text = patient.patientName
-        cell.timeLabel.text = patient.time
+        if let patient = patient {
+            cell.patientNameLabel.text = "\(patient.userName) \(patient.userSurname)"
+            let time = patient.arrivalHour
+            var minStr = "\(time.minute)"
+            if minStr == "0" {
+                minStr = "00"
+            }
+            cell.timeLabel.text = "\(time.hour):\(minStr)"
+        }
+        // TODO: user data is ready
+        // if patient.dataReady
+        
+        // TODO: user at ambulance
+        // if patient.userAtAmbulance
         return cell
     }
 }
@@ -113,11 +134,16 @@ extension DoctorHomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_TODAYS_APPOINTMENT_CELL, for: indexPath) as! TodaysAppointmentTableViewCell
         cell.backgroundColor = UIColor.clear
         cell.backgroundView?.backgroundColor = UIColor.clear
-        
         let patient = dataSource.getPatientAppointment(index: indexPath.section)
-        cell.patientNameLabel.text = patient.patientName
-        cell.timeLabel.text = patient.time
-        
+        if let patient = patient {
+            cell.patientNameLabel.text = "\(patient.userName) \(patient.userSurname)"
+            let time = patient.appointmentHour
+            var minStr = "\(time.minute)"
+            if minStr == "0" {
+                minStr = "00"
+            }
+            cell.timeLabel.text = "\(time.hour):\(minStr)"
+        }
         return cell
     }
     

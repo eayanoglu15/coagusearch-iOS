@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+// MARK: Image Names
+let IMAGE_NAME_NORMAL = "normal"
+let IMAGE_NAME_LOW = "low"
+let IMAGE_NAME_HIGH = "high"
+
 // MARK: Animation File
 let LOADING_VIEW_JSON_FILE_NAME = "blood-wave-tube"//"loader"
 
@@ -29,6 +34,7 @@ let STORYBOARD_ID_DOCTOR_TAB_BAR = "DoctorVC"
 let SEGUE_SHOW_PATIENT_HOME = "showPatientHomeVC"
 let SEGUE_SHOW_PATIENT_MEDICINE_UPDATE = "showPatientMedicineUpdateVC"
 let SEGUE_SHOW_PATIENT_INFO = "showPatientInfoVC"
+let SEGUE_SHOW_DOCTOR_PATIENT_INFO = "showDoctorPatientInfoVC"
 
 let SEGUE_SHOW_DOCTOR_HOME = "showDoctorHomeVC"
 
@@ -68,7 +74,7 @@ let CELL_HEIGHT_EXPANDED = CGFloat(200)
 
 //
 let HEIGHT_FOR_HEADER = CGFloat(16)
-let HEIGHT_FOR_DATA_CELL = CGFloat(102)
+let HEIGHT_FOR_DATA_CELL = CGFloat(126)
 
 //
 let ERROR_MESSAGE = "Error"

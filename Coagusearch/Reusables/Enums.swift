@@ -28,6 +28,9 @@ enum Parameter: String {
     case gender = "gender"
     case medicineId = "medicineId"
     case appointmentId = "appointmentId"
+    case patientId = "patientId"
+    case productType = "productType"
+    case unit = "unit"
 }
 
 enum Endpoint: String {
@@ -41,6 +44,9 @@ enum Endpoint: String {
     case RefreshToken = "/auth/refresh"
     case Login = "/auth/sign-in"
     
+    // MARK: Blood Order Controller
+    case OrderBlood = "/blood/order"
+    
     // MARK: Drug Controller
     case GetAllMedicine = "/drug/all"
     case DeleteMedicine = "/drug/deleteRegularMedication"
@@ -51,6 +57,9 @@ enum Endpoint: String {
     case GetPatientMainScreenInfo = "/users/getPatientMainScreen"
     case GetUser = "/users/me"
     case SaveUserInfo = "/users/saveBodyInfo"
+    case GetDoctorMainScreen = "/users/getDoctorMainScreen"
+    case GetDoctorPatients = "/users/getMyPatients"
+    case GetPatientDetail = "/users/getPatientDetail"
 }
 
 enum IconNames {

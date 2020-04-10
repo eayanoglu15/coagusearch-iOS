@@ -55,9 +55,13 @@ class PatientProfileViewController: UIViewController {
         super.viewWillAppear(true)
         dataSource.getUserMedicineList()
         if let user = Manager.sharedInstance.currentUser {
-            nameLabel.text = "\(user.name) \(user.surname)"
+            if let name = user.name, let surname = user.surname {
+                nameLabel.text = "\(name) \(surname)"
+            } else {
+                nameLabel.text = "Not specified".localized
+            }
             if let day = user.birthDay, let month = user.birthMonth, let year = user.birthYear {
-                birthdateLabel.text = "\(day).\(month).\(year)"
+                birthdateLabel.text = "\(day)/\(month)/\(year)"
             } else {
                 birthdateLabel.text = "Not specified".localized
             }

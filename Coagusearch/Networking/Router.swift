@@ -23,6 +23,11 @@ enum Router: URLRequestConvertible {
     case deleteUserAppointment(appointmentId: Int)
     case getPatientMainScreenInfo
     
+    case getDoctorMainScreenInfo
+    case getDoctorPatients
+    case getPatientDetail(patientId: Int)
+    case postBloodOrder(bloodType: String, rhType: String, patientId: Int, productType: String, unit: Int)
+    
     var baseURL: URL {
         return URL(string: "http://localhost:8080")!
     }
@@ -30,9 +35,9 @@ enum Router: URLRequestConvertible {
     // MARK: - HTTPMethod
     var method: HTTPMethod {
         switch self {
-        case .login, .postAppointment, .saveUserInfo, .saveMedicine, .deleteMedicine, .deleteUserAppointment:
+        case .login, .postAppointment, .saveUserInfo, .saveMedicine, .deleteMedicine, .deleteUserAppointment, .getPatientDetail, .postBloodOrder:
             return .post
-        case .getUser, .getAllMedicine, .getAvailableAppointments, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo:
+        case .getUser, .getAllMedicine, .getAvailableAppointments, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo, .getDoctorMainScreenInfo, .getDoctorPatients:
             return .get
         }
     }
@@ -64,6 +69,14 @@ enum Router: URLRequestConvertible {
             return Endpoint.DeleteUserAppointment.rawValue
         case .getPatientMainScreenInfo:
             return Endpoint.GetPatientMainScreenInfo.rawValue
+        case .getDoctorMainScreenInfo:
+            return Endpoint.GetDoctorMainScreen.rawValue
+        case .getDoctorPatients:
+            return Endpoint.GetDoctorPatients.rawValue
+        case .getPatientDetail:
+            return Endpoint.GetPatientDetail.rawValue
+        case .postBloodOrder:
+            return Endpoint.OrderBlood.rawValue
         }
     }
     
@@ -94,6 +107,14 @@ enum Router: URLRequestConvertible {
             return Endpoint.DeleteUserAppointment
         case .getPatientMainScreenInfo:
             return Endpoint.GetPatientMainScreenInfo
+        case .getDoctorMainScreenInfo:
+            return Endpoint.GetDoctorMainScreen
+        case .getDoctorPatients:
+            return Endpoint.GetDoctorPatients
+        case .getPatientDetail:
+            return Endpoint.GetPatientDetail
+        case .postBloodOrder:
+            return Endpoint.OrderBlood
         }
     }
     
@@ -102,7 +123,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .login(let id, let password):
             return [Parameter.id.rawValue: id, Parameter.password.rawValue: password]
-        case .getUser, .getAllMedicine, .getAvailableAppointments, .saveMedicine, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo:
+        case .getUser, .getAllMedicine, .getAvailableAppointments, .saveMedicine, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo, .getDoctorMainScreenInfo, .getDoctorPatients:
             return nil
         case .postAppointment(let day, let month, let year, let hour, let minute):
             return [Parameter.day.rawValue: day, Parameter.month.rawValue: month,
@@ -114,6 +135,12 @@ enum Router: URLRequestConvertible {
             return [Parameter.medicineId.rawValue: medicineId]
         case .deleteUserAppointment(let appointmentId):
             return [Parameter.appointmentId.rawValue: appointmentId]
+        case .getPatientDetail(let patientId):
+            return [Parameter.patientId.rawValue: patientId]
+        case .postBloodOrder(let bloodType, let rhType, let patientId, let productType, let unit):
+            return [Parameter.bloodType.rawValue: bloodType, Parameter.rhType.rawValue: rhType,
+            Parameter.patientId.rawValue: patientId, Parameter.productType.rawValue: productType,
+            Parameter.unit.rawValue: unit]
         }
     }
     
