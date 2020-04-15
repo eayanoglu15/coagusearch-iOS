@@ -10,6 +10,7 @@ import UIKit
 
 extension DoctorPatientInfoViewController: DoctorPatientInfoDataSourceDelegate {
     func reloadTableView(patientName: String?) {
+        checkForMedicines()
         tableView.reloadData()
         title = patientName
     }
@@ -29,6 +30,7 @@ class DoctorPatientInfoViewController: UIViewController {
         // Do any additional setup after loading the view.
         dataSource.coagusearchService = CoagusearchServiceFactory.createService()
         dataSource.delegate = self
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,21 +38,54 @@ class DoctorPatientInfoViewController: UIViewController {
         dataSource.getPatientDetail()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == SEGUE_SHOW_DOCTOR_PATIENT_PAST_APPOINTMENTS_HOME {
+            let destinationVc = segue.destination as! DoctorPatientPastAppointmentsViewController
+            if let pastAppointments = dataSource.getPastAppointments() {
+                destinationVc.dataSource.pastAppointments = pastAppointments
+            }
+        }
     }
-    */
+    
+    private func setupTableView() {
+        let headingCellNib = UINib(nibName: CELL_IDENTIFIER_HEADING_CELL, bundle: nil)
+        tableView.register(headingCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_HEADING_CELL)
+        let medicineCellNib = UINib(nibName: CELL_IDENTIFIER_MEDICINE_CELL, bundle: nil)
+        tableView.register(medicineCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_MEDICINE_CELL)
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        tableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
+    }
     
     let INFO_SECTION = 0
-    let APPOINTMENT_SECTION = 1
-    let ANALYSIS_SECTION = 2
-    let PAST_APPOINTMENTS_SECTION = 3
-    let BLOOD_ORDER_SECTION = 4
+    let MEDICINE_HEADING_SECTION = 1
+    let MED_INFO_SECTION = 2
+    var APPOINTMENT_SECTION = 3
+    var ANALYSIS_SECTION = 4
+    var PAST_APPOINTMENTS_SECTION = 5
+    var BLOOD_ORDER_SECTION = 6
+    var NUMBER_OF_SECTIONS = 7
+    
+    func checkForMedicines() {
+        let medNum = dataSource.getMedicineNumber()
+        if medNum == 0 || medNum == 1 {
+            APPOINTMENT_SECTION = 3
+            ANALYSIS_SECTION = 4
+            PAST_APPOINTMENTS_SECTION = 5
+            BLOOD_ORDER_SECTION = 6
+        } else {
+            APPOINTMENT_SECTION = 3 + medNum
+            ANALYSIS_SECTION = 4 + medNum
+            PAST_APPOINTMENTS_SECTION = 5 + medNum
+            BLOOD_ORDER_SECTION = 6 + medNum
+            NUMBER_OF_SECTIONS = 7 + medNum
+        }
+    }
 }
 
 extension DoctorPatientInfoViewController: UITableViewDataSource {
@@ -68,6 +103,27 @@ extension DoctorPatientInfoViewController: UITableViewDataSource {
             if let user = dataSource.getPatient() {
                 cell.setCell(user: user)
             }
+            return cell
+        } else if indexPath.section == MEDICINE_HEADING_SECTION {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_HEADING_CELL, for: indexPath) as! HeadingTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            cell.label.text = "Regular Medicines".localized
+            return cell
+        } else if indexPath.section > MEDICINE_HEADING_SECTION && indexPath.section < APPOINTMENT_SECTION {
+            if indexPath.section == MED_INFO_SECTION {
+                if dataSource.getMedicineNumber() == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+                    cell.backgroundColor = UIColor.clear
+                    cell.backgroundView?.backgroundColor = UIColor.clear
+                    cell.label.text = "Patient does not have any recorded regular medicine".localized
+                    return cell
+                }
+            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_MEDICINE_CELL, for: indexPath) as! MedicineTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            
             return cell
         } else if indexPath.section == APPOINTMENT_SECTION {
             if let next = dataSource.getNextAppointment() {
@@ -120,7 +176,7 @@ extension DoctorPatientInfoViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return NUMBER_OF_SECTIONS
     }
     
     // There is just one row in every section

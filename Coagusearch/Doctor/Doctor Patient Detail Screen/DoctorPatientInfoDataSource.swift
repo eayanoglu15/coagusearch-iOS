@@ -23,6 +23,9 @@ class DoctorPatientInfoDataSource {
     var patientId: Int?
     var pageInfo: DoctorPatientDetailInfo?
     
+    var hasMedicine = true
+    var numOfMed = 1
+    
     func getPatientDetail() {
         guard let id = patientId else {
                 return
@@ -79,5 +82,16 @@ class DoctorPatientInfoDataSource {
             return "\(time.day)/\(time.month)/\(time.year)"
         }
         return "No past data analysis"
+    }
+    
+    func getMedicineNumber() -> Int {
+        return numOfMed
+    }
+    
+    func getPastAppointments() -> [PatientAppointment]? {
+        if let info = pageInfo, let data = info.userAppointmentResponse, let oldData = data.oldAppointment {
+            return oldData
+        }
+        return nil
     }
 }

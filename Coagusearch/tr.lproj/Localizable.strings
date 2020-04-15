@@ -81,12 +81,16 @@
 
 // MARK: R
 "Request Appointment" = "Randevu Al";
+"Regular Medicines" = "Düzenli İlaçlar";
 
 // MARK: S
 
 // MARK: T
 "Time Slot" = "Zaman Aralığı";
 "Today" = "Bugün";
+"Patient does not have any recorded regular medicine" = "Hastanın kayıtlı düzenli ilacı bulunmamakta";
+"Treatment Status" = "Tedavi Durumu";
+"Treatment Decision" = "Tedavi Kararı";
 
 // MARK: U
 "Update Medicine" = "İlacını Güncelle";

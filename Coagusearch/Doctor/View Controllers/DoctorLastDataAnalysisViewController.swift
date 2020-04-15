@@ -10,6 +10,7 @@ import UIKit
 
 class DoctorLastDataAnalysisViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,21 +20,31 @@ class DoctorLastDataAnalysisViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.blueBlue], for: UIControl.State.normal)
+        segmentedControl.borderColor = .white
+        segmentedControl.borderWidth = 1
+        //segmentedControl.backgroundColor = .dodgerBlue
+        segmentedControl.selectedSegmentTintColor = .blueBlue
     }
     
     // val , min , max , optMin , optMax
-    let values = [(30.0, 10.0, 200.0, 60.0, 90.0), (170, 100, 200, 110, 120), (50, 40, 60, 50, 55)]
-
+    let fibtemvalues = [(30.0, 10.0, 200.0, 60.0, 90.0), (170, 100, 200, 110, 120), (50, 40, 60, 50, 55)]
+    let extemvalues = [(30.0, 10.0, 200.0, 60.0, 90.0)]
+    let intemvalues = [(30.0, 10.0, 200.0, 60.0, 90.0), (170, 100, 200, 110, 120)]
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        tableView.reloadData()
     }
-    */
-
 }
 
 extension DoctorLastDataAnalysisViewController: UITableViewDataSource {
@@ -45,24 +56,40 @@ extension DoctorLastDataAnalysisViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_DATA_CELL, for: indexPath) as! DataTableViewCell
-            cell.backgroundColor = UIColor.clear
-            cell.backgroundView?.backgroundColor = UIColor.clear
-        var val = values[0]
-        if indexPath.section == 0 {
-                val = values[0]
-        } else if indexPath.section == 1 {
-                val = values[1]
-        } else {
-            val = values[2]
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_DATA_CELL, for: indexPath) as! DataTableViewCell
+        cell.backgroundColor = UIColor.clear
+        cell.backgroundView?.backgroundColor = UIColor.clear
+        
+        var val = (Double(), Double(), Double(), Double(), Double())
+        switch (segmentedControl.selectedSegmentIndex) {
+        case 0:
+            val = fibtemvalues[indexPath.section]
+            break
+        case 1:
+            val = extemvalues[indexPath.section]
+            break
+        case 2:
+            val = intemvalues[indexPath.section]
+            break
+        default:
+            break
         }
         cell.setValues(val: val.0, min: val.1, max: val.2, optMin: val.3, optMax: val.4)
         
-            return cell
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return values.count
+        switch (segmentedControl.selectedSegmentIndex) {
+        case 0:
+            return fibtemvalues.count
+        case 1:
+            return extemvalues.count
+        case 2:
+            return intemvalues.count
+        default:
+            return 0
+        }
     }
     
     // There is just one row in every section

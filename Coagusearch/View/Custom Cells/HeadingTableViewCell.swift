@@ -1,16 +1,15 @@
 //
-//  PastDataTableViewCell.swift
+//  HeadingTableViewCell.swift
 //  Coagusearch
 //
-//  Created by Ege Melis Ayanoğlu on 6.04.2020.
+//  Created by Ege Melis Ayanoğlu on 14.04.2020.
 //  Copyright © 2020 coagusearch. All rights reserved.
 //
 
 import UIKit
 
-class PastDataTableViewCell: UITableViewCell {
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var colorView: NSLayoutConstraint!
+class HeadingTableViewCell: UITableViewCell {
+    @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +22,5 @@ class PastDataTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

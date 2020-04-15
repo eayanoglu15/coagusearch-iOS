@@ -1,27 +1,29 @@
 //
-//  DoctorPastDataAnalysesViewController.swift
+//  DoctorTreatmentStatusViewController.swift
 //  Coagusearch
 //
-//  Created by Ege Melis Ayanoğlu on 6.04.2020.
+//  Created by Ege Melis Ayanoğlu on 15.04.2020.
 //  Copyright © 2020 coagusearch. All rights reserved.
 //
 
 import UIKit
 
-class DoctorPastDataAnalysesViewController: UIViewController {
+class DoctorTreatmentStatusViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stylize()
-        title = "Past µTem Data Analyses".localized
-        tableView.delegate = self
+        title = "Treatment Status".localized
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
     
-    var dates = ["10 February 2020", "1 February 2020", "10 January 2020", "10 December 2019"]
+    let numOfOrders = 2
+    let numOfMeds = 3
+
     /*
     // MARK: - Navigation
 
@@ -34,7 +36,7 @@ class DoctorPastDataAnalysesViewController: UIViewController {
 
 }
 
-extension DoctorPastDataAnalysesViewController: UITableViewDataSource {
+extension DoctorTreatmentStatusViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
@@ -42,16 +44,21 @@ extension DoctorPastDataAnalysesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PAST_DATA_CELL, for: indexPath) as! PastDataTableViewCell
+        if indexPath.section < numOfOrders {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-        cell.dateLabel.text = dates[indexPath.section]
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_GIVEN_MEDICINE_CELL, for: indexPath) as! GivenMedicineTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            return cell
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dates.count
+        return numOfOrders + numOfMeds
     }
     
     // There is just one row in every section
@@ -66,7 +73,6 @@ extension DoctorPastDataAnalysesViewController: UITableViewDataSource {
         return HEIGHT_FOR_HEADER
     }
     
-    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         //(view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemPink
         (view as! UITableViewHeaderFooterView).backgroundView = UIView()
@@ -74,8 +80,9 @@ extension DoctorPastDataAnalysesViewController: UITableViewDataSource {
     }
 }
 
-extension DoctorPastDataAnalysesViewController: UITableViewDelegate {
+extension DoctorTreatmentStatusViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
 }
+

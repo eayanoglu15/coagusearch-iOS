@@ -8,8 +8,16 @@
 
 import UIKit
 
+extension DoctorPatientPastAppointmentsViewController:  DoctorPatientPastAppointmentsDataSourceDelegate {
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+}
+
 class DoctorPatientPastAppointmentsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    
+    var dataSource = DoctorPatientPastAppointmentsDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +27,14 @@ class DoctorPatientPastAppointmentsViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
+        dataSource.coagusearchService = CoagusearchServiceFactory.createService()
+        dataSource.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        dataSource.getPastAppointments()
+    }
 
     /*
     // MARK: - Navigation
@@ -47,11 +61,24 @@ extension DoctorPatientPastAppointmentsViewController: UITableViewDataSource {
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
             
+        if let old = dataSource.getAppointmentInfo(forIndex: indexPath.section) {
+            cell.dateLabel.text = "\(old.day).\(old.month).\(old.year) "
+            var hourStr = "\(old.hour)"
+            var minStr = "\(old.minute)"
+            if hourStr.count == 1 {
+                hourStr = "0" + hourStr
+            }
+            if minStr.count == 1 {
+                minStr = "0" + minStr
+            }
+            cell.timeLabel.text = "\(hourStr):\(minStr)"
+        }
+        
             return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 15
+        return dataSource.getTableViewCount()
     }
     
     // There is just one row in every section

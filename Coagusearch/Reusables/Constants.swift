@@ -37,6 +37,7 @@ let SEGUE_SHOW_PATIENT_INFO = "showPatientInfoVC"
 let SEGUE_SHOW_DOCTOR_PATIENT_INFO = "showDoctorPatientInfoVC"
 
 let SEGUE_SHOW_DOCTOR_HOME = "showDoctorHomeVC"
+let SEGUE_SHOW_DOCTOR_PATIENT_PAST_APPOINTMENTS_HOME = "showDoctorPatientPastAppointmentsVC"
 
 // MARK: Cell Identifiers
 let CELL_IDENTIFIER_SELECTION_CELL = "SelectionTableViewCell"
@@ -63,6 +64,12 @@ let CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL = "PatientSpecificPastBloo
 let CELL_IDENTIFIER_PATIENT_PAST_APPOINTMENT_CELL = "PatientPastAppointmentTableViewCell"
 let CELL_IDENTIFIER_DATA_CELL = "DataTableViewCell"
 let CELL_IDENTIFIER_PAST_DATA_CELL = "PastDataTableViewCell"
+let CELL_IDENTIFIER_HEADING_CELL = "HeadingTableViewCell"
+let CELL_IDENTIFIER_COLORED_LABEL_CELL = "ColoredLabelTableViewCell"
+let CELL_IDENTIFIER_ENTER_DOSAGE_CELL = "EnterDosageTableViewCell"
+let CELL_IDENTIFIER_SUGGESTION_CELL = "SuggestionTableViewCell"
+let CELL_IDENTIFIER_GIVEN_MEDICINE_CELL = "GivenMedicineTableViewCell"
+let CELL_IDENTIFIER_PRODUCT_ORDER_CELL = "ProductOrderTableViewCell"
 
 // MARK: Collection View Cell Identifiers
 let CELL_IDENTIFIER_EMERGENCY_PATIENT_CELL = "EmergencyPatientCollectionViewCell"

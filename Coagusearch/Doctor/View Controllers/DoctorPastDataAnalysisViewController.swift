@@ -9,7 +9,10 @@
 import UIKit
 
 class DoctorPastDataAnalysisViewController: UIViewController {
+    
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +22,21 @@ class DoctorPastDataAnalysisViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        
-        
+        dateLabel.text = "10 February 2020"
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+               segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.blueBlue], for: UIControl.State.normal)
+               segmentedControl.borderColor = .white
+               segmentedControl.borderWidth = 1
+               //segmentedControl.backgroundColor = .dodgerBlue
+               segmentedControl.selectedSegmentTintColor = .blueBlue
     }
     
     let values = [(30.0, 10.0, 200.0, 60.0, 90.0), (170, 100, 200, 110, 120), (50, 40, 60, 50, 55)]
+    let fibtemvalues = [(30.0, 10.0, 200.0, 60.0, 90.0), (170, 100, 200, 110, 120), (50, 40, 60, 50, 55)]
+    let extemvalues = [(30.0, 10.0, 200.0, 60.0, 90.0)]
+    let intemvalues = [(30.0, 10.0, 200.0, 60.0, 90.0), (170, 100, 200, 110, 120)]
+    
+    let numberOfOrders = 1
 
     /*
     // MARK: - Navigation
@@ -35,6 +48,9 @@ class DoctorPastDataAnalysisViewController: UIViewController {
     }
     */
 
+    @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        tableView.reloadData()
+    }
 }
 
 extension DoctorPastDataAnalysisViewController: UITableViewDataSource {
@@ -45,25 +61,72 @@ extension DoctorPastDataAnalysisViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 0 {
+        switch (segmentedControl.selectedSegmentIndex) {
+        case 0:
+            if indexPath.section >= fibtemvalues.count {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.backgroundView?.backgroundColor = UIColor.clear
+                // orderVal = indexPath.section - fibtemvalues.count
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_DATA_CELL, for: indexPath) as! DataTableViewCell
+                    cell.backgroundColor = UIColor.clear
+                    cell.backgroundView?.backgroundColor = UIColor.clear
+                let val = fibtemvalues[indexPath.section]
+                cell.setValues(val: val.0, min: val.1, max: val.2, optMin: val.3, optMax: val.4)
+                return cell
+            }
+        case 1:
+            if indexPath.section >= extemvalues.count {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.backgroundView?.backgroundColor = UIColor.clear
+                // orderVal = indexPath.section - extemvalues.count
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_DATA_CELL, for: indexPath) as! DataTableViewCell
+                    cell.backgroundColor = UIColor.clear
+                    cell.backgroundView?.backgroundColor = UIColor.clear
+                let val = extemvalues[indexPath.section]
+                cell.setValues(val: val.0, min: val.1, max: val.2, optMin: val.3, optMax: val.4)
+                return cell
+            }
+        case 2:
+            if indexPath.section >= intemvalues.count {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.backgroundView?.backgroundColor = UIColor.clear
+                // orderVal = indexPath.section - intemvalues.count
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_DATA_CELL, for: indexPath) as! DataTableViewCell
+                    cell.backgroundColor = UIColor.clear
+                    cell.backgroundView?.backgroundColor = UIColor.clear
+                let val = intemvalues[indexPath.section]
+                cell.setValues(val: val.0, min: val.1, max: val.2, optMin: val.3, optMax: val.4)
+                return cell
+            }
+        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_DATA_CELL, for: indexPath) as! DataTableViewCell
-                cell.backgroundColor = UIColor.clear
-                cell.backgroundView?.backgroundColor = UIColor.clear
-            var val = values[indexPath.section - 1]
-            cell.setValues(val: val.0, min: val.1, max: val.2, optMin: val.3, optMax: val.4)
-            
+            // orderVal = indexPath.section - intemvalues.count
             return cell
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return values.count+1
+        switch (segmentedControl.selectedSegmentIndex) {
+        case 0:
+            return fibtemvalues.count + numberOfOrders
+        case 1:
+            return extemvalues.count + numberOfOrders
+        case 2:
+            return intemvalues.count + numberOfOrders
+        default:
+            return 0
+        }
     }
     
     // There is just one row in every section
@@ -79,10 +142,27 @@ extension DoctorPastDataAnalysisViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        switch (segmentedControl.selectedSegmentIndex) {
+        case 0:
+            if indexPath.section >= fibtemvalues.count {
+                return CGFloat(122) // height of ordered blood cell
+            } else {
+                return HEIGHT_FOR_DATA_CELL
+            }
+        case 1:
+            if indexPath.section >= extemvalues.count {
+                return CGFloat(122) // height of ordered blood cell
+            } else {
+                return HEIGHT_FOR_DATA_CELL
+            }
+        case 2:
+            if indexPath.section >= intemvalues.count {
+                return CGFloat(122) // height of ordered blood cell
+            } else {
+                return HEIGHT_FOR_DATA_CELL
+            }
+        default:
             return CGFloat(122) // height of ordered blood cell
-        } else {
-            return HEIGHT_FOR_DATA_CELL
         }
     }
     
