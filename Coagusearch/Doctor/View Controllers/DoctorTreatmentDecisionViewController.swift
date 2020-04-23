@@ -36,7 +36,8 @@ class DoctorTreatmentDecisionViewController: UIViewController {
     let ORDER_SECTION = 0
     let MEDICINE_SECTION = 1
     let DOSAGE_SECTION = 2
-    let SUGGESTION_HEADING_SECTION = 3
+    let MEDICINE_BUTTON_SECTION = 3
+    let SUGGESTION_HEADING_SECTION = 4
     
     var suggestionArray: [String] = ["TXA", "Fibrinogen Concentrate", "PCC"]
     
@@ -52,13 +53,16 @@ class DoctorTreatmentDecisionViewController: UIViewController {
         return suggestionArray.count
     }
     
-    var isSelected = false
+    var selectionArray = [false, false]
     
-    func invertSelection() {
-        if isSelected {
-            isSelected = false
+    let MEDICINE_SELECTION_INDEX = 0
+    let DOSAGE_SELECTION_INDEX = 1
+    
+    func invertSelection(index: Int) {
+        if selectionArray[index] {
+            selectionArray[index] = false
         } else {
-            isSelected = true
+            selectionArray[index] = true
         }
     }
     
@@ -79,6 +83,10 @@ class DoctorTreatmentDecisionViewController: UIViewController {
         })
         searchActive = (searchText != "")
     }
+    
+    func setSelection(index: Int, isSelected: Bool) {
+        selectionArray[index] = isSelected
+    }
 }
 
 extension DoctorTreatmentDecisionViewController: BasicWithButtonCellDelegate {
@@ -90,10 +98,10 @@ extension DoctorTreatmentDecisionViewController: BasicWithButtonCellDelegate {
         //dataSource.selectedMode = .Custom
         
         // Close current cell
-        invertSelection()
+        invertSelection(index: MEDICINE_SELECTION_INDEX)
         let indexPath = IndexPath(row: 0, section: MEDICINE_SECTION)
         let cell = treatmentTableView.cellForRow(at: indexPath) as! SearchMedicineTableViewCell
-        cell.changeArrow(selected: isSelected)
+        cell.changeArrow(selected: selectionArray[MEDICINE_SELECTION_INDEX])
         treatmentTableView.beginUpdates()
         treatmentTableView.endUpdates()
     }
@@ -130,6 +138,11 @@ extension DoctorTreatmentDecisionViewController: UITableViewDataSource {
                 cell.backgroundColor = UIColor.clear
                 cell.backgroundView?.backgroundColor = UIColor.clear
                 return cell
+            case MEDICINE_BUTTON_SECTION:
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_BUTTON_CELL, for: indexPath) as! ButtonTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.backgroundView?.backgroundColor = UIColor.clear
+                return cell
             case SUGGESTION_HEADING_SECTION:
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_HEADING_CELL, for: indexPath) as! HeadingTableViewCell
                 cell.backgroundColor = UIColor.clear
@@ -156,7 +169,7 @@ extension DoctorTreatmentDecisionViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == treatmentTableView {
-            return 8
+            return 9
         }
         return 1
     }
@@ -193,13 +206,19 @@ extension DoctorTreatmentDecisionViewController: UITableViewDataSource {
             case ORDER_SECTION:
                 return 202
             case MEDICINE_SECTION:
-                if isSelected {
+                if selectionArray[MEDICINE_SELECTION_INDEX] {
                     return 300
                 } else {
                     return CELL_HEIGHT
                 }
             case DOSAGE_SECTION:
-                return 129
+                if selectionArray[DOSAGE_SELECTION_INDEX] {
+                    return ENTER_DOSADE_EXPANDED_CELL_HEIGHT
+                } else {
+                    return ENTER_DOSADE_CELL_HEIGHT
+                }
+            case MEDICINE_BUTTON_SECTION:
+                return 40
             case SUGGESTION_HEADING_SECTION:
                 return 21
             default:
@@ -216,8 +235,29 @@ extension DoctorTreatmentDecisionViewController: UITableViewDelegate {
         if tableView == treatmentTableView {
             if indexPath.section == MEDICINE_SECTION {
                 let cell = treatmentTableView.cellForRow(at: indexPath) as! SearchMedicineTableViewCell
-                invertSelection()
-                cell.changeArrow(selected: isSelected)
+                invertSelection(index: MEDICINE_SELECTION_INDEX)
+                cell.changeArrow(selected: selectionArray[MEDICINE_SELECTION_INDEX])
+                
+                if selectionArray[DOSAGE_SELECTION_INDEX] {
+                    setSelection(index: DOSAGE_SELECTION_INDEX, isSelected: false)
+                    let otherCellIndexPath = IndexPath(row: 0, section: DOSAGE_SECTION)
+                    let otherCell = treatmentTableView.cellForRow(at: otherCellIndexPath) as! EnterDosageTableViewCell
+                    otherCell.changeArrow(selected: false)
+                }
+                
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            } else if indexPath.section == DOSAGE_SECTION {
+                let cell = treatmentTableView.cellForRow(at: indexPath) as! EnterDosageTableViewCell
+                invertSelection(index: DOSAGE_SELECTION_INDEX)
+                cell.changeArrow(selected: selectionArray[DOSAGE_SELECTION_INDEX])
+                
+                if selectionArray[MEDICINE_SELECTION_INDEX] {
+                    setSelection(index: MEDICINE_SELECTION_INDEX, isSelected: false)
+                    let otherCellIndexPath = IndexPath(row: 0, section: MEDICINE_SECTION)
+                    let otherCell = treatmentTableView.cellForRow(at: otherCellIndexPath) as! SearchMedicineTableViewCell
+                    otherCell.changeArrow(selected: false)
+                }
                 
                 tableView.beginUpdates()
                 tableView.endUpdates()
@@ -239,8 +279,8 @@ extension DoctorTreatmentDecisionViewController: UITableViewDelegate {
                 // Close current cell
                 let indexPath = IndexPath(row: 0, section: MEDICINE_SECTION)
                 let cell = treatmentTableView.cellForRow(at: indexPath) as! SearchMedicineTableViewCell
-                invertSelection()
-                cell.changeArrow(selected: isSelected)
+                invertSelection(index: MEDICINE_SELECTION_INDEX)
+                cell.changeArrow(selected: selectionArray[MEDICINE_SELECTION_INDEX])
                 treatmentTableView.beginUpdates()
                 treatmentTableView.endUpdates()
             }

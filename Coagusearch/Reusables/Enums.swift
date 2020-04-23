@@ -46,6 +46,7 @@ enum Endpoint: String {
     
     // MARK: Blood Order Controller
     case OrderBlood = "/blood/order"
+    case PastGeneralOrders = "/blood/previousOrders"
     
     // MARK: Drug Controller
     case GetAllMedicine = "/drug/all"

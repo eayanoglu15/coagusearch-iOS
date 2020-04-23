@@ -29,8 +29,11 @@ typealias PatientAppointmentsReturnFunction = (PatientAppointments?, NSError?) -
 typealias PatientMainInfoReturnFunction = (PatientMainInfo?, NSError?) -> Void
 
 typealias DoctorMainInfoReturnFunction = (DoctorMainInfo?, NSError?) -> Void
-typealias DoctorPatientsReturnFunction = ([User], NSError?) -> Void
+typealias DoctorPatientsReturnFunction = ([DoctorPatient], NSError?) -> Void
 typealias DoctorPatientDetailInfoReturnFunction = (DoctorPatientDetailInfo?, NSError?) -> Void
+typealias BloodOrderReturnFunction = (BloodOrderResult?, NSError?) -> Void
+typealias PastGeneralBloodOrderReturnFunction = ([BloodOrder], NSError?) -> Void
+
 
 protocol CoaguSearchService {
     // MARK: Patient
@@ -56,6 +59,8 @@ protocol CoaguSearchService {
     func getDoctorMainScreenInfo(completion: @escaping DoctorMainInfoReturnFunction)
     func getDoctorPatients(completion: @escaping DoctorPatientsReturnFunction)
     func getDoctorPatientInfo(patientId: Int, completion: @escaping DoctorPatientDetailInfoReturnFunction)
+    func postBloodOrder(order: BloodOrder, completion: @escaping BloodOrderReturnFunction)
+    func getPastGeneralBloodOrders(completion: @escaping PastGeneralBloodOrderReturnFunction)
 }
 
 class NetworkBase {

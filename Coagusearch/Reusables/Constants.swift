@@ -35,6 +35,7 @@ let SEGUE_SHOW_PATIENT_HOME = "showPatientHomeVC"
 let SEGUE_SHOW_PATIENT_MEDICINE_UPDATE = "showPatientMedicineUpdateVC"
 let SEGUE_SHOW_PATIENT_INFO = "showPatientInfoVC"
 let SEGUE_SHOW_DOCTOR_PATIENT_INFO = "showDoctorPatientInfoVC"
+let SEGUE_SHOW_DOCTOR_PATIENT_SPECIFIC_BLOOD_ORDER = "showDoctorPatientSpecificBloodOrderVC"
 
 let SEGUE_SHOW_DOCTOR_HOME = "showDoctorHomeVC"
 let SEGUE_SHOW_DOCTOR_PATIENT_PAST_APPOINTMENTS_HOME = "showDoctorPatientPastAppointmentsVC"
@@ -70,6 +71,7 @@ let CELL_IDENTIFIER_ENTER_DOSAGE_CELL = "EnterDosageTableViewCell"
 let CELL_IDENTIFIER_SUGGESTION_CELL = "SuggestionTableViewCell"
 let CELL_IDENTIFIER_GIVEN_MEDICINE_CELL = "GivenMedicineTableViewCell"
 let CELL_IDENTIFIER_PRODUCT_ORDER_CELL = "ProductOrderTableViewCell"
+let CELL_IDENTIFIER_BUTTON_CELL = "ButtonTableViewCell"
 
 // MARK: Collection View Cell Identifiers
 let CELL_IDENTIFIER_EMERGENCY_PATIENT_CELL = "EmergencyPatientCollectionViewCell"
@@ -78,6 +80,9 @@ let CELL_IDENTIFIER_EMERGENCY_PATIENT_CELL = "EmergencyPatientCollectionViewCell
 let CELL_HEIGHT_SMALL = CGFloat(45)
 let CELL_HEIGHT = CGFloat(70)
 let CELL_HEIGHT_EXPANDED = CGFloat(200)
+
+let ENTER_DOSADE_CELL_HEIGHT = CGFloat(65)
+let ENTER_DOSADE_EXPANDED_CELL_HEIGHT = CGFloat(195)
 
 //
 let HEIGHT_FOR_HEADER = CGFloat(16)

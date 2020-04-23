@@ -12,6 +12,8 @@ struct DoctorPatientDetailInfo : Codable {
     var patientResponse: User?
     var userAppointmentResponse: PatientAllAppointments?
     var userDataResponse: PatientAllDataAnalysis?
+    var patientDrugs: [UserDrug]?
+    var previousBloodOrders: [BloodOrder]?
 }
 
 struct PatientAllAppointments : Codable {

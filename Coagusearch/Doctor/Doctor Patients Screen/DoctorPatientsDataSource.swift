@@ -14,20 +14,21 @@ protocol DoctorPatientsDataSourceDelegate {
     func reloadTable()
     func showLoadingVC()
     func showLoginVC()
- 
 }
 
 class DoctorPatientsDataSource {
     var delegate: DoctorPatientsDataSourceDelegate?
     var coagusearchService: CoagusearchService?
     
-    var patients: [User]?
+    var patients: [DoctorPatient]?
     
     var searchActive: Bool = false
-    var searched: [User] = []
+    var searched: [DoctorPatient] = []
     
     func getPatients() {
+        self.delegate?.showLoadingVC()
         coagusearchService?.getDoctorPatients(completion: { (patients, error) in
+            self.delegate?.hideLoadingVC()
             if let error = error {
                 if error.code == UNAUTHORIZED_ERROR_CODE {
                     Manager.sharedInstance.userDidLogout()
@@ -57,7 +58,7 @@ class DoctorPatientsDataSource {
         return 0
     }
     
-    func getPatient(index: Int) -> User? {
+    func getPatient(index: Int) -> DoctorPatient? {
         if searchActive {
             return searched[index]
         } else {
@@ -77,7 +78,7 @@ class DoctorPatientsDataSource {
     
     func getSearchResults(searchText: String) {
         if let patients = patients {
-            searched = patients.filter({ (patient : User) -> Bool in
+            searched = patients.filter({ (patient : DoctorPatient) -> Bool in
                 if let name = patient.name {
                     if name.lowercased().contains(searchText.lowercased()) {
                         return true

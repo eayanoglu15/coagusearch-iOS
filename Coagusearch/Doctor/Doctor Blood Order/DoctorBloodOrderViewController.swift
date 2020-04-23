@@ -8,6 +8,29 @@
 
 import UIKit
 
+extension DoctorBloodOrderViewController: DoctorBloodOrderDataSourceDelegate {
+    func reloadTable() {
+        tableView.reloadData()
+    }
+    
+    func refreshOrderCardAndTable() {
+        stylizeButtonUnselected(button: FFPButton)
+        stylizeButtonUnselected(button: plateletButton)
+        
+        stylizeButtonUnselected(button: bloodTypeAButton)
+        stylizeButtonUnselected(button: bloodTypeBButton)
+        stylizeButtonUnselected(button: bloodTypeABButton)
+        stylizeButtonUnselected(button: bloodTypeOButton)
+        
+        stylizeButtonUnselected(button: rhTypePositive)
+        stylizeButtonUnselected(button: rhTypeNegative)
+        
+        unitTextField.text = nil
+        
+        tableView.reloadData()
+    }
+}
+
 class DoctorBloodOrderViewController: UIViewController {
     @IBOutlet weak var FFPButton: UIButton!
     @IBOutlet weak var plateletButton: UIButton!
@@ -21,7 +44,7 @@ class DoctorBloodOrderViewController: UIViewController {
     @IBOutlet weak var rhTypeNegative: UIButton!
     
     @IBOutlet weak var unitLabel: UILabel!
-    @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var unitTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,6 +53,10 @@ class DoctorBloodOrderViewController: UIViewController {
     private var rhTypeSelection = [false, false]
     
     private var buttonArray: [UIButton] = []
+    
+    var dataSource = DoctorBloodOrderDataSource()
+    
+    var note: String?
     
     func stylizeButtonUnselected(button: UIButton) {
         button.borderWidth = 1
@@ -47,12 +74,16 @@ class DoctorBloodOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboard()
         stylize()
         title = "Blood Order".localized
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        
+        dataSource.coagusearchService = CoagusearchServiceFactory.createService()
+        dataSource.delegate = self
         
         buttonArray.append(bloodTypeAButton)
         buttonArray.append(bloodTypeBButton)
@@ -92,6 +123,11 @@ class DoctorBloodOrderViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        dataSource.getPastOrders()
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -102,14 +138,6 @@ class DoctorBloodOrderViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        let value = stepper.value
-        if value <= 1 {
-            unitLabel.text = "\(Int(stepper.value))" + " Unit".localized
-        } else {
-            unitLabel.text = "\(Int(stepper.value))" + " Units".localized
-        }
-    }
     
     @IBAction func FFPButtonTapped(_ sender: Any) {
         if productTypeSelection[0] {
@@ -200,8 +228,86 @@ class DoctorBloodOrderViewController: UIViewController {
     }
     
     @IBAction func addNoteButtonTapped(_ sender: Any) {
+        
+        
     }
     
+    @IBAction func makeOrderButtonTapped(_ sender: Any) {
+        let bloodType = getBloodType()
+        let rhType = getRhType()
+        
+        if bloodType == nil && rhType == nil {
+            showAlertMessage(title: "Missing Blood Information".localized, message: "Please enter blood type and rh type.".localized)
+            return
+        } else if bloodType == nil && rhType != nil {
+            showAlertMessage(title: "Missing Blood Type".localized, message: "Please enter your blood type.".localized)
+            return
+        } else if bloodType != nil && rhType == nil {
+            showAlertMessage(title: "Missing Rh Type".localized, message: "Please enter rh type.".localized)
+            return
+        }
+        
+        guard let orderBloodType = bloodType, let orderRhType = rhType else {
+            return
+        }
+        
+        guard let productType = getProductType() else {
+            showAlertMessage(title: "Missing Product Type".localized, message: "Please enter product type.".localized)
+            return
+        }
+        
+        guard let unit = unitTextField.text, !unit.isEmpty, let unitAmount = Int(unit) else {
+            showAlertMessage(title: "Missing Unit Amount".localized, message: "Please enter unit amount.".localized)
+            return
+        }
+        
+        // optional note
+        
+        dataSource.postBloodOrder(bloodType: orderBloodType, rhType: orderRhType, productType: productType, unit: unitAmount, additionalNote: note)
+    }
+    
+    func getBloodType() -> BloodType? {
+        for i in 0...(bloodTypeSelection.count-1) {
+            if bloodTypeSelection[i] {
+                if i == 0 {
+                    return BloodType.A
+                } else if i == 1 {
+                    return BloodType.B
+                } else if i == 2 {
+                    return BloodType.AB
+                } else if i == 3 {
+                    return BloodType.O
+                }
+            }
+        }
+        return nil
+    }
+    
+    func getRhType() -> RhType? {
+        for i in 0...(rhTypeSelection.count-1) {
+            if rhTypeSelection[i] {
+                if i == 0 {
+                    return RhType.Positive
+                } else if i == 1 {
+                    return RhType.Negative
+                }
+            }
+        }
+        return nil
+    }
+    
+    func getProductType() -> BloodProductType? {
+        for i in 0...(productTypeSelection.count-1) {
+            if productTypeSelection[i] {
+                if i == 0 {
+                    return BloodProductType.FFP
+                } else if i == 1 {
+                    return BloodProductType.PC
+                }
+            }
+        }
+        return nil
+    }
 }
 
 extension DoctorBloodOrderViewController: UITableViewDataSource {
@@ -217,11 +323,24 @@ extension DoctorBloodOrderViewController: UITableViewDataSource {
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
             
+        if let order = dataSource.getPastOrder(index: indexPath.section) {
+            cell.unitLabel.text = "\(order.unit)"
+            cell.productLabel.text = order.productType.rawValue
+            
+            if let bloodType = order.bloodType, let rhType = order.rhType {
+                if rhType == RhType.Positive {
+                    cell.bloodLabel.text = "\(bloodType) Rh+"
+                } else {
+                    cell.bloodLabel.text = "\(bloodType) Rh-"
+                }
+            }
+        }
+        
             return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return dataSource.getPastOrderCount()
     }
     
     // There is just one row in every section

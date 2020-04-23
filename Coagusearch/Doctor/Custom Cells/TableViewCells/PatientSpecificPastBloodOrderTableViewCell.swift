@@ -9,7 +9,13 @@
 import UIKit
 
 class PatientSpecificPastBloodOrderTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var unitLabel: UILabel!
+    @IBOutlet weak var productLabel: UILabel!
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusColorView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,4 +28,8 @@ class PatientSpecificPastBloodOrderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setup(order: BloodOrder) {
+        unitLabel.text = "\(order.unit)"
+        productLabel.text = order.productType.rawValue
+    }
 }

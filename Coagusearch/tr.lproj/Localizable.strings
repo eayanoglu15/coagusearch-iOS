@@ -58,6 +58,9 @@
 "Missing Blood Type" = "Kan Grubu Eksik";
 "Missing Rh Type" = "Rh Değeri Eksik";
 "My Patients" = "Hastalarım";
+"Missing Blood Information" = "Eksik Kan Bilgisi";
+"Missing Product Type" = "Eksik Ürün Bilgisi";
+"Missing Unit Amount" = "Eksik Ünite Miktarı";
 
 // MARK: N
 "Not specified" = "Belirtilmedi";
@@ -76,6 +79,11 @@
 "Past Appointments" = "Eski Randevular";
 "Past µTem Data Analyses" = "Geçmiş µTem Veri Analizleri";
 "Past µTem Data Analysis" = "Geçmiş µTem Veri Analizi";
+"Please enter blood type and rh type." = "Lütfen kan grubu ve rh değerini giriniz.";
+"Please enter your blood type." = "Lütfen kan grubunu giriniz.";
+"Please enter rh type." = "Lütfen rh değerini giriniz.";
+"Please enter product type." = "Lütfen ürün türünü giriniz.";
+"Please enter unit amount." = "Lütfen ünite miktarını giriniz.";
 
 // MARK: Q
 

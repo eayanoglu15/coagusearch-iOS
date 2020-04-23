@@ -1,0 +1,441 @@
+
+/* Class = "UIButton"; normalTitle = "Add Note"; ObjectID = "0Ke-h2-lSN"; */
+"0Ke-h2-lSN.normalTitle" = "Note Ekle";
+
+/* Class = "UILabel"; text = "Fresh Frozen Plasma "; ObjectID = "0UK-Gw-h4E"; */
+"0UK-Gw-h4E.text" = "Fresh Frozen Plasma ";
+
+/* Class = "UILabel"; text = "Confirmed"; ObjectID = "1MF-LB-Wro"; */
+"1MF-LB-Wro.text" = "Onaylandı";
+
+/* Class = "UIButton"; normalTitle = "O"; ObjectID = "1hV-on-owF"; */
+"1hV-on-owF.normalTitle" = "O";
+
+/* Class = "UILabel"; text = "B Rh+"; ObjectID = "21Q-Fb-O5Z"; */
+"21Q-Fb-O5Z.text" = "B Rh+";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "2S6-Cf-Qob"; */
+"2S6-Cf-Qob.normalTitle" = "KAYDET";
+
+/* Class = "UIButton"; normalTitle = "MAKE ORDER"; ObjectID = "2nB-N4-oSs"; */
+"2nB-N4-oSs.normalTitle" = "SİPARİŞ VER";
+
+/* Class = "UILabel"; text = "Total:"; ObjectID = "3XD-AS-xFa"; */
+"3XD-AS-xFa.text" = "Toplam:";
+
+/* Class = "UITabBarItem"; title = "Blood Order"; ObjectID = "3cS-U5-M2u"; */
+"3cS-U5-M2u.title" = "Kan Siparişi";
+
+/* Class = "UILabel"; text = "50"; ObjectID = "3x1-Oc-4i6"; */
+"3x1-Oc-4i6.text" = "50";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "4Jx-gX-7PC"; */
+"4Jx-gX-7PC.normalTitle" = "A";
+
+/* Class = "UILabel"; text = "Next Appointment"; ObjectID = "4Rm-UR-N3h"; */
+"4Rm-UR-N3h.text" = "Gelecek Randevu";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5Xx-DC-lCg"; */
+"5Xx-DC-lCg.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Positive"; ObjectID = "5tH-tQ-q8n"; */
+"5tH-tQ-q8n.normalTitle" = "Pozitif";
+
+/* Class = "UIButton"; normalTitle = "ADD MEDICINE"; ObjectID = "5zy-dz-NCG"; */
+"5zy-dz-NCG.normalTitle" = "İLAÇ EKLE";
+
+/* Class = "UILabel"; text = "Emergency Box"; ObjectID = "6kR-ZP-951"; */
+"6kR-ZP-951.text" = "Acil Bilgisi";
+
+/* Class = "UILabel"; text = "Gender"; ObjectID = "7cg-Sl-zQm"; */
+"7cg-Sl-zQm.text" = "Cinsiyet";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7zt-G8-UYl"; */
+"7zt-G8-UYl.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "8ei-yF-aJI"; */
+"8ei-yF-aJI.title" = "Profil";
+
+/* Class = "UILabel"; text = "2 March 2020"; ObjectID = "9Vn-iy-VOE"; */
+"9Vn-iy-VOE.text" = "2 Mart 2020";
+
+/* Class = "UIButton"; normalTitle = "AB"; ObjectID = "9pJ-3u-Xs7"; */
+"9pJ-3u-Xs7.normalTitle" = "AB";
+
+/* Class = "UITextField"; placeholder = "Enter"; ObjectID = "A5v-ip-dpW"; */
+"A5v-ip-dpW.placeholder" = "Gir";
+
+/* Class = "UILabel"; text = "Unit Amount"; ObjectID = "AIe-NP-pKG"; */
+"AIe-NP-pKG.text" = "Ünite Miktarı";
+
+/* Class = "UILabel"; text = "B Rh+"; ObjectID = "AQ1-Ew-suL"; */
+"AQ1-Ew-suL.text" = "B Rh+";
+
+/* Class = "UILabel"; text = "Check Past µTem Data Analysis "; ObjectID = "Aj5-yA-qAr"; */
+"Aj5-yA-qAr.text" = "Eski µTem Analiz Verilerini Kontrol Et";
+
+/* Class = "UILabel"; text = "Product Type"; ObjectID = "Ase-6R-gAA"; */
+"Ase-6R-gAA.text" = "Ürün Türü";
+
+/* Class = "UILabel"; text = "Decide Treatment"; ObjectID = "Axf-GX-zVq"; */
+"Axf-GX-zVq.text" = "Tedavi Kararını Ver";
+
+/* Class = "UIButton"; normalTitle = "B"; ObjectID = "B1I-rA-wCz"; */
+"B1I-rA-wCz.normalTitle" = "B";
+
+/* Class = "UIButton"; normalTitle = "Negative"; ObjectID = "B6k-JG-Wry"; */
+"B6k-JG-Wry.normalTitle" = "Negatif";
+
+/* Class = "UILabel"; text = "60 kg"; ObjectID = "BQq-gc-7cD"; */
+"BQq-gc-7cD.text" = "60 kg";
+
+/* Class = "UILabel"; text = "10:00 - 10.20"; ObjectID = "Bhj-VT-dL3"; */
+"Bhj-VT-dL3.text" = "10:00 - 10.20";
+
+/* Class = "UILabel"; text = "Suggestions"; ObjectID = "BwD-mg-VvN"; */
+"BwD-mg-VvN.text" = "Öneriler";
+
+/* Class = "UITextField"; placeholder = "Enter Dosage"; ObjectID = "By1-xA-kVu"; */
+"By1-xA-kVu.placeholder" = "Dozu Gir";
+
+/* Class = "UILabel"; text = "60 kg"; ObjectID = "CxA-4f-3si"; */
+"CxA-4f-3si.text" = "60 kg";
+
+/* Class = "UILabel"; text = "Patient name is not specified"; ObjectID = "D8m-MX-O8K"; */
+"D8m-MX-O8K.text" = "Hasta adı belirtilmedi";
+
+/* Class = "UILabel"; text = "30"; ObjectID = "DHf-fI-gD2"; */
+"DHf-fI-gD2.text" = "30";
+
+/* Class = "UILabel"; text = "Product Type"; ObjectID = "DX4-JV-6eK"; */
+"DX4-JV-6eK.text" = "Ürün Türü";
+
+/* Class = "UILabel"; text = "160 cm"; ObjectID = "Db4-Lu-W9M"; */
+"Db4-Lu-W9M.text" = "160 cm";
+
+/* Class = "UILabel"; text = "RhD Type"; ObjectID = "EKs-l1-ZU2"; */
+"EKs-l1-ZU2.text" = "RhD Türü";
+
+/* Class = "UILabel"; text = "14:02"; ObjectID = "Ee8-oG-UgE"; */
+"Ee8-oG-UgE.text" = "14:02";
+
+/* Class = "UILabel"; text = "10 February 2020"; ObjectID = "Ev1-Ea-vz9"; */
+"Ev1-Ea-vz9.text" = "10 Şubat 2020";
+
+/* Class = "UILabel"; text = "Dosage"; ObjectID = "G62-Rx-dqT"; */
+"G62-Rx-dqT.text" = "Doz";
+
+/* Class = "UIButton"; normalTitle = "B"; ObjectID = "GJr-lv-ZA8"; */
+"GJr-lv-ZA8.normalTitle" = "B";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "HNW-Td-PwB"; */
+"HNW-Td-PwB.title" = "Ana Sayfa";
+
+/* Class = "UILabel"; text = "Info of suggestion"; ObjectID = "HaV-Bn-QcM"; */
+"HaV-Bn-QcM.text" = "Öneri Bilgisi";
+
+/* Class = "UILabel"; text = "Blood Type"; ObjectID = "I1G-Lj-JPa"; */
+"I1G-Lj-JPa.text" = "Kan Grubu";
+
+/* Class = "UILabel"; text = "Appointments"; ObjectID = "IH5-K3-zvw"; */
+"IH5-K3-zvw.text" = "Randevular";
+
+/* Class = "UILabel"; text = "18 February 2020 "; ObjectID = "IgB-vO-p4q"; */
+"IgB-vO-p4q.text" = "18 Şubat 2020 ";
+
+/* Class = "UILabel"; text = "Fresh Frozen Plasma "; ObjectID = "Jyw-Ku-nli"; */
+"Jyw-Ku-nli.text" = "Fresh Frozen Plasma ";
+
+/* Class = "UIButton"; normalTitle = "Male"; ObjectID = "KqV-qp-qSp"; */
+"KqV-qp-qSp.normalTitle" = "Erkek";
+
+/* Class = "UISegmentedControl"; LK6-fi-e0L.segmentTitles[0] = "Fibtem"; ObjectID = "LK6-fi-e0L"; */
+"LK6-fi-e0L.segmentTitles[0]" = "Fibtem";
+
+/* Class = "UISegmentedControl"; LK6-fi-e0L.segmentTitles[1] = "Extem"; ObjectID = "LK6-fi-e0L"; */
+"LK6-fi-e0L.segmentTitles[1]" = "Extem";
+
+/* Class = "UISegmentedControl"; LK6-fi-e0L.segmentTitles[2] = "Intem"; ObjectID = "LK6-fi-e0L"; */
+"LK6-fi-e0L.segmentTitles[2]" = "Intem";
+
+/* Class = "UILabel"; text = "10 Units"; ObjectID = "Mhn-Af-034"; */
+"Mhn-Af-034.text" = "10 Ünite";
+
+/* Class = "UILabel"; text = "10 Units"; ObjectID = "Mxg-tj-28B"; */
+"Mxg-tj-28B.text" = "10 Ünite";
+
+/* Class = "UILabel"; text = "10 Units"; ObjectID = "NcB-kY-Tqt"; */
+"NcB-kY-Tqt.text" = "10 Ünite";
+
+/* Class = "UILabel"; text = "AC Value"; ObjectID = "O6n-cm-Bwm"; */
+"O6n-cm-Bwm.text" = "AC Değeri";
+
+/* Class = "UILabel"; text = "Diagnosis Name"; ObjectID = "P69-a0-4qO"; */
+"P69-a0-4qO.text" = "Tanı Adı";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "PRD-Bj-3x0"; */
+"PRD-Bj-3x0.text" = "2";
+
+/* Class = "UILabel"; text = "Blood Type:"; ObjectID = "PuU-3S-rCX"; */
+"PuU-3S-rCX.text" = "Kan Grubu:";
+
+/* Class = "UILabel"; text = "Ege Melis Ayanoğlu"; ObjectID = "Q9n-55-t9J"; */
+"Q9n-55-t9J.text" = "Ege Melis Ayanoğlu";
+
+/* Class = "UILabel"; text = "Ordered Blood"; ObjectID = "QKA-vM-fN6"; */
+"QKA-vM-fN6.text" = "Şipariş Verilen Kan";
+
+/* Class = "UILabel"; text = "40"; ObjectID = "RQc-Pq-qoc"; */
+"RQc-Pq-qoc.text" = "40";
+
+/* Class = "UILabel"; text = "10:00 - 10.20"; ObjectID = "RQy-HT-e41"; */
+"RQy-HT-e41.text" = "10:00 - 10.20";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ReU-uN-ZJ9"; */
+"ReU-uN-ZJ9.text" = "Label";
+
+/* Class = "UILabel"; text = "Confirmed"; ObjectID = "S3a-81-dX0"; */
+"S3a-81-dX0.text" = "Onaylandı";
+
+/* Class = "UILabel"; text = "Notify Medical Team"; ObjectID = "Su8-eY-ODJ"; */
+"Su8-eY-ODJ.text" = "Medikal Ekibe Haber Ver";
+
+/* Class = "UILabel"; text = "Notification from medical team"; ObjectID = "T9X-Xa-lap"; */
+"T9X-Xa-lap.text" = "Medikal Ekipten Bildirim";
+
+/* Class = "UILabel"; text = "Weight:"; ObjectID = "Tgz-hF-SC0"; */
+"Tgz-hF-SC0.text" = "Kilo:";
+
+/* Class = "UITabBarItem"; title = "My Patients"; ObjectID = "Tmm-hq-Mte"; */
+"Tmm-hq-Mte.title" = "Hastalarım";
+
+/* Class = "UIButton"; normalTitle = "Negative"; ObjectID = "UlZ-mN-T6g"; */
+"UlZ-mN-T6g.normalTitle" = "Negatif";
+
+/* Class = "UILabel"; text = "Unit Amount"; ObjectID = "W2k-Nf-4zc"; */
+"W2k-Nf-4zc.text" = "Ünite Miktarı";
+
+/* Class = "UILabel"; text = "Blood Type"; ObjectID = "XoV-JT-tbG"; */
+"XoV-JT-tbG.text" = "Kan Grubu";
+
+/* Class = "UILabel"; text = "120"; ObjectID = "Xqj-Yd-Hf9"; */
+"Xqj-Yd-Hf9.text" = "120";
+
+/* Class = "UILabel"; text = "Confirmed"; ObjectID = "XrK-65-e71"; */
+"XrK-65-e71.text" = "Onaylandı";
+
+/* Class = "UILabel"; text = "Birth Date"; ObjectID = "Y0y-04-TDL"; */
+"Y0y-04-TDL.text" = "Doğum Tarihi";
+
+/* Class = "UILabel"; text = "50"; ObjectID = "Y4Q-eR-y0D"; */
+"Y4Q-eR-y0D.text" = "50";
+
+/* Class = "UIButton"; normalTitle = "AB"; ObjectID = "YML-m6-aoQ"; */
+"YML-m6-aoQ.normalTitle" = "AB";
+
+/* Class = "UIButton"; normalTitle = "Add Note"; ObjectID = "YRT-nJ-f8e"; */
+"YRT-nJ-f8e.normalTitle" = "Note Ekle";
+
+/* Class = "UILabel"; text = "10 Units"; ObjectID = "Yqg-Jv-eq2"; */
+"Yqg-Jv-eq2.text" = "10 Ünite";
+
+/* Class = "UILabel"; text = "Fresh Frozen Plasma "; ObjectID = "YvC-Fb-DWd"; */
+"YvC-Fb-DWd.text" = "Fresh Frozen Plasma ";
+
+/* Class = "UILabel"; text = "Order Blood For Patient"; ObjectID = "ZJG-A4-BLl"; */
+"ZJG-A4-BLl.text" = "Hasta İçin Kan Siparişi Ver";
+
+/* Class = "UILabel"; text = "Ege Melis Ayanoğlu"; ObjectID = "aOM-SJ-5ph"; */
+"aOM-SJ-5ph.text" = "Ege Melis Ayanoğlu";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "aZ5-yH-awu"; */
+"aZ5-yH-awu.normalTitle" = "Ekle";
+
+/* Class = "UILabel"; text = "70"; ObjectID = "asn-e2-oFc"; */
+"asn-e2-oFc.text" = "70";
+
+/* Class = "UILabel"; text = "Muharrem Salel"; ObjectID = "bGn-G5-cNJ"; */
+"bGn-G5-cNJ.text" = "Muharrem Salel";
+
+/* Class = "UILabel"; text = "Add Medication"; ObjectID = "bRi-Wl-r9G"; */
+"bRi-Wl-r9G.text" = "İlaç Ekle";
+
+/* Class = "UILabel"; text = "Past Appointments"; ObjectID = "c3c-Uz-mkQ"; */
+"c3c-Uz-mkQ.text" = "Eski Randevular";
+
+/* Class = "UIButton"; normalTitle = "Female"; ObjectID = "cGc-mc-3sb"; */
+"cGc-mc-3sb.normalTitle" = "Kadın";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "cbL-fA-4lx"; */
+"cbL-fA-4lx.normalTitle" = "A";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dBM-oD-flc"; */
+"dBM-oD-flc.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Enter Dosage"; ObjectID = "dWE-MT-IIh"; */
+"dWE-MT-IIh.placeholder" = "Doz Gir";
+
+/* Class = "UILabel"; text = "Medicine Name"; ObjectID = "e7a-gi-qlw"; */
+"e7a-gi-qlw.text" = "İlaç Adı";
+
+/* Class = "UIButton"; normalTitle = "Add Note"; ObjectID = "fIa-sD-cO9"; */
+"fIa-sD-cO9.normalTitle" = "Note Ekle";
+
+/* Class = "UITabBarItem"; title = "Notifications"; ObjectID = "fUo-gc-hAe"; */
+"fUo-gc-hAe.title" = "Bildirimler";
+
+/* Class = "UIButton"; normalTitle = "Positive"; ObjectID = "fgR-P5-EfA"; */
+"fgR-P5-EfA.normalTitle" = "Pozitif";
+
+/* Class = "UILabel"; text = "Call Patient For New Appointment"; ObjectID = "fyG-9M-FXw"; */
+"fyG-9M-FXw.text" = "Hastayı Yeni Randevuya Çağır";
+
+/* Class = "UILabel"; text = "Last µTem Data Analysis"; ObjectID = "glA-iX-t9m"; */
+"glA-iX-t9m.text" = "Son µTem Veri Analizi";
+
+/* Class = "UILabel"; text = "14:02"; ObjectID = "gpT-t3-bSx"; */
+"gpT-t3-bSx.text" = "14:02";
+
+/* Class = "UITextField"; placeholder = "Enter"; ObjectID = "h0x-q1-3To"; */
+"h0x-q1-3To.placeholder" = "Gir";
+
+/* Class = "UIButton"; normalTitle = "EDIT PROFILE"; ObjectID = "hCA-dT-gHQ"; */
+"hCA-dT-gHQ.normalTitle" = "PROFİLİ DÜZENLE";
+
+/* Class = "UILabel"; text = "1/6"; ObjectID = "hHw-jr-Ekg"; */
+"hHw-jr-Ekg.text" = "1/6";
+
+/* Class = "UILabel"; text = "30"; ObjectID = "hbF-L9-IoF"; */
+"hbF-L9-IoF.text" = "30";
+
+/* Class = "UILabel"; text = "10 Units"; ObjectID = "hhp-Hd-1sL"; */
+"hhp-Hd-1sL.text" = "10 Ünite";
+
+/* Class = "UILabel"; text = "Suggestion 1"; ObjectID = "hx6-Ps-GaR"; */
+"hx6-Ps-GaR.text" = "Öneri 1";
+
+/* Class = "UISegmentedControl"; i7t-8o-VcB.segmentTitles[0] = "Fibtem"; ObjectID = "i7t-8o-VcB"; */
+"i7t-8o-VcB.segmentTitles[0]" = "Fibtem";
+
+/* Class = "UISegmentedControl"; i7t-8o-VcB.segmentTitles[1] = "Extem"; ObjectID = "i7t-8o-VcB"; */
+"i7t-8o-VcB.segmentTitles[1]" = "Extem";
+
+/* Class = "UISegmentedControl"; i7t-8o-VcB.segmentTitles[2] = "Intem"; ObjectID = "i7t-8o-VcB"; */
+"i7t-8o-VcB.segmentTitles[2]" = "Intem";
+
+/* Class = "UIButton"; normalTitle = "TAKE ACTION"; ObjectID = "iKu-f0-gd2"; */
+"iKu-f0-gd2.normalTitle" = "AKSİYON AL";
+
+/* Class = "UILabel"; text = "AC Value"; ObjectID = "iej-0f-ExH"; */
+"iej-0f-ExH.text" = "AC Değeri";
+
+/* Class = "UIButton"; normalTitle = "MAKE ORDER"; ObjectID = "ild-A1-CxK"; */
+"ild-A1-CxK.normalTitle" = "SİPARİŞ VER";
+
+/* Class = "UILabel"; text = "A Rh-"; ObjectID = "j7S-qB-DYj"; */
+"j7S-qB-DYj.text" = "A Rh-";
+
+/* Class = "UILabel"; text = "Height:"; ObjectID = "jEN-Fj-KiR"; */
+"jEN-Fj-KiR.text" = "Boy:";
+
+/* Class = "UILabel"; text = "14:02"; ObjectID = "jzL-dP-4JE"; */
+"jzL-dP-4JE.text" = "14:02";
+
+/* Class = "UILabel"; text = "18 February 2020"; ObjectID = "k8M-Qi-sXT"; */
+"k8M-Qi-sXT.text" = "18 Şubat 2020";
+
+/* Class = "UILabel"; text = "µTem Data Analysis Completed"; ObjectID = "l7s-WO-HdC"; */
+"l7s-WO-HdC.text" = "µTem Veri Analizi Tamamlandı";
+
+/* Class = "UILabel"; text = "1:30 PM - 2:00 PM"; ObjectID = "lFV-qY-hdB"; */
+"lFV-qY-hdB.text" = "1:30 PM - 2:00 PM";
+
+/* Class = "UILabel"; text = "Dosage"; ObjectID = "lhk-MR-2z8"; */
+"lhk-MR-2z8.text" = "Doz";
+
+/* Class = "UILabel"; text = "Product Type"; ObjectID = "mRd-LX-d2K"; */
+"mRd-LX-d2K.text" = "Ürün Türü";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mja-XM-bVU"; */
+"mja-XM-bVU.text" = "Label";
+
+/* Class = "UILabel"; text = "Height (cm)"; ObjectID = "mpq-m8-cZi"; */
+"mpq-m8-cZi.text" = "Boy (cm)";
+
+/* Class = "UILabel"; text = "1997"; ObjectID = "nrR-L5-D6k"; */
+"nrR-L5-D6k.text" = "1997";
+
+/* Class = "UILabel"; text = "165 cm"; ObjectID = "omV-Ky-ooL"; */
+"omV-Ky-ooL.text" = "165 cm";
+
+/* Class = "UILabel"; text = "Check Treatment Status"; ObjectID = "pNv-l1-LsA"; */
+"pNv-l1-LsA.text" = "Tedavi Durumunu Kontrol Et";
+
+/* Class = "UIButton"; normalTitle = "MAKE ORDER"; ObjectID = "pSl-rl-xL5"; */
+"pSl-rl-xL5.normalTitle" = "SİPARİŞ VER";
+
+/* Class = "UILabel"; text = "Fresh Frozen Plasma "; ObjectID = "pTR-WU-ESb"; */
+"pTR-WU-ESb.text" = "Fresh Frozen Plasma ";
+
+/* Class = "UILabel"; text = "Fresh Frozen Plasma "; ObjectID = "q2h-wk-6P4"; */
+"q2h-wk-6P4.text" = "Fresh Frozen Plasma ";
+
+/* Class = "UILabel"; text = "120"; ObjectID = "qJz-O6-vSG"; */
+"qJz-O6-vSG.text" = "120";
+
+/* Class = "UILabel"; text = "70"; ObjectID = "qKY-4t-KHW"; */
+"qKY-4t-KHW.text" = "70";
+
+/* Class = "UILabel"; text = "Ege Melis Ayanoğlu"; ObjectID = "qZa-0y-ZLj"; */
+"qZa-0y-ZLj.text" = "Ege Melis Ayanoğlu";
+
+/* Class = "UILabel"; text = "RhD"; ObjectID = "qpm-Re-vN0"; */
+"qpm-Re-vN0.text" = "RhD";
+
+/* Class = "UITextField"; placeholder = "Enter"; ObjectID = "qyU-kk-TWw"; */
+"qyU-kk-TWw.placeholder" = "Gir";
+
+/* Class = "UILabel"; text = "1:30 PM - 2:00 PM"; ObjectID = "r8H-x7-lfA"; */
+"r8H-x7-lfA.text" = "1:30 PM - 2:00 PM";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "rJv-TB-Pzk"; */
+"rJv-TB-Pzk.text" = "Ad";
+
+/* Class = "UILabel"; text = "Emergency Patients"; ObjectID = "rx4-L8-Da1"; */
+"rx4-L8-Da1.text" = "Acil Hastalar";
+
+/* Class = "UIButton"; normalTitle = "O"; ObjectID = "sY9-2e-t9D"; */
+"sY9-2e-t9D.normalTitle" = "O";
+
+/* Class = "UIButton"; normalTitle = "SWITCH TO PATIENT VIEW"; ObjectID = "sma-QY-2Bw"; */
+"sma-QY-2Bw.normalTitle" = "HASTA UYGULAMASINA GEÇ";
+
+/* Class = "UILabel"; text = "Call Patient For New Appointment"; ObjectID = "tyk-R9-8sH"; */
+"tyk-R9-8sH.text" = "Hastayı Yeni Randevuya Çağır";
+
+/* Class = "UILabel"; text = "Unit Amount"; ObjectID = "uQy-AZ-vYH"; */
+"uQy-AZ-vYH.text" = "Ünite Miktarı";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vo9-ri-Nk0"; */
+"vo9-ri-Nk0.text" = "Label";
+
+/* Class = "UILabel"; text = "Surname"; ObjectID = "w2s-xm-hag"; */
+"w2s-xm-hag.text" = "Soyad";
+
+/* Class = "UILabel"; text = "Birthdate:"; ObjectID = "w78-Vb-XHB"; */
+"w78-Vb-XHB.text" = "Doğum Tarihi:";
+
+/* Class = "UILabel"; text = "Dosages"; ObjectID = "xMY-6I-T3P"; */
+"xMY-6I-T3P.text" = "Doz";
+
+/* Class = "UILabel"; text = "40"; ObjectID = "xdE-lE-jSM"; */
+"xdE-lE-jSM.text" = "40";
+
+/* Class = "UILabel"; text = "22"; ObjectID = "xho-W7-6pn"; */
+"xho-W7-6pn.text" = "22";
+
+/* Class = "UILabel"; text = "Weight (kg)"; ObjectID = "yg9-uw-EgE"; */
+"yg9-uw-EgE.text" = "Kilo (kg)";
+
+/* Class = "UILabel"; text = "Confirmed"; ObjectID = "zn2-TD-4vj"; */
+"zn2-TD-4vj.text" = "Onaylandı";

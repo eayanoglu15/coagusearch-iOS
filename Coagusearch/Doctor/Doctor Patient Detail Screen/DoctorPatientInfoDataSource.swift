@@ -22,10 +22,7 @@ class DoctorPatientInfoDataSource {
     
     var patientId: Int?
     var pageInfo: DoctorPatientDetailInfo?
-    
-    var hasMedicine = true
-    var numOfMed = 1
-    
+
     func getPatientDetail() {
         guard let id = patientId else {
                 return
@@ -85,12 +82,55 @@ class DoctorPatientInfoDataSource {
     }
     
     func getMedicineNumber() -> Int {
-        return numOfMed
+        if let pageInfo = pageInfo, let drugs = pageInfo.patientDrugs {
+            return drugs.count
+        }
+        return 0
+    }
+    
+    func getMedicine(forIndex: Int) -> MediceneInfo? {
+        if let pageInfo = pageInfo, let drugs = pageInfo.patientDrugs {
+            let med = drugs[forIndex]
+            var title = ""
+            switch(med.mode) {
+            case .Key:
+                if let medTitle = med.key {
+                    title = medTitle
+                }
+            case .Custom:
+                if let medTitle = med.custom {
+                    title = medTitle
+                }
+            }
+            let frequency = med.frequency.title
+            let dosageDouble = med.dosage
+            var dosage: String
+            if floor(dosageDouble) == dosageDouble {
+                dosage = "\(Int(dosageDouble))"
+            } else {
+                dosage = "\(dosageDouble)"
+            }
+            if dosageDouble > 1 {
+                dosage = dosage + " dosages".localized
+            } else {
+                dosage = dosage + " dosage".localized
+            }
+            
+            return MediceneInfo(title: title, frequency: frequency, dosage: dosage)
+        }
+        return nil
     }
     
     func getPastAppointments() -> [PatientAppointment]? {
         if let info = pageInfo, let data = info.userAppointmentResponse, let oldData = data.oldAppointment {
             return oldData
+        }
+        return nil
+    }
+    
+    func getPastBloodOrders() -> [BloodOrder]? {
+        if let info = pageInfo, let data = info.previousBloodOrders {
+            return data
         }
         return nil
     }

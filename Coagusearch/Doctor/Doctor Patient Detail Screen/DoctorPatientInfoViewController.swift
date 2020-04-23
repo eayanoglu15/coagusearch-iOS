@@ -51,6 +51,15 @@ class DoctorPatientInfoViewController: UIViewController {
                 destinationVc.dataSource.pastAppointments = pastAppointments
             }
         }
+        if segue.identifier == SEGUE_SHOW_DOCTOR_PATIENT_SPECIFIC_BLOOD_ORDER {
+            let destinationVc = segue.destination as! DoctorBloodOrderForPatientViewController
+            if let pastOrders = dataSource.getPastBloodOrders() {
+                destinationVc.dataSource.pastOrders = pastOrders
+            }
+            if let patient = dataSource.getPatient() {
+                destinationVc.dataSource.patient = patient
+            }
+        }
     }
     
     private func setupTableView() {
@@ -78,12 +87,13 @@ class DoctorPatientInfoViewController: UIViewController {
             ANALYSIS_SECTION = 4
             PAST_APPOINTMENTS_SECTION = 5
             BLOOD_ORDER_SECTION = 6
+            NUMBER_OF_SECTIONS = 7
         } else {
-            APPOINTMENT_SECTION = 3 + medNum
-            ANALYSIS_SECTION = 4 + medNum
-            PAST_APPOINTMENTS_SECTION = 5 + medNum
-            BLOOD_ORDER_SECTION = 6 + medNum
-            NUMBER_OF_SECTIONS = 7 + medNum
+            APPOINTMENT_SECTION = 3 + medNum - 1
+            ANALYSIS_SECTION = 4 + medNum - 1
+            PAST_APPOINTMENTS_SECTION = 5 + medNum - 1
+            BLOOD_ORDER_SECTION = 6 + medNum - 1
+            NUMBER_OF_SECTIONS = 7 + medNum - 1
         }
     }
 }
@@ -123,7 +133,12 @@ extension DoctorPatientInfoViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_MEDICINE_CELL, for: indexPath) as! MedicineTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-            
+            if let medInfo = dataSource.getMedicine(forIndex: indexPath.section - MED_INFO_SECTION) {
+                cell.titleLabel.text = medInfo.title
+                cell.frequencyLabel.text = medInfo.frequency
+                cell.dosageLabel.text = medInfo.dosage
+                cell.medicineIndex = indexPath.section
+            }
             return cell
         } else if indexPath.section == APPOINTMENT_SECTION {
             if let next = dataSource.getNextAppointment() {

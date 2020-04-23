@@ -71,8 +71,9 @@ extension DoctorPatientsViewController: UITableViewDataSource {
             cell.backgroundView?.backgroundColor = UIColor.clear
         
         if let patient = dataSource.getPatient(index: indexPath.section) {
-            if let name = patient.name, let surname = patient.surname {
+            if let name = patient.name, let surname = patient.surname, let hasNewData = patient.newData {
                 cell.patientNameLabel.text = "\(name) \(surname)"
+                cell.analysisImageView.isHidden = !hasNewData
             }
         }
         return cell
