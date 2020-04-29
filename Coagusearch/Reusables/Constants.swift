@@ -21,6 +21,7 @@ let LOADING_VIEW_JSON_FILE_NAME = "blood-wave-tube"//"loader"
 let STORYBOARD_NAME_MAIN = "Main"
 let STORYBOARD_NAME_PATIENT = "Patient"
 let STORYBOARD_NAME_DOCTOR = "Doctor"
+let STORYBOARD_NAME_MEDICAL_TEAM = "MedicalTeam"
 
 // MARK: Storyboard Identifiers
 let STORYBOARD_ID_LOADING = "LoadingVC"
@@ -39,6 +40,8 @@ let SEGUE_SHOW_DOCTOR_PATIENT_SPECIFIC_BLOOD_ORDER = "showDoctorPatientSpecificB
 
 let SEGUE_SHOW_DOCTOR_HOME = "showDoctorHomeVC"
 let SEGUE_SHOW_DOCTOR_PATIENT_PAST_APPOINTMENTS_HOME = "showDoctorPatientPastAppointmentsVC"
+
+let SEGUE_SHOW_MEDICAL_TEAM_HOME = "showMedicalTeamHomeVC"
 
 // MARK: Cell Identifiers
 let CELL_IDENTIFIER_SELECTION_CELL = "SelectionTableViewCell"
@@ -72,6 +75,11 @@ let CELL_IDENTIFIER_SUGGESTION_CELL = "SuggestionTableViewCell"
 let CELL_IDENTIFIER_GIVEN_MEDICINE_CELL = "GivenMedicineTableViewCell"
 let CELL_IDENTIFIER_PRODUCT_ORDER_CELL = "ProductOrderTableViewCell"
 let CELL_IDENTIFIER_BUTTON_CELL = "ButtonTableViewCell"
+let CELL_IDENTIFIER_REPORT_AMBULANCE_PATIENT_CELL = "ReportAmbulancePatientTableViewCell"
+let CELL_IDENTIFIER_MANAGE_PATIENTS_CELL = "ManagePatientsTableViewCell"
+let CELL_IDENTIFIER_MEDICAL_TEAM_NOTIFICATION_CELL = "MedicalTeamNotificationTableViewCell"
+let CELL_IDENTIFIER_GENERAL_BLOOD_ORDER_INFO_CELL = "GeneralBloodOrderInfoTableViewCell"
+let CELL_IDENTIFIER_MEDICAL_TEAM_PATIENT_CELL = "MedicalTeamPatientTableViewCell"
 
 // MARK: Collection View Cell Identifiers
 let CELL_IDENTIFIER_EMERGENCY_PATIENT_CELL = "EmergencyPatientCollectionViewCell"

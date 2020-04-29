@@ -141,11 +141,12 @@
                         <outlet property="userTextField" destination="x89-P0-anw" id="7Pq-e2-EbG"/>
                         <segue destination="Y2j-8E-Evg" kind="presentation" identifier="showPatientHomeVC" modalPresentationStyle="fullScreen" id="ngj-cb-RDZ"/>
                         <segue destination="do1-bW-SHx" kind="presentation" identifier="showDoctorHomeVC" modalPresentationStyle="fullScreen" id="ejW-po-PrZ"/>
+                        <segue destination="8Xi-qE-QJ0" kind="presentation" identifier="showMedicalTeamHomeVC" modalPresentationStyle="fullScreen" id="xoM-cv-7oF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1074" y="119"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="sf2-00-FKm">
@@ -191,6 +192,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0c-0k-6Ee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1073.913043478261" y="807.58928571428567"/>
+        </scene>
+        <!--MedicalTeam-->
+        <scene sceneID="0xT-62-Pfy">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="MedicalTeamVC" storyboardName="MedicalTeam" id="8Xi-qE-QJ0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZsK-JC-rUu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EGb-qo-RAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="71"/>
         </scene>
         <!--Patient-->
         <scene sceneID="ueo-y2-8aU">

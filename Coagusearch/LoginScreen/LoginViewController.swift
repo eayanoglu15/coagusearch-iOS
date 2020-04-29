@@ -20,7 +20,7 @@ extension LoginViewController: LoginDataSourceDelegate {
             performSegue(withIdentifier: SEGUE_SHOW_DOCTOR_HOME, sender: nil)
         case .Medical:
             // TODO: Change for medical
-            performSegue(withIdentifier: SEGUE_SHOW_PATIENT_HOME, sender: nil)
+            performSegue(withIdentifier: SEGUE_SHOW_MEDICAL_TEAM_HOME, sender: nil)
         }
     }
 }

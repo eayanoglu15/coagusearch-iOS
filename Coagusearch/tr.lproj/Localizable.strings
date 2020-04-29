@@ -10,6 +10,7 @@
 "Appointment Date" = "Randevu Tarihi";
 "Add Medicine" = "İlaç Ekle";
 "Account Information" = "Hesap Bilgisi";
+"Add Patient" = "Hasta Ekle";
 
 // MARK: B
 "Blood Order" = "Kan Siparişi";
@@ -34,6 +35,7 @@
 "Edit" = "Düzenle";
 "Error" = "Hata";
 "Encountered an unexpected error" = "Beklenmeyen bir hata oluştu";
+"Edit Profile" = "Profili Düzenle";
 
 // MARK: F
 "Frequency" = "Sıklık";
@@ -84,6 +86,9 @@
 "Please enter rh type." = "Lütfen rh değerini giriniz.";
 "Please enter product type." = "Lütfen ürün türünü giriniz.";
 "Please enter unit amount." = "Lütfen ünite miktarını giriniz.";
+"Patients" = "Hastalar";
+"Patient Information" = "Hasta Bilgisi";
+"Prepare" = "Hazırla";
 
 // MARK: Q
 

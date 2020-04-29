@@ -70,6 +70,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var rootVC : UIViewController?
         if hasLogedIn {
             if let currentUser = Manager.sharedInstance.getCurrentuser() {
+                print("usertype: ", currentUser.type)
                 switch currentUser.type {
                 case .Patient:
                     let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_PATIENT, bundle: nil).instantiateInitialViewController() as! PatientTabBarController
@@ -84,12 +85,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     homeVC.loadViewIfNeeded()
                     self.window?.rootViewController = tabBarVC
                 case .Medical:
-                    // TODO: Change for medicial team
-                    let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_PATIENT, bundle: nil).instantiateInitialViewController() as! PatientTabBarController
+                    let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_MEDICAL_TEAM, bundle: nil).instantiateInitialViewController() as! MedicalTeamTabBarViewController
                     let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
-                    let homeVC = navigationVC.viewControllers.first as! PatientHomeViewController
+                    let homeVC = navigationVC.viewControllers.first as! MedicalTeamHomeViewController
                     homeVC.loadViewIfNeeded()
                     self.window?.rootViewController = tabBarVC
+                    /*
+                    let navigationVC = UIStoryboard(name: STORYBOARD_NAME_MEDICAL_TEAM, bundle: nil).instantiateInitialViewController() as! MedicalTeamNavigationController
+                    //let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
+                    let homeVC = navigationVC.viewControllers.first as! MedicalTeamHomeViewController
+                    homeVC.loadViewIfNeeded()
+                    self.window?.rootViewController = navigationVC
+                    */
                 }
             }
         } else {
