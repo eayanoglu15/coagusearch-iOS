@@ -256,7 +256,7 @@ class DoctorBloodOrderViewController: UIViewController {
             return
         }
         
-        guard let unit = unitTextField.text, !unit.isEmpty, let unitAmount = Int(unit) else {
+        guard let unit = unitTextField.text, !unit.isEmpty, let unitAmount = Double(unit) else {
             showAlertMessage(title: "Missing Unit Amount".localized, message: "Please enter unit amount.".localized)
             return
         }
@@ -296,13 +296,13 @@ class DoctorBloodOrderViewController: UIViewController {
         return nil
     }
     
-    func getProductType() -> BloodProductType? {
+    func getProductType() -> OrderProductType? {
         for i in 0...(productTypeSelection.count-1) {
             if productTypeSelection[i] {
                 if i == 0 {
-                    return BloodProductType.FFP
+                    return OrderProductType.FFP
                 } else if i == 1 {
-                    return BloodProductType.PC
+                    return OrderProductType.PlateletConcentrate
                 }
             }
         }
@@ -322,20 +322,9 @@ extension DoctorBloodOrderViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_BLOOD_ORDER_CELL, for: indexPath) as! BloodOrderTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-            
         if let order = dataSource.getPastOrder(index: indexPath.section) {
-            cell.unitLabel.text = "\(order.unit)"
-            cell.productLabel.text = order.productType.rawValue
-            
-            if let bloodType = order.bloodType, let rhType = order.rhType {
-                if rhType == RhType.Positive {
-                    cell.bloodLabel.text = "\(bloodType) Rh+"
-                } else {
-                    cell.bloodLabel.text = "\(bloodType) Rh-"
-                }
-            }
+            cell.setCell(order: order)
         }
-        
             return cell
     }
     

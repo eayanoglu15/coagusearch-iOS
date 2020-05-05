@@ -8,7 +8,15 @@
 
 import UIKit
 
+protocol ProductOrderTableViewCellDelegate: AnyObject {
+    func orderButtonClicked(product: OrderProductType?, quantity: Double?, note: String?)
+}
+
 class ProductOrderTableViewCell: UITableViewCell {
+    weak var delegate: ProductOrderTableViewCellDelegate?
+    
+    @IBOutlet weak var orderButton: UIButton!
+    
     @IBOutlet weak var FFPButton: UIButton!
     @IBOutlet weak var plateletButton: UIButton!
     
@@ -16,6 +24,18 @@ class ProductOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var unitTextField: UITextField!
     
     private var productTypeSelection = [false, false]
+    
+    private var additionalNote: String?
+    
+    func showSuggestion(suggestion: TreatmentSuggestion, weight: Double?) {
+        if suggestion.product == "Platelet Concentrate" {
+            stylizeButtonSelected(button: plateletButton)
+            productTypeSelection = [false, true]
+        }
+        if let weight = weight {
+            unitTextField.text = "\(weight * suggestion.quantity)"
+        }
+    }
     
     func stylizeButtonUnselected(button: UIButton) {
         button.borderWidth = 1
@@ -31,7 +51,6 @@ class ProductOrderTableViewCell: UITableViewCell {
         button.backgroundColor = .coolBlue
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,6 +62,17 @@ class ProductOrderTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setButton(isEnabled: Bool) {
+        if isEnabled {
+            orderButton.isEnabled = true
+            contentView.alpha = 1;
+        } else {
+            orderButton.isEnabled = false
+            //orderButton.alpha = 0.5;
+            contentView.alpha = 0.7
+        }
     }
     
     func setButtons() {
@@ -92,6 +122,26 @@ class ProductOrderTableViewCell: UITableViewCell {
     }
     
     @IBAction func makeOrderButtonTapped(_ sender: Any) {
-        
+        var product: OrderProductType?
+        var quantity: Double?
+        var note: String?
+        if productTypeSelection[0] {
+            product = .FFP
+        } else if productTypeSelection[1] {
+            product = .PlateletConcentrate
+        }
+        if let quantityStr = unitTextField.text {
+            if !quantityStr.isEmpty {
+                if let q = Double(quantityStr) {
+                    quantity = q
+                }
+            }
+        }
+        delegate?.orderButtonClicked(product: product, quantity: quantity, note: note)
+        stylizeButtonUnselected(button: FFPButton)
+        stylizeButtonUnselected(button: plateletButton)
+        unitTextField.text = ""
+        productTypeSelection = [false, false]
+        additionalNote = nil
     }
 }

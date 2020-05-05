@@ -28,7 +28,12 @@ enum Router: URLRequestConvertible {
     case getPatientDetail(patientId: Int)
     case postBloodOrder
     case getPastGeneralBloodOrders
+    case orderAfterAnalysis
     
+    case getAllAnalysis(patientId: Int)
+    case getLastAnalysis(patientId: Int)
+    case getAnalysisById(bloodTestDataId: Int)
+    case getSuggestionForAnalysis(bloodTestDataId: Int)
     
     var baseURL: URL {
         return URL(string: "http://localhost:8080")!
@@ -37,7 +42,7 @@ enum Router: URLRequestConvertible {
     // MARK: - HTTPMethod
     var method: HTTPMethod {
         switch self {
-        case .login, .postAppointment, .saveUserInfo, .saveMedicine, .deleteMedicine, .deleteUserAppointment, .getPatientDetail, .postBloodOrder:
+        case .login, .postAppointment, .saveUserInfo, .saveMedicine, .deleteMedicine, .deleteUserAppointment, .getPatientDetail, .postBloodOrder, .orderAfterAnalysis, .getAllAnalysis, .getLastAnalysis, .getAnalysisById, .getSuggestionForAnalysis:
             return .post
         case .getUser, .getAllMedicine, .getAvailableAppointments, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo, .getDoctorMainScreenInfo, .getDoctorPatients, .getPastGeneralBloodOrders:
             return .get
@@ -81,6 +86,16 @@ enum Router: URLRequestConvertible {
             return Endpoint.OrderBlood.rawValue
         case .getPastGeneralBloodOrders:
             return Endpoint.PastGeneralOrders.rawValue
+        case .orderAfterAnalysis:
+            return Endpoint.OrderAfterAnalysis.rawValue
+        case .getAllAnalysis:
+            return Endpoint.GetAllAnalysis.rawValue
+        case .getLastAnalysis:
+            return Endpoint.GetLastAnalysis.rawValue
+        case .getAnalysisById:
+            return Endpoint.GetAnalysisById.rawValue
+        case .getSuggestionForAnalysis:
+            return Endpoint.GetSuggestionForAnalysis.rawValue
         }
     }
     
@@ -121,6 +136,16 @@ enum Router: URLRequestConvertible {
             return Endpoint.OrderBlood
         case .getPastGeneralBloodOrders:
             return Endpoint.PastGeneralOrders
+        case .orderAfterAnalysis:
+            return Endpoint.OrderAfterAnalysis
+        case .getAllAnalysis:
+            return Endpoint.GetAllAnalysis
+        case .getLastAnalysis:
+            return Endpoint.GetLastAnalysis
+        case .getAnalysisById:
+            return Endpoint.GetAnalysisById
+        case .getSuggestionForAnalysis:
+            return Endpoint.GetSuggestionForAnalysis
         }
     }
     
@@ -129,7 +154,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .login(let id, let password):
             return [Parameter.id.rawValue: id, Parameter.password.rawValue: password]
-        case .getUser, .getAllMedicine, .getAvailableAppointments, .saveMedicine, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo, .getDoctorMainScreenInfo, .getDoctorPatients, .postBloodOrder, .getPastGeneralBloodOrders:
+        case .getUser, .getAllMedicine, .getAvailableAppointments, .saveMedicine, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo, .getDoctorMainScreenInfo, .getDoctorPatients, .postBloodOrder, .getPastGeneralBloodOrders, .orderAfterAnalysis:
             return nil
         case .postAppointment(let day, let month, let year, let hour, let minute):
             return [Parameter.day.rawValue: day, Parameter.month.rawValue: month,
@@ -143,6 +168,14 @@ enum Router: URLRequestConvertible {
             return [Parameter.appointmentId.rawValue: appointmentId]
         case .getPatientDetail(let patientId):
             return [Parameter.patientId.rawValue: patientId]
+        case .getAllAnalysis(let patientId):
+            return [Parameter.patientId.rawValue: patientId]
+        case .getLastAnalysis(let patientId):
+            return [Parameter.patientId.rawValue: patientId]
+        case .getAnalysisById(let bloodTestDataId):
+            return [Parameter.bloodTestDataId.rawValue: bloodTestDataId]
+        case .getSuggestionForAnalysis(let bloodTestDataId):
+            return [Parameter.bloodTestDataId.rawValue: bloodTestDataId]
         }
     }
     

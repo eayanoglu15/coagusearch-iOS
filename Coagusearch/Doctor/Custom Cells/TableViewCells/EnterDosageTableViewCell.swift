@@ -9,11 +9,15 @@
 import UIKit
 
 protocol EnterDosageTableViewCellDelegate: AnyObject {
-    //func setSelection(type: SelectionCellType, cellSectionNumber: Int, index: Int, value: String)
+    func setSelectedDosage(dosage: Double)
+    func setSelectedUnit(unit: String)
 }
 
 class EnterDosageTableViewCell: UITableViewCell {
     weak var delegate: EnterDosageTableViewCellDelegate?
+    
+    var selectedDosage: Double?
+    var selectedUnit: String?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dosageLabel: UILabel!
@@ -23,7 +27,15 @@ class EnterDosageTableViewCell: UITableViewCell {
     @IBOutlet weak var unitPickerView: UIPickerView!
     @IBOutlet weak var expandView: UIView!
     
-    var pickerData = ["g", "ml", "unit"]//[String]()
+    var pickerData = ["g", "ml", "Unit"]//[String]()
+    
+    func setSuggestion(suggestion: TreatmentSuggestion) {
+        if suggestion.kind == .Medicine {
+            selectedDosage = suggestion.quantity
+            selectedUnit = suggestion.unit
+            setSelection()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +49,16 @@ class EnterDosageTableViewCell: UITableViewCell {
         unitPickerView.isHidden = true
         unitPickerView.delegate = self
         unitPickerView.dataSource = self
- 
+        
+        dosageTextField.delegate = self
+        
+        if let first = pickerData.first {
+            dosageLabel.text = "- " + first
+            selectedUnit = first
+            delegate?.setSelectedUnit(unit: first)
+        } else {
+            dosageLabel.text = "-"
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -59,43 +80,29 @@ class EnterDosageTableViewCell: UITableViewCell {
             arrowImageView.image = UIImage(named: IconNames.upArrow)
         }
     }
+    
+    func setSelection() {
+        var dosage = "-"
+        if let selDosage = selectedDosage {
+            dosage = "\(selDosage)"
+        }
+        if let unit = selectedUnit {
+            dosageLabel.text = dosage + " " + unit
+        } else {
+            dosageLabel.text = dosage
+        }
+    }
+    
 
 }
 
 extension EnterDosageTableViewCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        /*
-        selectedRow = row
-        if cellType == .AppointmentDay {
-            delegate.self?.setSelection(type: .AppointmentDay, cellSectionNumber: cellSectionNumber, index: row, value: pickerData[row])
+        selectedUnit = pickerData[row]
+        if let unit = selectedUnit {
+            delegate?.setSelectedUnit(unit: unit)
         }
-        if cellType == .TimeSlot {
-            delegate.self?.setSelection(type: .TimeSlot, cellSectionNumber: cellSectionNumber, index: row, value: pickerData[row])
-        } else {
-            delegate.self?.setSelection(type: cellType, cellSectionNumber: cellSectionNumber, index: row, value: pickerData[row])
-        }
-        
-        if cellType == .Dosage {
-            if let dosageDouble = Double(pickerData[row]) {
-                var dosage: String
-                if floor(dosageDouble) == dosageDouble {
-                    dosage = "\(Int(dosageDouble))"
-                } else {
-                    dosage = "\(dosageDouble)"
-                }
-                if dosageDouble > 1 {
-                    dosage = dosage + " dosages".localized
-                } else {
-                    dosage = dosage + " dosage".localized
-                }
-                selectionLabel.text = dosage
-            } else {
-                selectionLabel.text = pickerData[row]
-            }
-        } else {
-            selectionLabel.text = pickerData[row]
-        }
- */
+        setSelection()
     }
 }
 
@@ -117,3 +124,20 @@ extension EnterDosageTableViewCell: UIPickerViewDataSource {
         return atributedTitle
     }
 }
+
+extension EnterDosageTableViewCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            if !text.isEmpty {
+                if let dosage = Double(text) {
+                    selectedDosage = dosage
+                    if let dos = selectedDosage {
+                        delegate?.setSelectedDosage(dosage: dos)
+                    }
+                    setSelection()
+                }
+            }
+        }
+    }
+}
+

@@ -22,11 +22,45 @@ class BloodOrderTableViewCell: UITableViewCell {
         // Initialization code
         selectionStyle = .none
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
+    func setCell(order: GeneralOrder) {
+        let quantity = order.quantity
+        var qStr = "\(quantity)"
+        let qInt = Int(quantity)
+        if quantity - Double(qInt) == 0 {
+            qStr = "\(qInt)"
+        }
+        
+        unitLabel.text = qStr
+        
+        var productStr = order.productType
+        switch order.productType {
+        case "FFP":
+            productStr = "Fresh Frozen Plasma"
+            break
+        case "FibrinojenConcentrate":
+            productStr = "Fibrinojen Concentrate"
+            break
+        case "PlateletConcentrate":
+            productStr = "Platelet Concentrate"
+            break
+        default:
+            break
+        }
+        productLabel.text = productStr
+        
+        if let bloodType = order.bloodType, let rhType = order.rhType {
+            if rhType == RhType.Positive {
+                bloodLabel.text = "\(bloodType) Rh+"
+            } else {
+                bloodLabel.text = "\(bloodType) Rh-"
+            }
+        }
+    }
 }

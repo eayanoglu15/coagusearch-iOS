@@ -8,8 +8,15 @@
 
 import UIKit
 
+extension DoctorTreatmentStatusViewController: DoctorTreatmentStatusDataSourceDelegate {
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+}
+
 class DoctorTreatmentStatusViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    var dataSource = DoctorTreatmentStatusDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +26,21 @@ class DoctorTreatmentStatusViewController: UIViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
+        dataSource.coagusearchService = CoagusearchServiceFactory.createService()
+        dataSource.delegate = self
+        setupTableView()
     }
     
-    let numOfOrders = 2
-    let numOfMeds = 3
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        dataSource.getLastAnalysisData()
+    }
 
+    private func setupTableView() {
+        let nextCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        tableView.register(nextCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -44,21 +61,37 @@ extension DoctorTreatmentStatusViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section < numOfOrders {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
-            cell.backgroundColor = UIColor.clear
-            cell.backgroundView?.backgroundColor = UIColor.clear
-            return cell
+        if let order = dataSource.getOrderInfo(forIndex: indexPath.section) {
+            switch order.kind {
+            case .Blood:
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.backgroundView?.backgroundColor = UIColor.clear
+                cell.setup(order: order)
+                return cell
+            case .Medicine:
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_GIVEN_MEDICINE_CELL, for: indexPath) as! GivenMedicineTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.backgroundView?.backgroundColor = UIColor.clear
+                cell.setup(order: order)
+                return cell
+            }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_GIVEN_MEDICINE_CELL, for: indexPath) as! GivenMedicineTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
+            cell.label.text = "No order has yet been placed for this test result".localized
             return cell
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return numOfOrders + numOfMeds
+        let count = dataSource.getTableViewCount()
+        if count > 0 {
+            return count
+        } else {
+            return 1
+        }
     }
     
     // There is just one row in every section

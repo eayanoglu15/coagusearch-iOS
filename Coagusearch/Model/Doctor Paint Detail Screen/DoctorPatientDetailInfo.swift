@@ -11,9 +11,9 @@ import Foundation
 struct DoctorPatientDetailInfo : Codable {
     var patientResponse: User?
     var userAppointmentResponse: PatientAllAppointments?
-    var userDataResponse: PatientAllDataAnalysis?
+    var lastDataAnalysisTime: PatientAllDataAnalysis?
     var patientDrugs: [UserDrug]?
-    var previousBloodOrders: [BloodOrder]?
+    var previousBloodOrders: [GeneralOrder]?
 }
 
 struct PatientAllAppointments : Codable {
@@ -22,8 +22,8 @@ struct PatientAllAppointments : Codable {
 }
 
 struct PatientAllDataAnalysis : Codable {
-    var lastDataAnalysisTime: DayYearInfo?
-    var oldAnalysis: [AnalysisStatus]
+    var id: Int?
+    var testDate: DayYearInfo?
 }
 
 struct DayYearInfo: Codable {
@@ -32,7 +32,6 @@ struct DayYearInfo: Codable {
     var year: Int
 }
 
-struct AnalysisStatus: Codable {
-    var message: String
-    var success: Bool
+func getDateStr(date: DayYearInfo) -> String {
+    return "\(date.day)/\(date.month)/\(date.year)"
 }

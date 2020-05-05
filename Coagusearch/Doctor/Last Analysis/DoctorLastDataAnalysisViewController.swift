@@ -8,7 +8,15 @@
 
 import UIKit
 
+extension DoctorLastDataAnalysisViewController: DoctorLastDataAnalysisDataSourceDelegate {
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+}
+
 class DoctorLastDataAnalysisViewController: UIViewController {
+    var dataSource = DoctorLastDataAnalysisDataSource()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -17,6 +25,9 @@ class DoctorLastDataAnalysisViewController: UIViewController {
         stylize()
         title = "µTem Data Analysis".localized
         // Do any additional setup after loading the view.
+        dataSource.coagusearchService = CoagusearchServiceFactory.createService()
+        dataSource.delegate = self
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -28,19 +39,35 @@ class DoctorLastDataAnalysisViewController: UIViewController {
         segmentedControl.selectedSegmentTintColor = .blueBlue
     }
     
-    // val , min , max , optMin , optMax
-    let fibtemvalues = [(30.0, 10.0, 200.0, 60.0, 90.0), (170, 100, 200, 110, 120), (50, 40, 60, 50, 55)]
-    let extemvalues = [(30.0, 10.0, 200.0, 60.0, 90.0)]
-    let intemvalues = [(30.0, 10.0, 200.0, 60.0, 90.0), (170, 100, 200, 110, 120)]
-    /*
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        dataSource.getLastAnalysisData()
+    }
+    
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
+        if segue.identifier == SEGUE_SHOW_DOCTOR_DATA_ANALYSES {
+            let destinationVc = segue.destination as! DoctorPastDataAnalysesViewController
+            if let patientId = dataSource.getPatientId() {
+                destinationVc.dataSource.patientId = patientId
+            }
+        }
+        if segue.identifier == SEGUE_SHOW_DOCTOR_ACTION_LIST {
+            let destinationVc = segue.destination as! DoctorActionBloodOrderViewController
+            if let testId = dataSource.getTestId() {
+                destinationVc.dataSource.testId = testId
+            }
+            if let patientId = dataSource.getPatientId() {
+                destinationVc.dataSource.patientId = patientId
+            }
+        }
      }
-     */
+     
     
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
         tableView.reloadData()
@@ -60,21 +87,24 @@ extension DoctorLastDataAnalysisViewController: UITableViewDataSource {
         cell.backgroundColor = UIColor.clear
         cell.backgroundView?.backgroundColor = UIColor.clear
         
-        var val = (Double(), Double(), Double(), Double(), Double())
+        var val: SingleTestResult?
         switch (segmentedControl.selectedSegmentIndex) {
         case 0:
-            val = fibtemvalues[indexPath.section]
+            val = dataSource.getOrderInfo(testName: .Fibtem, forIndex: indexPath.section)
             break
         case 1:
-            val = extemvalues[indexPath.section]
+            val = dataSource.getOrderInfo(testName: .Extem, forIndex: indexPath.section)
             break
         case 2:
-            val = intemvalues[indexPath.section]
+            val = dataSource.getOrderInfo(testName: .Intem, forIndex: indexPath.section)
             break
         default:
             break
         }
-        cell.setValues(val: val.0, min: val.1, max: val.2, optMin: val.3, optMax: val.4)
+        
+        if let result = val {
+            cell.setTestResult(result: result)
+        }
         
         return cell
     }
@@ -82,11 +112,11 @@ extension DoctorLastDataAnalysisViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         switch (segmentedControl.selectedSegmentIndex) {
         case 0:
-            return fibtemvalues.count
+            return dataSource.getTableViewCount(testName: .Fibtem)
         case 1:
-            return extemvalues.count
+            return dataSource.getTableViewCount(testName: .Extem)
         case 2:
-            return intemvalues.count
+            return dataSource.getTableViewCount(testName: .Intem)
         default:
             return 0
         }

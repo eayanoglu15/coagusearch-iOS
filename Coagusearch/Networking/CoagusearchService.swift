@@ -11,6 +11,145 @@ import Alamofire
 
 
 class CoagusearchService: NetworkBase, CoaguSearchService {
+    func orderForAnalysis(order: GeneralOrder, completion: @escaping SuccessReturnFunction) {
+        let route = Router.orderAfterAnalysis
+        var parameters = [String: Any]()
+        let kind = order.kind.rawValue
+        let quantity = order.quantity
+        let product = order.productType
+        let bloodTestId = order.bloodTestId
+        parameters = [Parameter.kind.rawValue: kind,
+                      Parameter.quantity.rawValue: quantity,
+                      Parameter.product.rawValue: product,
+                      Parameter.bloodTestId.rawValue: bloodTestId]
+        
+        if let bloodType = order.bloodType, let rhType = order.rhType {
+            parameters["bloodType"] = bloodType.rawValue
+            parameters["rhType"] = rhType.rawValue
+        }
+        
+        if let unit = order.unit {
+            parameters[Parameter.unit.rawValue] = unit
+        } else {
+            parameters[Parameter.unit.rawValue] = "Unit"
+        }
+        
+        if let note = order.additionalNote {
+            parameters["additionalNote"] = note
+        }
+        
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(false, error)
+                } else {
+                    completion(false, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            guard let success = response["success"] as? Bool,
+                let message = response["message"] as? String else {
+                    let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize success state", comment: "")])
+                    completion(false, error)
+                    return
+            }
+            
+            if success {
+                completion(true, nil)
+            } else {
+                completion(false, NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey: message]))
+            }
+        }
+    }
+    
+    func getSuggestionForAnalysis(bloodTestDataId: Int, completion: @escaping TreatmentSuggestionListReturnFunction) {
+        let route = Router.getSuggestionForAnalysis(bloodTestDataId: bloodTestDataId)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode(TreatmentSuggestionList.self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func getDataAnalysisByID(bloodTestDataId: Int, completion: @escaping DataAnalysisReturnFunction) {
+        let route = Router.getAnalysisById(bloodTestDataId: bloodTestDataId)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode(DataAnalysis.self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func getLastDataAnalysis(patientId: Int, completion: @escaping DataAnalysisReturnFunction) {
+        let route = Router.getLastAnalysis(patientId: patientId)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode(DataAnalysis.self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func getDataAnalysisList(patientId: Int, completion: @escaping DataAnalysisListReturnFunction) {
+        let route = Router.getAllAnalysis(patientId: patientId)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode(UserDataAnalysisList.self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
+    
     func getPastGeneralBloodOrders(completion: @escaping PastGeneralBloodOrderReturnFunction) {
         let route = Router.getPastGeneralBloodOrders
         self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Array) { (response, error) in
@@ -24,7 +163,7 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
             }
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
-                let info = try JSONDecoder().decode([BloodOrder].self, from: jsonData)
+                let info = try JSONDecoder().decode([GeneralOrder].self, from: jsonData)
                 completion(info, nil)
             } catch {
                 let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize", comment: "")])
@@ -74,25 +213,25 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
     }
     
     func getDoctorPatientInfo(patientId: Int, completion: @escaping DoctorPatientDetailInfoReturnFunction) {
-         let route = Router.getPatientDetail(patientId: patientId)
-               self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
-                   guard let response = response as? NSDictionary else {
-                       if let error = error {
-                           completion(nil, error)
-                       } else {
-                           completion(nil, UNEXPECTED_ERROR)
-                       }
-                       return
-                   }
-                   do {
-                       let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
-                       let info = try JSONDecoder().decode(DoctorPatientDetailInfo.self, from: jsonData)
-                       completion(info, nil)
-                   } catch {
-                       let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize.", comment: "")])
-                       completion(nil, error)
-                   }
-               }
+        let route = Router.getPatientDetail(patientId: patientId)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode(DoctorPatientDetailInfo.self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize.", comment: "")])
+                completion(nil, error)
+            }
+        }
     }
     
     func getDoctorPatients(completion: @escaping DoctorPatientsReturnFunction) {
@@ -146,7 +285,7 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
             endpointStr += "/\(endpointParameter)"
         }
         let url = baseURL + endpointStr
-         
+        
         guard let user = Manager.sharedInstance.currentUser,
             let accessToken = user.accessToken,
             let refreshToken = user.refreshToken else {
@@ -154,7 +293,7 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                 return
         }
         
-       var headersCopy = headers
+        var headersCopy = headers
         headersCopy["Authorization"] = "Bearer " + accessToken
         
         AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: headersCopy).responseJSON { (response) in
@@ -180,8 +319,8 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                                             switch responseType {
                                             case .Dictionary:
                                                 guard var value = value as? [String: Any] else {
-                                                        completion(nil, UNEXPECTED_ERROR)
-                                                        return
+                                                    completion(nil, UNEXPECTED_ERROR)
+                                                    return
                                                 }
                                                 value["accessToken"] = token
                                                 value["refreshToken"] = refreshToken
@@ -189,16 +328,16 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                                                 break
                                             case .Array:
                                                 guard let value = value as? NSArray else {
-                                                        completion(nil, UNEXPECTED_ERROR)
-                                                        return
+                                                    completion(nil, UNEXPECTED_ERROR)
+                                                    return
                                                 }
                                                 completion(value, nil)
                                                 break
                                             }
                                         } else {
                                             guard let value = value as? [String: Any], let message = value["message"] as? String else {
-                                                    completion(nil, UNEXPECTED_ERROR)
-                                                    return
+                                                completion(nil, UNEXPECTED_ERROR)
+                                                return
                                             }
                                             completion(nil, NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey: message]))
                                         }
@@ -221,8 +360,8 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                     switch responseType {
                     case .Dictionary:
                         guard var value = value as? [String: Any] else {
-                                completion(nil, UNEXPECTED_ERROR)
-                                return
+                            completion(nil, UNEXPECTED_ERROR)
+                            return
                         }
                         value["accessToken"] = accessToken
                         value["refreshToken"] = refreshToken
@@ -230,16 +369,16 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                         break
                     case .Array:
                         guard let value = value as? NSArray else {
-                                completion(nil, UNEXPECTED_ERROR)
-                                return
+                            completion(nil, UNEXPECTED_ERROR)
+                            return
                         }
                         completion(value, nil)
                         break
                     }
                 } else {
                     guard let value = value as? [String: Any], let message = value["message"] as? String else {
-                            completion(nil, UNEXPECTED_ERROR)
-                            return
+                        completion(nil, UNEXPECTED_ERROR)
+                        return
                     }
                     completion(nil, NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey: message]))
                 }
@@ -268,8 +407,8 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                 }
                 
                 guard let value = value as? [String: Any] else {
-                        completion(nil, UNEXPECTED_ERROR)
-                        return
+                    completion(nil, UNEXPECTED_ERROR)
+                    return
                 }
                 
                 if let message = value["message"] as? String {
@@ -304,8 +443,8 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
             case .success(let value):
                 
                 guard let value = value as? [String: Any] else {
-                        completion(nil, UNEXPECTED_ERROR)
-                        return
+                    completion(nil, UNEXPECTED_ERROR)
+                    return
                 }
                 
                 if let message = value["message"] as? String {
@@ -317,7 +456,7 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                         let refreshToken = value["refreshToken"] as? String else {
                             print("Invalid Response")
                             completion(nil, UNEXPECTED_ERROR)
-                        return
+                            return
                     }
                     var tempUser = User(identityNumber: "", type: UserType.Patient, userId: -1, name: "", surname: "", birthDay: nil, birthMonth: nil, birthYear: nil, height: nil, weight: nil, bloodType: nil, rhType: nil, gender: nil)
                     tempUser.accessToken = accessToken
@@ -364,9 +503,9 @@ class CoagusearchService: NetworkBase, CoaguSearchService {
                 let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
                 let user = try JSONDecoder().decode(User.self, from: jsonData)
                 /*
-                user.accessToken = response["accessToken"] as? String
-                user.refreshToken = response["refreshToken"] as? String
-                */
+                 user.accessToken = response["accessToken"] as? String
+                 user.refreshToken = response["refreshToken"] as? String
+                 */
                 completion(user, nil)
             } catch {
                 let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize user.", comment: "")])

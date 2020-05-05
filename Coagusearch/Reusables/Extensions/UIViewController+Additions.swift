@@ -63,5 +63,36 @@ extension UIViewController {
         }
     }
     
+    func showPatientHome() {
+        let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_PATIENT, bundle: nil).instantiateInitialViewController() as! PatientTabBarController
+        let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
+        let homeVC = navigationVC.viewControllers.first as! PatientHomeViewController
+        homeVC.loadViewIfNeeded()
+        tabBarVC.modalPresentationStyle = .fullScreen
+        self.present(tabBarVC, animated: true) {
+            self.navigationController?.popToRootViewController(animated: false)
+        }
+    }
     
+    func showDoctorHome() {
+        let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_DOCTOR, bundle: nil).instantiateInitialViewController() as! DoctorTabBarController
+        let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
+        let homeVC = navigationVC.viewControllers.first as! DoctorHomeViewController
+        homeVC.loadViewIfNeeded()
+        tabBarVC.modalPresentationStyle = .fullScreen
+        self.present(tabBarVC, animated: true) {
+            self.navigationController?.popToRootViewController(animated: false)
+        }
+    }
+    
+    func showMedicalHome() {
+        let tabBarVC = UIStoryboard(name: STORYBOARD_NAME_MEDICAL_TEAM, bundle: nil).instantiateInitialViewController() as! MedicalTeamTabBarViewController
+        let navigationVC = tabBarVC.viewControllers?.first as! UINavigationController
+        let homeVC = navigationVC.viewControllers.first as! MedicalTeamHomeViewController
+        homeVC.loadViewIfNeeded()
+        tabBarVC.modalPresentationStyle = .fullScreen
+        self.present(tabBarVC, animated: true) {
+            self.navigationController?.popToRootViewController(animated: false)
+        }
+    }
 }

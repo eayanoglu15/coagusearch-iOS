@@ -21,7 +21,7 @@ class DoctorBloodOrderDataSource {
     var delegate: DoctorBloodOrderDataSourceDelegate?
     var coagusearchService: CoagusearchService?
     
-    private var pastOrders: [BloodOrder]?
+    private var pastOrders: [GeneralOrder]?
     
     func getPastOrders() {
         self.delegate?.showLoadingVC()
@@ -45,7 +45,7 @@ class DoctorBloodOrderDataSource {
         })
     }
     
-    func postBloodOrder(bloodType: BloodType, rhType: RhType, productType: BloodProductType, unit: Int, additionalNote: String?) {
+    func postBloodOrder(bloodType: BloodType, rhType: RhType, productType: OrderProductType, unit: Double, additionalNote: String?) {
         self.delegate?.showLoadingVC()
         let order = BloodOrder(bloodType: bloodType, rhType: rhType, productType: productType, unit: unit, additionalNote: additionalNote)
         coagusearchService?.postBloodOrder(order: order, completion: { (result, error) in
@@ -60,10 +60,11 @@ class DoctorBloodOrderDataSource {
                     }
                 }
             } else {
+                let newOrder = GeneralOrder(kind: .Medicine, bloodType: bloodType, rhType: rhType, productType: productType.rawValue, quantity: unit, bloodTestId: nil, additionalNote: nil)
                 if self.pastOrders != nil {
-                    self.pastOrders!.append(order)
+                    self.pastOrders!.append(newOrder)
                 } else {
-                    self.pastOrders = [order]
+                    self.pastOrders = [newOrder]
                 }
                 DispatchQueue.main.async {
                     self.delegate?.refreshOrderCardAndTable()
@@ -80,7 +81,7 @@ class DoctorBloodOrderDataSource {
         return 0
     }
     
-    func getPastOrder(index: Int) -> BloodOrder? {
+    func getPastOrder(index: Int) -> GeneralOrder? {
         if let orders = pastOrders {
             if orders.count > 1 {
                 return orders[(orders.count - 1) - index]

@@ -74,11 +74,19 @@ class DoctorPatientInfoDataSource {
         return nil
     }
     
+    func getPatientId() -> Int? {
+        /*
+        if let info = pageInfo, let user = info.patientResponse {
+            return user.userId
+        }*/
+        return patientId
+    }
+    
     func getLastDataAnalysisDate() -> String {
-        if let info = pageInfo, let data = info.userDataResponse, let time = data.lastDataAnalysisTime {
-            return "\(time.day)/\(time.month)/\(time.year)"
+        if let info = pageInfo, let lastData = info.lastDataAnalysisTime, let time = lastData.testDate {
+            return getDateStr(date: time)
         }
-        return "No past data analysis"
+        return "No past data analysis".localized
     }
     
     func getMedicineNumber() -> Int {
@@ -128,7 +136,7 @@ class DoctorPatientInfoDataSource {
         return nil
     }
     
-    func getPastBloodOrders() -> [BloodOrder]? {
+    func getPastBloodOrders() -> [GeneralOrder]? {
         if let info = pageInfo, let data = info.previousBloodOrders {
             return data
         }

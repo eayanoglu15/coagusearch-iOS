@@ -14,6 +14,12 @@ let IMAGE_NAME_NORMAL = "normal"
 let IMAGE_NAME_LOW = "low"
 let IMAGE_NAME_HIGH = "high"
 
+let IMAGE_NAME_TRANSFUSION = "transfusion"
+let IMAGE_NAME_PRODUCT_TYPE = "productType"
+
+let IMAGE_NAME_BLUE_DOSAGE = "BlueDosage"
+let IMAGE_NAME_BLUE_MEDICINE = "MedicineBlue"
+
 // MARK: Animation File
 let LOADING_VIEW_JSON_FILE_NAME = "blood-wave-tube"//"loader"
 
@@ -35,11 +41,17 @@ let STORYBOARD_ID_DOCTOR_TAB_BAR = "DoctorVC"
 let SEGUE_SHOW_PATIENT_HOME = "showPatientHomeVC"
 let SEGUE_SHOW_PATIENT_MEDICINE_UPDATE = "showPatientMedicineUpdateVC"
 let SEGUE_SHOW_PATIENT_INFO = "showPatientInfoVC"
-let SEGUE_SHOW_DOCTOR_PATIENT_INFO = "showDoctorPatientInfoVC"
-let SEGUE_SHOW_DOCTOR_PATIENT_SPECIFIC_BLOOD_ORDER = "showDoctorPatientSpecificBloodOrderVC"
 
 let SEGUE_SHOW_DOCTOR_HOME = "showDoctorHomeVC"
+let SEGUE_SHOW_DOCTOR_PATIENT_INFO = "showDoctorPatientInfoVC"
+let SEGUE_SHOW_DOCTOR_PATIENT_SPECIFIC_BLOOD_ORDER = "showDoctorPatientSpecificBloodOrderVC"
 let SEGUE_SHOW_DOCTOR_PATIENT_PAST_APPOINTMENTS_HOME = "showDoctorPatientPastAppointmentsVC"
+let SEGUE_SHOW_DOCTOR_PATIENT_LAST_ANALYSIS = "showDoctorPatientLastAnalysisVC"
+let SEGUE_SHOW_DOCTOR_DATA_ANALYSES = "showDoctorDataAnalysesVC"
+let SEGUE_SHOW_DOCTOR_PAST_DATA_ANALYSIS = "showDoctorPastAnalysisVC"
+let SEGUE_SHOW_DOCTOR_ACTION_LIST = "showDoctorActionListVC"
+let SEGUE_SHOW_DOCTOR_TREATMENT_DECISION = "showDoctorTreatmentDecisionVC"
+let SEGUE_SHOW_DOCTOR_TREATMENT_STATUS = "showDoctorTreatmentStatusVC"
 
 let SEGUE_SHOW_MEDICAL_TEAM_HOME = "showMedicalTeamHomeVC"
 
@@ -89,8 +101,8 @@ let CELL_HEIGHT_SMALL = CGFloat(45)
 let CELL_HEIGHT = CGFloat(70)
 let CELL_HEIGHT_EXPANDED = CGFloat(200)
 
-let ENTER_DOSADE_CELL_HEIGHT = CGFloat(65)
-let ENTER_DOSADE_EXPANDED_CELL_HEIGHT = CGFloat(195)
+let ENTER_DOSADE_CELL_HEIGHT = CGFloat(72)
+let ENTER_DOSADE_EXPANDED_CELL_HEIGHT = CGFloat(200)
 
 //
 let HEIGHT_FOR_HEADER = CGFloat(16)

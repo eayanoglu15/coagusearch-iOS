@@ -63,10 +63,15 @@
 "Missing Blood Information" = "Eksik Kan Bilgisi";
 "Missing Product Type" = "Eksik Ürün Bilgisi";
 "Missing Unit Amount" = "Eksik Ünite Miktarı";
+"Missing Medicine" = "Eksik İlaç İsmi";
+"Missing Medicine Dosage" = "Eksik İlaç Dozu";
+"Missing Dosage Unit" = "Eksik Doz Birimi";
 
 // MARK: N
 "Not specified" = "Belirtilmedi";
 "Notifications" = "Bildirimler";
+"No past data analysis" = "Geçmiş analiz verisi yok";
+"No order has yet been placed for this test result" = "Bu test sonucu için henüz bir sipariş verilmedi";
 
 // MARK: O
 "Okey" = "Tamam";
@@ -89,6 +94,11 @@
 "Patients" = "Hastalar";
 "Patient Information" = "Hasta Bilgisi";
 "Prepare" = "Hazırla";
+"Please enter medicine name" = "Lütfen ilaç ismini giriniz";
+"Please enter dosage of medicine" = "Lütfen ilacın dozunu giriniz";
+"Please enter unit of dosage" = "Lütfen ilaç dozunun birimini giriniz";
+"Patient blood type is unknown. You cannot make blood order from this page." = "Hastanın kan grubu bilinmiyor. Bu sayfadan kan siparişi yapamazsınız.";
+"Patient weight is unknown. You can enter appropriate unit amount." = "Hastanın ağırlığı bilinmemekte. Uygun ünite miktarını girebilirsiniz.";
 
 // MARK: Q
 
@@ -97,6 +107,7 @@
 "Regular Medicines" = "Düzenli İlaçlar";
 
 // MARK: S
+"SWITCH TO DOCTOR VIEW" = "DOKTOR UYGULAMASINA GEÇ";
 
 // MARK: T
 "Time Slot" = "Zaman Aralığı";
@@ -110,8 +121,11 @@
 "Update Your Medicine" = "İlacını Güncelle";
 " Unit" = " Birim";
 " Units" = " Birim";
+"Unknown Blood Type" = "Bilinmeyen Kan Grubu";
+"Unknown Weight" = "Bilinmeyen Ağırlık";
 
 // MARK: V
+"Value" = "Değeri";
 
 // MARK: W
 "Welcome" = "Hoş Geldiniz";

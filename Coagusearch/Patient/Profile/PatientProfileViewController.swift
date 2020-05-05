@@ -29,8 +29,13 @@ class PatientProfileViewController: UIViewController {
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var bloodTypeLabel: UILabel!
     @IBOutlet weak var medicineTableView: UITableView!
+    @IBOutlet weak var doctorViewButton: UIButton!
     
     var dataSource = PatientProfileDataSource()
+    
+    @IBAction func doctorViewButtonTapped(_ sender: Any) {
+        showDoctorHome()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +54,15 @@ class PatientProfileViewController: UIViewController {
         quitButton.addTarget(self, action: #selector(quitButtonPressed), for: UIControl.Event.touchUpInside)
         let quitBarButton = UIBarButtonItem(customView: quitButton)
         self.navigationItem.rightBarButtonItem = quitBarButton
+        
+        doctorViewButton.titleLabel?.text = "SWITCH TO DOCTOR VIEW".localized
+        if let user = Manager.sharedInstance.currentUser {
+            if user.type != .Doctor {
+                doctorViewButton.isHidden = true
+            } else {
+                doctorViewButton.isHidden = false
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

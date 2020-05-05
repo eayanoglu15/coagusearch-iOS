@@ -21,7 +21,7 @@ class DoctorBloodOrderForPatientDataSource {
     var coagusearchService: CoagusearchService?
     
     var patient: User?
-    var pastOrders: [BloodOrder]?
+    var pastOrders: [GeneralOrder]?
     
     func getTableViewCount() -> Int {
         if let orders = pastOrders {
@@ -30,7 +30,7 @@ class DoctorBloodOrderForPatientDataSource {
         return 0
     }
     
-    func getOrderInfo(forIndex: Int) -> BloodOrder? {
+    func getOrderInfo(forIndex: Int) -> GeneralOrder? {
         if let orders = pastOrders {
             if orders.count > 1 {
                 return orders[(orders.count - 1) - forIndex]
@@ -40,7 +40,7 @@ class DoctorBloodOrderForPatientDataSource {
         return nil
     }
     
-    func postBloodOrder(productType: BloodProductType, unit: Int, additionalNote: String?) {
+    func postBloodOrder(productType: OrderProductType, unit: Double, additionalNote: String?) {
         guard let currentPatient = self.patient, let bloodType = currentPatient.bloodType, let rhType = currentPatient.rhType else {
             return
         }
@@ -58,10 +58,11 @@ class DoctorBloodOrderForPatientDataSource {
                     }
                 }
             } else {
+                let generalOrder = GeneralOrder(kind: .Blood, bloodType: bloodType, rhType: rhType, productType: productType.rawValue, quantity: unit, bloodTestId: nil, additionalNote: nil)
                 if self.pastOrders != nil {
-                    self.pastOrders!.append(order)
+                    self.pastOrders!.append(generalOrder)
                 } else {
-                    self.pastOrders = [order]
+                    self.pastOrders = [generalOrder]
                 }
                 
                 DispatchQueue.main.async {

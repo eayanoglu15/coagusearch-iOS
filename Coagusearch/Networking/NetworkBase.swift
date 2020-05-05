@@ -32,8 +32,10 @@ typealias DoctorMainInfoReturnFunction = (DoctorMainInfo?, NSError?) -> Void
 typealias DoctorPatientsReturnFunction = ([DoctorPatient], NSError?) -> Void
 typealias DoctorPatientDetailInfoReturnFunction = (DoctorPatientDetailInfo?, NSError?) -> Void
 typealias BloodOrderReturnFunction = (BloodOrderResult?, NSError?) -> Void
-typealias PastGeneralBloodOrderReturnFunction = ([BloodOrder], NSError?) -> Void
-
+typealias PastGeneralBloodOrderReturnFunction = ([GeneralOrder], NSError?) -> Void
+typealias DataAnalysisListReturnFunction = (UserDataAnalysisList?, NSError?) -> Void
+typealias DataAnalysisReturnFunction = (DataAnalysis?, NSError?) -> Void
+typealias TreatmentSuggestionListReturnFunction = (TreatmentSuggestionList?, NSError?) -> Void
 
 protocol CoaguSearchService {
     // MARK: Patient
@@ -61,6 +63,13 @@ protocol CoaguSearchService {
     func getDoctorPatientInfo(patientId: Int, completion: @escaping DoctorPatientDetailInfoReturnFunction)
     func postBloodOrder(order: BloodOrder, completion: @escaping BloodOrderReturnFunction)
     func getPastGeneralBloodOrders(completion: @escaping PastGeneralBloodOrderReturnFunction)
+    func orderForAnalysis(order: GeneralOrder, completion: @escaping SuccessReturnFunction)
+    
+    // MARK: Data Analysis
+    func getDataAnalysisList(patientId: Int, completion: @escaping DataAnalysisListReturnFunction)
+    func getLastDataAnalysis(patientId: Int, completion: @escaping DataAnalysisReturnFunction)
+    func getDataAnalysisByID(bloodTestDataId: Int, completion: @escaping DataAnalysisReturnFunction)
+    func getSuggestionForAnalysis(bloodTestDataId: Int, completion: @escaping TreatmentSuggestionListReturnFunction)
 }
 
 class NetworkBase {

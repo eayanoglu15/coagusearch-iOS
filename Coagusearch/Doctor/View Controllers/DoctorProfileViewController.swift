@@ -73,8 +73,8 @@ class DoctorProfileViewController: UIViewController {
     
     @IBAction func switchToPatientViewButtonTapped(_ sender: Any) {
         // TODO:
+        showPatientHome()
     }
-    
     
     /*
      // MARK: - Navigation

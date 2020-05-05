@@ -28,8 +28,34 @@ class PatientSpecificPastBloodOrderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setup(order: BloodOrder) {
-        unitLabel.text = "\(order.unit)"
-        productLabel.text = order.productType.rawValue
+    func setup(order: GeneralOrder) {
+        let quantity = order.quantity
+        var qStr = "\(quantity)"
+        let qInt = Int(quantity)
+        if quantity - Double(qInt) == 0 {
+            qStr = "\(qInt)"
+        }
+        
+        if quantity > 1 {
+            unitLabel.text = qStr + " Units".localized
+        } else {
+            unitLabel.text = qStr + " Unit".localized
+        }
+        
+        var productStr = order.productType
+        switch order.productType {
+        case "FFP":
+            productStr = "Fresh Frozen Plasma"
+            break
+        case "FibrinojenConcentrate":
+            productStr = "Fibrinojen Concentrate"
+            break
+        case "PlateletConcentrate":
+            productStr = "Platelet Concentrate"
+            break
+        default:
+            break
+        }
+        productLabel.text = productStr
     }
 }

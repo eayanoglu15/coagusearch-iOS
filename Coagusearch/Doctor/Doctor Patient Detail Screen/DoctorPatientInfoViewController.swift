@@ -60,6 +60,12 @@ class DoctorPatientInfoViewController: UIViewController {
                 destinationVc.dataSource.patient = patient
             }
         }
+        if segue.identifier == SEGUE_SHOW_DOCTOR_PATIENT_LAST_ANALYSIS {
+            let destinationVc = segue.destination as! DoctorLastDataAnalysisViewController
+            if let patientId = dataSource.getPatientId() {
+                destinationVc.dataSource.patientId = patientId
+            }
+        }
     }
     
     private func setupTableView() {

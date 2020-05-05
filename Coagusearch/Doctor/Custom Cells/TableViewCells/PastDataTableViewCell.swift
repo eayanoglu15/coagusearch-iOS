@@ -12,6 +12,8 @@ class PastDataTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var colorView: NSLayoutConstraint!
     
+    private var info: AnalysisDateInfo?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +24,11 @@ class PastDataTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setDateInfo(info: AnalysisDateInfo) {
+        self.info = info
+        dateLabel.text = getDateStr(date: info.testDate)
     }
 
 }

@@ -112,7 +112,7 @@ class DoctorBloodOrderForPatientViewController: UIViewController {
             return
         }
         
-        guard let unit = unitTextField.text, !unit.isEmpty, let unitAmount = Int(unit) else {
+        guard let unit = unitTextField.text, !unit.isEmpty, let unitAmount = Double(unit) else {
             showAlertMessage(title: "Missing Unit Amount".localized, message: "Please enter unit amount.".localized)
             return
         }
@@ -122,13 +122,13 @@ class DoctorBloodOrderForPatientViewController: UIViewController {
         dataSource.postBloodOrder(productType: productType, unit: unitAmount, additionalNote: note)
     }
     
-    func getProductType() -> BloodProductType? {
+    func getProductType() -> OrderProductType? {
         for i in 0...(productTypeSelection.count-1) {
             if productTypeSelection[i] {
                 if i == 0 {
-                    return BloodProductType.FFP
+                    return OrderProductType.FFP
                 } else if i == 1 {
-                    return BloodProductType.PC
+                    return OrderProductType.PlateletConcentrate
                 }
             }
         }

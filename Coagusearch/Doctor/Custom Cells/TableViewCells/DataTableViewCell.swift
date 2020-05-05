@@ -27,25 +27,29 @@ class DataTableViewCell: UITableViewCell {
     @IBOutlet weak var optimalView: UIView!
     @IBOutlet weak var indicatorView: UIView!
     
+    private var result: SingleTestResult?
+    
     private var val: Double?
     private var min: Double?
     private var max: Double?
     private var optMin: Double?
     private var optMax: Double?
     
-    func setValues(val: Double, min: Double, max: Double, optMin: Double, optMax: Double) {
-        self.val = val
-        self.min = min
-        self.max = max
-        self.optMin = optMin
-        self.optMax = optMax
-        
+    func setTestResult(result: SingleTestResult) {
+        self.result = result
         setView()
     }
     
     func setView() {
-        if let val = val, let min = min, let max = max,
-            let optMin = optMin, let optMax = optMax {
+        if let testResult = result {
+            let val = testResult.value
+            let min = testResult.minimumValue
+            let max = testResult.maximumValue
+            let optMin = testResult.optimalMinimumValue
+            let optMax = testResult.optimalMaximumValue
+            
+            titleLabel.text = testResult.categoryName + " " + "Value".localized
+            
             let width = Double(rangeView.frame.size.width)
             let viewRatio = width / (max - min)
             

@@ -31,6 +31,11 @@ enum Parameter: String {
     case patientId = "patientId"
     case productType = "productType"
     case unit = "unit"
+    case bloodTestDataId = "bloodTestDataId"
+    case kind = "kind"
+    case quantity = "quantity"
+    case product = "product"
+    case bloodTestId = "bloodTestId"
 }
 
 enum Endpoint: String {
@@ -47,6 +52,7 @@ enum Endpoint: String {
     // MARK: Blood Order Controller
     case OrderBlood = "/blood/order"
     case PastGeneralOrders = "/blood/previousOrders"
+    case OrderAfterAnalysis = "/blood/orderForUserData"
     
     // MARK: Drug Controller
     case GetAllMedicine = "/drug/all"
@@ -58,9 +64,19 @@ enum Endpoint: String {
     case GetPatientMainScreenInfo = "/users/getPatientMainScreen"
     case GetUser = "/users/me"
     case SaveUserInfo = "/users/saveBodyInfo"
+    
     case GetDoctorMainScreen = "/users/getDoctorMainScreen"
     case GetDoctorPatients = "/users/getMyPatients"
     case GetPatientDetail = "/users/getPatientDetail"
+    // TODO:
+    case SavePatientInfo = "/users/saveBodyInfoOfPatient"
+    
+    // MARK: Patient Data Controller
+    case GetAllAnalysis = "/patientData/getAllBloodTest"
+    case GetLastAnalysis = "/patientData/getLastOfPatient"
+    case GetAnalysisById = "/patientData/getPatientBloodDataById"
+    case GetSuggestionForAnalysis = "/patientData/getSuggestionOfBloodTest"
+
 }
 
 enum IconNames {

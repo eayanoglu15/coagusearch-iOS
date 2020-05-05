@@ -62,7 +62,7 @@ extension DoctorPatientPastAppointmentsViewController: UITableViewDataSource {
             cell.backgroundView?.backgroundColor = UIColor.clear
             
         if let old = dataSource.getAppointmentInfo(forIndex: indexPath.section) {
-            cell.dateLabel.text = "\(old.day).\(old.month).\(old.year) "
+            cell.dateLabel.text = "\(old.day)/\(old.month)/\(old.year) "
             var hourStr = "\(old.hour)"
             var minStr = "\(old.minute)"
             if hourStr.count == 1 {

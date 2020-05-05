@@ -323,6 +323,9 @@
 /* Class = "UISegmentedControl"; i7t-8o-VcB.segmentTitles[2] = "Intem"; ObjectID = "i7t-8o-VcB"; */
 "i7t-8o-VcB.segmentTitles[2]" = "Intem";
 
+/* Class = "UISegmentedControl"; i7t-8o-VcB.segmentTitles[3] = "Order"; ObjectID = "i7t-8o-VcB"; */
+"i7t-8o-VcB.segmentTitles[3]" = "Sipariş";
+
 /* Class = "UIButton"; normalTitle = "TAKE ACTION"; ObjectID = "iKu-f0-gd2"; */
 "iKu-f0-gd2.normalTitle" = "AKSİYON AL";
 
