@@ -36,6 +36,11 @@ typealias PastGeneralBloodOrderReturnFunction = ([GeneralOrder], NSError?) -> Vo
 typealias DataAnalysisListReturnFunction = (UserDataAnalysisList?, NSError?) -> Void
 typealias DataAnalysisReturnFunction = (DataAnalysis?, NSError?) -> Void
 typealias TreatmentSuggestionListReturnFunction = (TreatmentSuggestionList?, NSError?) -> Void
+typealias ProtocolCodeReturnFunction = (ProtocolCode?, NSError?) -> Void
+
+typealias OrderToDoReturnFunction = (OrderToDoList?, NSError?) -> Void
+
+typealias NotificationsReturnFunction = ([NotificationStruct], NSError?) -> Void
 
 protocol CoaguSearchService {
     // MARK: Patient
@@ -70,6 +75,18 @@ protocol CoaguSearchService {
     func getLastDataAnalysis(patientId: Int, completion: @escaping DataAnalysisReturnFunction)
     func getDataAnalysisByID(bloodTestDataId: Int, completion: @escaping DataAnalysisReturnFunction)
     func getSuggestionForAnalysis(bloodTestDataId: Int, completion: @escaping TreatmentSuggestionListReturnFunction)
+    
+    // MARK: Medical Team
+    func savePatientInfo(name: String, surname: String, patientId: Int, birthDay: Int?, birthMonth: Int?, birthYear: Int?, height: Double?, weight: Double?, bloodType: String?, rhType: String?, gender: String?, completion: @escaping SuccessReturnFunction)
+    func addPatient(id: Int, name: String, surname: String, birthDay: Int?, birthMonth: Int?, birthYear: Int?, height: Double?, weight: Double?, bloodType: String?, rhType: String?, gender: String?, completion: @escaping ProtocolCodeReturnFunction)
+    func getToDoList(completion: @escaping OrderToDoReturnFunction)
+    func setOrderReady(bloodOrderId: Int, completion: @escaping OrderToDoReturnFunction)
+    func saveAmbulancePatient(userIdentityNumber: Int, completion: @escaping SuccessReturnFunction)
+    
+    // MARK: Notification
+    func callForNewAppointment(patientId: Int, completion: @escaping SuccessReturnFunction)
+    func notifyMedicalTeam(patientId: Int, completion: @escaping SuccessReturnFunction)
+    func getNotifications(completion: @escaping NotificationsReturnFunction)
 }
 
 class NetworkBase {

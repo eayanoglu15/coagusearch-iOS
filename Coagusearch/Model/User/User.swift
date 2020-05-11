@@ -83,3 +83,7 @@ enum UserType: String, Codable {
     case Doctor = "Doctor"
     case Medical = "Medical"
 }
+
+struct ProtocolCode: Codable {
+    var protocolCode: String
+}

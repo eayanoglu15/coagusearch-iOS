@@ -32,4 +32,11 @@ class MedicineTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setCellMedicine(med: MediceneInfo, index: Int) {
+        titleLabel.text = med.title
+        frequencyLabel.text = med.frequency
+        dosageLabel.text = med.dosage
+        medicineIndex = index
+    }
 }

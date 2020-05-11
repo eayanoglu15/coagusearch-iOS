@@ -48,20 +48,24 @@ class PatientHomeDataSource {
     }
     
     func getTableViewCount() -> Int {
+        var info = 0
         if mainInfo != nil {
             if hasMissingInfo() {
                 if hasNextAppointment() {
-                    return 2
+                    info = 2
                 }
-                return 1
+                info = 1
             } else {
                if hasNextAppointment() {
-                    return 1
+                    info = 1
                 }
             }
-            return 0
+            guard let notifyArray = mainInfo?.patientNotifications else {
+                return info
+            }
+            return info + notifyArray.count
         }
-        return 0
+        return info
     }
     
     func hasMissingInfo() -> Bool {
@@ -87,5 +91,20 @@ class PatientHomeDataSource {
             }
         }
         return nil
+    }
+    
+    func getNotification(index: Int) -> NotificationStruct? {
+        guard let mainInfo = mainInfo, let notificationArray = mainInfo.patientNotifications else {
+            return nil
+        }
+        if hasMissingInfo() && hasNextAppointment() {
+            return notificationArray[index - 2]
+        } else if hasMissingInfo() {
+            return notificationArray[index - 1]
+        } else if hasNextAppointment() {
+            return notificationArray[index - 1]
+        } else {
+            return notificationArray[index]
+        }
     }
 }

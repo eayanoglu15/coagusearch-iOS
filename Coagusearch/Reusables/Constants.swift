@@ -20,6 +20,10 @@ let IMAGE_NAME_PRODUCT_TYPE = "productType"
 let IMAGE_NAME_BLUE_DOSAGE = "BlueDosage"
 let IMAGE_NAME_BLUE_MEDICINE = "MedicineBlue"
 
+let IMAGE_NAME_AMBULANCE = "ambulance"
+let IMAGE_NAME_HOUR_GLASS = "hourglass"
+let IMAGE_NAME_VERIFIED = "verified"
+
 // MARK: Animation File
 let LOADING_VIEW_JSON_FILE_NAME = "blood-wave-tube"//"loader"
 
@@ -52,8 +56,11 @@ let SEGUE_SHOW_DOCTOR_PAST_DATA_ANALYSIS = "showDoctorPastAnalysisVC"
 let SEGUE_SHOW_DOCTOR_ACTION_LIST = "showDoctorActionListVC"
 let SEGUE_SHOW_DOCTOR_TREATMENT_DECISION = "showDoctorTreatmentDecisionVC"
 let SEGUE_SHOW_DOCTOR_TREATMENT_STATUS = "showDoctorTreatmentStatusVC"
+let SEGUE_SHOW_DOCTOR_EMERGENCY_PATIENT_LAST_ANALYSIS = "showDoctorEmergencyPatientLastAnalysisVC"
 
 let SEGUE_SHOW_MEDICAL_TEAM_HOME = "showMedicalTeamHomeVC"
+let SEGUE_SHOW_MEDICAL_TEAM_PATIENT_INFO = "showMedicalTeamPatientInfoVC"
+let SEGUE_SHOW_MEDICAL_TEAM_ADD_AMBULANCE_PATIENT = "showMedicalTeamAddAmbulancePatient"
 
 // MARK: Cell Identifiers
 let CELL_IDENTIFIER_SELECTION_CELL = "SelectionTableViewCell"
@@ -116,3 +123,4 @@ let UNEXPECTED_ERROR_MESSAGE = "Encountered an unexpected error"
 let fontLight = UIFont(name: "HelveticaNeue-Light", size: 14.0)!
 let fontRegular = UIFont(name: "HelveticaNeue-Light", size: 16.0)!
 
+ 

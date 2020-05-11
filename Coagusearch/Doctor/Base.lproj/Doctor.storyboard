@@ -312,7 +312,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Analysis" translatesAutoresizingMaskIntoConstraints="NO" id="Qbf-pY-FMO">
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Analysis" translatesAutoresizingMaskIntoConstraints="NO" id="Qbf-pY-FMO">
                                                             <rect key="frame" x="336.5" y="11" width="29.5" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="Dqz-OJ-O5N"/>
@@ -696,7 +696,6 @@
                                         <connections>
                                             <outlet property="arrowImageView" destination="C6o-4h-HvG" id="5dM-Tq-bKh"/>
                                             <outlet property="timeLabel" destination="k8M-Qi-sXT" id="Sv7-s8-24A"/>
-                                            <segue destination="BJD-21-Hj9" kind="show" identifier="showDoctorPatientLastAnalysisVC" id="7CS-bF-AjR"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PastAppointmentsTableViewCell" id="kXi-tW-BGs" customClass="PastAppointmentsTableViewCell" customModule="Coagusearch" customModuleProvider="target">
@@ -812,6 +811,7 @@
                     <navigationItem key="navigationItem" id="x8m-9v-9Vi"/>
                     <connections>
                         <outlet property="tableView" destination="uPc-by-cX2" id="uhA-yR-aUY"/>
+                        <segue destination="BJD-21-Hj9" kind="show" identifier="showDoctorPatientLastAnalysisVC" id="gS8-TN-Dkh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="am4-6l-9UI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2507,6 +2507,7 @@ Concentrate</string>
                         <outlet property="appointmentsTableView" destination="caQ-Su-6wr" id="kqs-KZ-cf6"/>
                         <outlet property="emergencyCollectionView" destination="hMA-ZI-SBm" id="QVl-xh-5Kn"/>
                         <outlet property="emergencyPatientCountLabel" destination="PRD-Bj-3x0" id="Lfe-xX-zhM"/>
+                        <segue destination="BJD-21-Hj9" kind="show" identifier="showDoctorEmergencyPatientLastAnalysisVC" id="YYx-KR-Ocz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsb-2F-S8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2635,6 +2636,9 @@ Concentrate</string>
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="callPatientButtonTapped:" destination="MTF-eV-4HL" eventType="touchUpInside" id="QzM-Qw-uvo"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="TimeBlue" translatesAutoresizingMaskIntoConstraints="NO" id="6Ay-rl-TjQ">
                                 <rect key="frame" x="35" y="100.5" width="24.5" height="25"/>
@@ -2666,6 +2670,9 @@ Concentrate</string>
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="notifyMedicalTeamButtonTapped:" destination="MTF-eV-4HL" eventType="touchUpInside" id="CVP-c0-IXF"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="blueNote" translatesAutoresizingMaskIntoConstraints="NO" id="WC0-1m-Xgc">
                                 <rect key="frame" x="35" y="166.5" width="24.5" height="25"/>
@@ -3200,8 +3207,8 @@ Concentrate</string>
                                                                             <color key="textColor" red="0.25098039220000001" green="0.30196078430000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-uN-ZJ9">
-                                                                            <rect key="frame" x="0.0" y="23" width="34.5" height="17"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text=" " textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-uN-ZJ9">
+                                                                            <rect key="frame" x="0.0" y="23" width="4" height="17"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                             <color key="textColor" red="0.28627450980000002" green="0.50588235290000005" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -3848,8 +3855,8 @@ Concentrate</string>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0y-04-TDL">
-                                                        <rect key="frame" x="16" y="184" width="60.5" height="44"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthdate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0y-04-TDL">
+                                                        <rect key="frame" x="16" y="184" width="55" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="Q2d-mq-i7E"/>
                                                         </constraints>
@@ -4209,4 +4216,7 @@ Concentrate</string>
         <image name="verified" width="41" height="39"/>
         <image name="weight" width="15" height="15"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gS8-TN-Dkh"/>
+    </inferredMetricsTieBreakers>
 </document>

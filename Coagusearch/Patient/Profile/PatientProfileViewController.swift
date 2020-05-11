@@ -34,7 +34,13 @@ class PatientProfileViewController: UIViewController {
     var dataSource = PatientProfileDataSource()
     
     @IBAction func doctorViewButtonTapped(_ sender: Any) {
-        showDoctorHome()
+        if let user = Manager.sharedInstance.currentUser {
+            if user.type == .Doctor {
+                showDoctorHome()
+            } else if user.type == .Medical {
+                showMedicalHome()
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -55,12 +61,15 @@ class PatientProfileViewController: UIViewController {
         let quitBarButton = UIBarButtonItem(customView: quitButton)
         self.navigationItem.rightBarButtonItem = quitBarButton
         
-        doctorViewButton.titleLabel?.text = "SWITCH TO DOCTOR VIEW".localized
         if let user = Manager.sharedInstance.currentUser {
-            if user.type != .Doctor {
-                doctorViewButton.isHidden = true
-            } else {
+            if user.type == .Doctor {
                 doctorViewButton.isHidden = false
+                doctorViewButton.setTitle("SWITCH TO DOCTOR VIEW".localized, for: .normal)
+            } else if user.type == .Medical {
+                doctorViewButton.isHidden = false
+                doctorViewButton.setTitle("SWITCH TO MEDICAL TEAM VIEW".localized, for: .normal)
+            } else {
+                doctorViewButton.isHidden = true
             }
         }
     }

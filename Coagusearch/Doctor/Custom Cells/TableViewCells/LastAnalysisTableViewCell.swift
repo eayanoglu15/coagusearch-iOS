@@ -15,6 +15,7 @@ class LastAnalysisTableViewCell: UITableViewCell {
     func setup(time: String) {
         if time == "" {
             arrowImageView.isHidden = true
+            timeLabel.text = "No past data analysis".localized
         } else {
             arrowImageView.isHidden = false
             timeLabel.text = time

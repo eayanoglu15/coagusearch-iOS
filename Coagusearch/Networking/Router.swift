@@ -35,6 +35,16 @@ enum Router: URLRequestConvertible {
     case getAnalysisById(bloodTestDataId: Int)
     case getSuggestionForAnalysis(bloodTestDataId: Int)
     
+    case addPatient(id: Int, name: String, surname: String)
+    case savePatientInfo(name: String, surname: String, patientId: Int)
+    case getOrderToDoList
+    case setOrderReady(bloodOrderId: Int)
+    case saveAmbulancePatient(userIdentityNumber: Int)
+    
+    case callForNewAppointment(patientId: Int)
+    case notifyMedicalTeam(patientId: Int)
+    case getNotifications
+    
     var baseURL: URL {
         return URL(string: "http://localhost:8080")!
     }
@@ -42,9 +52,10 @@ enum Router: URLRequestConvertible {
     // MARK: - HTTPMethod
     var method: HTTPMethod {
         switch self {
-        case .login, .postAppointment, .saveUserInfo, .saveMedicine, .deleteMedicine, .deleteUserAppointment, .getPatientDetail, .postBloodOrder, .orderAfterAnalysis, .getAllAnalysis, .getLastAnalysis, .getAnalysisById, .getSuggestionForAnalysis:
+        case .login, .postAppointment, .saveUserInfo, .saveMedicine, .deleteMedicine, .deleteUserAppointment, .getPatientDetail, .postBloodOrder, .orderAfterAnalysis, .getAllAnalysis, .getLastAnalysis, .getAnalysisById, .getSuggestionForAnalysis,
+             .addPatient, .savePatientInfo, .setOrderReady, .saveAmbulancePatient, .callForNewAppointment, .notifyMedicalTeam:
             return .post
-        case .getUser, .getAllMedicine, .getAvailableAppointments, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo, .getDoctorMainScreenInfo, .getDoctorPatients, .getPastGeneralBloodOrders:
+        case .getUser, .getAllMedicine, .getAvailableAppointments, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo, .getDoctorMainScreenInfo, .getDoctorPatients, .getPastGeneralBloodOrders, .getOrderToDoList, .getNotifications:
             return .get
         }
     }
@@ -96,6 +107,22 @@ enum Router: URLRequestConvertible {
             return Endpoint.GetAnalysisById.rawValue
         case .getSuggestionForAnalysis:
             return Endpoint.GetSuggestionForAnalysis.rawValue
+        case .addPatient:
+            return Endpoint.AddPatient.rawValue
+        case .savePatientInfo:
+            return Endpoint.SavePatientInfo.rawValue
+        case .getOrderToDoList:
+            return Endpoint.GetOrderToDo.rawValue
+        case .setOrderReady:
+            return Endpoint.SetOrderReady.rawValue
+        case .saveAmbulancePatient:
+            return Endpoint.SaveAmbulancePatient.rawValue
+        case .callForNewAppointment:
+            return Endpoint.callForNewAppointment.rawValue
+        case .notifyMedicalTeam(let patientId):
+            return Endpoint.notifyMedicalTeam.rawValue
+        case .getNotifications:
+            return Endpoint.getNotifications.rawValue
         }
     }
     
@@ -146,6 +173,22 @@ enum Router: URLRequestConvertible {
             return Endpoint.GetAnalysisById
         case .getSuggestionForAnalysis:
             return Endpoint.GetSuggestionForAnalysis
+        case .addPatient:
+            return Endpoint.AddPatient
+        case .savePatientInfo:
+            return Endpoint.SavePatientInfo
+        case .getOrderToDoList:
+            return Endpoint.GetOrderToDo
+        case .setOrderReady:
+            return Endpoint.SetOrderReady
+        case .saveAmbulancePatient:
+            return Endpoint.SaveAmbulancePatient
+        case .callForNewAppointment:
+            return Endpoint.callForNewAppointment
+        case .notifyMedicalTeam(let patientId):
+            return Endpoint.notifyMedicalTeam
+        case .getNotifications:
+            return Endpoint.getNotifications
         }
     }
     
@@ -154,7 +197,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .login(let id, let password):
             return [Parameter.id.rawValue: id, Parameter.password.rawValue: password]
-        case .getUser, .getAllMedicine, .getAvailableAppointments, .saveMedicine, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo, .getDoctorMainScreenInfo, .getDoctorPatients, .postBloodOrder, .getPastGeneralBloodOrders, .orderAfterAnalysis:
+        case .getUser, .getAllMedicine, .getAvailableAppointments, .saveMedicine, .getUserMedicine, .getPatientAppointments, .getPatientMainScreenInfo, .getDoctorMainScreenInfo, .getDoctorPatients, .postBloodOrder, .getPastGeneralBloodOrders, .orderAfterAnalysis, .addPatient, .getOrderToDoList, .getNotifications:
             return nil
         case .postAppointment(let day, let month, let year, let hour, let minute):
             return [Parameter.day.rawValue: day, Parameter.month.rawValue: month,
@@ -176,6 +219,16 @@ enum Router: URLRequestConvertible {
             return [Parameter.bloodTestDataId.rawValue: bloodTestDataId]
         case .getSuggestionForAnalysis(let bloodTestDataId):
             return [Parameter.bloodTestDataId.rawValue: bloodTestDataId]
+        case .savePatientInfo(let name, let surname, let patientId):
+            return [Parameter.name.rawValue: name, Parameter.surname.rawValue: surname, Parameter.patientId.rawValue: patientId]
+        case .setOrderReady(let bloodOrderId):
+            return [Parameter.bloodOrderId.rawValue: bloodOrderId]
+        case .saveAmbulancePatient(let userIdentityNumber):
+            return [Parameter.userIdentityNumber.rawValue: userIdentityNumber]
+        case .callForNewAppointment(let patientId):
+            return [Parameter.patientId.rawValue: patientId]
+        case .notifyMedicalTeam(let patientId):
+            return [Parameter.patientId.rawValue: patientId]
         }
     }
     

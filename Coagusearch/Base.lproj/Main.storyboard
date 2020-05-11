@@ -26,13 +26,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKB-Hr-Cni">
-                                <rect key="frame" x="303" y="599" width="95" height="31"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                <state key="normal" title="Forget Password?">
-                                    <color key="titleColor" red="1" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oZc-0M-W0V">
                                 <rect key="frame" x="16" y="599" width="51" height="31"/>
                                 <color key="onTintColor" red="0.66666666669999997" green="0.83921568629999999" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -101,7 +94,6 @@
                         <constraints>
                             <constraint firstItem="lYG-Bq-FQU" firstAttribute="top" secondItem="oZc-0M-W0V" secondAttribute="bottom" constant="40" id="18z-gH-w57"/>
                             <constraint firstItem="CG7-g0-r3c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="44u-2v-eqK"/>
-                            <constraint firstItem="oZc-0M-W0V" firstAttribute="centerY" secondItem="vKB-Hr-Cni" secondAttribute="centerY" id="5Mc-28-8jb"/>
                             <constraint firstItem="x89-P0-anw" firstAttribute="leading" secondItem="w14-vj-gQM" secondAttribute="leading" id="8NS-jz-moW"/>
                             <constraint firstItem="FnH-Bz-L0Q" firstAttribute="leading" secondItem="oZc-0M-W0V" secondAttribute="trailing" constant="12" id="9AD-Nz-Ago"/>
                             <constraint firstItem="x89-P0-anw" firstAttribute="top" secondItem="CG7-g0-r3c" secondAttribute="bottom" constant="80" id="9Ue-To-Xg3"/>
@@ -110,13 +102,10 @@
                             <constraint firstItem="ijN-eP-jQq" firstAttribute="leading" secondItem="w14-vj-gQM" secondAttribute="leading" id="JZJ-mr-ebm"/>
                             <constraint firstItem="dAq-2n-lZL" firstAttribute="top" secondItem="x89-P0-anw" secondAttribute="top" id="O4K-Mq-z6S"/>
                             <constraint firstItem="CG7-g0-r3c" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="PsE-Xg-YRG"/>
-                            <constraint firstItem="vKB-Hr-Cni" firstAttribute="trailing" secondItem="w14-vj-gQM" secondAttribute="trailing" id="R6C-pm-Z4Q"/>
                             <constraint firstItem="dAq-2n-lZL" firstAttribute="height" secondItem="x89-P0-anw" secondAttribute="height" id="TQi-T6-wIc"/>
                             <constraint firstItem="oZc-0M-W0V" firstAttribute="centerY" secondItem="FnH-Bz-L0Q" secondAttribute="centerY" id="Uhi-vK-gH5"/>
                             <constraint firstItem="oZc-0M-W0V" firstAttribute="top" secondItem="w14-vj-gQM" secondAttribute="bottom" constant="40" id="ahq-IQ-Zjd"/>
-                            <constraint firstItem="x89-P0-anw" firstAttribute="trailing" secondItem="vKB-Hr-Cni" secondAttribute="trailing" id="diL-il-Jqf"/>
                             <constraint firstItem="x89-P0-anw" firstAttribute="leading" secondItem="oZc-0M-W0V" secondAttribute="leading" id="gMw-Pw-65M"/>
-                            <constraint firstItem="vKB-Hr-Cni" firstAttribute="top" secondItem="w14-vj-gQM" secondAttribute="bottom" constant="40" id="jUl-Iz-EjL"/>
                             <constraint firstItem="ijN-eP-jQq" firstAttribute="top" secondItem="w14-vj-gQM" secondAttribute="top" id="knQ-5v-we0"/>
                             <constraint firstItem="w14-vj-gQM" firstAttribute="top" secondItem="x89-P0-anw" secondAttribute="bottom" constant="40" id="kvN-Ms-Bm4"/>
                             <constraint firstItem="x89-P0-anw" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="lg8-dS-1I9"/>
@@ -130,7 +119,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="JPy-aP-Mqn"/>
                     <connections>
-                        <outlet property="forgetPasswordButton" destination="vKB-Hr-Cni" id="jL3-cv-2nT"/>
                         <outlet property="loginButton" destination="lYG-Bq-FQU" id="E7v-S1-qnr"/>
                         <outlet property="passwordLabel" destination="ijN-eP-jQq" id="cKa-KT-egi"/>
                         <outlet property="passwordLabelTopConstraint" destination="knQ-5v-we0" id="Gsl-MN-A97"/>

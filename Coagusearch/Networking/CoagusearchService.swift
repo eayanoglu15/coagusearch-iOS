@@ -11,6 +11,246 @@ import Alamofire
 
 
 class CoagusearchService: NetworkBase, CoaguSearchService {
+    func callForNewAppointment(patientId: Int, completion: @escaping SuccessReturnFunction) {
+        let route = Router.callForNewAppointment(patientId: patientId)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(false, error)
+                } else {
+                    completion(false, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            guard let success = response["success"] as? Bool,
+                let message = response["message"] as? String else {
+                    let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize success state", comment: "")])
+                    completion(false, error)
+                    return
+            }
+            completion(success, nil)
+        }
+    }
+    
+    func notifyMedicalTeam(patientId: Int, completion: @escaping SuccessReturnFunction) {
+        let route = Router.notifyMedicalTeam(patientId: patientId)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(false, error)
+                } else {
+                    completion(false, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            guard let success = response["success"] as? Bool,
+                let message = response["message"] as? String else {
+                    let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize success state", comment: "")])
+                    completion(false, error)
+                    return
+            }
+            completion(success, nil)
+        }
+    }
+    
+    func getNotifications(completion: @escaping NotificationsReturnFunction) {
+        let route = Router.getNotifications
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Array) { (response, error) in
+            guard let response = response as? NSArray else {
+                if let error = error {
+                    completion([], error)
+                } else {
+                    completion([], UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode([NotificationStruct].self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize", comment: "")])
+                completion([], error)
+            }
+        }
+    }
+    
+    func saveAmbulancePatient(userIdentityNumber: Int, completion: @escaping SuccessReturnFunction) {
+        let route = Router.saveAmbulancePatient(userIdentityNumber: userIdentityNumber)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(false, error)
+                } else {
+                    completion(false, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            guard let success = response["success"] as? Bool,
+                let message = response["message"] as? String else {
+                    let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize success state", comment: "")])
+                    completion(false, error)
+                    return
+            }
+            completion(success, nil)
+        }
+    }
+    
+    func setOrderReady(bloodOrderId: Int, completion: @escaping OrderToDoReturnFunction) {
+        let route = Router.setOrderReady(bloodOrderId: bloodOrderId)
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let list = try JSONDecoder().decode(OrderToDoList.self, from: jsonData)
+                completion(list, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize user.", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func getToDoList(completion: @escaping OrderToDoReturnFunction) {
+        let route = Router.getOrderToDoList
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: route.parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let list = try JSONDecoder().decode(OrderToDoList.self, from: jsonData)
+                completion(list, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize user.", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func addPatient(id: Int, name: String, surname: String, birthDay: Int?, birthMonth: Int?, birthYear: Int?, height: Double?, weight: Double?, bloodType: String?, rhType: String?, gender: String?, completion: @escaping ProtocolCodeReturnFunction) {
+        let route = Router.addPatient(id: id, name: name, surname: surname)
+        
+        var parameters = [String: Any]()
+        parameters = [Parameter.name.rawValue: name, Parameter.surname.rawValue: surname, Parameter.id.rawValue: id, Parameter.type.rawValue: UserType.Patient.rawValue]
+        
+        if let birthDay = birthDay {
+            parameters[Parameter.birthDay.rawValue] = birthDay
+        }
+        if let birthMonth = birthMonth {
+            parameters[Parameter.birthMonth.rawValue] = birthMonth
+        }
+        if let birthYear = birthYear {
+            parameters[Parameter.birthYear.rawValue] = birthYear
+        }
+        
+        if let height = height {
+            parameters[Parameter.height.rawValue] = height
+        }
+        if let weight = weight {
+            parameters[Parameter.weight.rawValue] = weight
+        }
+        
+        if let bloodType = bloodType {
+            parameters[Parameter.bloodType.rawValue] = bloodType
+        }
+        if let rhType = rhType {
+            parameters[Parameter.rhType.rawValue] = rhType
+        }
+        if let gender = gender {
+            parameters[Parameter.gender.rawValue] = gender
+        }
+        
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(nil, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: [])
+                let info = try JSONDecoder().decode(ProtocolCode.self, from: jsonData)
+                completion(info, nil)
+            } catch {
+                let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize", comment: "")])
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func savePatientInfo(name: String, surname: String, patientId: Int, birthDay: Int?, birthMonth: Int?, birthYear: Int?, height: Double?, weight: Double?, bloodType: String?, rhType: String?, gender: String?, completion: @escaping SuccessReturnFunction) {
+        
+        let route = Router.savePatientInfo(name: name, surname: surname, patientId: patientId)
+        
+        var parameters = [String: Any]()
+        parameters = [Parameter.name.rawValue: name, Parameter.surname.rawValue: surname, Parameter.patientId.rawValue: patientId]
+        
+        if let birthDay = birthDay {
+            parameters[Parameter.birthDay.rawValue] = birthDay
+        }
+        if let birthMonth = birthMonth {
+            parameters[Parameter.birthMonth.rawValue] = birthMonth
+        }
+        if let birthYear = birthYear {
+            parameters[Parameter.birthYear.rawValue] = birthYear
+        }
+        
+        if let height = height {
+            parameters[Parameter.height.rawValue] = height
+        }
+        if let weight = weight {
+            parameters[Parameter.weight.rawValue] = weight
+        }
+        
+        if let bloodType = bloodType {
+            parameters[Parameter.bloodType.rawValue] = bloodType
+        }
+        if let rhType = rhType {
+            parameters[Parameter.rhType.rawValue] = rhType
+        }
+        if let gender = gender {
+            parameters[Parameter.gender.rawValue] = gender
+        }
+        
+        self.makeSessionRequest(endpoint: route.endpoint, endpointParameter: nil, method: route.method, parameters: parameters, encoding: JSONEncoding.default, headers: route.header, responseType: .Dictionary) { (response, error) in
+            guard let response = response as? NSDictionary else {
+                if let error = error {
+                    completion(false, error)
+                } else {
+                    completion(false, UNEXPECTED_ERROR)
+                }
+                return
+            }
+            guard let success = response["success"] as? Bool,
+                let message = response["message"] as? String else {
+                    let error = NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey:NSLocalizedString("Could not serialize success state", comment: "")])
+                    completion(false, error)
+                    return
+            }
+            
+            if success {
+                completion(true, nil)
+            } else {
+                completion(false, NSError(domain: "BE", code: 0, userInfo: [NSLocalizedDescriptionKey: message]))
+            }
+        }
+    }
+    
     func orderForAnalysis(order: GeneralOrder, completion: @escaping SuccessReturnFunction) {
         let route = Router.orderAfterAnalysis
         var parameters = [String: Any]()

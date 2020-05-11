@@ -36,6 +36,9 @@ enum Parameter: String {
     case quantity = "quantity"
     case product = "product"
     case bloodTestId = "bloodTestId"
+    case type = "type"
+    case bloodOrderId = "bloodOrderId"
+    case userIdentityNumber = "userIdentityNumber"
 }
 
 enum Endpoint: String {
@@ -48,11 +51,15 @@ enum Endpoint: String {
     // MARK: Auth Controller
     case RefreshToken = "/auth/refresh"
     case Login = "/auth/sign-in"
+    case AddPatient = "/auth/savePatient"
     
     // MARK: Blood Order Controller
     case OrderBlood = "/blood/order"
     case PastGeneralOrders = "/blood/previousOrders"
     case OrderAfterAnalysis = "/blood/orderForUserData"
+    
+    case GetOrderToDo = "/blood/getOrdersForMedical"
+    case SetOrderReady = "/blood/setReadyOrder"
     
     // MARK: Drug Controller
     case GetAllMedicine = "/drug/all"
@@ -68,8 +75,9 @@ enum Endpoint: String {
     case GetDoctorMainScreen = "/users/getDoctorMainScreen"
     case GetDoctorPatients = "/users/getMyPatients"
     case GetPatientDetail = "/users/getPatientDetail"
-    // TODO:
+
     case SavePatientInfo = "/users/saveBodyInfoOfPatient"
+    case SaveAmbulancePatient = "/users/saveAmbulancePatient"
     
     // MARK: Patient Data Controller
     case GetAllAnalysis = "/patientData/getAllBloodTest"
@@ -77,6 +85,10 @@ enum Endpoint: String {
     case GetAnalysisById = "/patientData/getPatientBloodDataById"
     case GetSuggestionForAnalysis = "/patientData/getSuggestionOfBloodTest"
 
+    // MARK: Notification
+    case callForNewAppointment = "/notification/callPatient"
+    case notifyMedicalTeam = "/notification/notify-medical"
+    case getNotifications = "/notification/page"
 }
 
 enum IconNames {

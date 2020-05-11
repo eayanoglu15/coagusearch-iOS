@@ -23,5 +23,23 @@ class PatientNextAppointmentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setAppointment(next: PatientAppointment) {
+        dateLabel.text = "\(next.day)/\(next.month)/\(next.year)"
+        let startHour = next.hour
+        var endHour = startHour
+        let startMin = next.minute
+        let endMin = startMin + 20
+        var endMinStr = "\(endMin)"
+        if endMin >= 60 {
+            endMinStr = "00"
+            endHour += 1
+        }
+        var startMinStr = "\(startMin)"
+        if startMin == 0 {
+            startMinStr = "00"
+        }
+        timeLabel.text = "\(startHour):\(startMinStr) - \(endHour):\(endMinStr)"
+    }
 
 }

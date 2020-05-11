@@ -8,10 +8,19 @@
 
 import UIKit
 
+protocol ReportAmbulancePatientTableViewCellDelegate: AnyObject {
+    func notifyDoctorButtonClicked(id: Int)
+}
+
 class ReportAmbulancePatientTableViewCell: UITableViewCell {
+    weak var delegate: ReportAmbulancePatientTableViewCellDelegate?
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var patientInfoTextField: UITextField!
     @IBOutlet weak var notifyDoctorButton: UIButton!
+    
+    func clear() {
+        patientInfoTextField.text = nil
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +37,11 @@ class ReportAmbulancePatientTableViewCell: UITableViewCell {
     }
 
     @IBAction func notifyDoctorButtonTapped(_ sender: Any) {
+        if let idStr = patientInfoTextField.text, !idStr.isEmpty {
+            if let id = Int(idStr) {
+                self.delegate?.notifyDoctorButtonClicked(id: id)
+            }
+        }
     }
     
     func changeArrow(selected: Bool) {

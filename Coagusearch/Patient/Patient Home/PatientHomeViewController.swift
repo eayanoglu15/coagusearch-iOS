@@ -40,6 +40,9 @@ class PatientHomeViewController: UIViewController {
     private func setupTableView() {
         let nextCellNib = UINib(nibName: CELL_IDENTIFIER_NEXT_APPOINTMENT_CELL, bundle: nil)
         homeTableView.register(nextCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_NEXT_APPOINTMENT_CELL)
+        let notificationCellNib = UINib(nibName: CELL_IDENTIFIER_MEDICAL_TEAM_NOTIFICATION_CELL, bundle: nil)
+        homeTableView.register(notificationCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_MEDICAL_TEAM_NOTIFICATION_CELL)
+        
     }
     
     /*
@@ -90,17 +93,7 @@ extension PatientHomeViewController: UITableViewDataSource {
                     cell.backgroundView?.backgroundColor = UIColor.clear
                     cell.cancelButton.isHidden = true
                     if let next = dataSource.getNextAppointmentInfo() {
-                        cell.doctorLabel.text = "\(next.doctorName) \(next.doctorSurname)"
-                        cell.dateLabel.text = "\(next.day).\(next.month).\(next.year) "
-                        var hourStr = "\(next.hour)"
-                        var minStr = "\(next.minute)"
-                        if hourStr.count == 1 {
-                            hourStr = "0" + hourStr
-                        }
-                        if minStr.count == 1 {
-                            minStr = "0" + minStr
-                        }
-                        cell.timeLabel.text = "\(hourStr):\(minStr)"
+                        cell.setAppointment(appointment: next)
                     }
                     return cell
                 }
@@ -113,23 +106,22 @@ extension PatientHomeViewController: UITableViewDataSource {
                     cell.backgroundView?.backgroundColor = UIColor.clear
                     cell.cancelButton.isHidden = true
                     if let next = dataSource.getNextAppointmentInfo() {
-                        cell.doctorLabel.text = "\(next.doctorName) \(next.doctorSurname)"
-                        cell.dateLabel.text = "\(next.day).\(next.month).\(next.year) "
-                        var hourStr = "\(next.hour)"
-                        var minStr = "\(next.minute)"
-                        if hourStr.count == 1 {
-                            hourStr = "0" + hourStr
-                        }
-                        if minStr.count == 1 {
-                            minStr = "0" + minStr
-                        }
-                        cell.timeLabel.text = "\(hourStr):\(minStr)"
+                        cell.setAppointment(appointment: next)
                     }
                     return cell
                 }
             }
         }
+        /*
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCellTableViewCell
+        return cell
+        */
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_MEDICAL_TEAM_NOTIFICATION_CELL, for: indexPath) as! MedicalTeamNotificationTableViewCell
+        cell.backgroundColor = UIColor.clear
+        cell.backgroundView?.backgroundColor = UIColor.clear
+        if let notifyInfo = dataSource.getNotification(index: indexPath.section) {
+            cell.setNotification(notif: notifyInfo)
+        }
         return cell
     }
 }

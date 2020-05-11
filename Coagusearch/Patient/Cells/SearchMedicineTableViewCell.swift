@@ -51,4 +51,8 @@ class SearchMedicineTableViewCell: UITableViewCell {
             arrowImageView.image = UIImage(named: IconNames.upArrow)
         }
     }
+    
+    func clearCell() {
+        medicineLabel.text = nil
+    }
 }

@@ -11,4 +11,9 @@ import Foundation
 struct PatientMainInfo : Codable {
     var patientMissingInfo: Bool
     var patientNextAppointment: PatientAppointment?
+    var patientNotifications: [NotificationStruct]?
+}
+
+struct NotificationStruct : Codable {
+    var notificationString: String
 }

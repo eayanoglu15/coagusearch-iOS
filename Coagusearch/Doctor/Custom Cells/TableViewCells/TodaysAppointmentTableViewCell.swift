@@ -17,11 +17,27 @@ class TodaysAppointmentTableViewCell: UITableViewCell {
         // Initialization code
         selectionStyle = .none
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
+    func setCell(patient: DoctorTodayAppointment) {
+        patientNameLabel.text = "\(patient.userName) \(patient.userSurname)"
+        
+        let time = patient.appointmentHour
+        
+        var hourStr = "\(time.hour)"
+        if time.hour < 10 {
+            hourStr = "0" + "\(time.hour)"
+        }
+        
+        var minStr = "\(time.minute)"
+        if time.minute < 10 {
+            minStr = "0" + "\(time.minute)"
+        }
+        timeLabel.text = "\(hourStr):\(minStr)"
+    }
 }

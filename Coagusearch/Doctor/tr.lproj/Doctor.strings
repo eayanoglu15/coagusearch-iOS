@@ -224,7 +224,7 @@
 /* Class = "UILabel"; text = "Confirmed"; ObjectID = "XrK-65-e71"; */
 "XrK-65-e71.text" = "Onaylandı";
 
-/* Class = "UILabel"; text = "Birth Date"; ObjectID = "Y0y-04-TDL"; */
+/* Class = "UILabel"; text = "Birthdate"; ObjectID = "Y0y-04-TDL"; */
 "Y0y-04-TDL.text" = "Doğum Tarihi";
 
 /* Class = "UILabel"; text = "50"; ObjectID = "Y4Q-eR-y0D"; */

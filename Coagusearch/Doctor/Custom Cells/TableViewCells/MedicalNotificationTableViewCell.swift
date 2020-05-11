@@ -23,5 +23,9 @@ class MedicalNotificationTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setNotification(notif: NotificationStruct) {
+        infoLabel.text = notif.notificationString
+    }
 
 }

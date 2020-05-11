@@ -34,7 +34,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordLabel: UILabel!
     
     @IBOutlet weak var rememberMeSwitch: UISwitch!
-    @IBOutlet weak var forgetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var userLabelTopConstraint: NSLayoutConstraint!

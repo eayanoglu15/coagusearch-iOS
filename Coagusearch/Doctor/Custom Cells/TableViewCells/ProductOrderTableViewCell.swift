@@ -30,6 +30,7 @@ class ProductOrderTableViewCell: UITableViewCell {
     func showSuggestion(suggestion: TreatmentSuggestion, weight: Double?) {
         if suggestion.product == "Platelet Concentrate" {
             stylizeButtonSelected(button: plateletButton)
+            stylizeButtonUnselected(button: FFPButton)
             productTypeSelection = [false, true]
         }
         if let weight = weight {

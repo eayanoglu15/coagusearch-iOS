@@ -296,7 +296,7 @@ class PatientInfoViewController: BaseScrollViewController {
     @objc func tapDone() {
         if let datePicker = self.birthDateTextField.inputView as? UIDatePicker {
             let dateformatter = DateFormatter()
-            dateformatter.dateStyle = .short
+            dateformatter.dateFormat = "dd/MM/yyyy"
             self.birthDateTextField.text = dateformatter.string(from: datePicker.date)
         }
         self.birthDateTextField.resignFirstResponder() 

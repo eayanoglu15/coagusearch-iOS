@@ -37,6 +37,19 @@ class EnterDosageTableViewCell: UITableViewCell {
         }
     }
     
+    func clearCell() {
+        selectedDosage = nil
+        selectedUnit = nil
+        if let first = pickerData.first {
+            dosageLabel.text = "- " + first
+            selectedUnit = first
+            delegate?.setSelectedUnit(unit: first)
+        } else {
+            dosageLabel.text = "-"
+        }
+        setSelection()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -92,7 +105,6 @@ class EnterDosageTableViewCell: UITableViewCell {
             dosageLabel.text = dosage
         }
     }
-    
 
 }
 
