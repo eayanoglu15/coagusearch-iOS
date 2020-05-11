@@ -1,24 +1,24 @@
 
 /* Class = "UILabel"; text = "Weight:"; ObjectID = "0HP-7r-HL6"; */
-"0HP-7r-HL6.text" = "Weight:";
+"0HP-7r-HL6.text" = "Kilo:";
 
 /* Class = "UIButton"; normalTitle = "B"; ObjectID = "23k-AD-dNh"; */
 "23k-AD-dNh.normalTitle" = "B";
 
 /* Class = "UIButton"; normalTitle = "Set Ready"; ObjectID = "2ec-GJ-Q1l"; */
-"2ec-GJ-Q1l.normalTitle" = "Set Ready";
+"2ec-GJ-Q1l.normalTitle" = "Hazırlandı";
 
 /* Class = "UIButton"; normalTitle = "Positive"; ObjectID = "3Ni-4w-Oxr"; */
-"3Ni-4w-Oxr.normalTitle" = "Positive";
+"3Ni-4w-Oxr.normalTitle" = "Pozitif";
 
 /* Class = "UILabel"; text = "RhD"; ObjectID = "3WW-KR-UwD"; */
 "3WW-KR-UwD.text" = "RhD";
 
 /* Class = "UITabBarItem"; title = "Patients"; ObjectID = "3bo-jP-vi5"; */
-"3bo-jP-vi5.title" = "Patients";
+"3bo-jP-vi5.title" = "Hastalar";
 
 /* Class = "UILabel"; text = "Patient name is not specified"; ObjectID = "3kF-AK-mLm"; */
-"3kF-AK-mLm.text" = "Patient name is not specified";
+"3kF-AK-mLm.text" = "Hasta adı belirtilmedi";
 
 /* Class = "UIButton"; normalTitle = "A"; ObjectID = "4TH-tg-I3O"; */
 "4TH-tg-I3O.normalTitle" = "A";
@@ -27,37 +27,37 @@
 "79V-vU-JVY.normalTitle" = "AB";
 
 /* Class = "UIButton"; normalTitle = "Positive"; ObjectID = "7RM-0u-8bX"; */
-"7RM-0u-8bX.normalTitle" = "Positive";
+"7RM-0u-8bX.normalTitle" = "Pozitif";
 
 /* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "7ez-mR-ltR"; */
-"7ez-mR-ltR.normalTitle" = "SAVE";
+"7ez-mR-ltR.normalTitle" = "KAYDET";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "7ym-gm-vc1"; */
-"7ym-gm-vc1.text" = "Name";
+"7ym-gm-vc1.text" = "Ad";
 
 /* Class = "UITextField"; placeholder = "Enter Patient ID"; ObjectID = "82a-6H-KJQ"; */
-"82a-6H-KJQ.placeholder" = "Enter Patient ID";
+"82a-6H-KJQ.placeholder" = "Hasta ID'sini Gir";
 
 /* Class = "UIButton"; normalTitle = "Negative"; ObjectID = "8p2-M9-lg1"; */
-"8p2-M9-lg1.normalTitle" = "Negative";
+"8p2-M9-lg1.normalTitle" = "Negatif";
 
 /* Class = "UILabel"; text = "B Rh+"; ObjectID = "DHY-pl-i4o"; */
 "DHY-pl-i4o.text" = "B Rh+";
 
 /* Class = "UIButton"; normalTitle = "Female"; ObjectID = "EDR-XU-rJz"; */
-"EDR-XU-rJz.normalTitle" = "Female";
+"EDR-XU-rJz.normalTitle" = "Kadın";
 
 /* Class = "UIButton"; normalTitle = "Male"; ObjectID = "EIM-DR-j85"; */
-"EIM-DR-j85.normalTitle" = "Male";
+"EIM-DR-j85.normalTitle" = "Erkek";
 
 /* Class = "UIButton"; normalTitle = "Positive"; ObjectID = "EJ1-er-Xf0"; */
-"EJ1-er-Xf0.normalTitle" = "Positive";
+"EJ1-er-Xf0.normalTitle" = "Pozitif";
 
 /* Class = "UIButton"; normalTitle = "AB"; ObjectID = "EPB-wX-tTh"; */
 "EPB-wX-tTh.normalTitle" = "AB";
 
 /* Class = "UILabel"; text = "Weight (kg)"; ObjectID = "FDk-So-Ylm"; */
-"FDk-So-Ylm.text" = "Weight (kg)";
+"FDk-So-Ylm.text" = "Kilo (kg)";
 
 /* Class = "UIButton"; normalTitle = "O"; ObjectID = "FHl-gt-DI2"; */
 "FHl-gt-DI2.normalTitle" = "O";
@@ -66,43 +66,43 @@
 "Gf4-kn-RPf.normalTitle" = "B";
 
 /* Class = "UILabel"; text = "Birthdate:"; ObjectID = "Ggr-De-Fdc"; */
-"Ggr-De-Fdc.text" = "Birthdate:";
+"Ggr-De-Fdc.text" = "Doğum Tarihi:";
 
 /* Class = "UILabel"; text = "Gender"; ObjectID = "Jf8-Ye-LVR"; */
-"Jf8-Ye-LVR.text" = "Gender";
+"Jf8-Ye-LVR.text" = "Cinsiyet";
 
 /* Class = "UIButton"; normalTitle = "Notify Doctor"; ObjectID = "K3b-kI-WeY"; */
-"K3b-kI-WeY.normalTitle" = "Notify Doctor";
+"K3b-kI-WeY.normalTitle" = "Doktora Haber Ver";
 
 /* Class = "UIButton"; normalTitle = "Female"; ObjectID = "KO6-LT-MQd"; */
-"KO6-LT-MQd.normalTitle" = "Female";
+"KO6-LT-MQd.normalTitle" = "Kadın";
 
 /* Class = "UILabel"; text = "Patient Count"; ObjectID = "KwQ-3l-wFk"; */
-"KwQ-3l-wFk.text" = "Patient Count";
+"KwQ-3l-wFk.text" = "Hasta Sayısı";
 
 /* Class = "UILabel"; text = "Height (cm)"; ObjectID = "MLx-9P-dtv"; */
-"MLx-9P-dtv.text" = "Height (cm)";
+"MLx-9P-dtv.text" = "Boy (cm)";
 
 /* Class = "UILabel"; text = "22"; ObjectID = "MqA-7l-wDv"; */
 "MqA-7l-wDv.text" = "22";
 
 /* Class = "UILabel"; text = "Report Ambulance Patient"; ObjectID = "N8F-G4-MeE"; */
-"N8F-G4-MeE.text" = "Report Ambulance Patient";
+"N8F-G4-MeE.text" = "Ambulans Hastasını Raporla";
 
 /* Class = "UILabel"; text = "A Rh-"; ObjectID = "RVg-qM-vPS"; */
 "RVg-qM-vPS.text" = "A Rh-";
 
 /* Class = "UILabel"; text = "Blood Type"; ObjectID = "Rhv-R3-2LX"; */
-"Rhv-R3-2LX.text" = "Blood Type";
+"Rhv-R3-2LX.text" = "Kan Grubu";
 
 /* Class = "UILabel"; text = "Height (cm)"; ObjectID = "Rla-Ue-zqi"; */
-"Rla-Ue-zqi.text" = "Height (cm)";
+"Rla-Ue-zqi.text" = "Boy (cm)";
 
 /* Class = "UILabel"; text = "60 kg"; ObjectID = "SOJ-sY-xkA"; */
 "SOJ-sY-xkA.text" = "60 kg";
 
 /* Class = "UILabel"; text = "Surname"; ObjectID = "Szv-aI-l03"; */
-"Szv-aI-l03.text" = "Surname";
+"Szv-aI-l03.text" = "Soyad";
 
 /* Class = "UIButton"; normalTitle = "A"; ObjectID = "Tmr-hj-a3B"; */
 "Tmr-hj-a3B.normalTitle" = "A";
@@ -111,52 +111,52 @@
 "TqU-zn-sfR.normalTitle" = "B";
 
 /* Class = "UILabel"; text = "Identity Number"; ObjectID = "UVI-HM-vno"; */
-"UVI-HM-vno.text" = "Identity Number";
+"UVI-HM-vno.text" = "T.C. Kimlik Numarası";
 
-/* Class = "UILabel"; text = "Birth Date"; ObjectID = "WPY-eN-gth"; */
-"WPY-eN-gth.text" = "Birth Date";
+/* Class = "UILabel"; text = "Birthdate"; ObjectID = "WPY-eN-gth"; */
+"WPY-eN-gth.text" = "Doğum Tarihi";
 
 /* Class = "UIButton"; normalTitle = "Negative"; ObjectID = "Xig-Pa-y07"; */
-"Xig-Pa-y07.normalTitle" = "Negative";
+"Xig-Pa-y07.normalTitle" = "Negatif";
 
 /* Class = "UIButton"; normalTitle = "EDIT PROFILE"; ObjectID = "Ygf-q3-dhf"; */
-"Ygf-q3-dhf.normalTitle" = "EDIT PROFILE";
+"Ygf-q3-dhf.normalTitle" = "PROFİLİ DÜZENLE";
 
 /* Class = "UILabel"; text = "Weight (kg)"; ObjectID = "Yt7-GR-JTp"; */
-"Yt7-GR-JTp.text" = "Weight (kg)";
+"Yt7-GR-JTp.text" = "Kilo (kg)";
 
 /* Class = "UITabBarItem"; title = "Prepare"; ObjectID = "YwB-E8-5tY"; */
-"YwB-E8-5tY.title" = "Prepare";
+"YwB-E8-5tY.title" = "Hazırla";
 
-/* Class = "UILabel"; text = "Fresh Frozen Plasma "; ObjectID = "Zdp-5Q-g6z"; */
-"Zdp-5Q-g6z.text" = "Fresh Frozen Plasma ";
+/* Class = "UILabel"; text = "Fresh Frozen Plasma"; ObjectID = "Zdp-5Q-g6z"; */
+"Zdp-5Q-g6z.text" = "Fresh Frozen Plasma";
 
 /* Class = "UIButton"; normalTitle = "AB"; ObjectID = "ZkL-Qv-2ZJ"; */
 "ZkL-Qv-2ZJ.normalTitle" = "AB";
 
-/* Class = "UILabel"; text = "Birth Date"; ObjectID = "aaE-H4-MTu"; */
-"aaE-H4-MTu.text" = "Birth Date";
+/* Class = "UILabel"; text = "Birthdate"; ObjectID = "aaE-H4-MTu"; */
+"aaE-H4-MTu.text" = "Doğum Tarihi";
 
 /* Class = "UIButton"; normalTitle = "Male"; ObjectID = "b3V-aC-p6y"; */
-"b3V-aC-p6y.normalTitle" = "Male";
+"b3V-aC-p6y.normalTitle" = "Erkek";
 
 /* Class = "UILabel"; text = "Height:"; ObjectID = "cDs-ba-6a7"; */
-"cDs-ba-6a7.text" = "Height:";
+"cDs-ba-6a7.text" = "Boy:";
 
 /* Class = "UIButton"; normalTitle = "Negative"; ObjectID = "cwo-BX-r2a"; */
-"cwo-BX-r2a.normalTitle" = "Negative";
+"cwo-BX-r2a.normalTitle" = "Negatif";
 
 /* Class = "UIButton"; normalTitle = "Female"; ObjectID = "eGk-Ii-rWQ"; */
-"eGk-Ii-rWQ.normalTitle" = "Female";
+"eGk-Ii-rWQ.normalTitle" = "Kadın";
 
 /* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "f3e-Fc-USp"; */
-"f3e-Fc-USp.normalTitle" = "SAVE";
+"f3e-Fc-USp.normalTitle" = "KAYDET";
 
 /* Class = "UIButton"; normalTitle = "SWITCH TO PATIENT VIEW"; ObjectID = "f3v-eR-mIU"; */
-"f3v-eR-mIU.normalTitle" = "SWITCH TO PATIENT VIEW";
+"f3v-eR-mIU.normalTitle" = "HASTA UYGULAMASINA GEÇ";
 
 /* Class = "UIButton"; normalTitle = "Add Patient"; ObjectID = "fAc-6D-x2F"; */
-"fAc-6D-x2F.normalTitle" = "Add Patient";
+"fAc-6D-x2F.normalTitle" = "Hasta Ekle";
 
 /* Class = "UILabel"; text = "RhD"; ObjectID = "gPD-AJ-Yg7"; */
 "gPD-AJ-Yg7.text" = "RhD";
@@ -165,34 +165,34 @@
 "gpY-L9-nz0.text" = "160 cm";
 
 /* Class = "UILabel"; text = "Height (cm)"; ObjectID = "h35-su-XcX"; */
-"h35-su-XcX.text" = "Height (cm)";
+"h35-su-XcX.text" = "Boy (cm)";
 
 /* Class = "UIButton"; normalTitle = "Male"; ObjectID = "hHb-ld-oRQ"; */
-"hHb-ld-oRQ.normalTitle" = "Male";
+"hHb-ld-oRQ.normalTitle" = "Erkek";
 
 /* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "icE-4q-ybM"; */
-"icE-4q-ybM.normalTitle" = "SAVE";
+"icE-4q-ybM.normalTitle" = "KAYDET";
 
 /* Class = "UILabel"; text = "Weight (kg)"; ObjectID = "iux-Hg-0wO"; */
-"iux-Hg-0wO.text" = "Weight (kg)";
+"iux-Hg-0wO.text" = "Kilo (kg)";
 
 /* Class = "UIButton"; normalTitle = "O"; ObjectID = "j1m-xW-ON4"; */
 "j1m-xW-ON4.normalTitle" = "O";
 
 /* Class = "UILabel"; text = "Surname"; ObjectID = "j1v-yH-DxL"; */
-"j1v-yH-DxL.text" = "Surname";
+"j1v-yH-DxL.text" = "Soyad";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "lPY-EJ-bMx"; */
 "lPY-EJ-bMx.text" = "Label";
 
 /* Class = "UITabBarItem"; title = "Home"; ObjectID = "nI5-yb-uhj"; */
-"nI5-yb-uhj.title" = "Home";
+"nI5-yb-uhj.title" = "Ana Sayfa";
 
 /* Class = "UILabel"; text = "10 Units"; ObjectID = "oE4-lJ-Dyz"; */
-"oE4-lJ-Dyz.text" = "10 Units";
+"oE4-lJ-Dyz.text" = "10 Ünite";
 
 /* Class = "UILabel"; text = "Gender"; ObjectID = "oHH-Tg-tId"; */
-"oHH-Tg-tId.text" = "Gender";
+"oHH-Tg-tId.text" = "Cinsiyet";
 
 /* Class = "UIButton"; normalTitle = "O"; ObjectID = "oa7-Rc-Acv"; */
 "oa7-Rc-Acv.normalTitle" = "O";
@@ -201,46 +201,46 @@
 "obn-Vq-lhd.text" = "Ege Melis Ayanoğlu";
 
 /* Class = "UITabBarItem"; title = "Profile"; ObjectID = "ogs-i8-vu0"; */
-"ogs-i8-vu0.title" = "Profile";
+"ogs-i8-vu0.title" = "Profil";
 
 /* Class = "UILabel"; text = "Blood Type"; ObjectID = "oj8-Tp-Uxz"; */
-"oj8-Tp-Uxz.text" = "Blood Type";
+"oj8-Tp-Uxz.text" = "Kan Grubu";
 
 /* Class = "UILabel"; text = "Confirmed"; ObjectID = "pAe-tU-ro8"; */
-"pAe-tU-ro8.text" = "Confirmed";
+"pAe-tU-ro8.text" = "Onaylandı";
 
 /* Class = "UILabel"; text = "Birth Date"; ObjectID = "pm4-9Z-GDO"; */
-"pm4-9Z-GDO.text" = "Birth Date";
+"pm4-9Z-GDO.text" = "Doğum Tarihi";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "rYf-iO-u9a"; */
-"rYf-iO-u9a.text" = "Name";
+"rYf-iO-u9a.text" = "Ad";
 
 /* Class = "UILabel"; text = "Gender"; ObjectID = "sno-uI-E16"; */
-"sno-uI-E16.text" = "Gender";
+"sno-uI-E16.text" = "Cinsiyet";
 
 /* Class = "UIButton"; normalTitle = "A"; ObjectID = "tT7-A8-yvv"; */
 "tT7-A8-yvv.normalTitle" = "A";
 
-/* Class = "UISegmentedControl"; u5l-Rz-haF.segmentTitles[0] = "Waiting"; ObjectID = "u5l-Rz-haF"; */
-"u5l-Rz-haF.segmentTitles[0]" = "Waiting";
+/* Class = "UISegmentedControl"; u5l-Rz-haF.segmentTitles[0] = "To Do"; ObjectID = "u5l-Rz-haF"; */
+"u5l-Rz-haF.segmentTitles[0]" = "Yapılacaklar";
 
 /* Class = "UISegmentedControl"; u5l-Rz-haF.segmentTitles[1] = "Done"; ObjectID = "u5l-Rz-haF"; */
-"u5l-Rz-haF.segmentTitles[1]" = "Done";
+"u5l-Rz-haF.segmentTitles[1]" = "Yapılmışlar";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "uGl-Ux-uHH"; */
-"uGl-Ux-uHH.text" = "Name";
+"uGl-Ux-uHH.text" = "Ad";
 
 /* Class = "UILabel"; text = "Blood Type:"; ObjectID = "ud3-gf-y7P"; */
-"ud3-gf-y7P.text" = "Blood Type:";
+"ud3-gf-y7P.text" = "Kan Grubu:";
 
 /* Class = "UILabel"; text = "RhD"; ObjectID = "w3y-SY-vvc"; */
 "w3y-SY-vvc.text" = "RhD";
 
 /* Class = "UILabel"; text = "Patient Name"; ObjectID = "wPM-C7-XX7"; */
-"wPM-C7-XX7.text" = "Patient Name";
+"wPM-C7-XX7.text" = "Hasta Adı";
 
 /* Class = "UILabel"; text = "Blood Type"; ObjectID = "xPL-Y7-MWz"; */
-"xPL-Y7-MWz.text" = "Blood Type";
+"xPL-Y7-MWz.text" = "Kan Grubu";
 
 /* Class = "UILabel"; text = "Surname"; ObjectID = "xZZ-6J-9aJ"; */
-"xZZ-6J-9aJ.text" = "Surname";
+"xZZ-6J-9aJ.text" = "Soyad";

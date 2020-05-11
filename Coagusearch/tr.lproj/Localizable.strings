@@ -36,6 +36,8 @@
 "Error" = "Hata";
 "Encountered an unexpected error" = "Beklenmeyen bir hata oluştu";
 "Edit Profile" = "Profili Düzenle";
+"Enter patient identity number" = "Hastanın kimlik numarasını girin";
+"Enter patient name and surname" = "Hastanın adını ve soyadını girin";
 
 // MARK: F
 "Frequency" = "Sıklık";
@@ -99,6 +101,8 @@
 "Please enter unit of dosage" = "Lütfen ilaç dozunun birimini giriniz";
 "Patient blood type is unknown. You cannot make blood order from this page." = "Hastanın kan grubu bilinmiyor. Bu sayfadan kan siparişi yapamazsınız.";
 "Patient weight is unknown. You can enter appropriate unit amount." = "Hastanın ağırlığı bilinmemekte. Uygun ünite miktarını girebilirsiniz.";
+"Patient Login Info" = "Hasta Giriş Bilgileri";
+"Password: " = "Şifre: ";
 
 // MARK: Q
 
@@ -116,6 +120,7 @@
 "Patient does not have any recorded regular medicine" = "Hastanın kayıtlı düzenli ilacı bulunmamakta";
 "Treatment Status" = "Tedavi Durumu";
 "Treatment Decision" = "Tedavi Kararı";
+"This patient can use the system with following informations" = "Bu hasta aşağıdaki bilgiler ile giriş yapabilir";
 
 // MARK: U
 "Update Medicine" = "İlacını Güncelle";
