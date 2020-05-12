@@ -25,6 +25,7 @@ class DoctorPastDataAnalysisDataSource {
     var fibtemValues: [SingleTestResult]?
     var extemValues: [SingleTestResult]?
     var intemValues: [SingleTestResult]?
+    var ordersOfData: [GeneralOrder]?
     
     func getDataAnalysisByID() {
         guard let id = testId else {
@@ -54,7 +55,7 @@ class DoctorPastDataAnalysisDataSource {
                             self.intemValues = test.categoryList
                         }
                     }
-                    
+                        self.ordersOfData = dataInfo.ordersOfData
                     DispatchQueue.main.async {
                         self.delegate?.reloadTableView()
                     }
@@ -67,6 +68,19 @@ class DoctorPastDataAnalysisDataSource {
         })
     }
     
+    func getOrder(index: Int) -> GeneralOrder? {
+        guard let orders = ordersOfData else {
+            return nil
+        }
+        return orders[index]
+    }
+    
+    func getOrderCount() -> Int {
+        guard let orders = ordersOfData else {
+            return 0
+        }
+        return orders.count
+    }
     
     func getTableViewCount(testName: TestName) -> Int {
         switch testName {

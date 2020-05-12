@@ -34,6 +34,8 @@ class DoctorPatientsViewController: UIViewController {
         
         dataSource.coagusearchService = CoagusearchServiceFactory.createService()
         dataSource.delegate = self
+        
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,9 +43,14 @@ class DoctorPatientsViewController: UIViewController {
         dataSource.getPatients()
     }
     
+    private func setupTableView() {
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        tableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
+    }
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -65,10 +72,16 @@ extension DoctorPatientsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_CELL, for: indexPath) as! PatientTableViewCell
+        if dataSource.getPatientCount() == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
+            cell.setTitle(title: "You have no patients".localized)
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_CELL, for: indexPath) as! PatientTableViewCell
+        cell.backgroundColor = UIColor.clear
+        cell.backgroundView?.backgroundColor = UIColor.clear
         
         if let patient = dataSource.getPatient(index: indexPath.section) {
             if let name = patient.name, let surname = patient.surname, let hasNewData = patient.newData {
@@ -79,7 +92,12 @@ extension DoctorPatientsViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource.getPatientCount()
+        let count = dataSource.getPatientCount()
+        if count > 0 {
+            return count
+        } else {
+            return 1
+        }
     }
     
     // There is just one row in every section

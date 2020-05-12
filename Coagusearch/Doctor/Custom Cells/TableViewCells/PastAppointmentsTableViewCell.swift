@@ -25,4 +25,16 @@ class PastAppointmentsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setPatientAppointment(appointment: PatientAppointment) {
+        dateLabel.text = "\(appointment.day)/\(appointment.month)/\(appointment.year) "
+        var hourStr = "\(appointment.hour)"
+        var minStr = "\(appointment.minute)"
+        if hourStr.count == 1 {
+            hourStr = "0" + hourStr
+        }
+        if minStr.count == 1 {
+            minStr = "0" + minStr
+        }
+        timeLabel.text = "\(hourStr):\(minStr)"
+    }
 }

@@ -41,11 +41,17 @@ class MedicalTeamPrepareViewController: UIViewController {
         segmentedControl.borderColor = .white
         segmentedControl.borderWidth = 1
         segmentedControl.selectedSegmentTintColor = .blueBlue
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         dataSource.getToDoList()
+    }
+    
+    private func setupTableView() {
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        tableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
     }
 
     /*
@@ -76,11 +82,21 @@ extension MedicalTeamPrepareViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         switch (segmentedControl.selectedSegmentIndex) {
         case TODO_SECTION:
-            return dataSource.getTableViewCount(list: .TODO)
+            let count = dataSource.getTableViewCount(list: .TODO)
+            if count > 0 {
+                return count
+            } else {
+                return 1
+            }
         case DONE_SECTION:
-            return dataSource.getTableViewCount(list: .DONE)
+            let count = dataSource.getTableViewCount(list: .DONE)
+            if count > 0 {
+                return count
+            } else {
+                return 1
+            }
         default:
-            return 0
+            return 1
         }
     }
     
@@ -100,6 +116,23 @@ extension MedicalTeamPrepareViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if segmentedControl.selectedSegmentIndex == TODO_SECTION {
+            if dataSource.getTableViewCount(list: .TODO) == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.backgroundView?.backgroundColor = UIColor.clear
+                cell.setTitle(title: "There is no request to prepare".localized)
+                return cell
+            }
+        } else {
+            if dataSource.getTableViewCount(list: .DONE) == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.backgroundView?.backgroundColor = UIColor.clear
+                cell.setTitle(title: "There is no request you have prepared yet".localized)
+                return cell
+            }
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_GENERAL_BLOOD_ORDER_INFO_CELL, for: indexPath) as! GeneralBloodOrderInfoTableViewCell
         cell.delegate = self
         cell.backgroundColor = UIColor.clear

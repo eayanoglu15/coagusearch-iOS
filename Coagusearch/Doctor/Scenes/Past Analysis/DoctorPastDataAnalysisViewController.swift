@@ -34,7 +34,7 @@ class DoctorPastDataAnalysisViewController: UIViewController {
         // Do any additional setup after loading the view.
         dataSource.coagusearchService = CoagusearchServiceFactory.createService()
         dataSource.delegate = self
-        
+        setupTableView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -45,6 +45,11 @@ class DoctorPastDataAnalysisViewController: UIViewController {
                segmentedControl.borderWidth = 1
                //segmentedControl.backgroundColor = .dodgerBlue
                segmentedControl.selectedSegmentTintColor = .blueBlue
+    }
+    
+    private func setupTableView() {
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        tableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,10 +83,19 @@ extension DoctorPastDataAnalysisViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if segmentedControl.selectedSegmentIndex == ORDER_SECTION {
+            if dataSource.getOrderCount() == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.backgroundView?.backgroundColor = UIColor.clear
+                cell.setTitle(title: "No order was made".localized)
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-            // orderVal = indexPath.section - intemvalues.count
+            if let order = dataSource.getOrder(index: indexPath.section) {
+                cell.setup(order: order)
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_DATA_CELL, for: indexPath) as! DataTableViewCell
@@ -117,7 +131,10 @@ extension DoctorPastDataAnalysisViewController: UITableViewDataSource {
         case INTEM_SECTION:
             return dataSource.getTableViewCount(testName: .Intem)
         case ORDER_SECTION:
-            // TODO get order
+            let count = dataSource.getOrderCount()
+            if count > 0 {
+                return count
+            }
             return 1
         default:
             return 0
@@ -135,7 +152,7 @@ extension DoctorPastDataAnalysisViewController: UITableViewDataSource {
         }
         return HEIGHT_FOR_HEADER
     }
-    
+    /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (segmentedControl.selectedSegmentIndex) {
         case FIBTEM_SECTION:
@@ -150,7 +167,7 @@ extension DoctorPastDataAnalysisViewController: UITableViewDataSource {
             return 0
         }
     }
-    
+    */
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         //(view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemPink
         (view as! UITableViewHeaderFooterView).backgroundView = UIView()

@@ -29,23 +29,29 @@ class DoctorPatientPastAppointmentsViewController: UIViewController {
         // Do any additional setup after loading the view.
         dataSource.coagusearchService = CoagusearchServiceFactory.createService()
         dataSource.delegate = self
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         dataSource.getPastAppointments()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func setupTableView() {
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        tableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension DoctorPatientPastAppointmentsViewController: UITableViewDataSource {
@@ -56,29 +62,29 @@ extension DoctorPatientPastAppointmentsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PAST_APPOINTMENTS_CELL, for: indexPath) as! PastAppointmentsTableViewCell
+        if dataSource.getTableViewCount() == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-            
-        if let old = dataSource.getAppointmentInfo(forIndex: indexPath.section) {
-            cell.dateLabel.text = "\(old.day)/\(old.month)/\(old.year) "
-            var hourStr = "\(old.hour)"
-            var minStr = "\(old.minute)"
-            if hourStr.count == 1 {
-                hourStr = "0" + hourStr
-            }
-            if minStr.count == 1 {
-                minStr = "0" + minStr
-            }
-            cell.timeLabel.text = "\(hourStr):\(minStr)"
-        }
-        
+            cell.setTitle(title: "This patient doesn't have any past appointment".localized)
             return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PAST_APPOINTMENTS_CELL, for: indexPath) as! PastAppointmentsTableViewCell
+        cell.backgroundColor = UIColor.clear
+        cell.backgroundView?.backgroundColor = UIColor.clear
+        if let old = dataSource.getAppointmentInfo(forIndex: indexPath.section) {
+            cell.setPatientAppointment(appointment: old)
+        }
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource.getTableViewCount()
+        let count = dataSource.getTableViewCount()
+        if count > 0 {
+            return count
+        } else {
+            return 1
+        }
     }
     
     // There is just one row in every section

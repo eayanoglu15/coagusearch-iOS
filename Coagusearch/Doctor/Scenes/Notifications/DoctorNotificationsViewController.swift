@@ -35,7 +35,8 @@ class DoctorNotificationsViewController: UIViewController {
     private func setupTableView() {
         let notificationCellNib = UINib(nibName: CELL_IDENTIFIER_MEDICAL_TEAM_NOTIFICATION_CELL, bundle: nil)
         tableView.register(notificationCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_MEDICAL_TEAM_NOTIFICATION_CELL)
-        
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        tableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +64,13 @@ extension DoctorNotificationsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if dataSource.getTableViewCount() == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            cell.setTitle(title: "There isn't any notification".localized)
+            return cell
+        }
         /*
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_EMERGENCY_CELL, for: indexPath) as! EmergencyTableViewCell
@@ -94,7 +102,12 @@ extension DoctorNotificationsViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource.getTableViewCount()
+        let count = dataSource.getTableViewCount()
+        if count > 0 {
+            return count
+        } else {
+            return 1
+        }
     }
     
     // There is just one row in every section

@@ -61,6 +61,14 @@ extension DoctorTreatmentStatusViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if dataSource.getTableViewCount() == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            cell.label.text = "No order has been made yet".localized
+            return cell
+        }
+        
         if let order = dataSource.getOrderInfo(forIndex: indexPath.section) {
             switch order.kind {
             case .Blood:
@@ -76,13 +84,13 @@ extension DoctorTreatmentStatusViewController: UITableViewDataSource {
                 cell.setup(order: order)
                 return cell
             }
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
-            cell.backgroundColor = UIColor.clear
-            cell.backgroundView?.backgroundColor = UIColor.clear
-            cell.label.text = "No order has yet been placed for this test result".localized
-            return cell
         }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+        cell.backgroundColor = UIColor.clear
+        cell.backgroundView?.backgroundColor = UIColor.clear
+        cell.label.text = "No order has been made yet".localized
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

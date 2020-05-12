@@ -927,14 +927,8 @@
 		85CF6AD623FEE52900F10DBF /* Patient */ = {
 			isa = PBXGroup;
 			children = (
+				85F8D583246B1BA700AB5545 /* Scenes */,
 				85225DAC2406F372009583EC /* Cells */,
-				85CF6AD323FEE50E00F10DBF /* Patient Home */,
-				8593A719242951DA00C03F18 /* Patient Appointments */,
-				853869972423E827005C5BFC /* Appointment Selection */,
-				853869912423B9AE005C5BFC /* Profile */,
-				853869922423B9BF005C5BFC /* Add Medicine */,
-				85018FB9242922D8001C6373 /* Update Medicine */,
-				85D82BC32426524E00FF8DBE /* Patient Info */,
 				858337F32421150400843054 /* Patient.storyboard */,
 				853869892423AD91005C5BFC /* PatientTabBarController.swift */,
 			);
@@ -1000,6 +994,20 @@
 				85F5E34024476A7000A2E7E6 /* DoctorPatientPastAppointmentsDataSource.swift */,
 			);
 			path = "Doctor Patient Past Appointments";
+			sourceTree = "<group>";
+		};
+		85F8D583246B1BA700AB5545 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				85018FB9242922D8001C6373 /* Update Medicine */,
+				85CF6AD323FEE50E00F10DBF /* Patient Home */,
+				8593A719242951DA00C03F18 /* Patient Appointments */,
+				853869972423E827005C5BFC /* Appointment Selection */,
+				853869912423B9AE005C5BFC /* Profile */,
+				853869922423B9BF005C5BFC /* Add Medicine */,
+				85D82BC32426524E00FF8DBE /* Patient Info */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		85FF23F02417B1A800E63097 /* User */ = {

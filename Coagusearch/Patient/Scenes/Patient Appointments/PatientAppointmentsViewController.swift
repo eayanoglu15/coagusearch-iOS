@@ -59,9 +59,9 @@ class PatientAppointmentsViewController: UIViewController {
         appointmentTableView.register(nextCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_NEXT_APPOINTMENT_CELL)
         let pastCellNib = UINib(nibName: CELL_IDENTIFIER_PAST_APPOINTMENT_CELL, bundle: nil)
         appointmentTableView.register(pastCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_PAST_APPOINTMENT_CELL)
-        
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        appointmentTableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
     }
-    
     
     
     /*
@@ -83,6 +83,13 @@ extension PatientAppointmentsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if dataSource.getTableViewCount() == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            cell.setTitle(title: "You don't have any past appointment".localized)
+            return cell
+        }
         if dataSource.hasNextAppointment() {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_NEXT_APPOINTMENT_CELL, for: indexPath) as! NextAppointmentTableViewCell
@@ -124,7 +131,12 @@ extension PatientAppointmentsViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource.getTableViewCount()
+        let count = dataSource.getTableViewCount()
+        if count > 0 {
+            return count
+        } else {
+            return 1
+        }
     }
     
     // There is just one row in every section

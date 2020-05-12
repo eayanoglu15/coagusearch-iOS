@@ -23,4 +23,8 @@ class ColoredLabelTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setTitle(title: String) {
+        label.text = title
+    }
+    
 }

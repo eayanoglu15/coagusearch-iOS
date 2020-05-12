@@ -70,8 +70,12 @@ class DoctorPatientsDataSource {
     }
     
     func getPatientId(index: Int) -> Int? {
-        if let patients = patients {
-            return patients[index].userId
+        if searchActive {
+            return searched[index].userId
+        } else {
+            if let patients = patients {
+                return patients[index].userId
+            }
         }
         return nil
     }

@@ -74,6 +74,9 @@
 "Notifications" = "Bildirimler";
 "No past data analysis" = "Geçmiş analiz verisi yok";
 "No order has yet been placed for this test result" = "Bu test sonucu için henüz bir sipariş verilmedi";
+"There isn't any notification" = "Herhangi bir bildirim yok";
+"No order was made" = "Sipariş verilmemiş";
+"No order has been made yet" = "Henüz sipariş verilmedi";
 
 // MARK: O
 "Okey" = "Tamam";
@@ -121,6 +124,11 @@
 "Treatment Status" = "Tedavi Durumu";
 "Treatment Decision" = "Tedavi Kararı";
 "This patient can use the system with following informations" = "Bu hasta aşağıdaki bilgiler ile giriş yapabilir";
+"There is nothing for today" = "Bugün için bir şey yok";
+"This patient doesn't have any past appointment" = "Bu hastanın geçmiş randevusu bulunmuyor";
+"This patient doesn't have any past analysis data" = "Bu hastanın geçmiş analiz verisi bulunmuyor";
+"There is no request to prepare" = "Hazırlamanız gereken bir istek yok";
+"There is no request you have prepared yet" = "Henüz hazırlamış olduğunuz bir istek yok";
 
 // MARK: U
 "Update Medicine" = "İlacını Güncelle";
@@ -137,5 +145,9 @@
 "Welcome" = "Hoş Geldiniz";
 
 // MARK: Y
+"You don't have any past appointment" = "Geçmiş randevunuz yok";
+"You have no appointments today" = "Bugün randevunuz yok";
+"You have no patients" = "Hiç hastanız yok";
+"You have no patients" = "Hiç hastanız yok";
 
 // MARK: Z

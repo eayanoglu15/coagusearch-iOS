@@ -13,6 +13,11 @@ extension DoctorHomeViewController: DoctorHomeDataSourceDelegate {
         appointmentsTableView.reloadData()
         emergencyCollectionView.reloadData()
         emergencyPatientCountLabel.text = "\(dataSource.getEmergencyPatientCount())"
+        if dataSource.getEmergencyPatientCount() > 0 {
+            emergencyCollectionView.isHidden = false
+        } else {
+            emergencyCollectionView.isHidden = true
+        }
     }
 }
 
@@ -36,11 +41,17 @@ class DoctorHomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         dataSource.coagusearchService = CoagusearchServiceFactory.createService()
         dataSource.delegate = self
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         dataSource.getMainScreenInfo()
+    }
+    
+    private func setupTableView() {
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        appointmentsTableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
     }
 
     
@@ -129,7 +140,13 @@ extension DoctorHomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        if dataSource.getPatientAppointmentCount() == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            cell.setTitle(title: "You have no appointments today".localized)
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_TODAYS_APPOINTMENT_CELL, for: indexPath) as! TodaysAppointmentTableViewCell
         cell.backgroundColor = UIColor.clear
         cell.backgroundView?.backgroundColor = UIColor.clear
@@ -141,7 +158,12 @@ extension DoctorHomeViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource.getPatientAppointmentCount()
+        let count = dataSource.getPatientAppointmentCount()
+        if count > 0 {
+            return count
+        } else {
+            return 1
+        }
     }
     
     // There is just one row in every section
