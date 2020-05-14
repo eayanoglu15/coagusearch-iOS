@@ -11,4 +11,9 @@ import Foundation
 struct Drug : Codable {
     var content: String
     var key: String
+    
+    init(content: String, key: String) {
+        self.content = content
+        self.key = key
+    }
 }

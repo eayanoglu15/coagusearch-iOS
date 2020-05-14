@@ -146,37 +146,19 @@ extension AddMedicineViewController: UITableViewDataSource {
         if tableView == medicineTableView {
             if indexPath.section == MEDICINE_SECTION {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_SEARCH_MEDICINE_CELL, for: indexPath) as! SearchMedicineTableViewCell
-                
-                if let med = dataSource.medicine {
-                    if let customName = med.custom {
-                        cell.medicineLabel.text = customName
-                    } else if let keyName = med.key {
-                        cell.medicineLabel.text = keyName
-                    } else {
-                        cell.medicineLabel.text = ""
-                    }
-                } else {
-                    cell.medicineLabel.text = ""
-                }
-                
+                cell.checkVisibility()
                 return cell
             } else if indexPath.section == FREQUENCY_SECTION {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_SELECTION_CELL, for: indexPath) as! SelectionTableViewCell
                 cell.setup(type: .Frequency, listData: dataSource.getFrequencyArray(), cellSectionNumber: FREQUENCY_SECTION)
                 cell.delegate = self
-                if let med = dataSource.medicine {
-                    cell.selectionLabel.text = med.frequency.title
-                } else {
-                    cell.selectionLabel.text = ""
-                }
-                
+                cell.checkVisibility()
                 return cell
-                
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_SELECTION_CELL, for: indexPath) as! SelectionTableViewCell
                 cell.setup(type: .Dosage, listData: dataSource.getDosageArray(), cellSectionNumber: DOSAGE_SECTION)
                 cell.delegate = self
-                cell.selectionLabel.text = ""
+                cell.checkVisibility()
                 return cell
             }
             
@@ -321,8 +303,9 @@ extension AddMedicineViewController: UITableViewDelegate {
                 
                 let selectedMedicine = medicineCell.label.text
                 searchCell.medicineLabel.text = selectedMedicine
+                searchCell.checkVisibility()
                 dataSource.selectedMode = .Key
-                dataSource.selectedMedicineIndex = indexPath.row
+                dataSource.findSelectedMedicine(index: indexPath.row)
                 
                 // Close current cell
                 dataSource.invertSelection(index: MEDICINE_SECTION)

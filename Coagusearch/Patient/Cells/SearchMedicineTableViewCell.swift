@@ -18,6 +18,31 @@ class SearchMedicineTableViewCell: UITableViewCell {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var userMedicine: UserDrug?
+    
+    func checkVisibility() {
+        if let text = medicineLabel.text, !text.isEmpty {
+            medicineLabel.isHidden = false
+        } else {
+            medicineLabel.isHidden = true
+        }
+    }
+    
+    func setUserDrug(medicine: UserDrug?) {
+        userMedicine = medicine
+        if let med = medicine {
+            if let customName = med.custom {
+                medicineLabel.text = customName
+            } else if let keyName = med.key {
+                medicineLabel.text = keyName
+            } else {
+                medicineLabel.text = ""
+            }
+        } else {
+            medicineLabel.text = ""
+        }
+    }
+    
     func setTableViewDataSourceDelegate(dataSourceDelegate: UITableViewDataSource & UITableViewDelegate & UISearchBarDelegate, forRow row: Int) {
         tableView.delegate = dataSourceDelegate
         tableView.dataSource = dataSourceDelegate

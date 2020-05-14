@@ -19,26 +19,25 @@ protocol AddMedicineDataSourceDelegate {
 }
 
 class AddMedicineDataSource {
-    var suggestionArray: [String] = []
+    var suggestionArray: [Drug] = []
     
     private var selectionArray = [false, false, false]
     
     var searchedText: String = "" // selectedCustomText
     
     var searchActive: Bool = false
-    var searched: [String] = []
+    var searched: [Drug] = []
     
     var delegate: AddMedicineDataSourceDelegate?
     var coagusearchService: CoagusearchService?
-    var medicine: UserDrug?
     
     var selectedMode: DrugMode?
     
-    var selectedMedicineIndex: Int?
+    var selectedMedicine: Drug?
     
-    var selectedFrequencyIndex: Int?
+    var selectedFrequencyIndex: Int = 0
     
-    var selectedDosage: Double?
+    var selectedDosage: Double = 0.5
     
     var frequencyArray: [String] = []
     
@@ -46,18 +45,31 @@ class AddMedicineDataSource {
     
     var dosageArray = ["0.5", "1", "1.5", "2", "2.5", "3"]
     
+    func findSelectedMedicine(index: Int) {
+        if searchActive {
+            selectedMedicine = searched[index]
+        } else {
+            selectedMedicine = suggestionArray[index]
+        }
+    }
+    
+    func setSelectedMedicine(med: Drug) {
+        selectedMedicine = med
+    }
+    
     func getSelectedMedicine() -> UserDrug? {
-        guard let data = drugData, let mode = selectedMode,
-            let freqIndex = selectedFrequencyIndex, let dosage = selectedDosage else {
+        guard let data = drugData, let mode = selectedMode else {
                 return nil
         }
+        let freqIndex = selectedFrequencyIndex
+        let dosage = selectedDosage
         let freq = data.frequencies[freqIndex]
         switch mode {
         case .Key:
-            guard let keyIndex = selectedMedicineIndex else {
+            guard let med = selectedMedicine else {
                 return nil
             }
-            let key = data.drugs[keyIndex].key
+            let key = med.key
             return UserDrug(key: key, frequency: freq, dosage: dosage)
         case .Custom:
             if !searchedText.isEmpty {
@@ -114,9 +126,9 @@ class AddMedicineDataSource {
     
     func getSuggestion(index: Int) -> String {
         if searchActive {
-            return searched[index]
+            return searched[index].content
         }
-        return suggestionArray[index]
+        return suggestionArray[index].content
     }
     
     func getSuggestionNumber() -> Int {
@@ -140,8 +152,8 @@ class AddMedicineDataSource {
     
     func getSearchResults(searchText: String) {
         searchedText = searchText
-        searched = suggestionArray.filter({ (medicine : String) -> Bool in
-            if medicine.lowercased().contains(searchText.lowercased()) {
+        searched = suggestionArray.filter({ (medicine : Drug) -> Bool in
+            if medicine.content.lowercased().contains(searchText.lowercased()) {
                 return true
             }
             return false
@@ -176,9 +188,9 @@ class AddMedicineDataSource {
     
     func setDataArrays (drugData: Drugs) {
         let drugs = drugData.drugs
-        var suggestions = [String]()
+        var suggestions = [Drug]()
         for drug in drugs {
-            suggestions.append(drug.content)
+            suggestions.append(drug)
         }
         let frequency = drugData.frequencies
         var frequencies = [String]()

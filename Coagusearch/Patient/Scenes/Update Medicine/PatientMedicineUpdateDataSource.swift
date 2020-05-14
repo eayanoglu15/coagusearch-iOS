@@ -18,14 +18,14 @@ protocol PatientMedicineUpdateDataSourceDelegate {
 }
 
 class PatientMedicineUpdateDataSource {
-    var suggestionArray: [String] = []
+    var suggestionArray: [Drug] = []
     
     private var selectionArray = [false, false, false]
     
     var searchedText: String = "" // selectedCustomText
     
     var searchActive: Bool = false
-    var searched: [String] = []
+    var searched: [Drug] = []
     
     var delegate: PatientMedicineUpdateDataSourceDelegate?
     var coagusearchService: CoagusearchService?
@@ -34,7 +34,7 @@ class PatientMedicineUpdateDataSource {
     
     var selectedMode: DrugMode?
     
-    var selectedMedicineIndex: Int?
+    var selectedMedicine: Drug?
     
     var selectedFrequencyIndex: Int?
     
@@ -46,6 +46,25 @@ class PatientMedicineUpdateDataSource {
     
     var dosageArray = ["0.5", "1", "1.5", "2", "2.5", "3"]
     
+    func findSelectedMedicine(index: Int) {
+        if searchActive {
+            selectedMedicine = searched[index]
+        } else {
+            selectedMedicine = suggestionArray[index]
+        }
+    }
+    
+    func getUserDrug() -> UserDrug? {
+        guard let med = medicine else {
+            return nil
+        }
+        return med
+    }
+    
+    func setSelectedMedicine(med: Drug) {
+        selectedMedicine = med
+    }
+    
     func checkForChange() {
         if var curMedicine = medicine, let data = drugData {
             if let mode = selectedMode {
@@ -55,8 +74,8 @@ class PatientMedicineUpdateDataSource {
             }
             switch curMedicine.mode {
             case .Key:
-                if let keyIndex = selectedMedicineIndex {
-                    let key = data.drugs[keyIndex].key
+                if let med = selectedMedicine {
+                    let key = med.key
                     if curMedicine.key != key {
                         curMedicine.key = key
                     }
@@ -114,17 +133,30 @@ class PatientMedicineUpdateDataSource {
         }
     }
     
+    var selectedMedFreq: Int?
+    
+    func setMedicineFrequency() {
+        selectedMedFreq = getMedicineFrequencyIndex()
+    }
+    
+    func getSelectedFrequency() -> Int {
+        guard let freq = selectedMedFreq else {
+            return 0
+        }
+        return freq
+    }
+    
     func getMedicineFrequencyIndex() -> Int {
         if let medicine = medicine {
             if !frequencyArray.isEmpty {
                 for i in 0...(frequencyArray.count-1) {
                     if frequencyArray[i] == medicine.frequency.title {
-                        return i+1
+                        return i
                     }
                 }
             }
         }
-        return 1
+        return 0
     }
     
     func getMedicineDosageIndex() -> Int {
@@ -133,9 +165,14 @@ class PatientMedicineUpdateDataSource {
                 if dosageArray[i] == "\(medicine.dosage)" {
                     return i
                 }
+                if Double(Int(medicine.dosage)) == medicine.dosage {
+                    if dosageArray[i] == "\(Int(medicine.dosage))" {
+                        return i
+                    }
+                }
             }
         }
-        return 1
+        return 0
     }
     
     func isSelected(index: Int) -> Bool {
@@ -152,9 +189,9 @@ class PatientMedicineUpdateDataSource {
     
     func getSuggestion(index: Int) -> String {
         if searchActive {
-            return searched[index]
+            return searched[index].content
         }
-        return suggestionArray[index]
+        return suggestionArray[index].content
     }
     
     func getSuggestionNumber() -> Int {
@@ -178,8 +215,8 @@ class PatientMedicineUpdateDataSource {
     
     func getSearchResults(searchText: String) {
         searchedText = searchText
-        searched = suggestionArray.filter({ (medicine : String) -> Bool in
-            if medicine.lowercased().contains(searchText.lowercased()) {
+        searched = suggestionArray.filter({ (medicine : Drug) -> Bool in
+            if medicine.content.lowercased().contains(searchText.lowercased()) {
                 return true
             }
             return false
@@ -201,10 +238,10 @@ class PatientMedicineUpdateDataSource {
                     }
                 }
             } else {
-                if let drugs = drugs {
-                    self.setDataArrays(drugData: drugs)
-                }
                 DispatchQueue.main.async {
+                    if let drugs = drugs {
+                        self.setDataArrays(drugData: drugs)
+                    }
                     self.delegate?.reloadTableView()
                 }
             }
@@ -213,9 +250,9 @@ class PatientMedicineUpdateDataSource {
     
     func setDataArrays (drugData: Drugs) {
         let drugs = drugData.drugs
-        var suggestions = [String]()
+        var suggestions = [Drug]()
         for drug in drugs {
-            suggestions.append(drug.content)
+            suggestions.append(drug)
         }
         let frequency = drugData.frequencies
         var frequencies = [String]()
@@ -224,6 +261,7 @@ class PatientMedicineUpdateDataSource {
         }
         suggestionArray = suggestions
         frequencyArray = frequencies
+        setMedicineFrequency()
         self.drugData = drugData
     }
     

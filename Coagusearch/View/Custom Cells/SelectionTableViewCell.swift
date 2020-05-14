@@ -39,6 +39,14 @@ class SelectionTableViewCell: UITableViewCell {
     
     var cellSectionNumber = 0
     
+    func checkVisibility() {
+        if let text = selectionLabel.text, !text.isEmpty {
+            selectionLabel.isHidden = false
+        } else {
+            selectionLabel.isHidden = true
+        }
+    }
+    
     func setup(type: SelectionCellType, listData: [String]?, cellSectionNumber: Int) {
         self.cellType = type
         self.cellSectionNumber = cellSectionNumber
@@ -62,6 +70,11 @@ class SelectionTableViewCell: UITableViewCell {
         if let list = listData {
             if !list.isEmpty {
                 selectionLabel.text = list.first
+                if cellType == .Dosage {
+                    if let first = list.first {
+                        selectionLabel.text = first + " dosage"
+                    }
+                }
             } else {
                 selectionLabel.text = ""
             }
@@ -69,6 +82,10 @@ class SelectionTableViewCell: UITableViewCell {
         }
         arrowImageView.image = UIImage(named: IconNames.downArrow)
         selectionStyle = .none
+    }
+    
+    func setRow(index: Int) {
+        pickerView.selectRow(index, inComponent: 0, animated: false)
     }
     
     override func awakeFromNib() {

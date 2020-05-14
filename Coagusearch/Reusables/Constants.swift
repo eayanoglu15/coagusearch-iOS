@@ -105,7 +105,7 @@ let CELL_IDENTIFIER_EMERGENCY_PATIENT_CELL = "EmergencyPatientCollectionViewCell
 
 // MARK: Cell Heights
 let CELL_HEIGHT_SMALL = CGFloat(45)
-let CELL_HEIGHT = CGFloat(70)
+let CELL_HEIGHT = CGFloat(75)
 let CELL_HEIGHT_EXPANDED = CGFloat(200)
 
 let ENTER_DOSADE_CELL_HEIGHT = CGFloat(72)

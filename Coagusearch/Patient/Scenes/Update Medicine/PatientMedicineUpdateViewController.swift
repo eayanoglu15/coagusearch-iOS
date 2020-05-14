@@ -57,7 +57,6 @@ class PatientMedicineUpdateViewController: UIViewController {
         medicineTableView.dataSource = self
         medicineTableView.delegate = self
         setupTableView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,40 +127,32 @@ extension PatientMedicineUpdateViewController: UITableViewDataSource {
         if tableView == medicineTableView {
             if indexPath.section == MEDICINE_SECTION {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_SEARCH_MEDICINE_CELL, for: indexPath) as! SearchMedicineTableViewCell
-                
-                if let med = dataSource.medicine {
-                    if let customName = med.custom {
-                        cell.medicineLabel.text = customName
-                    } else if let keyName = med.key {
-                        cell.medicineLabel.text = keyName
-                    } else {
-                        cell.medicineLabel.text = ""
-                    }
-                } else {
-                    cell.medicineLabel.text = ""
-                }
-                
+                cell.setUserDrug(medicine: dataSource.getUserDrug())
+                cell.checkVisibility()
                 return cell
             } else if indexPath.section == FREQUENCY_SECTION {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_SELECTION_CELL, for: indexPath) as! SelectionTableViewCell
                 cell.setup(type: .Frequency, listData: dataSource.getFrequencyArray(), cellSectionNumber: FREQUENCY_SECTION)
                 cell.delegate = self
-                if let med = dataSource.medicine {
+                
+                if let med = dataSource.getUserDrug() {
                     cell.selectionLabel.text = med.frequency.title
-                    cell.pickerView.selectRow(dataSource.getMedicineFrequencyIndex(), inComponent: 0, animated: false)
                 } else {
                     cell.selectionLabel.text = ""
                 }
-                
-                //cell.pickerView.selectRow(i, inComponent: 0, animated: false)
+                cell.checkVisibility()
+                cell.setRow(index: dataSource.getSelectedFrequency())
                 return cell
                 
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_SELECTION_CELL, for: indexPath) as! SelectionTableViewCell
                 cell.setup(type: .Dosage, listData: dataSource.getDosageArray(), cellSectionNumber: DOSAGE_SECTION)
                 cell.delegate = self
-                if let med = dataSource.medicine {
+                if let med = dataSource.getUserDrug() {
                     var dosages = "\(med.dosage)"
+                    if med.dosage == Double(Int(med.dosage)) {
+                        dosages = "\(Int(med.dosage))"
+                    }
                     if med.dosage > 1 {
                         dosages = dosages + " dosages".localized
                     } else {
@@ -171,7 +162,8 @@ extension PatientMedicineUpdateViewController: UITableViewDataSource {
                 } else {
                     cell.selectionLabel.text = ""
                 }
-                cell.pickerView.selectRow(dataSource.getMedicineDosageIndex(), inComponent: 0, animated: false)
+                cell.checkVisibility()
+                cell.setRow(index: dataSource.getMedicineDosageIndex())
                 return cell
             }
             
@@ -316,8 +308,10 @@ extension PatientMedicineUpdateViewController: UITableViewDelegate {
                 
                 let selectedMedicine = medicineCell.label.text
                 searchCell.medicineLabel.text = selectedMedicine
+                searchCell.checkVisibility()
                 dataSource.selectedMode = .Key
-                dataSource.selectedMedicineIndex = indexPath.row
+                dataSource.findSelectedMedicine(index: indexPath.row)
+                //dataSource.selectedMedicineIndex = indexPath.row
                 
                 // Close current cell
                 dataSource.invertSelection(index: MEDICINE_SECTION)
