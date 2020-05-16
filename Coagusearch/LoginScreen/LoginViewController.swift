@@ -26,6 +26,8 @@ extension LoginViewController: LoginDataSourceDelegate {
 }
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var bottomContainerView: UIView!
     
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var userLabel: UILabel!
@@ -45,7 +47,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        hideKeyboard()
+        //hideKeyboard()
+        hideKeyboardWhenTappedAround()
         stylize()
         loginDataSource.coagusearchService = CoagusearchServiceFactory.createService()
         loginDataSource.delegate = self
@@ -67,11 +70,64 @@ class LoginViewController: UIViewController {
         rememberMeSwitch.backgroundColor = .dodgerBlue
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.addObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.removeObservers()
+        super.viewWillDisappear(animated)
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func getTopLayoutGuideLength() -> CGFloat {
+        var topSafeArea: CGFloat
+        if #available(iOS 11.0, *) {
+            topSafeArea = self.view.safeAreaInsets.top
+        } else {
+            topSafeArea = topLayoutGuide.length
+        }
+        return topSafeArea
+    }
+    
+    // MARK: Keyboard Show & Hide
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let extraSpace: CGFloat = 15.0
+            let bottomPoint = self.loginButton.frame.origin.y + self.loginButton.frame.size.height + self.bottomContainerView.frame.origin.y + self.getTopLayoutGuideLength() + extraSpace
+            let difference = self.view.frame.size.height - bottomPoint
+            if difference < keyboardSize.height {
+                let offSet = keyboardSize.height - difference
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: offSet), animated: true)
+                self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: offSet, right: 0)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let _ = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.scrollView.contentInset = .zero
+            self.scrollView.setContentOffset(.zero, animated: true)
+        }
+    }
+    
+    /*
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)
     }
-    
+    */
+    /*
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -85,7 +141,7 @@ class LoginViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
-    
+    */
     @IBAction func loginButtonTapped(_ sender: Any) {
         if self.isAllRequiredFieldsFilled() {
             loginUser()

@@ -9,8 +9,26 @@
 import UIKit
 
 extension DoctorTreatmentDecisionViewController: ProductOrderTableViewCellDelegate {
-    func orderButtonClicked(product: OrderProductType?, quantity: Double?, note: String?) {
-        dataSource.orderBlood(product: product, quantity: quantity, note: note)
+    func addNoteButtonTapped() {
+        let alertController = UIAlertController(title: "Add Note".localized, message: nil, preferredStyle: .alert)
+        alertController.addTextField()
+        
+        let submitAction = UIAlertAction(title: "Save".localized, style: .default) { [unowned alertController] _ in
+            let answer = alertController.textFields![0]
+            self.note = answer.text
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel) {
+            (action) in
+            // implement action if exists
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(submitAction)
+        present(alertController, animated: true)
+    }
+    
+    func orderButtonClicked(product: OrderProductType?, quantity: Double?) {
+        dataSource.orderBlood(product: product, quantity: quantity, note: self.note)
     }
 }
 
@@ -47,6 +65,7 @@ class DoctorTreatmentDecisionViewController: UIViewController {
     @IBOutlet weak var treatmentTableView: UITableView!
     
     var dataSource = DoctorTreatmentDecisionDataSource()
+    var note: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +137,7 @@ extension DoctorTreatmentDecisionViewController: BasicWithButtonCellDelegate {
         let searchCellIndexPath = IndexPath(row: 0, section: MEDICINE_SECTION)
         let searchCell = treatmentTableView.cellForRow(at: searchCellIndexPath) as! SearchMedicineTableViewCell
         searchCell.medicineLabel.text = dataSource.getSearchedText()
-        
+        searchCell.checkVisibility()
         //dataSource.selectedMode = .Custom
         
         // Close current cell
@@ -169,10 +188,12 @@ extension DoctorTreatmentDecisionViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_SEARCH_MEDICINE_CELL, for: indexPath) as! SearchMedicineTableViewCell
                 cell.backgroundColor = UIColor.clear
                 cell.backgroundView?.backgroundColor = UIColor.clear
+                cell.checkVisibility()
                 if let suggestion = dataSource.getSelectedSuggestion() {
                     if suggestion.kind == .Medicine {
                         dataSource.setSelectedMedicine(med: suggestion.product)
                         cell.medicineLabel.text = suggestion.product
+                        cell.checkVisibility()
                     }
                 }
                 if dataSource.shouldClearMedicationOrder() {
@@ -218,12 +239,14 @@ extension DoctorTreatmentDecisionViewController: UITableViewDataSource {
                 return cell
             }
         } else {
+            /*
             if dataSource.getMedicationSuggestionNumber() == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath) as! BasicWithButtonTableViewCell
                 cell.delegate = self
                 cell.label.text = "No Result"
                 return cell
             }
+            */
             let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath) as! BasicTableViewCell
             cell.label.text = dataSource.getMedicationSuggestion(index: indexPath.row)
             return cell
@@ -248,9 +271,11 @@ extension DoctorTreatmentDecisionViewController: UITableViewDataSource {
             return 1
         } else {
             let count = dataSource.getMedicationSuggestionNumber()
+            /*
             if count == 0 {
                 return 1
             }
+            */
             return count
         }
     }
@@ -344,6 +369,7 @@ extension DoctorTreatmentDecisionViewController: UITableViewDelegate {
                 
                 let selectedMedicine = medicineCell.label.text
                 searchCell.medicineLabel.text = selectedMedicine
+                searchCell.checkVisibility()
                 if let med = selectedMedicine {
                     dataSource.setSelectedMedicine(med: med)
                 }

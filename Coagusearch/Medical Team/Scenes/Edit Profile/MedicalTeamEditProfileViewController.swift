@@ -92,7 +92,7 @@ class MedicalTeamEditProfileViewController: BaseScrollViewController {
         birthDateLabel.textColor = .dodgerBlue
         birthDateTextField.delegate = self
         birthDateTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
-        birthDateTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
+        birthDateTextField.setInputViewDatePicker(dateStr: nil, target: self, selector: #selector(tapDone))
         
         genderLabel.textColor = .dodgerBlue
         
@@ -155,7 +155,9 @@ class MedicalTeamEditProfileViewController: BaseScrollViewController {
             surnameTextField.text = user.surname
             floatTitle(textField: surnameTextField)
             if let day = user.birthDay, let month = user.birthMonth, let year = user.birthYear {
-                birthDateTextField.text = "\(day)/\(month)/\(year)"
+                let birthdateStr = "\(day)/\(month)/\(year)"
+                birthDateTextField.text = birthdateStr
+                birthDateTextField.setInputViewDatePicker(dateStr: birthdateStr, target: self, selector: #selector(tapDone))
                 floatTitle(textField: birthDateTextField)
             }
             if let gender = user.gender {

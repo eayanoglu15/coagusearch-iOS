@@ -30,12 +30,19 @@ extension UITextField {
     }
     
     // Mark: Date Picker Input View
-    func setInputViewDatePicker(target: Any, selector: Selector) {
+    func setInputViewDatePicker(dateStr: String?, target: Any, selector: Selector) {
         let screenWidth = UIScreen.main.bounds.width
         let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))
         datePicker.datePickerMode = .date
         datePicker.backgroundColor = UIColor.white
-        
+        datePicker.maximumDate = Date()
+        if let date = dateStr {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            if let date = dateFormatter.date(from: date) {
+                datePicker.date = date
+            }
+        }
         self.inputView = datePicker
         
         let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0))

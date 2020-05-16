@@ -11,6 +11,7 @@
 "Add Medicine" = "İlaç Ekle";
 "Account Information" = "Hesap Bilgisi";
 "Add Patient" = "Hasta Ekle";
+"Add Note" = "Not Ekle";
 
 // MARK: B
 "Blood Order" = "Kan Siparişi";
@@ -106,6 +107,8 @@
 "Patient weight is unknown. You can enter appropriate unit amount." = "Hastanın ağırlığı bilinmemekte. Uygun ünite miktarını girebilirsiniz.";
 "Patient Login Info" = "Hasta Giriş Bilgileri";
 "Password: " = "Şifre: ";
+" Patients" = " Hasta";
+" Patient" = " Hasta";
 
 // MARK: Q
 
@@ -116,6 +119,7 @@
 // MARK: S
 "SWITCH TO DOCTOR VIEW" = "DOKTOR UYGULAMASINA GEÇ";
 "SWITCH TO MEDICAL TEAM VIEW" = "MEDİKAL EKİP UYGULAMASINA GEÇ";
+"Save" = "Kaydet";
 
 // MARK: T
 "Time Slot" = "Zaman Aralığı";

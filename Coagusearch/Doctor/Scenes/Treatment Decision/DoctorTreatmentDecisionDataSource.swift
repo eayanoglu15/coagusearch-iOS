@@ -26,7 +26,6 @@ class DoctorTreatmentDecisionDataSource {
     var suggestionList: [TreatmentSuggestion]?
     var selectedSuggestion: TreatmentSuggestion?
     
-    var bloodAdditionalNote: String?
     var medAdditionalNote: String?
     
     var clearBloodCell = false
@@ -158,9 +157,6 @@ class DoctorTreatmentDecisionDataSource {
             delegate?.showAlertMessage(title: "Missing Unit Amount".localized, message: "Please enter unit amount.".localized)
             return
         }
-        print("orderProduct: ", orderProduct)
-        print("orderQuantity: ", orderQuantity)
-        print("note: ", note)
         guard let bloodType = patientBloodType else {
             delegate?.showAlertMessage(title: "Unknown Blood Type".localized, message: "Blood type of the patient is unknown".localized)
             return
@@ -169,7 +165,7 @@ class DoctorTreatmentDecisionDataSource {
             delegate?.showAlertMessage(title: "Unknown Rh Type".localized, message: "Rh type of the patient is unknown".localized)
             return
         }
-        let order = GeneralOrder(kind: .Blood, bloodType: bloodType, rhType: rhType, productType: orderProduct.rawValue, quantity: orderQuantity, bloodTestId: id, additionalNote: bloodAdditionalNote)
+        let order = GeneralOrder(kind: .Blood, bloodType: bloodType, rhType: rhType, productType: orderProduct.rawValue, quantity: orderQuantity, bloodTestId: id, additionalNote: note)
         postOrder(order: order)
     }
     

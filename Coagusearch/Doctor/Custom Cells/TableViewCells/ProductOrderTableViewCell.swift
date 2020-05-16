@@ -9,7 +9,8 @@
 import UIKit
 
 protocol ProductOrderTableViewCellDelegate: AnyObject {
-    func orderButtonClicked(product: OrderProductType?, quantity: Double?, note: String?)
+    func orderButtonClicked(product: OrderProductType?, quantity: Double?)
+    func addNoteButtonTapped()
 }
 
 class ProductOrderTableViewCell: UITableViewCell {
@@ -24,8 +25,6 @@ class ProductOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var unitTextField: UITextField!
     
     private var productTypeSelection = [false, false]
-    
-    private var additionalNote: String?
     
     func showSuggestion(suggestion: TreatmentSuggestion, weight: Double?) {
         if suggestion.product == "Platelet Concentrate" {
@@ -119,13 +118,12 @@ class ProductOrderTableViewCell: UITableViewCell {
     }
     
     @IBAction func addNoteButtonTapped(_ sender: Any) {
-        
+        self.delegate?.addNoteButtonTapped()
     }
     
     @IBAction func makeOrderButtonTapped(_ sender: Any) {
         var product: OrderProductType?
         var quantity: Double?
-        var note: String?
         if productTypeSelection[0] {
             product = .FFP
         } else if productTypeSelection[1] {
@@ -138,11 +136,10 @@ class ProductOrderTableViewCell: UITableViewCell {
                 }
             }
         }
-        delegate?.orderButtonClicked(product: product, quantity: quantity, note: note)
+        delegate?.orderButtonClicked(product: product, quantity: quantity)
         stylizeButtonUnselected(button: FFPButton)
         stylizeButtonUnselected(button: plateletButton)
         unitTextField.text = ""
         productTypeSelection = [false, false]
-        additionalNote = nil
     }
 }

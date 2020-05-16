@@ -1596,7 +1596,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d82-6J-X7v">
                                 <rect key="frame" x="16" y="88" width="382" height="127"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRd-LX-d2K">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Type" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRd-LX-d2K">
                                         <rect key="frame" x="16" y="29" width="91.5" height="19"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.30196078430000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -2127,14 +2127,14 @@ Concentrate</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BloodOrderTableViewCell" id="mMn-Cb-xjw" customClass="BloodOrderTableViewCell" customModule="Coagusearch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="382" height="124.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="382" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mMn-Cb-xjw" id="aRi-Gs-Pqz">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="124.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XlX-Ud-psL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="11" height="124.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="11" height="124"/>
                                                     <color key="backgroundColor" red="0.66666666666666663" green="0.83921568627450982" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="11" id="KG9-h1-tgA"/>
@@ -2154,26 +2154,26 @@ Concentrate</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="productType" translatesAutoresizingMaskIntoConstraints="NO" id="RVu-oZ-VSE">
-                                                    <rect key="frame" x="18" y="50" width="27" height="25"/>
+                                                    <rect key="frame" x="18" y="49.5" width="27" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="RVu-oZ-VSE" secondAttribute="height" multiplier="16:15" id="8IH-wM-WkM"/>
                                                         <constraint firstAttribute="height" constant="25" id="QX1-op-9ob"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fresh Frozen Plasma " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UK-Gw-h4E">
-                                                    <rect key="frame" x="52" y="52" width="164.5" height="20.5"/>
+                                                    <rect key="frame" x="52" y="52" width="164.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="0.14901960784313725" green="0.45490196078431372" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bloodBlue" translatesAutoresizingMaskIntoConstraints="NO" id="OFM-aj-lCZ">
-                                                    <rect key="frame" x="21.5" y="83.5" width="20" height="25"/>
+                                                    <rect key="frame" x="21.5" y="83" width="20" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="8Re-i9-hVJ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Rh-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7S-qB-DYj">
-                                                    <rect key="frame" x="52" y="86.5" width="40" height="19"/>
+                                                    <rect key="frame" x="52" y="86" width="40" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="0.14901960780000001" green="0.4549019608" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3022,16 +3022,16 @@ Concentrate</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductOrderTableViewCell" id="xvN-AA-HzV" customClass="ProductOrderTableViewCell" customModule="Coagusearch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="382" height="201.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="382" height="202"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xvN-AA-HzV" id="cml-k3-CbD">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="201.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzt-Qu-1pT">
-                                                    <rect key="frame" x="0.0" y="20" width="382" height="125.5"/>
+                                                    <rect key="frame" x="0.0" y="20" width="382" height="126"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DX4-JV-6eK">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Type" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DX4-JV-6eK">
                                                             <rect key="frame" x="16" y="29.5" width="91.5" height="19"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" red="0.25098039220000001" green="0.30196078430000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -3062,6 +3062,9 @@ Concentrate</string>
                                                         </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6v-ZA-RRc">
                                                             <rect key="frame" x="123.5" y="16" width="113.5" height="45.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Bon-sT-Qxl"/>
+                                                            </constraints>
                                                             <state key="normal">
                                                                 <attributedString key="attributedTitle">
                                                                     <fragment>
@@ -3088,58 +3091,60 @@ Concentrate</string>
                                                                 <action selector="FFPButtonTapped:" destination="xvN-AA-HzV" eventType="touchUpInside" id="uln-br-iK0"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2k-Nf-4zc">
-                                                            <rect key="frame" x="16" y="82.5" width="91.5" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Unit Amount" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2k-Nf-4zc">
+                                                            <rect key="frame" x="16" y="83" width="91.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                             <color key="textColor" red="0.25098039220000001" green="0.30196078430000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ke-h2-lSN">
-                                                            <rect key="frame" x="253" y="75.5" width="113" height="34"/>
-                                                            <color key="backgroundColor" red="0.23921568630000001" green="0.5450980392" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="34" id="pLh-rd-lsN"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                                            <inset key="contentEdgeInsets" minX="4" minY="4" maxX="8" maxY="4"/>
-                                                            <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="-4" maxY="0.0"/>
-                                                            <state key="normal" title="Add Note" image="note"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="6"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <action selector="addNoteButtonTapped:" destination="xvN-AA-HzV" eventType="touchUpInside" id="ynL-qh-rJv"/>
-                                                            </connections>
-                                                        </button>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A5v-ip-dpW">
-                                                            <rect key="frame" x="123.5" y="75.5" width="113.5" height="34"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                                        </textField>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="68C-JK-QnU">
+                                                            <rect key="frame" x="123.5" y="76" width="242.5" height="34"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A5v-ip-dpW">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="242.5" height="34"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                                </textField>
+                                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ke-h2-lSN">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="83" height="34"/>
+                                                                    <color key="backgroundColor" red="0.23921568630000001" green="0.5450980392" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="83" id="T2M-Ms-ctr"/>
+                                                                        <constraint firstAttribute="height" constant="34" id="pLh-rd-lsN"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                                                    <inset key="contentEdgeInsets" minX="4" minY="4" maxX="8" maxY="4"/>
+                                                                    <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="-4" maxY="0.0"/>
+                                                                    <state key="normal" title="Add Note" image="note"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="6"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="addNoteButtonTapped:" destination="xvN-AA-HzV" eventType="touchUpInside" id="ynL-qh-rJv"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstItem="DX4-JV-6eK" firstAttribute="trailing" secondItem="W2k-Nf-4zc" secondAttribute="trailing" id="0kh-uA-yER"/>
                                                         <constraint firstItem="jkb-Pz-8hq" firstAttribute="leading" secondItem="Q6v-ZA-RRc" secondAttribute="trailing" constant="16" id="2op-ne-4ZQ"/>
-                                                        <constraint firstItem="Q6v-ZA-RRc" firstAttribute="leading" secondItem="A5v-ip-dpW" secondAttribute="leading" id="Cdp-OX-blU"/>
-                                                        <constraint firstItem="A5v-ip-dpW" firstAttribute="centerY" secondItem="W2k-Nf-4zc" secondAttribute="centerY" id="EXJ-vN-k1s"/>
+                                                        <constraint firstAttribute="bottom" secondItem="68C-JK-QnU" secondAttribute="bottom" constant="16" id="8DK-el-SYF"/>
+                                                        <constraint firstAttribute="trailing" secondItem="68C-JK-QnU" secondAttribute="trailing" constant="16" id="Eui-sB-Hfo"/>
                                                         <constraint firstItem="Q6v-ZA-RRc" firstAttribute="top" secondItem="yzt-Qu-1pT" secondAttribute="top" constant="16" id="H30-8g-eBn"/>
                                                         <constraint firstAttribute="trailing" secondItem="jkb-Pz-8hq" secondAttribute="trailing" constant="16" id="J7B-1t-a1Y"/>
-                                                        <constraint firstAttribute="bottom" secondItem="0Ke-h2-lSN" secondAttribute="bottom" constant="16" id="NVf-7a-QlE"/>
                                                         <constraint firstItem="DX4-JV-6eK" firstAttribute="leading" secondItem="W2k-Nf-4zc" secondAttribute="leading" id="P4y-YZ-q2e"/>
-                                                        <constraint firstItem="A5v-ip-dpW" firstAttribute="top" secondItem="Q6v-ZA-RRc" secondAttribute="bottom" constant="14" id="QWc-xZ-YKr"/>
-                                                        <constraint firstItem="jkb-Pz-8hq" firstAttribute="leading" secondItem="0Ke-h2-lSN" secondAttribute="leading" id="QXK-tp-wLo"/>
+                                                        <constraint firstItem="68C-JK-QnU" firstAttribute="leading" secondItem="W2k-Nf-4zc" secondAttribute="trailing" constant="16" id="RWF-BR-hSw"/>
+                                                        <constraint firstItem="68C-JK-QnU" firstAttribute="top" secondItem="Q6v-ZA-RRc" secondAttribute="bottom" constant="14.5" id="Sh7-8W-kgC"/>
                                                         <constraint firstItem="DX4-JV-6eK" firstAttribute="leading" secondItem="yzt-Qu-1pT" secondAttribute="leading" constant="16" id="V16-M8-bbP"/>
-                                                        <constraint firstItem="jkb-Pz-8hq" firstAttribute="trailing" secondItem="0Ke-h2-lSN" secondAttribute="trailing" id="YWo-pA-xke"/>
                                                         <constraint firstItem="Q6v-ZA-RRc" firstAttribute="centerY" secondItem="jkb-Pz-8hq" secondAttribute="centerY" id="b3V-y1-zpm"/>
                                                         <constraint firstItem="Q6v-ZA-RRc" firstAttribute="centerY" secondItem="DX4-JV-6eK" secondAttribute="centerY" id="btA-3g-cYG"/>
-                                                        <constraint firstItem="A5v-ip-dpW" firstAttribute="centerY" secondItem="0Ke-h2-lSN" secondAttribute="centerY" id="ceI-bR-M2k"/>
-                                                        <constraint firstItem="Q6v-ZA-RRc" firstAttribute="trailing" secondItem="A5v-ip-dpW" secondAttribute="trailing" id="dZn-v2-QZb"/>
                                                         <constraint firstItem="Q6v-ZA-RRc" firstAttribute="height" secondItem="jkb-Pz-8hq" secondAttribute="height" id="dkw-t4-BVQ"/>
                                                         <constraint firstItem="Q6v-ZA-RRc" firstAttribute="leading" secondItem="DX4-JV-6eK" secondAttribute="trailing" constant="16" id="g2C-cp-fXy"/>
-                                                        <constraint firstAttribute="bottom" secondItem="A5v-ip-dpW" secondAttribute="bottom" constant="16" id="hKW-Kh-yRX"/>
+                                                        <constraint firstItem="68C-JK-QnU" firstAttribute="centerY" secondItem="W2k-Nf-4zc" secondAttribute="centerY" id="sfZ-Ge-a2G"/>
                                                         <constraint firstItem="Q6v-ZA-RRc" firstAttribute="width" secondItem="jkb-Pz-8hq" secondAttribute="width" id="u6i-zB-QAl"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -3149,7 +3154,7 @@ Concentrate</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nB-N4-oSs">
-                                                    <rect key="frame" x="0.0" y="161.5" width="382" height="40"/>
+                                                    <rect key="frame" x="0.0" y="162" width="382" height="40"/>
                                                     <color key="backgroundColor" red="0.23921568630000001" green="0.5450980392" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="Gha-ky-Xfw"/>
@@ -3189,7 +3194,7 @@ Concentrate</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchMedicineTableViewCell" rowHeight="289" id="m9e-Kg-JDr" customClass="SearchMedicineTableViewCell" customModule="Coagusearch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="229.5" width="382" height="289"/>
+                                        <rect key="frame" x="0.0" y="230" width="382" height="289"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m9e-Kg-JDr" id="yK2-1M-8zi">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="289"/>
@@ -3218,13 +3223,13 @@ Concentrate</string>
                                                                     <rect key="frame" x="55" y="0.0" width="295" height="40"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Add Medication" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRi-Wl-r9G">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="113.5" height="19"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="113.5" height="40"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                             <color key="textColor" red="0.25098039220000001" green="0.30196078430000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text=" " textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-uN-ZJ9">
-                                                                            <rect key="frame" x="0.0" y="23" width="4" height="17"/>
+                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-uN-ZJ9">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="0.0"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                             <color key="textColor" red="0.28627450980000002" green="0.50588235290000005" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -3350,7 +3355,7 @@ Concentrate</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EnterDosageTableViewCell" rowHeight="350" id="Oyg-Q4-EdE" customClass="EnterDosageTableViewCell" customModule="Coagusearch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="518.5" width="382" height="350"/>
+                                        <rect key="frame" x="0.0" y="519" width="382" height="350"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Oyg-Q4-EdE" id="fwe-3u-wzm">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="350"/>
@@ -3462,7 +3467,7 @@ Concentrate</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonTableViewCell" id="XXf-mU-s8y" customClass="ButtonTableViewCell" customModule="Coagusearch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="868.5" width="382" height="40.5"/>
+                                        <rect key="frame" x="0.0" y="869" width="382" height="40.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XXf-mU-s8y" id="OJS-XC-DqQ">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="40.5"/>
@@ -3502,7 +3507,7 @@ Concentrate</string>
                                         <viewLayoutGuide key="safeArea" id="C3g-2d-b0a"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadingTableViewCell" id="Cek-P6-vPh" customClass="HeadingTableViewCell" customModule="Coagusearch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="909" width="382" height="21"/>
+                                        <rect key="frame" x="0.0" y="909.5" width="382" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cek-P6-vPh" id="z1u-3R-Srh">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="21"/>
@@ -3532,7 +3537,7 @@ Concentrate</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SuggestionTableViewCell" id="JZ0-EH-aX9" customClass="SuggestionTableViewCell" customModule="Coagusearch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="930" width="382" height="118.5"/>
+                                        <rect key="frame" x="0.0" y="930.5" width="382" height="118.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JZ0-EH-aX9" id="OSL-xB-OjM">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="118.5"/>

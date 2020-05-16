@@ -227,10 +227,10 @@ class DoctorBloodOrderViewController: UIViewController {
     }
     
     @IBAction func addNoteButtonTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Add Note", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Add Note".localized, message: nil, preferredStyle: .alert)
         alertController.addTextField()
         
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned alertController] _ in
+        let submitAction = UIAlertAction(title: "Save".localized, style: .default) { [unowned alertController] _ in
             let answer = alertController.textFields![0]
             self.note = answer.text
         }

@@ -29,7 +29,7 @@ extension AddMedicineViewController: BasicWithButtonCellDelegate {
         let searchCellIndexPath = IndexPath(row: 0, section: 0)
         let searchCell = medicineTableView.cellForRow(at: searchCellIndexPath) as! SearchMedicineTableViewCell
         searchCell.medicineLabel.text = dataSource.searchedText
-        
+        searchCell.checkVisibility()
         dataSource.selectedMode = .Custom
         
         // Close current cell

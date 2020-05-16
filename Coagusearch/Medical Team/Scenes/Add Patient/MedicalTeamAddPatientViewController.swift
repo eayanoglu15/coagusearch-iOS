@@ -124,7 +124,7 @@ class MedicalTeamAddPatientViewController: BaseScrollViewController {
         birthDateLabel.textColor = .dodgerBlue
         birthDateTextField.delegate = self
         birthDateTextField.bottomBorderColor = UIColor.lightBlueGrey.withAlphaComponent(0.5)
-        birthDateTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
+        birthDateTextField.setInputViewDatePicker(dateStr: nil, target: self, selector: #selector(tapDone))
         
         genderLabel.textColor = .dodgerBlue
         

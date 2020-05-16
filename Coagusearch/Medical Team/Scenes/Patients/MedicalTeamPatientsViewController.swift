@@ -15,6 +15,12 @@ extension MedicalTeamPatientsViewController: MedicalTeamPatientsDataSourceDelega
     
     func reloadTable() {
         tableView.reloadData()
+        let count = dataSource.getPatientCount()
+        if count > 1 {
+            patientCountLabel.text = "\(count)" + " Patients".localized
+        } else {
+            patientCountLabel.text = "\(count)" + " Patient".localized
+        }
     }
 }
 

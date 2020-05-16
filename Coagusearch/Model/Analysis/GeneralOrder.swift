@@ -37,7 +37,6 @@ struct GeneralOrder : Codable {
     var patientName: String?
     var patientSurname: String?
     
-    
     init(kind: OrderType, bloodType: BloodType, rhType: RhType, productType: String, quantity: Double, bloodTestId: Int?, additionalNote: String?) {
         self.kind = kind
         self.bloodType = bloodType
