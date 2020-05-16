@@ -9,6 +9,27 @@
 import UIKit
 
 extension DoctorBloodOrderForPatientViewController: DoctorBloodOrderForPatientDataSourceDelegate {
+    func informPatientBlood(isKnown: Bool) {
+        if isKnown {
+            FFPButton.isEnabled = true
+            plateletButton.isEnabled = true
+            addNoteButton.isEnabled = true
+            unitTextField.isEnabled = true
+            orderButton.isEnabled = true
+            orderView.alpha = 1
+            orderButton.alpha = 1
+        } else {
+            FFPButton.isEnabled = false
+            plateletButton.isEnabled = false
+            addNoteButton.isEnabled = false
+            unitTextField.isEnabled = false
+            orderButton.isEnabled = false
+            orderView.alpha = 0.7
+            orderButton.alpha = 0.7
+            showAlertMessage(title: "Unknown Blood Type".localized, message: "Patient blood type is unknown. You cannot make blood order from this page.".localized)
+        }
+    }
+    
     func refreshOrderCardandTable() {
         stylizeButtonUnselected(button: FFPButton)
         stylizeButtonUnselected(button: plateletButton)
@@ -20,8 +41,11 @@ extension DoctorBloodOrderForPatientViewController: DoctorBloodOrderForPatientDa
 class DoctorBloodOrderForPatientViewController: UIViewController {
     var dataSource = DoctorBloodOrderForPatientDataSource()
     
+    @IBOutlet weak var orderView: UIView!
     @IBOutlet weak var FFPButton: UIButton!
     @IBOutlet weak var plateletButton: UIButton!
+    @IBOutlet weak var addNoteButton: UIButton!
+    @IBOutlet weak var orderButton: UIButton!
     
     @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet weak var unitTextField: UITextField!
@@ -47,6 +71,13 @@ class DoctorBloodOrderForPatientViewController: UIViewController {
         // Do any additional setup after loading the view.
         stylizeButtonUnselected(button: FFPButton)
         stylizeButtonUnselected(button: plateletButton)
+        dataSource.checkBloodTypeKnown()
+        setupTableView()
+    }
+    
+    private func setupTableView() {
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        tableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
     }
     
     func stylizeButtonUnselected(button: UIButton) {
@@ -160,7 +191,13 @@ extension DoctorBloodOrderForPatientViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        if dataSource.getTableViewCount() == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView?.backgroundColor = UIColor.clear
+            cell.setTitle(title: "No order has been made yet".localized)
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
         cell.backgroundColor = UIColor.clear
         cell.backgroundView?.backgroundColor = UIColor.clear
@@ -171,8 +208,12 @@ extension DoctorBloodOrderForPatientViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("dataSource.getTableViewCount(): ", dataSource.getTableViewCount())
-        return dataSource.getTableViewCount()
+        let count = dataSource.getTableViewCount()
+        if count > 0 {
+            return count
+        } else {
+            return 1
+        }
     }
     
     // There is just one row in every section

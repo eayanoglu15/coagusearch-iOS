@@ -27,7 +27,7 @@ class EnterDosageTableViewCell: UITableViewCell {
     @IBOutlet weak var unitPickerView: UIPickerView!
     @IBOutlet weak var expandView: UIView!
     
-    var pickerData = ["g", "ml", "Unit"]//[String]()
+    var pickerData = ["g", "mg", "U", "mg/kg", "g/kg", "U/kg"]//[String]()
     
     func setSuggestion(suggestion: TreatmentSuggestion) {
         if suggestion.kind == .Medicine {
@@ -40,6 +40,7 @@ class EnterDosageTableViewCell: UITableViewCell {
     func clearCell() {
         selectedDosage = nil
         selectedUnit = nil
+        dosageTextField.text = nil
         if let first = pickerData.first {
             dosageLabel.text = "- " + first
             selectedUnit = first
@@ -48,6 +49,7 @@ class EnterDosageTableViewCell: UITableViewCell {
             dosageLabel.text = "-"
         }
         setSelection()
+        unitPickerView.selectRow(0, inComponent: 0, animated: true)
     }
     
     override func awakeFromNib() {

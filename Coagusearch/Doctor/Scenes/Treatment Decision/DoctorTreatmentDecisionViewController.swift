@@ -198,6 +198,7 @@ extension DoctorTreatmentDecisionViewController: UITableViewDataSource {
                 }
                 if dataSource.shouldClearMedicationOrder() {
                     cell.clearCell()
+                    cell.checkVisibility()
                     dataSource.medicationOrderCleared()
                 }
                 return cell

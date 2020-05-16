@@ -172,7 +172,7 @@ class DoctorTreatmentDecisionDataSource {
     // MARK: Medication Order
     var selectedMedicine: String?
     var selectedQuantity: Double?
-    var selectedUnit: String?
+    var selectedUnit: String = "g"
     
     func setSelectedUnit(unit: String) {
         selectedUnit = unit
@@ -198,14 +198,10 @@ class DoctorTreatmentDecisionDataSource {
             delegate?.showAlertMessage(title: "Missing Medicine Dosage".localized, message: "Please enter dosage of medicine".localized)
             return
         }
-        guard let unit = selectedUnit else {
-            delegate?.showAlertMessage(title: "Missing Dosage Unit".localized, message: "Please enter unit of dosage".localized)
-            return
-        }
         if medicine == "Fibrinogen Concentrate" || medicine == "Fibrinojen Concentrate" {
             medicine = "FibrinojenConcentrate"
         }
-        let order = GeneralOrder(kind: .Medicine, productType: medicine, quantity: quantity, unit: unit, bloodTestId: id, additionalNote: medAdditionalNote)
+        let order = GeneralOrder(kind: .Medicine, productType: medicine, quantity: quantity, unit: selectedUnit, bloodTestId: id, additionalNote: medAdditionalNote)
         postOrder(order: order)
     }
     
@@ -283,7 +279,7 @@ class DoctorTreatmentDecisionDataSource {
                             self.clearDosageCell = true
                             self.selectedMedicine = nil
                             self.selectedQuantity = nil
-                            self.selectedUnit = nil
+                            self.selectedUnit = "g"
                             if let suggestion = self.selectedSuggestion {
                                 if suggestion.kind == .Medicine {
                                     self.selectedSuggestion = nil

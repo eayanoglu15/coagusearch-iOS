@@ -76,7 +76,7 @@ class DoctorBloodOrderViewController: UIViewController {
         hideKeyboard()
         stylize()
         title = "Blood Order".localized
-        
+        setupTableView()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
@@ -127,16 +127,20 @@ class DoctorBloodOrderViewController: UIViewController {
         dataSource.getPastOrders()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupTableView() {
+        let infoCellNib = UINib(nibName: CELL_IDENTIFIER_COLORED_LABEL_CELL, bundle: nil)
+        tableView.register(infoCellNib, forCellReuseIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL)
     }
-    */
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     @IBAction func FFPButtonTapped(_ sender: Any) {
         if productTypeSelection[0] {
@@ -332,18 +336,29 @@ extension DoctorBloodOrderViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_BLOOD_ORDER_CELL, for: indexPath) as! BloodOrderTableViewCell
+        if dataSource.getPastOrderCount() == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_COLORED_LABEL_CELL, for: indexPath) as! ColoredLabelTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
+            cell.setTitle(title: "No order has been made yet".localized)
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_BLOOD_ORDER_CELL, for: indexPath) as! BloodOrderTableViewCell
+        cell.backgroundColor = UIColor.clear
+        cell.backgroundView?.backgroundColor = UIColor.clear
         if let order = dataSource.getPastOrder(index: indexPath.section) {
             cell.setCell(order: order)
         }
-            return cell
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource.getPastOrderCount()
+        let count = dataSource.getPastOrderCount()
+        if count > 0 {
+            return count
+        } else {
+            return 1
+        }
     }
     
     // There is just one row in every section

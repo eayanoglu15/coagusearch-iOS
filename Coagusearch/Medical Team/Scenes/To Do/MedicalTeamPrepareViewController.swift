@@ -40,7 +40,11 @@ class MedicalTeamPrepareViewController: UIViewController {
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.blueBlue], for: UIControl.State.normal)
         segmentedControl.borderColor = .white
         segmentedControl.borderWidth = 1
-        segmentedControl.selectedSegmentTintColor = .blueBlue
+        if #available(iOS 13.0, *) {
+            segmentedControl.selectedSegmentTintColor = .blueBlue
+        } else {
+            // Fallback on earlier versions
+        }
         setupTableView()
     }
     

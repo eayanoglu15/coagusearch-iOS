@@ -14,6 +14,7 @@ protocol DoctorBloodOrderForPatientDataSourceDelegate {
     func showLoadingVC()
     func showLoginVC()
     func refreshOrderCardandTable()
+    func informPatientBlood(isKnown: Bool)
 }
 
 class DoctorBloodOrderForPatientDataSource {
@@ -22,6 +23,14 @@ class DoctorBloodOrderForPatientDataSource {
     
     var patient: User?
     var pastOrders: [GeneralOrder]?
+    
+    func checkBloodTypeKnown() {
+        guard let patient = patient, let _ = patient.bloodType, let _ = patient.rhType else {
+            self.delegate?.informPatientBlood(isKnown: false)
+            return
+        }
+        self.delegate?.informPatientBlood(isKnown: true)
+    }
     
     func getTableViewCount() -> Int {
         if let orders = pastOrders {

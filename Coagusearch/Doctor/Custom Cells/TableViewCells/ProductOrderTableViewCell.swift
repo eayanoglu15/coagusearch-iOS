@@ -66,11 +66,16 @@ class ProductOrderTableViewCell: UITableViewCell {
     
     func setButton(isEnabled: Bool) {
         if isEnabled {
+            FFPButton.isEnabled = true
+            plateletButton.isEnabled = true
+            unitTextField.isEnabled = true
             orderButton.isEnabled = true
-            contentView.alpha = 1;
+            contentView.alpha = 1
         } else {
+            FFPButton.isEnabled = false
+            plateletButton.isEnabled = false
+            unitTextField.isEnabled = false
             orderButton.isEnabled = false
-            //orderButton.alpha = 0.5;
             contentView.alpha = 0.7
         }
     }
