@@ -47,7 +47,9 @@ class DoctorActionBloodOrderDataSource {
                     }
                 }
             } else {
-                if !success {
+                if success {
+                    self.delegate?.showAlertMessage(title: "Medical Team Have Been Notified".localized, message: "Your medical team have been notified.".localized)
+                } else {
                     self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
                 }
             }
@@ -72,7 +74,9 @@ class DoctorActionBloodOrderDataSource {
                     }
                 }
             } else {
-                if !success {
+                if success {
+                    self.delegate?.showAlertMessage(title: "Patient Has Been Notified".localized, message: "Your patient has been notified about getting a new appointment.".localized)
+                } else {
                     self.delegate?.showAlertMessage(title: ERROR_MESSAGE.localized, message: UNEXPECTED_ERROR_MESSAGE.localized)
                 }
             }

@@ -37,7 +37,13 @@ class DoctorBloodOrderDataSource {
                     }
                 }
             } else {
-                self.pastOrders = pastOrders
+                var orders = [GeneralOrder]()
+                for order in pastOrders {
+                    if order.kind == .Blood {
+                        orders.append(order)
+                    }
+                }
+                self.pastOrders = orders
                 DispatchQueue.main.async {
                     self.delegate?.reloadTable()
                 }

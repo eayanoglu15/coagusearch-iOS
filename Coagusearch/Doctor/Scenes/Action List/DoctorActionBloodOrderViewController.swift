@@ -16,6 +16,7 @@ class DoctorActionBloodOrderViewController: UIViewController, DoctorActionBloodO
         stylize()
         title = "Blood Order".localized
         dataSource.coagusearchService = CoagusearchServiceFactory.createService()
+        dataSource.delegate = self
     }
     
     // MARK: - Navigation

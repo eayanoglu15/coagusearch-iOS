@@ -91,8 +91,10 @@ protocol CoaguSearchService {
 
 class NetworkBase {
     
-    let baseURL = "http://localhost:8080"
+    //let baseURL = "http:"//localhost:8080"
     
+    let baseURL = "http://ec2-52-28-26-31.eu-central-1.compute.amazonaws.com:8080"
+
     // MARK: Custom Functions
     class func getDefaultHeaders() -> HTTPHeaders {
         let headers: HTTPHeaders = ["accept": "application/json",

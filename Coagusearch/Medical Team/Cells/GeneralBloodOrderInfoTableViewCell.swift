@@ -56,14 +56,21 @@ class GeneralBloodOrderInfoTableViewCell: UITableViewCell {
         }
         bloodStackView.isHidden = true
         
-        var product = order.productType
-        if product == "FibrinojenConcentrate" {
-            product = "Fibrinogen Concentrate"
-        } else if product == "PlateletConcentrate" {
-            product = "Platelet Concentrate"
+        var productStr = order.productType
+        switch order.productType {
+        case "FFP":
+            productStr = "Fresh Frozen Plasma"
+            break
+        case "FibrinojenConcentrate":
+            productStr = "Fibrinojen Concentrate"
+            break
+        case "PlateletConcentrate":
+            productStr = "Platelet Concentrate"
+            break
+        default:
+            break
         }
-        
-        productLabel.text = product
+        productLabel.text = productStr
         
         switch order.kind {
         case .Blood:
@@ -84,8 +91,14 @@ class GeneralBloodOrderInfoTableViewCell: UITableViewCell {
             }
             
             if let bloodType = order.bloodType, let rhType = order.rhType {
+                if rhType == RhType.Positive {
+                    bloodLabel.text = "\(bloodType) Rh+"
+                } else {
+                    bloodLabel.text = "\(bloodType) Rh-"
+                }
                 bloodStackView.isHidden = false
             }
+            
         case .Medicine:
             unitImageView.image = UIImage(named: IMAGE_NAME_BLUE_DOSAGE)
             productImageView.image = UIImage(named: IMAGE_NAME_BLUE_MEDICINE)

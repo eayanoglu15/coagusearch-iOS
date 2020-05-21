@@ -69,6 +69,7 @@
 "Missing Medicine" = "Eksik İlaç İsmi";
 "Missing Medicine Dosage" = "Eksik İlaç Dozu";
 "Missing Dosage Unit" = "Eksik Doz Birimi";
+"Medical Team Have Been Notified" = "Medikal Ekip Bilgilendirildi";
 
 // MARK: N
 "Not specified" = "Belirtilmedi";
@@ -109,6 +110,7 @@
 "Password: " = "Şifre: ";
 " Patients" = " Hasta";
 " Patient" = " Hasta";
+"Patient Has Been Notified" = "Hasta Bilgilendirildi";
 
 // MARK: Q
 
@@ -153,5 +155,7 @@
 "You have no appointments today" = "Bugün randevunuz yok";
 "You have no patients" = "Hiç hastanız yok";
 "You have no patients" = "Hiç hastanız yok";
+"Your patient has been notified about getting a new appointment." = "Hastanız yeni randevu alması gerektiği hakkında bilgilendirildi.";
+"Your medical team have been notified." = "Medikal takımınız bilgilendirildi.";
 
 // MARK: Z

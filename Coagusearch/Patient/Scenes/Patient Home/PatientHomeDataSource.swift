@@ -49,12 +49,15 @@ class PatientHomeDataSource {
     
     func getTableViewCount() -> Int {
         var info = 0
+        print("hasMissingInfo()", hasMissingInfo())
+        print("hasNextAppointment()", hasNextAppointment())
         if mainInfo != nil {
             if hasMissingInfo() {
                 if hasNextAppointment() {
                     info = 2
+                } else {
+                    info = 1
                 }
-                info = 1
             } else {
                if hasNextAppointment() {
                     info = 1

@@ -40,11 +40,11 @@ class DoctorPastDataAnalysisViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
-               segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.blueBlue], for: UIControl.State.normal)
-               segmentedControl.borderColor = .white
-               segmentedControl.borderWidth = 1
-               //segmentedControl.backgroundColor = .dodgerBlue
-               segmentedControl.selectedSegmentTintColor = .blueBlue
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.blueBlue], for: UIControl.State.normal)
+        segmentedControl.borderColor = .white
+        segmentedControl.borderWidth = 1
+        //segmentedControl.backgroundColor = .dodgerBlue
+        segmentedControl.selectedSegmentTintColor = .blueBlue
     }
     
     private func setupTableView() {
@@ -58,17 +58,17 @@ class DoctorPastDataAnalysisViewController: UIViewController {
         dataSource.getDataAnalysisByID()
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
         tableView.reloadData()
     }
@@ -90,12 +90,25 @@ extension DoctorPastDataAnalysisViewController: UITableViewDataSource {
                 cell.setTitle(title: "No order was made".localized)
                 return cell
             }
+            if let order = dataSource.getOrder(index: indexPath.section) {
+                switch order.kind {
+                case .Blood:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
+                    cell.backgroundColor = UIColor.clear
+                    cell.backgroundView?.backgroundColor = UIColor.clear
+                    cell.setup(order: order)
+                    return cell
+                case .Medicine:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_GIVEN_MEDICINE_CELL, for: indexPath) as! GivenMedicineTableViewCell
+                    cell.backgroundColor = UIColor.clear
+                    cell.backgroundView?.backgroundColor = UIColor.clear
+                    cell.setup(order: order)
+                    return cell
+                }
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_PATIENT_SPECIFIC_BLOOD_ORDER_CELL, for: indexPath) as! PatientSpecificPastBloodOrderTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.backgroundView?.backgroundColor = UIColor.clear
-            if let order = dataSource.getOrder(index: indexPath.section) {
-                cell.setup(order: order)
-            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER_DATA_CELL, for: indexPath) as! DataTableViewCell
@@ -153,21 +166,21 @@ extension DoctorPastDataAnalysisViewController: UITableViewDataSource {
         return HEIGHT_FOR_HEADER
     }
     /*
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch (segmentedControl.selectedSegmentIndex) {
-        case FIBTEM_SECTION:
-            return HEIGHT_FOR_DATA_CELL
-        case EXTEM_SECTION:
-            return HEIGHT_FOR_DATA_CELL
-        case INTEM_SECTION:
-            return HEIGHT_FOR_DATA_CELL
-        case ORDER_SECTION:
-            return CGFloat(122) // height of ordered blood cell
-        default:
-            return 0
-        }
-    }
-    */
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     switch (segmentedControl.selectedSegmentIndex) {
+     case FIBTEM_SECTION:
+     return HEIGHT_FOR_DATA_CELL
+     case EXTEM_SECTION:
+     return HEIGHT_FOR_DATA_CELL
+     case INTEM_SECTION:
+     return HEIGHT_FOR_DATA_CELL
+     case ORDER_SECTION:
+     return CGFloat(122) // height of ordered blood cell
+     default:
+     return 0
+     }
+     }
+     */
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         //(view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemPink
         (view as! UITableViewHeaderFooterView).backgroundView = UIView()

@@ -89,6 +89,7 @@ extension PatientHomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(dataSource.getTableViewCount())
         if dataSource.getTableViewCount() > 0 {
             if dataSource.hasMissingInfo() {
                 if indexPath.section == 0 {
